@@ -1,0 +1,58 @@
+/* Header Styles */
+header {
+  background: var(--bg);
+  padding: 1rem 2rem;
+  position: fixed; /* Changed to fixed positioning */
+  top: 0;
+  left: 0; /* Added left position */
+  width: 100%; /* Added full width */
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 80px; /* Adjusted height to prevent floating */
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 1rem;
+  right: 2rem; /* Ensure alignment to the top right corner */
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.lang-toggle {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.lang-toggle:hover {
+  background-color: var(--accent);
+  color: var(--bg);
+}

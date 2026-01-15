@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Your Name — Portfolio</title>
+
+  <!-- 主样式 -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <button class="lang-toggle" aria-label="Toggle Language">EN/中文</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="work-gallery/">Work Gallery</a></li>
+        <li><a href="about.html">About</a></li> <!-- Updated link to about.html -->
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero 区 -->
+  <header id="hero">
+    <canvas id="waveCanvas" aria-hidden="true"></canvas>
+    <div class="hero-content">
+      <h1>JIANGHAO LI</h1>
+      <p class="role">Game Developer & Audio Engineer</p>
+      <p class="subtitle">Interactive experiences • Immersive soundscapes</p>
+      <!-- <a href="#work" class="btn btn-primary">View Selected Work</a> -->
+    </div>
+  </header>
+
+  <!-- Personal Introduction -->
+  <section id="intro" class="wave-section" data-reveal>
+    <canvas class="intro-wave-canvas" aria-hidden="true"></canvas>
+    <div class="intro-grid">
+      <div class="intro-photo" aria-hidden="true" style="background-image: url('assets/images/main_page/me.jpg')"></div>
+      <div class="intro-card">
+        <h2>Hello — I'm Jianghao</h2>
+        <p class="intro-lead">I build interactive experiences and design immersive soundscapes. I work across game development, audio engineering, and interactive media.</p>
+        <p id="intro-type" class="intro-type" aria-live="polite">I make playful systems, believable audio, and clean code.</p>
+        <ul class="skills-list">
+          <li class="skill">Unity / C#</li>
+          <li class="skill">FMOD / Wwise</li>
+          <li class="skill">DSP & Synthesis</li>
+          <li class="skill">Interactive Sound</li>
+          <li class="skill">JUCE & C++</li>
+          <li class="skill">Python & ML</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected Works -->
+  <section id="work" class="wave-section" data-reveal>
+    <canvas class="section-wave-canvas" aria-hidden="true"></canvas>
+    <h2>Selected Work</h2>
+    <div class="work-grid">
+      <!-- 作品项 ① -->
+      <div class="work-card" data-reveal>
+        <div class="work-preview" style="background-image: url('assets/images/work-thumbs/project01.jpg')"></div>
+        <h3>Project Title 1</h3>
+        <p>Short description about this project.</p>
+      </div>
+      <!-- 复制 .work-card 填入更多作品 -->
+    </div>
+  </section>
+
+  <!-- Work Gallery Section -->
+  <section id="work-gallery" class="wave-section" data-reveal>
+    <canvas class="section-wave-canvas" aria-hidden="true"></canvas>
+    <h2>My Work Gallery</h2>
+    <p>Explore my projects and designs.</p>
+    <a href="work-gallery/" class="btn btn-primary">View Gallery</a>
+  </section>
+
+  <!-- Contact 区 -->
+  <section id="contact" class="wave-section" data-reveal>
+    <canvas class="section-wave-canvas" aria-hidden="true"></canvas>
+    <h2>Contact</h2>
+    <p>Let's build together — reach out!</p>
+    <ul class="contact-buttons">
+      <li><a href="mailto:lijiangh@usc.edu" class="btn email">Email</a></li>
+      <li><a href="https://www.linkedin.com/in/lijiangh" class="btn linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      <li><a href="https://github.com/JianghaoL" class="btn github" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+    </ul>
+  </section>
+
+  <script src="libs/three.min.js"></script>
+  <script src="libs/vanta.waves.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+/* Vision Section Styles */
+.centered-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--bg);
+}
+
+.vision-content {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the image */
+}
+
+.vision-image {
+  width: 1000px;
+  height: 600px;
+  border-radius: 12px; /* Chamfered rectangle */
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow effect */
+}
+
+.vision-header {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--accent); /* Make the header pop */
+  margin-bottom: 1rem;
+}
+
+.vision-text {
+  font-size: 1.0rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Separator Styles */
+.section-separator {
+  border: none;
+  height: 1px; /* Subtle height */
+  background: rgba(255, 255, 255, 0.2); /* Lighter color for subtle effect */
+  margin: 2rem auto; /* Center the separator */
+  width: 80%; /* Restrict width to 80% of the container */
+}
+
+/* About Details Section Styles */
+.about-details-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns layout */
+  gap: 7rem; /* Space between columns */
+  padding: 2rem;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  text-align: left; /* Ensure text is left-aligned */
+  justify-content: center; /* Center the text section */
+  max-width: 800px; /* Limit the width of the section */
+  margin: 20px auto; /* Center the section horizontally */
+}
+
+.about-details-section h3 {
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.about-details-section p, .about-details-section ul {
+  margin-bottom: 1.5rem;
+}
+
+.about-details-section ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.about-details-section li {
+  margin-bottom: 0.5rem;
+}
+
+.about-introduction, .about-education {
+  grid-column: 1; /* Place in the first column */
+}
+
+.about-skills {
+  grid-column: 2; /* Place in the second column */
+}
+
+/* Audio Waveform Section */
+#audio-waveform {
+  width: 100%;
+  height: 200px;
+  background: #0a0c1b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#audio-waveform canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* Remove wave-section class from introduction section */
