@@ -11,37 +11,35 @@
 const workData = [
   {
     id: 1,
-    title: "Project Title 1",
-    shortDesc: "A brief teaser about this project",
-    image: "assets/images/work-thumbs/project01.jpg",
-    description: "Detailed description of the project. Explain what it does, the problem it solves, and any interesting challenges you faced during development.",
-    techStack: ["Unity", "C#", "FMOD"],
+    title: "Mantle",
+    shortDesc: "A narrative-driven game experience",
+    image: "assets/images/thumbnails/thumbnails (14).png",
+    description: "A game that focuses on narrative, seeking ways to guide players into believing different design ideas.",
+    techStack: ["Unity", "Logic Pro", "Recording", "Perforce", "Sound Design"],
     links: [
-      { label: "View Project", url: "#", icon: "external" },
-      { label: "GitHub", url: "#", icon: "github" }
+      { label: "View Project", url: "project-pages/mantle.html", icon: "external" }
     ]
   },
   {
     id: 2,
-    title: "Project Title 2",
-    shortDesc: "Another amazing project showcase",
-    image: "assets/images/work-thumbs/project02.jpg",
-    description: "This project showcases advanced audio implementation techniques with dynamic soundscapes that respond to player actions in real-time.",
-    techStack: ["Wwise", "Unreal Engine", "C++"],
+    title: "SpongeBob Musical",
+    shortDesc: "Broadway musical sound design",
+    image: "assets/images/thumbnails/thumbnails (9).jpg",
+    description: "Juvenile version of the Broadway musical: SpongeBob. Led the sound crew for live theater production with comprehensive sound reinforcement and mixing.",
+    techStack: ["Logic Pro", "Mainstage", "Theater Sound", "Live Mixing"],
     links: [
-      { label: "View Project", url: "#", icon: "external" },
-      { label: "Demo", url: "#", icon: "play" }
+      { label: "View Project", url: "project-pages/spongebob-musical.html", icon: "external" }
     ]
   },
   {
     id: 3,
-    title: "Project Title 3",
-    shortDesc: "Interactive audio experience",
-    image: "assets/images/work-thumbs/project03.jpg",
-    description: "An interactive installation piece that generates music based on audience movement and presence, creating a unique sonic environment.",
-    techStack: ["Max/MSP", "Arduino", "Python"],
+    title: "Dough it Yourself",
+    shortDesc: "GMTK 2025 game jam puzzle game",
+    image: "assets/images/thumbnails/thumbnails (7).png",
+    description: "A donut making puzzle game made for GMTK 2025. Features creative level design and engaging gameplay mechanics.",
+    techStack: ["Unity", "C#", "Git"],
     links: [
-      { label: "View Project", url: "#", icon: "external" }
+      { label: "View Project", url: "project-pages/dough-it-yourself.html", icon: "external" }
     ]
   }
 ];
