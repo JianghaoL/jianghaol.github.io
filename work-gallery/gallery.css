@@ -654,6 +654,28 @@
   margin-bottom: 1rem;
   flex: 1;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(120,140,180,0.18) rgba(40,40,60,0.08);
+}
+
+/* Custom Scrollbar for Overview Text (Card Back) */
+.card-back-description::-webkit-scrollbar {
+  width: 7px;
+  background: transparent;
+}
+.card-back-description::-webkit-scrollbar-thumb {
+  background: rgba(120,140,180,0.18);
+  border-radius: 8px;
+  min-height: 24px;
+  border: 2px solid rgba(40,40,60,0.08);
+}
+.card-back-description::-webkit-scrollbar-thumb:hover {
+  background: rgba(120,140,180,0.28);
+}
+.card-back-description::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 8px;
+}
 }
 
 .card-back-meta {

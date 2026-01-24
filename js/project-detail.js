@@ -360,13 +360,13 @@ function addLightboxStyles() {
     /* Mobile - attach progress bar to header */
     @media (max-width: 768px) {
       .reading-progress {
-        top: 70px;
+        top: 56px;
       }
     }
     
     @media (max-width: 480px) {
       .reading-progress {
-        top: 60px;
+        top: 48px;
       }
     }
     

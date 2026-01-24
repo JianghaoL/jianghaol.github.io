@@ -515,15 +515,24 @@ header {
 /* Tablet breakpoint */
 @media (max-width: 768px) {
   body {
-    padding-top: 70px;
+    padding-top: 56px;
+  }
+
+  /* Nav Links Mobile - Override gap from desktop */
+  .nav-links {
+    gap: 0;
+  }
+
+  .nav-links li {
+    display: block;
   }
 
   /* Hero Section Mobile */
   #hero {
     height: 100vh;
     min-height: 400px;
-    margin-top: -70px;
-    padding-top: 70px;
+    margin-top: -56px;
+    padding-top: 56px;
   }
 
   #hero h1 {
@@ -611,15 +620,15 @@ header {
 /* Small Mobile breakpoint */
 @media (max-width: 480px) {
   body {
-    padding-top: 60px;
+    padding-top: 48px;
   }
 
   /* Hero Section Small Mobile */
   #hero {
     height: 100vh;
     min-height: 350px;
-    margin-top: -60px;
-    padding-top: 60px;
+    margin-top: -48px;
+    padding-top: 48px;
   }
 
   #hero h1 {
