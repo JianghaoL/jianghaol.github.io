@@ -233,11 +233,14 @@
 .carousel-nav {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
+  /* make nav span the full viewport so both buttons are equidistant from screen edges */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
   display: flex;
   justify-content: space-between;
-  padding: 0 1rem;
+  /* increase horizontal inset so buttons sit further from viewport edges */
+  padding: 0 3rem;
   box-sizing: border-box;
   pointer-events: none;
   z-index: 20;
@@ -258,6 +261,8 @@
   pointer-events: auto;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   overflow: var(--overflow-clip);
+  /* position absolute so we can place prev/next explicitly */
+  position: relative;
 }
 
 .carousel-btn:hover {
@@ -328,6 +333,11 @@
     padding: 2rem 1rem;
   }
 
+  /* slightly reduce nav inset on medium screens */
+  .carousel-nav {
+    padding: 0 2rem;
+  }
+
   .carousel-slide[data-position="left-1"] {
     transform: translateX(-120%) translateZ(-120px) scale(0.75) rotateY(12deg);
   }
@@ -387,6 +397,11 @@
     height: 16px;
   }
 
+  /* reduce nav inset on small screens */
+  .carousel-nav {
+    padding: 0 1.5rem;
+  }
+
   /* Show only adjacent cards on tablet */
   .carousel-slide[data-position="left-1"] {
     transform: translateX(-110%) translateZ(-100px) scale(0.7) rotateY(10deg);
@@ -429,7 +444,8 @@
   }
 
   .carousel-nav {
-    padding: 0;
+    /* keep a small inset on very small screens */
+    padding: 0 1rem;
   }
 
   .carousel-btn {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jianghao Li - CrossfadER</title>
+  <title>Jianghao Li - Blender Unity Communicator</title>
   
   <!-- Styles -->
   <link rel="stylesheet" href="../css/reset.css">
@@ -35,9 +35,9 @@
          ============================================ -->
     <section class="project-hero">
       <div class="project-hero-content">
-        <h1 class="project-title">CrossfadER</h1>
+        <h1 class="project-title">Blender Unity Communicator</h1>
         <p class="project-summary">
-          An audio tool automating the looping sound production workflow.
+          A Blender and Unity add-on that helps model developers.
         </p>
         <div class="project-meta">
           <span class="meta-item">
@@ -53,7 +53,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
             </svg>
-            Audio Tool
+            Development Tool
           </span>
           <span class="meta-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -70,9 +70,10 @@
             <div class="hero-details-column">
               <h3>Tech Stack</h3>
               <ul class="tech-list">
-                <li><span class="tech-tag">DSP</span></li>
+                <li><span class="tech-tag">Python</span></li>
                 <li><span class="tech-tag">C#</span></li>
-                <li><span class="tech-tag">Avalonia</span></li>
+                <li><span class="tech-tag">Blender API</span></li>
+                <li><span class="tech-tag">Unity</span></li>
                 <li><span class="tech-tag">Git</span></li>
 
               </ul>
@@ -80,7 +81,7 @@
             <div class="hero-details-column">
               <h3>My Role</h3>
               <ul class="role-list">
-                <li>Audio Programming</li>
+                <li>Developer</li>
               </ul>
             </div>
             <div class="hero-details-column">
@@ -103,11 +104,11 @@
       <!-- Full-width Image Block -->
       <section class="content-block content-block--full-image" data-reveal>
         <figure class="full-image-container">
-          <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (2).png" 
-               alt="CrossfadER application interface showing crossfade options and audio processing controls" 
+          <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/interface (2).png" 
+               alt="Blender Unity Communicator application interface showing export options and settings" 
                class="full-image"
                loading="lazy">
-          <figcaption class="image-caption">CrossfadER Interface</figcaption>
+          <figcaption class="image-caption">Blender Unity Communicator Interface</figcaption>
         </figure>
       </section>
 
@@ -116,16 +117,17 @@
         <div class="text-container">
           <h2>Overview</h2>
           <p>
-            This is a tool developed to help with the sound design and game audio prototyping process. 
+            This is a Blender and Unity add-on that helps developers easily
+             export models to the designated Unity project folder, and also 
+             provides a function to overwrite all objects 
+            using a specific .FBX model with the newly exported .FBX model. 
           </p>
           <p>
-            It now provides several crossfade time options, allowing flexibility when
-             handling audio assets. 3 modes of crossfade are also available, 
-             each being linear, logarithmic, and sine.
-             More features are now in development.
+            The tool is designed to streamline the workflow between Blender and Unity, 
+            making it more efficient for developers to manage and update their 3D assets.
           </p>
           <p>
-            The application is built based on Avalonia and the .NET Framework, with the functioning language being C#.
+            The application is built using Python for the Blender add-on and C# for the Unity integration.
           </p>
         </div>
       </section>
@@ -136,79 +138,22 @@
           <div class="media-text-content">
             <h2>Implementation</h2>
             <p>
-              This program emulates the typical way of processing a looping audio in a DAW system.
+              This tool consists of two main components: a Blender add-on written in Python
+               and a Unity script written in C#. The Blender add-on allows users to export
+                their models directly to a specified Unity project folder with a single click.
             </p>
             <p>
-              To make a looping sound, the audio clip will first need to be cut in half and 
-              swapped in position. This means that the former half of the audio now becomes
-               the latter half, and vice versa. Then, the two audio tracks will need to be overlapped 
-              and crossfaded so they merge perfectly into each other.
-            </p>
-            <p>
-              This program, essentially, does the same thing.
-            </p>
-            <p>Using the NAudio library, the program first reads the audio file into a 
-              float array that stores all the data. It then cuts the audio 
-              into two pieces and performs a swapping operation.</p>
-          </div>
-          <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (5).png" 
-                 alt="Diagram illustrating the audio data swapping process for loop creation" 
-                 loading="lazy">
-                 <figcaption class="image-caption">Swapping Audio Data</figcaption>
-          </figure>
-
-          <div class="media-text-content">
-
-            <p>
-              The swapped audio data array will then be used to generate the crossfaded
-               result. The program will start with the midpoint of the array, 
-               perform a special computation (see Phase Issue below), 
-              and mix the two tracks beginning at the computed index.
-            </p>
-            <p>
-              Different crossfade modes specify how the program will render the 
-              crossfaded area. In its core essence, the program adds the two data
-               multiplied by a weight coefficient that is calculated 
-              based on the relative index and functions.
-            <p>
-              After these steps, the audio clip is ready for exporting. 
-              The program will automatically provide a postfix to the 
-              file name if no customized file name is specified.
+              This was achieved by utilizing Blender's built-in FBX export functionality and
+               integrating it with a user-friendly interface that allows users to set their
+              Unity project path and export settings.
             </p>
           </div>
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (6).png" 
-                 alt="Visualization of the crossfade mixing algorithm and weight coefficients" 
+            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/save method.png" 
+                 alt="Code snippet showing the save method in Blender Unity Communicator" 
                  loading="lazy">
-                 <figcaption class="image-caption">Audio Processing</figcaption>
+                 <figcaption class="image-caption">Code Snippet</figcaption>
           </figure>
-          
-        </div>
-          
-        
-      </section>
-
-      <!-- Mechanics Image Grid -->
-      <section class="content-block content-block--image-grid" data-reveal>
-        <div class="image-grid-container">
-          <div class="image-grid image-grid--3col">
-            <figure class="grid-image-item">
-              <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/mechanics (3).png" 
-                   alt="Linear crossfade curve showing equal power transition" 
-                   loading="lazy">
-            </figure>
-            <figure class="grid-image-item">
-              <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/mechanics (2).png" 
-                   alt="Logarithmic crossfade curve for natural volume transitions" 
-                   loading="lazy">
-            </figure>
-            <figure class="grid-image-item">
-              <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/mechanics (1).png" 
-                   alt="Sine crossfade curve for smooth audio blending" 
-                   loading="lazy">
-            </figure>
-          </div>
         </div>
       </section>
 
@@ -216,31 +161,115 @@
       <section class="content-block content-block--media-text" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (7).png" 
-                 alt="Waveform diagram showing zero-crossing detection for phase alignment" 
+            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/select overwrite obj.png" 
+                 alt="Code snippet showing the overwrite function in Blender Unity Communicator" 
                  loading="lazy">
-                 <figcaption class="image-caption">Phase Handling</figcaption>
+                 <figcaption class="image-caption">Code Snippet</figcaption>
           </figure>
           <div class="media-text-content">
-            <h2>Phase Issue</h2>
+            <h2>Overwrite Function</h2>
             <p>
-              When dealing with audio, phase is always an issue. This tool has a special computation method, 
-              to the greatest extent, to eliminate the phase problem.
+              One thing that makes this tool stand out is the overwrite function.
+               This function allows users to overwrite all objects in the Unity project
+                that use a specific .FBX model with the newly exported .FBX model from Blender.
             </p>
             <p>
-              The program, starting at the midpoint of the array, finds the nearest index 
-              at which the wave has an amplitude of zero. This ensures that the
-               crossfaded audio will always start at a zero point,
-               avoiding abrupt jumps in phase and amplitude.
+              Designers are often required to make frequent updates to 3D models during the development process.
+               This function significantly reduces the time and effort needed to update models
+                in Unity, as users no longer need to manually replace each instance of the model.
             </p>
           </div>
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/unity overwrite.png" 
+                 alt="Code snippet showing the overwrite function in Blender Unity Communicator" 
+                 loading="lazy">
+                 <figcaption class="image-caption">Code Snippet</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <p>
+              Specifically, the overwrite function works by searching through all GameObjects
+               in the Unity project for references to the old .FBX model and replacing them
+                with references to the newly exported model.
+            </p>
+            <p>
+              This is done using Unity's AssetDatabase and GameObject APIs, allowing for
+               efficient and automated updates to the project.
+            </p>
+        </div>
+      </section>
+
+      <!-- Mechanics Image Grid -->
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <div class="image-grid image-grid--3col">
+            <figure class="grid-image-item">
+              <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/overwrite all obj in unity.png" 
+                   alt="Overwrite all objects in Unity" 
+                   loading="lazy">
+              <figcaption class="image-caption">Overwrite All Objects in Unity</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/interface (3).png" 
+                   alt="Before Overwriting Models in Unity" 
+                   loading="lazy">
+                   <figcaption class="image-caption">Before Overwriting Models in Unity</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/interface (1).png" 
+                   alt="After Overwriting Models in Unity" 
+                   loading="lazy">
+                   <figcaption class="image-caption">After Overwriting Models in Unity</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Image + Text Block (Image Right) -->
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/unity json.png" 
+                 alt="Diagram showing the JSON structure used for UDP communication between Blender and Unity" 
+                 loading="lazy">
+            <figcaption class="image-caption">JSON Structure</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>UDP Connection</h2>
+            <p>
+              To facilitate communication between Blender and Unity, 
+              I implemented a UDP connection that allows the two applications to exchange data in real-time.
+            </p>
+            <p>
+              This connection enables Blender to send export commands to Unity, 
+              and Unity to receive notifications when new models are available.
+            </p>
+            <p>
+              A json structure is used to format the data being sent over the UDP connection, 
+              ensuring that both applications can easily parse and understand the information.
+            </p>
+          </div>
+
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/udp (1).png" 
+                 alt="Code for UDP communication in Python" 
+                 loading="lazy">
+            <figcaption class="image-caption">UDP Python Script</figcaption>
+          </figure>
+
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/udp (2).png" 
+                 alt="Code for UDP communication in Unity" 
+                 loading="lazy">
+            <figcaption class="image-caption">UDP Unity Script</figcaption>
+          </figure>
         </div>
       </section>
 
       <!-- Highlight/Quote Block -->
       <section class="content-block content-block--highlight" data-reveal>
         <blockquote class="highlight-quote">
-          <p>"Actually goated that’s crazy"</p>
+          <p>"That's sick!!"</p>
           <cite>— USC Fellow Game Student</cite>
         </blockquote>
       </section>
@@ -251,13 +280,13 @@
         <div class="cta-container">
           <h2>Explore the Project</h2>
           <div class="cta-buttons">
-            <a href="https://github.com/JianghaoL/CrossfadER/releases/tag/v1.0.0" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/JianghaoL/Blender_Unity_Communicator" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                 <polyline points="15 3 21 3 21 9"></polyline>
                 <line x1="10" y1="14" x2="21" y2="3"></line>
               </svg>
-              Download Now
+              View Source Code
             </a>
           </div>
         </div>

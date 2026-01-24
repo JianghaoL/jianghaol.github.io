@@ -20,6 +20,7 @@
 const CATEGORIES = {
   GAME_DEVELOPMENT: 'Game Development',
   GAME_AUDIO: 'Game Audio',
+  DEVELOPMENT_TOOL: 'Development Tool',
   AUDIO_TOOL: 'Audio Tool',
   AUDIO_PRODUCTION: 'Audio Production',
   THEATER: 'Theater'
@@ -33,18 +34,6 @@ const CATEGORIES = {
 const galleryData = [
   {
     id: 1,
-    title: "Forest Fears",
-    category: CATEGORIES.GAME_DEVELOPMENT,
-    year: 2025,
-    date: "2025-03-15",
-    thumbnail: "../assets/images/thumbnails/thumbnails (11).png",
-    description: "An educational game that aims to help players gain awareness of nature and its connection with humans.",
-    techStack: ["Unity", "C#", "Wwise", "Logic Pro", "Git"],
-    projectPage: "../project-pages/forest-fears.html",
-    roles: ["Level Design", "Game Programming", "Narrative Design", "Audio Implementation", "Composing"]
-  },
-  {
-    id: 2,
     title: "Dough it Yourself",
     category: CATEGORIES.GAME_DEVELOPMENT,
     year: 2025,
@@ -54,6 +43,18 @@ const galleryData = [
     techStack: ["Unity", "C#", "Git"],
     projectPage: "../project-pages/dough-it-yourself.html",
     roles: ["Level Design", "Game Programming", "Game Prototyping", "Audio Implementation", "Sound Design"]
+  },
+  {
+    id: 2,
+    title: "Forest Fears",
+    category: CATEGORIES.GAME_DEVELOPMENT,
+    year: 2025,
+    date: "2025-03-15",
+    thumbnail: "../assets/images/thumbnails/thumbnails (11).png",
+    description: "An educational game that aims to help players gain awareness of nature and its connection with humans.",
+    techStack: ["Unity", "C#", "Wwise", "Logic Pro", "Git"],
+    projectPage: "../project-pages/forest-fears.html",
+    roles: ["Level Design", "Game Programming", "Narrative Design", "Audio Implementation", "Composing"]
   },
   {
     id: 3,
@@ -114,6 +115,18 @@ const galleryData = [
     techStack: ["Studio One", "Recording", "Micing", "Mixing"],
     projectPage: "../project-pages/theme-for-carnival.html",
     roles: ["Recording Engineer", "Audio Editing", "Mixing"]
+  },
+  {
+    id: 8,
+    title: "Blender-Unity Communicator",
+    category: CATEGORIES.DEVELOPMENT_TOOL,
+    year: 2025,
+    date: "2025-11-05",
+    thumbnail: "../assets/images/thumbnails/thumbnails (3).png",
+    description: "A tool to streamline the workflow of transferring 3D models from Blender to Unity.",
+    techStack: ["Python", "C#", "Blender API", "Unity", "Git"],
+    projectPage: "../project-pages/blender-unity-communicator.html",
+    roles: ["Developer"]
   }
 ];
 
@@ -328,8 +341,25 @@ class WorkGallery {
       byCategory[item.category].push(item);
     });
 
-    // Sort categories alphabetically
-    const categories = Object.keys(byCategory).sort();
+    // Preferred ordering: Game Development and Game Audio first
+    const preferredOrder = [
+      CATEGORIES.GAME_DEVELOPMENT,
+      CATEGORIES.GAME_AUDIO
+    ];
+
+    // Get categories and sort with preference first, then alphabetically
+    const categories = Object.keys(byCategory).sort((a, b) => {
+      const ia = preferredOrder.indexOf(a);
+      const ib = preferredOrder.indexOf(b);
+      // If either is in preferred list, use that ordering
+      if (ia !== -1 || ib !== -1) {
+        if (ia === -1) return 1;      // b is preferred, a comes after
+        if (ib === -1) return -1;     // a is preferred, comes before
+        return ia - ib;               // both preferred -> keep preferred order
+      }
+      // Neither preferred -> alphabetical
+      return a.localeCompare(b);
+    });
     
     let html = '';
     let globalIndex = 0;
