@@ -42,7 +42,8 @@ const galleryData = [
     description: "A donut making puzzle game made for GMTK 2025.",
     techStack: ["Unity", "C#", "Git"],
     projectPage: "../project-pages/dough-it-yourself.html",
-    roles: ["Level Design", "Game Programming", "Game Prototyping", "Audio Implementation", "Sound Design"]
+    roles: ["Level Design", "Game Programming", "Game Prototyping", "Audio Implementation", "Sound Design"],
+    aiUsed: false  // Set to true to display "AI Used" tag
   },
   {
     id: 2,
@@ -139,6 +140,18 @@ const galleryData = [
     techStack: ["FMOD", "C#", "Unity", "Perforce", "Sound Design"],
     projectPage: "../project-pages/sisyphus-worst-day.html",
     roles: ["Lead Technical Sound Designer", "Audio Implementation",]
+  },
+  {
+    id: 9,
+    title: "Whiteout",
+    category: CATEGORIES.GAME_DEVELOPMENT,
+    year: 2026,
+    date: "2026-02-06",
+    thumbnail: "../assets/images/thumbnails/whiteout-main.png",
+    description: "An innovative puzzle game that reimagines the myth of Sisyphus in a modern context.",
+    techStack: ["Unity", "C#", "Perforce", "Studio One"],
+    projectPage: "../project-pages/whiteout.html",
+    roles: ["Game Programming", "Level Design", "Audio Implementation", "Composing"]
   }
 ];
 
@@ -245,6 +258,16 @@ class WorkGallery {
       ? `background-image: url('${item.thumbnail}')`
       : '';
 
+    // AI Used tag (optional)
+    const aiTag = item.aiUsed ? `
+      <div class="card-ai-tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+        </svg>
+        <span>AI Used</span>
+      </div>
+    ` : '';
+
     return `
       <article class="gallery-card" data-id="${item.id}" data-project-url="${item.projectPage}" style="--card-index: ${index}">
         <a href="${item.projectPage}" class="gallery-card-link" aria-label="View ${item.title} project details">
@@ -288,6 +311,7 @@ class WorkGallery {
                   ${this.getIcon('external')}
                   <span>View Project</span>
                 </span>
+                ${aiTag}
               </div>
             </div>
           </div>

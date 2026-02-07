@@ -133,6 +133,67 @@
         </div>
       </section>
 
+      <!-- Awards Section -->
+      <section class="content-block content-block--awards" data-reveal>
+        <div class="awards-container">
+          <h2>Awards & Recognition</h2>
+          <p class="awards-subtitle">Celebrating achievements and milestones</p>
+          
+          <div class="awards-grid">
+            
+            <!-- Award Card Example 1 -->
+            <article class="award-card">
+              <div class="award-emblem">
+                <div class="award-emblem-title">Award Title</div>
+              </div>
+              <p class="award-description">
+                This project received the [Award Name] at [Event/Organization Name].
+              </p>
+              <button class="btn-certificate" 
+                      data-certificate="assets/images/certificates/award-certificate.jpg"
+                      data-certificate-alt="Award Certificate"
+                      aria-label="View Award Certificate">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                View Certificate
+              </button>
+            </article>
+
+            <!-- Award Card Example 2 (Optional - Remove if not needed) -->
+            <article class="award-card">
+              <div class="award-emblem">
+                <div class="award-emblem-title">Another Award</div>
+              </div>
+              <p class="award-description">
+                This project also received the [Award Name] at [Event/Organization Name].
+              </p>
+              <button class="btn-certificate" 
+                      data-certificate="assets/images/certificates/another-certificate.jpg"
+                      data-certificate-alt="Another Award Certificate"
+                      aria-label="View Another Award Certificate">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                View Certificate
+              </button>
+            </article>
+
+            <!-- Additional Award Cards Can Be Added Here -->
+            <!-- Simply duplicate the award-card structure above -->
+            
+          </div>
+        </div>
+      </section>
+
       <!-- Image + Text Block (Image Left) -->
       <section class="content-block content-block--media-text" data-reveal>
         <div class="media-text-container">
@@ -322,5 +383,6 @@
   <!-- Scripts -->
   <script src="js/main.js"></script>
   <script src="js/project-detail.js"></script>
+  <script src="js/certificate-modal.js"></script>
 </body>
 </html>

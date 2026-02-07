@@ -1,0 +1,406 @@
+/* =============================================
+   Awards Showcase Component
+   Premium, celebratory design for project awards
+   ============================================= */
+
+/* =============================================
+   AWARDS SECTION
+   ============================================= */
+.content-block--awards {
+  background: linear-gradient(
+    135deg,
+    rgba(106, 176, 243, 0.03) 0%,
+    rgba(106, 176, 243, 0.06) 50%,
+    rgba(106, 176, 243, 0.03) 100%
+  );
+  border: 1px solid rgba(106, 176, 243, 0.1);
+  border-radius: var(--radius-xl);
+  padding: 4rem 2rem;
+  margin: 2rem 0;
+  overflow: var(--overflow-clip);
+}
+
+.awards-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.awards-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.awards-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 3rem;
+}
+
+/* Awards Grid Layout */
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 0;
+}
+
+/* Single Award Card */
+.award-card {
+  position: relative;
+  background: linear-gradient(
+    145deg,
+    rgba(30, 30, 45, 0.7) 0%,
+    rgba(20, 22, 35, 0.8) 100%
+  );
+  border: 1px solid rgba(106, 176, 243, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 1.5rem 2rem;
+  text-align: center;
+  overflow: var(--overflow-clip);
+  transition: 
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+.award-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(106, 176, 243, 0.05) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.award-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(106, 176, 243, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-color: rgba(106, 176, 243, 0.3);
+}
+
+.award-card:hover::before {
+  opacity: 1;
+}
+
+/* Award Badge */
+.award-emblem {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    rgba(106, 176, 243, 0.15) 0%,
+    rgba(106, 176, 243, 0.08) 100%
+  );
+  border: 3px solid rgba(106, 176, 243, 0.4);
+  border-radius: 50%;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(106, 176, 243, 0.2),
+    inset 0 2px 0 rgba(255, 255, 255, 0.1);
+  transition: 
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+.award-card:hover .award-emblem {
+  transform: scale(1.05);
+  border-color: rgba(106, 176, 243, 0.6);
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.4),
+    0 0 50px rgba(106, 176, 243, 0.3),
+    inset 0 2px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Award Title inside Badge */
+.award-emblem-title {
+  position: relative;
+  z-index: 2;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: center;
+  line-height: 1.3;
+  max-width: 140px;
+  padding: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Award Description */
+.award-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+/* View Certificate Button */
+.btn-certificate {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  background: transparent;
+  border: 1.5px solid rgba(106, 176, 243, 0.4);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  overflow: var(--overflow-clip);
+  transition: 
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.btn-certificate svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.btn-certificate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 30%,
+    rgba(106, 176, 243, 0.15) 45%,
+    rgba(106, 176, 243, 0.3) 50%,
+    rgba(106, 176, 243, 0.15) 55%,
+    transparent 70%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.btn-certificate:hover::before {
+  left: 100%;
+}
+
+.btn-certificate:hover {
+  border-color: var(--accent);
+  box-shadow: 
+    0 0 20px rgba(106, 176, 243, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-certificate:hover svg {
+  transform: translateX(2px);
+}
+
+.btn-certificate:active {
+  transform: scale(0.98);
+}
+
+/* =============================================
+   CERTIFICATE MODAL/LIGHTBOX
+   ============================================= */
+.certificate-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 12, 27, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 10001; /* Higher than site-header (9999) and resume modal (10000) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: 
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.certificate-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Certificate Container */
+.certificate-container {
+  position: relative;
+  max-width: 90%;
+  max-height: 90vh;
+  background: rgba(20, 22, 35, 0.95);
+  border: 1px solid rgba(106, 176, 243, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 3.5rem 2rem 2rem;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(106, 176, 243, 0.15);
+  transform: scale(0.9) translateY(20px);
+  opacity: 0;
+  transition: 
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.certificate-modal-overlay.active .certificate-container {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.certificate-modal-overlay.closing .certificate-container {
+  transform: scale(0.95) translateY(10px);
+  opacity: 0;
+  transition: 
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Certificate Image */
+.certificate-image {
+  width: 100%;
+  height: auto;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+
+/* Close Button */
+.certificate-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  background: rgba(106, 176, 243, 0.1);
+  border: 1px solid rgba(106, 176, 243, 0.3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+  z-index: 10;
+}
+
+.certificate-modal-close:hover {
+  background: rgba(106, 176, 243, 0.2);
+  border-color: var(--accent);
+  transform: rotate(90deg);
+}
+
+.certificate-modal-close svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--text);
+}
+
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .content-block--awards {
+    padding: 3rem 1.5rem;
+  }
+
+  .awards-container h2 {
+    font-size: 1.75rem;
+  }
+
+  .awards-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .award-emblem {
+    width: 180px;
+    height: 180px;
+  }
+
+  .award-emblem-title {
+    font-size: 1.2rem;
+    max-width: 120px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .content-block--awards {
+    padding: 2.5rem 1rem;
+  }
+
+  .awards-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .awards-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  .award-card {
+    padding: 2rem 1rem 1.5rem;
+  }
+
+  .award-emblem {
+    width: 160px;
+    height: 160px;
+  }
+
+  .award-emblem-title {
+    font-size: 1.1rem;
+    max-width: 100px;
+  }
+
+  .award-description {
+    font-size: 0.95rem;
+  }
+
+  .certificate-modal-overlay {
+    padding: 1rem;
+  }
+
+  .certificate-container {
+    padding: 3rem 1rem 1rem;
+  }
+
+  .certificate-modal-close {
+    width: 36px;
+    height: 36px;
+  }
+}
