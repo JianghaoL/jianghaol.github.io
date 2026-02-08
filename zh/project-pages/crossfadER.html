@@ -38,7 +38,7 @@
       <div class="project-hero-content">
         <h1 class="project-title">CrossfadER</h1>
         <p class="project-summary">
-          An audio tool automating the looping sound production workflow.
+          一个自动化循环音频制作流程的工具。<br>
         </p>
         <div class="project-meta">
           <span class="meta-item">
@@ -54,14 +54,14 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
             </svg>
-            Audio Tool
+            音频工具
           </span>
           <span class="meta-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"></circle>
               <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
-            1 month
+            1 个月
           </span>
         </div>
         
@@ -81,13 +81,13 @@
             <div class="hero-details-column">
               <h3 data-i18n="project.myRole">My Role</h3>
               <ul class="role-list">
-                <li>Audio Programming</li>
+                <li>音频编程</li>
               </ul>
             </div>
             <div class="hero-details-column">
               <h3 data-i18n="project.team">Team</h3>
               <ul class="team-list">
-                <li>Solo</li>
+                <li>独立开发</li>
               </ul>
             </div>
           </div>
@@ -117,16 +117,14 @@
         <div class="text-container">
           <h2>Overview</h2>
           <p>
-            This is a tool developed to help with the sound design and game audio prototyping process. 
+            这是一个旨在帮助声音设计和游戏音频原型制作过程的工具。
           </p>
           <p>
-            It now provides several crossfade time options, allowing flexibility when
-             handling audio assets. 3 modes of crossfade are also available, 
-             each being linear, logarithmic, and sine.
-             More features are now in development.
+            它现在提供了多种交叉淡化时间选项，允许在处理音频资产时具有灵活性。还提供了三种交叉淡化模式，分别是线性、对数和正弦。
+            更多功能正在开发中。
           </p>
           <p>
-            The application is built based on Avalonia and the .NET Framework, with the functioning language being C#.
+            该应用程序基于 Avalonia 和 .NET 框架构建，使用的编程语言是 C#。
           </p>
         </div>
       </section>
@@ -135,54 +133,47 @@
       <section class="content-block content-block--media-text" data-reveal>
         <div class="media-text-container">
           <div class="media-text-content">
-            <h2>Implementation</h2>
+            <h2>实现</h2>
             <p>
-              This program emulates the typical way of processing a looping audio in a DAW system.
+              该程序模拟了在数字音频工作站（DAW）系统中处理循环音频的典型方式。
             </p>
             <p>
-              To make a looping sound, the audio clip will first need to be cut in half and 
-              swapped in position. This means that the former half of the audio now becomes
-               the latter half, and vice versa. Then, the two audio tracks will need to be overlapped 
-              and crossfaded so they merge perfectly into each other.
+              为了制作循环声音，音频剪辑首先需要被切成两半并交换位置。
+              这意味着音频的前半部分现在成为后半部分，反之亦然。然后，这两条音频轨道需要重叠
+              并进行交叉淡化，以使它们完美地融合在一起。
             </p>
             <p>
-              This program, essentially, does the same thing.
+              该程序本质上做了同样的事情。
             </p>
-            <p>Using the NAudio library, the program first reads the audio file into a 
-              float array that stores all the data. It then cuts the audio 
-              into two pieces and performs a swapping operation.</p>
+            <p>使用 NAudio 库，程序首先将音频文件读取到一个存储所有数据的浮点数组中。然后将音频切成两部分并执行交换操作。</p>
           </div>
           <figure class="media-text-image">
             <img src="/assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (5).png" 
                  alt="Diagram illustrating the audio data swapping process for loop creation" 
                  loading="lazy">
-                 <figcaption class="image-caption">Swapping Audio Data</figcaption>
+                 <figcaption class="image-caption">音频数据交换</figcaption>
           </figure>
 
           <div class="media-text-content">
 
             <p>
-              The swapped audio data array will then be used to generate the crossfaded
-               result. The program will start with the midpoint of the array, 
-               perform a special computation (see Phase Issue below), 
-              and mix the two tracks beginning at the computed index.
+              交换后的音频数据数组将用于生成交叉淡化的结果。程序将从数组的中点开始，
+               执行一个特殊的计算（见下文的相位问题），
+              并从计算出的索引开始混合这两条轨道。
             </p>
             <p>
-              Different crossfade modes specify how the program will render the 
-              crossfaded area. In its core essence, the program adds the two data
-               multiplied by a weight coefficient that is calculated 
-              based on the relative index and functions.
+              不同的交叉淡化模式指定了程序将如何渲染交叉淡化区域。从本质上讲，程序将两个数据相加，
+               并乘以一个权重系数，该系数是根据相对索引和函数计算得出的。
             <p>
-              After these steps, the audio clip is ready for exporting. 
-              The program will automatically provide a postfix to the 
-              file name if no customized file name is specified.
+              完成这些步骤后，音频剪辑即可导出。
+              如果未指定自定义文件名，程序将自动为文件名添加后缀。
             </p>
           </div>
           <figure class="media-text-image">
             <img src="/assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (6).png" 
                  alt="Visualization of the crossfade mixing algorithm and weight coefficients" 
                  loading="lazy">
-                 <figcaption class="image-caption">Audio Processing</figcaption>
+                 <figcaption class="image-caption">音频处理</figcaption>
           </figure>
           
         </div>
@@ -220,19 +211,19 @@
             <img src="/assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (7).png" 
                  alt="Waveform diagram showing zero-crossing detection for phase alignment" 
                  loading="lazy">
-                 <figcaption class="image-caption">Phase Handling</figcaption>
+                 <figcaption class="image-caption">相位处理</figcaption>
           </figure>
           <div class="media-text-content">
-            <h2>Phase Issue</h2>
+            <h2>相位问题</h2>
             <p>
-              When dealing with audio, phase is always an issue. This tool has a special computation method, 
-              to the greatest extent, to eliminate the phase problem.
+              当处理音频时，相位始终是一个问题。该工具有一种特殊的计算方法，
+              在最大程度上消除相位问题。
             </p>
             <p>
-              The program, starting at the midpoint of the array, finds the nearest index 
-              at which the wave has an amplitude of zero. This ensures that the
-               crossfaded audio will always start at a zero point,
-               avoiding abrupt jumps in phase and amplitude.
+              
+              该程序从数组的中点开始，找到波形振幅为零的最近索引。这确保了
+               交叉淡化的音频始终从零点开始，
+               避免了相位和振幅的突然跳变。
             </p>
           </div>
         </div>
@@ -242,7 +233,7 @@
       <section class="content-block content-block--highlight" data-reveal>
         <blockquote class="highlight-quote">
           <p>"Actually goated that’s crazy"</p>
-          <cite>— USC Fellow Game Student</cite>
+          <cite>— 南加州大学游戏专业学生</cite>
         </blockquote>
       </section>
 
@@ -258,7 +249,7 @@
                 <polyline points="15 3 21 3 21 9"></polyline>
                 <line x1="10" y1="14" x2="21" y2="3"></line>
               </svg>
-              Download Now
+              立即下载
             </a>
           </div>
         </div>

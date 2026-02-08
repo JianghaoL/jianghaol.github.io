@@ -38,7 +38,7 @@
       <div class="project-hero-content">
         <h1 class="project-title">Dough it Yourself</h1>
         <p class="project-summary">
-          A donut making puzzle game made for GMTK 2025.
+          一个基于GMTK 2025主题“循环”的解谜游戏。
         </p>
         <div class="project-meta">
           <span class="meta-item">
@@ -54,14 +54,14 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
             </svg>
-            Game Development
+            游戏开发
           </span>
           <span class="meta-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"></circle>
               <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
-            1 month
+            1 个月
           </span>
         </div>
         
@@ -80,17 +80,17 @@
             <div class="hero-details-column">
               <h3 data-i18n="project.myRole">My Role</h3>
               <ul class="role-list">
-                <li>Level Design</li>
-                <li>Game Programming</li>
-                <li>Game Prototyping</li>
-                <li>Audio Implementation</li>
-                <li>Sound Design</li>
+                <li>关卡设计</li>
+                <li>游戏编程</li>
+                <li>游戏原型制作</li>
+                <li>音频实现</li>
+                <li>音效设计</li>
               </ul>
             </div>
             <div class="hero-details-column">
               <h3 data-i18n="project.team">Team</h3>
               <ul class="team-list">
-                <li>4 Developers</li>
+                <li>4 名开发者</li>
               </ul>
             </div>
           </div>
@@ -118,16 +118,16 @@
       <!-- Text Block - Overview -->
       <section class="content-block content-block--text" data-reveal>
         <div class="text-container">
-          <h2>Overview</h2>
+          <h2>概述</h2>
           <p>
-            Dough it Urself is an innovative puzzle game inspired by the GMTK 2025 theme "loop".
+            Dough it Urself 是一个基于GMTK 2025主题“循环”的解谜游戏。
           </p>
           <p>
-            While I originally came up with the concept of the game, my teammates collaboratively designed all levels and refined game mechanics.
-            I worked as a programmer and composer and made the gameplay prototype, some level buildings, and the theme music for this game.
+            虽然游戏的概念最初是由我提出的，但我的队友们共同设计了所有关卡并完善了游戏机制。
+            我作为程序员和作曲家，制作了游戏玩法原型、部分关卡构建以及游戏的主题音乐。
           </p>
           <p>
-            The game is collaboratively done by me, Ruimeng Bai, Enrui Luo, Kexin Liu, Xinran Wei, Hefei Sun.
+            该游戏由我、Ruimeng Bai、Enrui Luo、Kexin Liu、Xinran Wei、Hefei Sun共同完成。
           </p>
         </div>
       </section>
@@ -139,20 +139,19 @@
             <img src="/assets/images/project-pages/Jianghao Li - Dough it Urself/Dough-it-yourself (5).png" 
                  alt="Early game prototype using simple geometric shapes to represent game pieces" 
                  loading="lazy">
-                 <figcaption class="image-caption">Prototype Development</figcaption>
+                 <figcaption class="image-caption">原型开发</figcaption>
           </figure>
           <div class="media-text-content">
-            <h2>Gameplay Prototype</h2>
+            <h2>游戏原型制作</h2>
             <p>
-              I started prototyping the game as soon as we settled the basic concept of this game. 
-              The very first version of the game was built using simple geometric shapes, each representing a different game piece.
+              我们确定了游戏的基本概念后，我开始制作游戏原型。
+              游戏的第一个版本使用简单的几何形状构建，每个形状代表不同的游戏元素。
             </p>
             <p>
-              Using raycasts, I was able to easily detect the exact tile on which the player's cursor 
-              is currently hovering and exclude the obstacles on which no game pieces should be placed.
+              使用射线检测，我能够轻松地检测玩家光标当前悬停的确切瓷砖，并排除不应放置游戏元素的障碍物。
             </p>
             <p>
-              We confirmed the playability and feasibility of our idea using my prototype, and could thus work more on designing the game.
+              我们使用我的原型确认了我们的想法的可玩性和可行性，因此可以更多地专注于设计游戏。
             </p>
           </div>
         </div>
@@ -165,22 +164,21 @@
             <img src="/assets/images/project-pages/Jianghao Li - Dough it Urself/Dough-it-yourself (2).png" 
                  alt="Diagram showing the algorithm for checking if a donut shape is valid" 
                  loading="lazy">
-            <figcaption class="image-caption">Legality Check</figcaption>
+            <figcaption class="image-caption">合法性检查</figcaption>
           </figure>
           <div class="media-text-content">
-            <h2>Algorithms and Win Check</h2>
+            <h2>算法与胜利判定</h2>
             <p>
-              The win check was one of the difficulties we faced when making the game. 
+              胜利判定是我们在制作游戏时面临的难题之一。
             </p>
             <p>
-              As we have designed, a legal "donut" is a closed loop of a uniform 1 width, 
-              and at least 1 empty tile must be enveloped by such a loop. 
+              正如我们设计的那样，一个合法的“甜甜圈”是一个宽度均匀为1的闭合环路，
+              并且至少有1个空格必须被这样的环路包围。
             </p>
             <p>
-              To convert this into a solvable programming problem, I concluded that, 
-              within such a legal shape, each piece (dough block) must have exactly 2 adjacent blocks. 
-              This ensures that the shape would have a uniform width of 1 unit, 
-              and it prevents two blocks from connecting diagonally.
+              为了将其转化为一个可解决的编程问题，我得出结论，在这样一个合法的形状中，每个块（面团块）必须恰好有2个相邻的块。
+              这确保了形状的宽度为1个单位的均匀宽度，
+              并且防止两个块对角线连接。
             </p>
           </div>
         </div>
@@ -192,18 +190,18 @@
             <img src="/assets/images/project-pages/Jianghao Li - Dough it Urself/Dough-it-yourself (3).png" 
                  alt="Visualization of raycast tile checking to verify enclosed empty tiles" 
                  loading="lazy">
-                 <figcaption class="image-caption">Tile Check</figcaption>
+                 <figcaption class="image-caption">格子检查</figcaption>
           </figure>
           <div class="media-text-content">
             <p>
-              This, however, does not ensure that the shape envelops at least 1 empty tile. To solve this issue, 
-              I randomly pick one dough block as the origin, and send a ray to every other dough block.
-               As long as the ray hits one empty tile, the shape is legal. 
+              然而，这并不能确保形状包围了至少1个空格。为了解决这个问题，
+              我随机选择一个面团块作为起点，并向每个其他面团块发送一条射线。
+               只要射线击中一个空格，形状就是合法的。
             </p>
             <p>
-              This would not cause any issue even if the hit empty tile is not enclosed by the loop, 
-              because we have previously checked that the blocks that make up the shape have and only 
-              have 2 adjacent blocks, where no solid convex shape would be identified as legal. 
+              即使被击中的空格没有被环路包围，这也不会导致任何问题，
+              因为我们之前已经检查过组成形状的块恰好有2个相邻的块，
+              这样就不会将任何实心凸形状识别为合法形状。
             </p>
           </div>
         </div>
@@ -217,20 +215,20 @@
             <img src="/assets/images/project-pages/Jianghao Li - Dough it Urself/Dough-it-yourself (4).png" 
                  alt="Level selection screen showing camera movement boundaries and thresholds" 
                  loading="lazy">
-                 <figcaption class="image-caption">Camera Movement (a)</figcaption>
+                 <figcaption class="image-caption">相机移动 (a)</figcaption>
           </figure>
           <div class="media-text-content">
-            <h2>Camera Movement</h2>
+            <h2>相机移动</h2>
             <p>
-              When selecting levels, the camera moves as the cursor is near both the left and right edges of the screen. 
-              This is achieved by constantly comparing the mouse's position and the threshold, which is computed by:
+              当选择关卡时，当光标靠近屏幕的左边缘和右边缘时，相机会移动。
+              这是通过不断比较鼠标的位置和阈值来实现的，阈值的计算方式如下：
             </p>
             <p>
-              Threshold Position = Screen Width x Ratio
+              阈值位置 = 屏幕宽度 x 比例
             </p>
             <p>
-              The camera movement is locked when the camera hits a "stopper", placed on both sides of the screen. 
-              This prevents the camera from moving too far.
+              当相机碰到放置在屏幕两侧的“停止器”时，相机移动会被锁定。
+              这防止了相机移动得过远。
             </p>
           </div>
         </div>
@@ -243,18 +241,17 @@
             <img src="/assets/images/project-pages/Jianghao Li - Dough it Urself/Dough-it-yourself (1).png" 
                  alt="Level selection buttons with hover effect using material color changes" 
                  loading="lazy">
-                 <figcaption class="image-caption">Camera Movement (b)</figcaption>
+                 <figcaption class="image-caption">相机移动 (b)</figcaption>
           </figure>
           <div class="media-text-content">
             <p>
-              The level selection button effect is made possible by changing material colors.
-              To detect any possible clicking and hovering, we send out a ray to see if the cursor is hovering above a button. 
-              If it does, the material of that particular button is darkened to mimic a highlight effect. 
-              This is, in fact, how most of our buttons work in the game. 
+              关卡选择按钮的效果是通过改变材质颜色实现的。
+              为了检测任何可能的点击和悬停，我们发出一条射线，查看光标是否悬停在按钮上方。
+              如果是，该按钮的材质会变暗，以模拟高亮效果。
+              事实上，这也是我们游戏中大多数按钮的工作方式。
             </p>
             <p>
-              The level selection buttons are all connected to an individual level, 
-              which the player goes to when pressing the buttons.
+              关卡选择按钮都连接到一个单独的关卡，玩家按下按钮时会进入该关卡。
             </p>
           </div>
         </div>
@@ -263,8 +260,8 @@
       <!-- Highlight/Quote Block -->
       <section class="content-block content-block--highlight" data-reveal>
         <blockquote class="highlight-quote">
-          <p>"I liked the game, it was unique, fun, and I found myself enjoying the game, great job, love the art!"</p>
-          <cite>— Player Review</cite>
+          <p>"我喜欢这个游戏，它独特、有趣，我很享受这个游戏，干得好，尤其喜欢美术！"</p>
+          <cite>— 玩家评价</cite>
         </blockquote>
       </section>
 
@@ -276,13 +273,13 @@
               <img src="/assets/images/project-pages/Jianghao Li - Dough it Urself/AveI1l.jpg" 
                    alt="In-game view of Dough it Yourself puzzle gameplay" 
                    loading="lazy">
-              <figcaption>Game View</figcaption>
+              <figcaption>游戏视图</figcaption>
             </figure>
             <figure class="grid-image-item">
               <img src="/assets/images/project-pages/Jianghao Li - Dough it Urself/NilGS1.jpg" 
                    alt="Tutorial page explaining game mechanics and controls" 
                    loading="lazy">
-              <figcaption>Tutorial Page</figcaption>
+              <figcaption>教程页面</figcaption>
             </figure>
           </div>
         </div>
@@ -300,7 +297,7 @@
                 <polyline points="15 3 21 3 21 9"></polyline>
                 <line x1="10" y1="14" x2="21" y2="3"></line>
               </svg>
-              Play Now
+              立即游玩
             </a>
           </div>
         </div>
