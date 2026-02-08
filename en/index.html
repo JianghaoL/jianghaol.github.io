@@ -5,21 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Jianghao Li — Portfolio</title>
 
-  <!-- Language redirect: route to /en/ or /zh/ based on preference -->
-  <script>
-  (function(){
-    var p = location.pathname;
-    if (p.indexOf('/en/') === 0 || p.indexOf('/zh/') === 0) return;
-    var lang = localStorage.getItem('preferred-lang') ||
-      (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
-    var target = '/' + lang + (p === '/' ? '/index.html' : p);
-    location.replace(target);
-  })();
-  </script>
-
   <!-- 主样式 -->
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
@@ -28,10 +16,10 @@
     <nav>
       <button class="lang-toggle" aria-label="Toggle Language">EN/中文</button>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="work-gallery/index.html">Work Gallery</a></li>
-        <li><a href="blog/index.html">Blog</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="index.html" class="active" data-i18n="nav.home">Home</a></li>
+        <li><a href="work-gallery/index.html" data-i18n="nav.workGallery">Work Gallery</a></li>
+        <li><a href="blog/index.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
       </ul>
       <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
         <span></span>
@@ -45,28 +33,27 @@
   <header id="hero">
     <canvas id="waveCanvas" aria-hidden="true"></canvas>
     <div class="hero-content">
-      <h1>JIANGHAO LI</h1>
-      <p class="role">Game Developer & Audio Engineer</p>
-      <p class="subtitle">Interactive experiences • Immersive soundscapes</p>
-      <!-- <a href="#work" class="btn btn-primary">View Selected Work</a> -->
+      <h1 data-i18n="home.hero.name">JIANGHAO LI</h1>
+      <p class="role" data-i18n="home.hero.role">Game Developer & Audio Engineer</p>
+      <p class="subtitle" data-i18n="home.hero.subtitle">Interactive experiences • Immersive soundscapes</p>
     </div>
   </header>
 
   <!-- Personal Introduction -->
   <section id="intro" data-reveal>
     <div class="intro-grid">
-      <div class="intro-photo" aria-hidden="true" style="background-image: url('assets/images/main_page/me.jpg')"></div>
+      <div class="intro-photo" aria-hidden="true" style="background-image: url('/assets/images/main_page/me.jpg')"></div>
       <div class="intro-card">
-        <h2>Hello — I'm Jianghao</h2>
-        <p class="intro-lead">I build interactive experiences and design immersive soundscapes. I work across game development, audio engineering, and interactive media.</p>
-        <p id="intro-type" class="intro-type" aria-live="polite">I make playful systems, believable audio, and clean code.</p>
+        <h2 data-i18n="home.intro.heading">Hello — I'm Jianghao</h2>
+        <p class="intro-lead" data-i18n="home.intro.lead">I build interactive experiences and design immersive soundscapes. I work across game development, audio engineering, and interactive media.</p>
+        <p id="intro-type" class="intro-type" aria-live="polite" data-i18n="home.intro.type"></p>
         <ul class="skills-list">
-          <li class="skill">Unity / C#</li>
-          <li class="skill">FMOD / Wwise</li>
-          <li class="skill">DSP & Synthesis</li>
-          <li class="skill">Interactive Sound</li>
-          <li class="skill">JUCE & C++</li>
-          <li class="skill">Python & ML</li>
+          <li class="skill" data-i18n="home.skill.1">Unity / C#</li>
+          <li class="skill" data-i18n="home.skill.2">FMOD / Wwise</li>
+          <li class="skill" data-i18n="home.skill.3">DSP & Synthesis</li>
+          <li class="skill" data-i18n="home.skill.4">Interactive Sound</li>
+          <li class="skill" data-i18n="home.skill.5">JUCE & C++</li>
+          <li class="skill" data-i18n="home.skill.6">Python & ML</li>
         </ul>
       </div>
     </div>
@@ -75,8 +62,8 @@
   <!-- Selected Works -->
   <section id="work" class="wave-section" data-reveal>
     <canvas class="section-wave-canvas" aria-hidden="true"></canvas>
-    <h2>Selected Work</h2>
-    <p class="section-subtitle">Hover over a card to see details</p>
+    <h2 data-i18n="home.work.heading">Selected Work</h2>
+    <p class="section-subtitle" data-i18n="home.work.subtitle">Hover over a card to see details</p>
     <div class="work-grid">
       <!-- Carousel will be rendered here by JavaScript -->
     </div>
@@ -85,23 +72,23 @@
   <!-- Work Gallery Section -->
   <section id="work-gallery" class="wave-section" data-reveal>
     <canvas class="section-wave-canvas" aria-hidden="true"></canvas>
-    <h2>My Work Gallery</h2>
-    <p>Explore my projects and designs.</p>
-    <a href="work-gallery/index.html" class="btn-gallery">View Gallery</a>
+    <h2 data-i18n="home.gallery.heading">My Work Gallery</h2>
+    <p data-i18n="home.gallery.text">Explore my projects and designs.</p>
+    <a href="work-gallery/index.html" class="btn-gallery" data-i18n="home.gallery.btn">View Gallery</a>
   </section>
 
   <!-- Contact 区 -->
   <section id="contact" class="wave-section" data-reveal>
     <canvas class="section-wave-canvas" aria-hidden="true"></canvas>
-    <h2>Contact</h2>
-    <p>Let's build together — reach out!</p>
+    <h2 data-i18n="home.contact.heading">Contact</h2>
+    <p data-i18n="home.contact.text">Let's build together — reach out!</p>
     <ul class="contact-buttons">
       <li>
         <button type="button" class="btn contact-btn my-contact" aria-haspopup="dialog">
           <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
           </svg>
-          <span>My Contact</span>
+          <span data-i18n="home.contact.myContact">My Contact</span>
         </button>
       </li>
       <li>
@@ -109,7 +96,7 @@
           <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11zm-3-7H9v-2h6v2zm0 4H9v-2h6v2z"></path>
           </svg>
-          <span>Resume</span>
+          <span data-i18n="home.contact.resume">Resume</span>
         </button>
       </li>
       <li>
@@ -119,7 +106,7 @@
             <rect x="2" y="9" width="4" height="12"></rect>
             <circle cx="4" cy="4" r="2"></circle>
           </svg>
-          <span>LinkedIn</span>
+          <span data-i18n="home.contact.linkedin">LinkedIn</span>
         </a>
       </li>
       <li>
@@ -127,7 +114,7 @@
           <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
           </svg>
-          <span>GitHub</span>
+          <span data-i18n="home.contact.github">GitHub</span>
         </a>
       </li>
     </ul>
@@ -158,8 +145,8 @@
             </svg>
           </div>
           <div class="contact-info-content">
-            <p class="contact-info-label">Phone</p>
-            <p class="contact-info-value">+1 (213) 994-2364</p>
+            <p class="contact-info-label" data-i18n="contact.phone.label">Phone</p>
+            <p class="contact-info-value" data-i18n="contact.phone.value">+1 (213) 994-2364</p>
           </div>
         </li>
         <li data-contact="email">
@@ -170,7 +157,7 @@
             </svg>
           </div>
           <div class="contact-info-content">
-            <p class="contact-info-label">Email</p>
+            <p class="contact-info-label" data-i18n="contact.email.label">Email</p>
             <p class="contact-info-value"><a href="mailto:lijiangh@usc.edu">lijiangh@usc.edu</a></p>
           </div>
         </li>
@@ -182,8 +169,8 @@
             </svg>
           </div>
           <div class="contact-info-content">
-            <p class="contact-info-label">Location</p>
-            <p class="contact-info-value">Los Angeles, CA</p>
+            <p class="contact-info-label" data-i18n="contact.location.label">Location</p>
+            <p class="contact-info-value" data-i18n="contact.location.value">Los Angeles, CA</p>
           </div>
         </li>
       </ul>
@@ -224,7 +211,7 @@
             <line x1="16" y1="17" x2="8" y2="17"></line>
             <polyline points="10 9 9 9 8 9"></polyline>
           </svg>
-          Resume
+          <span data-i18n="resume.title">Resume</span>
         </h2>
         <button type="button" 
                 class="resume-modal-close" 
@@ -240,8 +227,8 @@
       <div class="resume-modal-content">
         <div class="resume-html-content">
           <!-- Personal Info -->
-          <h2>Jianghao Li</h2>
-          <p style="color: var(--accent); margin-bottom: 0.5rem;">Game Designer & Developer</p>
+          <h2 data-i18n="resume.name">Jianghao Li</h2>
+          <p style="color: var(--accent); margin-bottom: 0.5rem;" data-i18n="resume.role">Game Designer & Developer</p>
           
           <div class="resume-contact-info">
             <span>
@@ -249,34 +236,34 @@
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
               </svg>
-              Los Angeles, CA
+              <span data-i18n="resume.location">Los Angeles, CA</span>
             </span>
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
-              jianghaoli800@gmail.com
+              <span data-i18n="resume.email">jianghaoli800@gmail.com</span>
             </span>
           </div>
           
           <!-- Education -->
-          <h3>Education</h3>
+          <h3 data-i18n="resume.education.heading">Education</h3>
           <div class="resume-experience-item">
-            <h4>University of Southern California</h4>
-            <p class="resume-date">Expected Graduation: 2028</p>
+            <h4 data-i18n="resume.education.school">University of Southern California</h4>
+            <p class="resume-date" data-i18n="resume.education.date">Expected Graduation: 2028</p>
             <ul>
-              <li>BFA in Game Development and Interactive Design</li>
-              <li>Minor in Video Game Programming</li>
-              <li>Minor in Music Recording</li>
+              <li data-i18n="resume.education.item1">BFA in Game Development and Interactive Design</li>
+              <li data-i18n="resume.education.item2">Minor in Video Game Programming</li>
+              <li data-i18n="resume.education.item3">Minor in Music Recording</li>
             </ul>
           </div>
           
           <!-- Skills -->
-          <h3>Skills & Proficiency</h3>
+          <h3 data-i18n="resume.skills.heading">Skills & Proficiency</h3>
           <div class="resume-skills-grid">
             <div class="resume-skill-category">
-              <h4>Game Development</h4>
+              <h4 data-i18n="resume.skills.cat1">Game Development</h4>
               <div class="resume-skill-tags">
                 <span class="resume-skill-tag">Unity</span>
                 <span class="resume-skill-tag">Unreal Engine</span>
@@ -284,7 +271,7 @@
               </div>
             </div>
             <div class="resume-skill-category">
-              <h4>Programming</h4>
+              <h4 data-i18n="resume.skills.cat2">Programming</h4>
               <div class="resume-skill-tags">
                 <span class="resume-skill-tag">C#</span>
                 <span class="resume-skill-tag">C++</span>
@@ -293,7 +280,7 @@
               </div>
             </div>
             <div class="resume-skill-category">
-              <h4>Audio</h4>
+              <h4 data-i18n="resume.skills.cat3">Audio</h4>
               <div class="resume-skill-tags">
                 <span class="resume-skill-tag">FMOD</span>
                 <span class="resume-skill-tag">Wwise</span>
@@ -302,7 +289,7 @@
               </div>
             </div>
             <div class="resume-skill-category">
-              <h4>Tools & Other</h4>
+              <h4 data-i18n="resume.skills.cat4">Tools & Other</h4>
               <div class="resume-skill-tags">
                 <span class="resume-skill-tag">Git</span>
                 <span class="resume-skill-tag">Perforce</span>
@@ -311,26 +298,26 @@
             </div>
           </div>
           
-          <!-- Experience/Projects section - can be expanded -->
-          <h3>Focus Areas</h3>
+          <!-- Experience/Projects section -->
+          <h3 data-i18n="resume.focus.heading">Focus Areas</h3>
           <div class="resume-experience-item">
-            <h4>Game Design & Development</h4>
-            <p>Specializing in creating games that are educationally significant and impactful, with a focus on meaningful player experiences.</p>
+            <h4 data-i18n="resume.focus.title1">Game Design & Development</h4>
+            <p data-i18n="resume.focus.desc1">Specializing in creating games that are educationally significant and impactful, with a focus on meaningful player experiences.</p>
           </div>
           <div class="resume-experience-item">
-            <h4>Sound Design & Audio Implementation</h4>
-            <p>Expertise in sound design and audio engineering for games and theater, utilizing middleware solutions like FMOD and Wwise.</p>
+            <h4 data-i18n="resume.focus.title2">Sound Design & Audio Implementation</h4>
+            <p data-i18n="resume.focus.desc2">Expertise in sound design and audio engineering for games and theater, utilizing middleware solutions like FMOD and Wwise.</p>
           </div>
           <div class="resume-experience-item">
-            <h4>Audio Engineering</h4>
-            <p>Professional experience in studio recording, mixing, and audio production for various media.</p>
+            <h4 data-i18n="resume.focus.title3">Audio Engineering</h4>
+            <p data-i18n="resume.focus.desc3">Professional experience in studio recording, mixing, and audio production for various media.</p>
           </div>
         </div>
       </div>
       
       <!-- Modal Footer with Download Button -->
       <footer class="resume-modal-footer">
-        <a href="assets/documents/Jianghao Li - Resume (EN).pdf" 
+        <a href="/assets/documents/Jianghao Li - Resume (EN).pdf" 
            download="Jianghao_Li_Resume (EN).pdf" 
            class="btn-download-resume">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
@@ -338,7 +325,7 @@
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          <span>Download Resume (PDF)</span>
+          <span data-i18n="resume.download">Download Resume (PDF)</span>
         </a>
       </footer>
     </div>
@@ -346,14 +333,16 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <p>&copy; 2026 Jianghao Li. All rights reserved.</p>
+    <p data-i18n="footer.copyright">&copy; 2026 Jianghao Li. All rights reserved.</p>
   </footer>
 
-  <script src="libs/three.min.js"></script>
-  <script src="libs/vanta.waves.min.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/work-carousel.js"></script>
-  <script src="js/contact-modal.js"></script>
-  <script src="js/resume-modal.js"></script>
+  <script src="/libs/three.min.js"></script>
+  <script src="/libs/vanta.waves.min.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/work-carousel.js"></script>
+  <script src="/js/contact-modal.js"></script>
+  <script src="/js/resume-modal.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
 </body>
 </html>

@@ -3,23 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jianghao Li - SpongeBob Soundtrack</title>
-  
-  <!-- Language redirect -->
-  <script>
-  (function(){
-    var p = location.pathname;
-    if (p.indexOf('/en/') === 0 || p.indexOf('/zh/') === 0) return;
-    var lang = localStorage.getItem('preferred-lang') ||
-      (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
-    location.replace('/' + lang + p);
-  })();
-  </script>
+  <title>Jianghao Li - Theme for Carnival</title>
   
   <!-- Styles -->
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/pages/project-detail.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/project-detail.css">
 </head>
 <body>
   <!-- Header -->
@@ -27,10 +16,10 @@
     <nav>
       <button class="lang-toggle" aria-label="Toggle Language">EN/中文</button>
       <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../work-gallery/index.html">Work Gallery</a></li>
-        <li><a href="../blog/index.html">Blog</a></li>
-        <li><a href="../about.html">About</a></li>
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../work-gallery/index.html" data-i18n="nav.workGallery">Work Gallery</a></li>
+        <li><a href="../blog/index.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About</a></li>
       </ul>
       <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
         <span></span>
@@ -47,9 +36,9 @@
          ============================================ -->
     <section class="project-hero">
       <div class="project-hero-content">
-        <h1 class="project-title">SpongeBob Soundtrack</h1>
+        <h1 class="project-title">Theme for Carnival</h1>
         <p class="project-summary">
-          Post-show soundtrack production.
+          Instrumental music piece produced for an annual carnival.
         </p>
         <div class="project-meta">
           <span class="meta-item">
@@ -72,7 +61,7 @@
               <circle cx="12" cy="12" r="10"></circle>
               <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
-            2 months
+            2 Weeks
           </span>
         </div>
         
@@ -80,7 +69,7 @@
         <div class="hero-tech-stack">
           <div class="hero-details-container">
             <div class="hero-details-column">
-              <h3>Tech Stack</h3>
+              <h3 data-i18n="project.techStack">Tech Stack</h3>
               <ul class="tech-list">
                 <li><span class="tech-tag">Studio One</span></li>
                 <li><span class="tech-tag">Recording</span></li>
@@ -89,7 +78,7 @@
               </ul>
             </div>
             <div class="hero-details-column">
-              <h3>My Role</h3>
+              <h3 data-i18n="project.myRole">My Role</h3>
               <ul class="role-list">
                 <li>Recording Engineer</li>
                 <li>Audio Editing</li>
@@ -97,9 +86,9 @@
               </ul>
             </div>
             <div class="hero-details-column">
-              <h3>Team</h3>
+              <h3 data-i18n="project.team">Team</h3>
               <ul class="team-list">
-                <li>4 Audio Engineers</li>
+                <li>6 Audio Engineers</li>
               </ul>
             </div>
           </div>
@@ -116,26 +105,24 @@
       <!-- Full-width Image Block -->
       <section class="content-block content-block--full-image" data-reveal>
         <figure class="full-image-container">
-          <img src="../assets/images/project-pages/Jianghao Li - SpongeBob Soundtrack/SpongeBob Soundtrack (1).jpg" 
-               alt="SpongeBob Musical" 
+          <img src="/assets/images/project-pages/Jianghao Li - Theme for Carnival/Theme for Carnival (1).png" 
+               alt="Theme for Carnival Cover" 
                class="full-image"
                loading="lazy">
-          <figcaption class="image-caption">SpongeBob Musical</figcaption>
+          <figcaption class="image-caption">Theme for Carnival</figcaption>
         </figure>
       </section>
 
       <!-- Text Block - Overview -->
       <section class="content-block content-block--text" data-reveal>
         <div class="text-container">
-          <h2>Best Day Ever</h2>
+          <h2>Overview</h2>
           <p>
-            A musical song performed in SpongeBob Musical.
+            An instrumental piece produced in Logic Pro.
           </p>
           <p>
-            I recorded every cast member singing the soundtrack and then mixed it.
-          </p>
-          <p>
-            Special thanks to Hanyu Qin for help tuning each person's recording.
+            With a 2-week production duration, Hanyu Qin and I composed the music, recorded many different instruments, 
+            and eventually mixed them.
           </p>
         </div>
       </section>
@@ -144,7 +131,7 @@
       <section class="content-block content-block--media-text" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - SpongeBob Soundtrack/SpongeBob Soundtrack (5).jpg" 
+            <img src="/assets/images/project-pages/Jianghao Li - Theme for Carnival/Theme for Carnival (2).jpg" 
                  alt="Recording session with microphone and audio equipment" 
                  loading="lazy">
                  <figcaption class="image-caption">Recording Session</figcaption>
@@ -152,14 +139,9 @@
           <div class="media-text-content">
             <h2>Recording</h2>
             <p>
-              The recording sessions happened during school hours when casts were available.
+              With a rather limited recording environment, we made an effort to record the drumset, saxophone, and percussion.
             </p>
-            <p>
-              Special thanks to my music instructor Mr. Steffan Incze for providing the mic stand, shock mount, and pop filter.
-            </p>
-            <p>
-            Studio One was used in each recording session.            
-          </p>
+
           </div>
         </div>
       </section>
@@ -168,12 +150,12 @@
       <section class="content-block content-block--media-text content-block--reverse" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - SpongeBob Soundtrack/SpongeBob Soundtrack (2).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Theme for Carnival/Theme for Carnival (1).jpg" 
                  alt="Recording session setup with microphone, pop filter, and audio interface" 
                  loading="lazy">
           </figure>
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - SpongeBob Soundtrack/SpongeBob Soundtrack (3).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Theme for Carnival/Theme for Carnival (3).jpg" 
                  alt="Recording session setup with microphone, pop filter, and audio interface" 
                  loading="lazy">
           </figure>
@@ -185,31 +167,23 @@
         <div class="text-container">
           <h2>Credits</h2>
           <p>
-            <strong><em>Cast:</em></strong>
-            Minfei Qiu, Ziting Mi, Yajun Yang, Lijie Qin, Ruien Luo, Hefei Sun, Jiabao Lin, Mei Hua, Qile Zhu, Wenshuo Zheng, Lilu Liu, Sicheng Yu, Hanmo Yang, Yiting Chen, Xiangqi Tan, Yutong Chen, Zihan Guo, Xinze Li, Ruitong Ye, Liyou Wang
+            <strong><em>Performance:</em></strong>
+            Hanyu Qin, Qirui Da, Jinyuan Zhang
           </p>
           <p>
-            <strong><em>Music and Tech:</em></strong>
-            Ziyu Wang, Hanyu Qin, Steffan Inzce
+            <strong><em>Tech and Support:</em></strong>
+            Ziyu Wang, Hanyu Qin, Qirui Da, Sean Coleman, Steffan Incze, Shu Huang
           </p>
         </div>
       </section>
 
-      
-      <!-- Highlight/Quote Block -->
-      <section class="content-block content-block--highlight" data-reveal>
-        <blockquote class="highlight-quote">
-          <p>"Great work on this SpongeBobbers!"</p>
-          <cite>— Gregory Allan</cite>
-        </blockquote>
-      </section>
 
       <!-- Call to Action / Links Block -->
       <section class="content-block content-block--cta" data-reveal>
         <div class="cta-container">
-          <h2>Explore the Project</h2>
+          <h2 data-i18n="project.cta.heading">Explore the Project</h2>
           <div class="cta-buttons">
-            <a href="https://drive.google.com/file/d/1-jvO_n5YdvFRZa4DF1eu-l9V_-qzSd7v/view" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
+            <a href="https://drive.google.com/file/d/15JC6R9L5IOW_GV32cHWXat0LoK1xFJGG/view" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                 <polyline points="15 3 21 3 21 9"></polyline>
@@ -224,7 +198,7 @@
       <!-- Project Navigation -->
       <nav class="project-navigation" data-reveal>
         <a href="../work-gallery/index.html" class="nav-link nav-link--all">
-          <span class="nav-label">All Projects</span>
+          <span class="nav-label" data-i18n="project.nav.all">All Projects</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="3" y="3" width="7" height="7"></rect>
             <rect x="14" y="3" width="7" height="7"></rect>
@@ -239,11 +213,13 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <p>&copy; 2026 Jianghao Li. All rights reserved.</p>
+    <p data-i18n="footer.copyright">&copy; 2026 Jianghao Li. All rights reserved.</p>
   </footer>
 
   <!-- Scripts -->
-  <script src="../js/main.js"></script>
-  <script src="../js/project-detail.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/project-detail.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
 </body>
 </html>

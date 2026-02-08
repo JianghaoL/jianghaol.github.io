@@ -5,21 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jianghao Li - Blender Unity Communicator</title>
   
-  <!-- Language redirect -->
-  <script>
-  (function(){
-    var p = location.pathname;
-    if (p.indexOf('/en/') === 0 || p.indexOf('/zh/') === 0) return;
-    var lang = localStorage.getItem('preferred-lang') ||
-      (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
-    location.replace('/' + lang + p);
-  })();
-  </script>
-  
   <!-- Styles -->
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/pages/project-detail.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/project-detail.css">
 </head>
 <body>
   <!-- Header -->
@@ -27,10 +16,10 @@
     <nav>
       <button class="lang-toggle" aria-label="Toggle Language">EN/中文</button>
       <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../work-gallery/index.html">Work Gallery</a></li>
-        <li><a href="../blog/index.html">Blog</a></li>
-        <li><a href="../about.html">About</a></li>
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../work-gallery/index.html" data-i18n="nav.workGallery">Work Gallery</a></li>
+        <li><a href="../blog/index.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About</a></li>
       </ul>
       <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
         <span></span>
@@ -80,7 +69,7 @@
         <div class="hero-tech-stack">
           <div class="hero-details-container">
             <div class="hero-details-column">
-              <h3>Tech Stack</h3>
+              <h3 data-i18n="project.techStack">Tech Stack</h3>
               <ul class="tech-list">
                 <li><span class="tech-tag">Python</span></li>
                 <li><span class="tech-tag">C#</span></li>
@@ -91,13 +80,13 @@
               </ul>
             </div>
             <div class="hero-details-column">
-              <h3>My Role</h3>
+              <h3 data-i18n="project.myRole">My Role</h3>
               <ul class="role-list">
                 <li>Developer</li>
               </ul>
             </div>
             <div class="hero-details-column">
-              <h3>Team</h3>
+              <h3 data-i18n="project.team">Team</h3>
               <ul class="team-list">
                 <li>Solo</li>
               </ul>
@@ -116,7 +105,7 @@
       <!-- Full-width Image Block -->
       <section class="content-block content-block--full-image" data-reveal>
         <figure class="full-image-container">
-          <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/interface (2).png" 
+          <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/interface (2).png" 
                alt="Blender Unity Communicator application interface showing export options and settings" 
                class="full-image"
                loading="lazy">
@@ -161,7 +150,7 @@
             </p>
           </div>
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/save method.png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/save method.png" 
                  alt="Code snippet showing the save method in Blender Unity Communicator" 
                  loading="lazy">
                  <figcaption class="image-caption">Code Snippet</figcaption>
@@ -173,7 +162,7 @@
       <section class="content-block content-block--media-text" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/select overwrite obj.png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/select overwrite obj.png" 
                  alt="Code snippet showing the overwrite function in Blender Unity Communicator" 
                  loading="lazy">
                  <figcaption class="image-caption">Code Snippet</figcaption>
@@ -192,7 +181,7 @@
             </p>
           </div>
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/unity overwrite.png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/unity overwrite.png" 
                  alt="Code snippet showing the overwrite function in Blender Unity Communicator" 
                  loading="lazy">
                  <figcaption class="image-caption">Code Snippet</figcaption>
@@ -215,19 +204,19 @@
         <div class="image-grid-container">
           <div class="image-grid image-grid--3col">
             <figure class="grid-image-item">
-              <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/overwrite all obj in unity.png" 
+              <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/overwrite all obj in unity.png" 
                    alt="Overwrite all objects in Unity" 
                    loading="lazy">
               <figcaption class="image-caption">Overwrite All Objects in Unity</figcaption>
             </figure>
             <figure class="grid-image-item">
-              <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/interface (3).png" 
+              <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/interface (3).png" 
                    alt="Before Overwriting Models in Unity" 
                    loading="lazy">
                    <figcaption class="image-caption">Before Overwriting Models in Unity</figcaption>
             </figure>
             <figure class="grid-image-item">
-              <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/interface (1).png" 
+              <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/interface (1).png" 
                    alt="After Overwriting Models in Unity" 
                    loading="lazy">
                    <figcaption class="image-caption">After Overwriting Models in Unity</figcaption>
@@ -241,7 +230,7 @@
       <section class="content-block content-block--media-text content-block--reverse" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/unity json.png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/unity json.png" 
                  alt="Diagram showing the JSON structure used for UDP communication between Blender and Unity" 
                  loading="lazy">
             <figcaption class="image-caption">JSON Structure</figcaption>
@@ -263,14 +252,14 @@
           </div>
 
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/udp (1).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/udp (1).png" 
                  alt="Code for UDP communication in Python" 
                  loading="lazy">
             <figcaption class="image-caption">UDP Python Script</figcaption>
           </figure>
 
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/udp (2).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/udp (2).png" 
                  alt="Code for UDP communication in Unity" 
                  loading="lazy">
             <figcaption class="image-caption">UDP Unity Script</figcaption>
@@ -290,7 +279,7 @@
       <!-- Call to Action / Links Block -->
       <section class="content-block content-block--cta" data-reveal>
         <div class="cta-container">
-          <h2>Explore the Project</h2>
+          <h2 data-i18n="project.cta.heading">Explore the Project</h2>
           <div class="cta-buttons">
             <a href="https://github.com/JianghaoL/Blender_Unity_Communicator" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -307,7 +296,7 @@
       <!-- Project Navigation -->
       <nav class="project-navigation" data-reveal>
         <a href="../work-gallery/index.html" class="nav-link nav-link--all">
-          <span class="nav-label">All Projects</span>
+          <span class="nav-label" data-i18n="project.nav.all">All Projects</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="3" y="3" width="7" height="7"></rect>
             <rect x="14" y="3" width="7" height="7"></rect>
@@ -322,11 +311,13 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <p>&copy; 2026 Jianghao Li. All rights reserved.</p>
+    <p data-i18n="footer.copyright">&copy; 2026 Jianghao Li. All rights reserved.</p>
   </footer>
 
   <!-- Scripts -->
-  <script src="../js/main.js"></script>
-  <script src="../js/project-detail.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/project-detail.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
 </body>
 </html>

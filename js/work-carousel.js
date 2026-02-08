@@ -1,45 +1,65 @@
 /**
  * Work Carousel - Modular flip card carousel component
  * 
- * To add a new project, simply add a new object to the workData array below.
- * The component will automatically render the new card.
+ * ADDING A NEW PROJECT:
+ * 1. Add translation keys to translations.js in the project.* namespace:
+ *    - project.yourProject.title
+ *    - project.yourProject.shortDesc (brief tagline for card front)
+ *    - project.yourProject.summary (full description for card back)
+ * 
+ * 2. Add object to workData array below with those keys:
+ *    {
+ *      id: 4,
+ *      titleKey: "project.yourProject.title",
+ *      shortDescKey: "project.yourProject.shortDesc",
+ *      image: "/assets/images/thumbnails/your-image.png",
+ *      descriptionKey: "project.yourProject.summary",
+ *      techStack: ["Tool1", "Tool2"],
+ *      links: [
+ *        { labelKey: "carousel.viewProject", url: "project-pages/your-project.html", icon: "external" }
+ *      ]
+ *    }
+ * 
+ * REMOVING A PROJECT:
+ * Simply delete the object from the workData array below.
+ * No need to modify anything else.
  */
 
 // ============================================
-// PROJECT DATA - Add new projects here
+// PROJECT DATA - Configure your carousel items here
 // ============================================
 const workData = [
   {
     id: 1,
-    title: "Mantle",
-    shortDesc: "A narrative-driven game experience",
-    image: "assets/images/thumbnails/thumbnails (14).png",
-    description: "A game that focuses on narrative, seeking ways to guide players into believing different design ideas.",
+    titleKey: "project.mantle.title",
+    shortDescKey: "project.mantle.shortDesc",
+    image: "/assets/images/thumbnails/thumbnails (14).png",
+    descriptionKey: "project.mantle.summary",
     techStack: ["Unity", "Logic Pro", "Recording", "Perforce", "Sound Design"],
     links: [
-      { label: "View Project", url: "project-pages/mantle.html", icon: "external" }
+      { labelKey: "carousel.viewProject", url: "project-pages/mantle.html", icon: "external" }
     ]
   },
   {
     id: 2,
-    title: "SpongeBob Musical",
-    shortDesc: "Broadway musical sound design",
-    image: "assets/images/thumbnails/thumbnails (9).jpg",
-    description: "Juvenile version of the Broadway musical: SpongeBob. Led the sound crew for live theater production with comprehensive sound reinforcement and mixing.",
+    titleKey: "project.spongebobMusical.title",
+    shortDescKey: "project.spongebobMusical.shortDesc",
+    image: "/assets/images/thumbnails/thumbnails (9).jpg",
+    descriptionKey: "project.spongebobMusical.summary",
     techStack: ["Logic Pro", "Mainstage", "Theater Sound", "Live Mixing"],
     links: [
-      { label: "View Project", url: "project-pages/spongebob-musical.html", icon: "external" }
+      { labelKey: "carousel.viewProject", url: "project-pages/spongebob-musical.html", icon: "external" }
     ]
   },
   {
     id: 3,
-    title: "Dough it Yourself",
-    shortDesc: "GMTK 2025 game jam puzzle game",
-    image: "assets/images/thumbnails/thumbnails (7).png",
-    description: "A donut making puzzle game made for GMTK 2025. Features creative level design and engaging gameplay mechanics.",
+    titleKey: "project.doughItYourself.title",
+    shortDescKey: "project.doughItYourself.shortDesc",
+    image: "/assets/images/thumbnails/thumbnails (7).png",
+    descriptionKey: "project.doughItYourself.summary",
     techStack: ["Unity", "C#", "Git"],
     links: [
-      { label: "View Project", url: "project-pages/dough-it-yourself.html", icon: "external" }
+      { labelKey: "carousel.viewProject", url: "project-pages/dough-it-yourself.html", icon: "external" }
     ]
   }
 ];
@@ -66,8 +86,25 @@ class WorkCarousel {
     this.progressTimer = null;
     this.progressStartTime = null;
     this.slides = [];
+    this.currentLang = this.detectLanguage();
 
     this.init();
+  }
+
+  // Detect current language from URL path
+  detectLanguage() {
+    const path = window.location.pathname;
+    if (path.indexOf('/zh/') === 0) return 'zh';
+    if (path.indexOf('/en/') === 0) return 'en';
+    return 'en'; // default
+  }
+
+  // Get translated text for a key
+  getTranslation(key) {
+    if (!window.__translations || !window.__translations[this.currentLang]) {
+      return key; // Fallback to key if translations not loaded
+    }
+    return window.__translations[this.currentLang][key] || key;
   }
 
   init() {
@@ -99,15 +136,15 @@ class WorkCarousel {
             <div class="flip-card-front">
               <div class="card-image" style="background-image: url('${item.image}')"></div>
               <div class="card-title">
-                <h3>${item.title}</h3>
-                <p>${item.shortDesc}</p>
+                <h3>${this.getTranslation(item.titleKey)}</h3>
+                <p>${this.getTranslation(item.shortDescKey)}</p>
               </div>
             </div>
             <div class="flip-card-back">
-              <h3>${item.title}</h3>
-              <p class="card-description">${item.description}</p>
+              <h3>${this.getTranslation(item.titleKey)}</h3>
+              <p class="card-description">${this.getTranslation(item.descriptionKey)}</p>
               <div class="card-tech">
-                <h4>Tech Stack</h4>
+                <h4>${this.getTranslation('carousel.techStack')}</h4>
                 <div class="tech-tags">
                   ${item.techStack.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
                 </div>
@@ -116,7 +153,7 @@ class WorkCarousel {
                 ${item.links.map(link => `
                   <a href="${link.url}" class="card-link" target="_blank" rel="noopener noreferrer">
                     ${this.getIcon(link.icon)}
-                    ${link.label}
+                    ${this.getTranslation(link.labelKey)}
                   </a>
                 `).join('')}
               </div>
@@ -392,7 +429,7 @@ class WorkCarousel {
 // ============================================
 // INITIALIZATION
 // ============================================
-document.addEventListener('DOMContentLoaded', () => {
+function initCarousel() {
   // Initialize the carousel with the work data
   const carousel = new WorkCarousel('#work .work-grid', workData, {
     autoPlayInterval: 5000,
@@ -402,4 +439,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Make carousel accessible globally for debugging/customization
   window.workCarousel = carousel;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Wait for translations to be ready before initializing carousel
+  if (window.__translations) {
+    initCarousel();
+  } else {
+    window.addEventListener('i18nReady', initCarousel);
+  }
 });

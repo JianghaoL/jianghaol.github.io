@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project Title — Portfolio</title>
   
+  <!-- Language redirect -->
+  <script>
+  (function(){
+    var p = location.pathname;
+    if (p.indexOf('/en/') === 0 || p.indexOf('/zh/') === 0) return;
+    var lang = localStorage.getItem('preferred-lang') ||
+      (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
+    location.replace('/' + lang + p);
+  })();
+  </script>
+
   <!-- Styles -->
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">

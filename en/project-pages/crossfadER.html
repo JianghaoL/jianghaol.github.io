@@ -5,21 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jianghao Li - CrossfadER</title>
   
-  <!-- Language redirect -->
-  <script>
-  (function(){
-    var p = location.pathname;
-    if (p.indexOf('/en/') === 0 || p.indexOf('/zh/') === 0) return;
-    var lang = localStorage.getItem('preferred-lang') ||
-      (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
-    location.replace('/' + lang + p);
-  })();
-  </script>
-  
   <!-- Styles -->
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/pages/project-detail.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/project-detail.css">
 </head>
 <body>
   <!-- Header -->
@@ -27,10 +16,10 @@
     <nav>
       <button class="lang-toggle" aria-label="Toggle Language">EN/中文</button>
       <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../work-gallery/index.html">Work Gallery</a></li>
-        <li><a href="../blog/index.html">Blog</a></li>
-        <li><a href="../about.html">About</a></li>
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../work-gallery/index.html" data-i18n="nav.workGallery">Work Gallery</a></li>
+        <li><a href="../blog/index.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About</a></li>
       </ul>
       <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
         <span></span>
@@ -80,7 +69,7 @@
         <div class="hero-tech-stack">
           <div class="hero-details-container">
             <div class="hero-details-column">
-              <h3>Tech Stack</h3>
+              <h3 data-i18n="project.techStack">Tech Stack</h3>
               <ul class="tech-list">
                 <li><span class="tech-tag">DSP</span></li>
                 <li><span class="tech-tag">C#</span></li>
@@ -90,13 +79,13 @@
               </ul>
             </div>
             <div class="hero-details-column">
-              <h3>My Role</h3>
+              <h3 data-i18n="project.myRole">My Role</h3>
               <ul class="role-list">
                 <li>Audio Programming</li>
               </ul>
             </div>
             <div class="hero-details-column">
-              <h3>Team</h3>
+              <h3 data-i18n="project.team">Team</h3>
               <ul class="team-list">
                 <li>Solo</li>
               </ul>
@@ -115,7 +104,7 @@
       <!-- Full-width Image Block -->
       <section class="content-block content-block--full-image" data-reveal>
         <figure class="full-image-container">
-          <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (2).png" 
+          <img src="/assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (2).png" 
                alt="CrossfadER application interface showing crossfade options and audio processing controls" 
                class="full-image"
                loading="lazy">
@@ -164,7 +153,7 @@
               into two pieces and performs a swapping operation.</p>
           </div>
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (5).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (5).png" 
                  alt="Diagram illustrating the audio data swapping process for loop creation" 
                  loading="lazy">
                  <figcaption class="image-caption">Swapping Audio Data</figcaption>
@@ -190,7 +179,7 @@
             </p>
           </div>
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (6).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (6).png" 
                  alt="Visualization of the crossfade mixing algorithm and weight coefficients" 
                  loading="lazy">
                  <figcaption class="image-caption">Audio Processing</figcaption>
@@ -206,17 +195,17 @@
         <div class="image-grid-container">
           <div class="image-grid image-grid--3col">
             <figure class="grid-image-item">
-              <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/mechanics (3).png" 
+              <img src="/assets/images/project-pages/Jianghao Li - CrossfadER/mechanics (3).png" 
                    alt="Linear crossfade curve showing equal power transition" 
                    loading="lazy">
             </figure>
             <figure class="grid-image-item">
-              <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/mechanics (2).png" 
+              <img src="/assets/images/project-pages/Jianghao Li - CrossfadER/mechanics (2).png" 
                    alt="Logarithmic crossfade curve for natural volume transitions" 
                    loading="lazy">
             </figure>
             <figure class="grid-image-item">
-              <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/mechanics (1).png" 
+              <img src="/assets/images/project-pages/Jianghao Li - CrossfadER/mechanics (1).png" 
                    alt="Sine crossfade curve for smooth audio blending" 
                    loading="lazy">
             </figure>
@@ -228,7 +217,7 @@
       <section class="content-block content-block--media-text" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (7).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (7).png" 
                  alt="Waveform diagram showing zero-crossing detection for phase alignment" 
                  loading="lazy">
                  <figcaption class="image-caption">Phase Handling</figcaption>
@@ -261,7 +250,7 @@
       <!-- Call to Action / Links Block -->
       <section class="content-block content-block--cta" data-reveal>
         <div class="cta-container">
-          <h2>Explore the Project</h2>
+          <h2 data-i18n="project.cta.heading">Explore the Project</h2>
           <div class="cta-buttons">
             <a href="https://github.com/JianghaoL/CrossfadER/releases/tag/v1.0.0" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -278,7 +267,7 @@
       <!-- Project Navigation -->
       <nav class="project-navigation" data-reveal>
         <a href="../work-gallery/index.html" class="nav-link nav-link--all">
-          <span class="nav-label">All Projects</span>
+          <span class="nav-label" data-i18n="project.nav.all">All Projects</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="3" y="3" width="7" height="7"></rect>
             <rect x="14" y="3" width="7" height="7"></rect>
@@ -293,11 +282,13 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <p>&copy; 2026 Jianghao Li. All rights reserved.</p>
+    <p data-i18n="footer.copyright">&copy; 2026 Jianghao Li. All rights reserved.</p>
   </footer>
 
   <!-- Scripts -->
-  <script src="../js/main.js"></script>
-  <script src="../js/project-detail.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/project-detail.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
 </body>
 </html>

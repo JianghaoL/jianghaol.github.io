@@ -5,21 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jianghao Li - Whiteout</title>
   
-  <!-- Language redirect -->
-  <script>
-  (function(){
-    var p = location.pathname;
-    if (p.indexOf('/en/') === 0 || p.indexOf('/zh/') === 0) return;
-    var lang = localStorage.getItem('preferred-lang') ||
-      (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
-    location.replace('/' + lang + p);
-  })();
-  </script>
-  
   <!-- Styles -->
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/pages/project-detail.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/project-detail.css">
 </head>
 <body>
   <!-- Header -->
@@ -27,10 +16,10 @@
     <nav>
       <button class="lang-toggle" aria-label="Toggle Language">EN/中文</button>
       <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../work-gallery/index.html">Work Gallery</a></li>
-        <li><a href="../blog/index.html">Blog</a></li>
-        <li><a href="../about.html">About</a></li>
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../work-gallery/index.html" data-i18n="nav.workGallery">Work Gallery</a></li>
+        <li><a href="../blog/index.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About</a></li>
       </ul>
       <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
         <span></span>
@@ -80,7 +69,7 @@
         <div class="hero-tech-stack">
           <div class="hero-details-container">
             <div class="hero-details-column">
-              <h3>Tech Stack</h3>
+              <h3 data-i18n="project.techStack">Tech Stack</h3>
               <ul class="tech-list">
                 <li><span class="tech-tag">Unity</span></li>
                 <li><span class="tech-tag">C#</span></li>
@@ -89,7 +78,7 @@
               </ul>
             </div>
             <div class="hero-details-column">
-              <h3>My Role</h3>
+              <h3 data-i18n="project.myRole">My Role</h3>
               <ul class="role-list">
                 <li>Level Design</li>
                 <li>Game Programming</li>
@@ -99,7 +88,7 @@
               </ul>
             </div>
             <div class="hero-details-column">
-              <h3>Team</h3>
+              <h3 data-i18n="project.team">Team</h3>
               <ul class="team-list">
                 <li>2 Programmers</li>
                 <li>1 Level Designer</li>
@@ -120,7 +109,7 @@
       <!-- Full-width Image Block -->
       <section class="content-block content-block--full-image" data-reveal>
         <figure class="full-image-container">
-          <img src="../assets/images/project-pages/Jianghao Li - Whiteout/whiteout (1).png" 
+          <img src="/assets/images/project-pages/Jianghao Li - Whiteout/whiteout (1).png" 
                alt="Whiteout game title screen showing immersive 3D adventure environment" 
                class="full-image"
                loading="lazy">
@@ -145,7 +134,7 @@
                 This game received the Best Art Design Award at the 2026 Global Game Jam.
               </p>
               <button class="btn-certificate" 
-                      data-certificate="../assets/images/project-pages/Jianghao Li - Whiteout/award.jpg"
+                      data-certificate="/assets/images/project-pages/Jianghao Li - Whiteout/award.jpg"
                       data-certificate-alt="Best Art Design Award Certificate for Whiteout"
                       aria-label="View Best Art Design Award Certificate">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -192,7 +181,7 @@
       <section class="content-block content-block--media-text" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Whiteout/whiteout (2).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Whiteout/whiteout (2).png" 
                  alt="In-game screenshot showing the protagonist navigating through a surreal environment" 
                  loading="lazy">
                  <figcaption class="image-caption">Game View</figcaption>
@@ -224,7 +213,7 @@
 
       <section class="content-block content-block--full-image" data-reveal>
         <figure class="full-image-container">
-          <img src="../assets/images/project-pages/Jianghao Li - Whiteout/whiteout (5).png" 
+          <img src="/assets/images/project-pages/Jianghao Li - Whiteout/whiteout (5).png" 
                alt="In-game screenshot showing the protagonist using an ink shield to block light sources" 
                class="full-image"
                loading="lazy">
@@ -237,7 +226,7 @@
       <section class="content-block content-block--media-text content-block--reverse" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Whiteout/carbon (1).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Whiteout/carbon (1).png" 
                  alt="Raycast to check if player is exposed to light source" 
                  loading="lazy">
             <figcaption class="image-caption">Light Check</figcaption>
@@ -264,7 +253,7 @@
       <section class="content-block content-block--media-text content-block--reverse" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Whiteout/carbon (2).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Whiteout/carbon (2).png" 
                  alt="Light manager handling multiple light sources in the scene" 
                  loading="lazy">
                  <figcaption class="image-caption">Light Manager</figcaption>
@@ -288,7 +277,7 @@
       <section class="content-block content-block--media-text" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Whiteout/carbon (3).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Whiteout/carbon (3).png" 
                  alt="Base class for light check" 
                  loading="lazy">
                  <figcaption class="image-caption">Light Base class</figcaption>
@@ -311,7 +300,7 @@
 
       <section class="content-block content-block--full-image" data-reveal>
         <figure class="full-image-container">
-          <img src="../assets/images/project-pages/Jianghao Li - Whiteout/carbon (4).png" 
+          <img src="/assets/images/project-pages/Jianghao Li - Whiteout/carbon (4).png" 
                alt="Light manager that checks light exposure events" 
                class="full-image"
                loading="lazy">
@@ -324,7 +313,7 @@
       <section class="content-block content-block--media-text content-block--reverse" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Whiteout/whiteout (5).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Whiteout/whiteout (5).png" 
                  alt="Player on ink splash creating a safe zone" 
                  loading="lazy">
             <figcaption class="image-caption">Player On Ink</figcaption>
@@ -351,7 +340,7 @@
       <section class="content-block content-block--media-text content-block--reverse" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Whiteout/carbon (5).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Whiteout/carbon (5).png" 
                  alt="Example of the trigger collider zone for the ink splash effect" 
                  loading="lazy">
                  <figcaption class="image-caption">Trigger Collider Zone</figcaption>
@@ -373,7 +362,7 @@
       <section class="content-block content-block--media-text" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Whiteout/carbon (6).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Whiteout/carbon (6).png" 
                  alt="Trajectory calculation visualization" 
                  loading="lazy">
                  <figcaption class="image-caption">Trajectory Calculation</figcaption>
@@ -395,7 +384,7 @@
 
       <section class="content-block content-block--full-image" data-reveal>
         <figure class="full-image-container">
-          <img src="../assets/images/project-pages/Jianghao Li - Whiteout/carbon (7).png" 
+          <img src="/assets/images/project-pages/Jianghao Li - Whiteout/carbon (7).png" 
                alt="Trajectory line visualization" 
                class="full-image"
                loading="lazy">
@@ -408,7 +397,7 @@
       <!-- Call to Action / Links Block -->
       <section class="content-block content-block--cta" data-reveal>
         <div class="cta-container">
-          <h2>Explore the Project</h2>
+          <h2 data-i18n="project.cta.heading">Explore the Project</h2>
           <div class="cta-buttons">
             <a href="https://mrfroglijianghao.itch.io/whiteout" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -425,7 +414,7 @@
       <!-- Project Navigation -->
       <nav class="project-navigation" data-reveal>
         <a href="../work-gallery/index.html" class="nav-link nav-link--all">
-          <span class="nav-label">All Projects</span>
+          <span class="nav-label" data-i18n="project.nav.all">All Projects</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="3" y="3" width="7" height="7"></rect>
             <rect x="14" y="3" width="7" height="7"></rect>
@@ -440,12 +429,14 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <p>&copy; 2026 Jianghao Li. All rights reserved.</p>
+    <p data-i18n="footer.copyright">&copy; 2026 Jianghao Li. All rights reserved.</p>
   </footer>
 
   <!-- Scripts -->
-  <script src="../js/main.js"></script>
-  <script src="../js/project-detail.js"></script>
-  <script src="../js/certificate-modal.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/project-detail.js"></script>
+  <script src="/js/certificate-modal.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
 </body>
 </html>

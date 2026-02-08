@@ -3,23 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jianghao Li - SpongeBob Soundtrack</title>
-  
-  <!-- Language redirect -->
-  <script>
-  (function(){
-    var p = location.pathname;
-    if (p.indexOf('/en/') === 0 || p.indexOf('/zh/') === 0) return;
-    var lang = localStorage.getItem('preferred-lang') ||
-      (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
-    location.replace('/' + lang + p);
-  })();
-  </script>
+  <title>Jianghao Li - SpongeBob Musical</title>
   
   <!-- Styles -->
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/pages/project-detail.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/project-detail.css">
 </head>
 <body>
   <!-- Header -->
@@ -27,10 +16,10 @@
     <nav>
       <button class="lang-toggle" aria-label="Toggle Language">EN/中文</button>
       <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../work-gallery/index.html">Work Gallery</a></li>
-        <li><a href="../blog/index.html">Blog</a></li>
-        <li><a href="../about.html">About</a></li>
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../work-gallery/index.html" data-i18n="nav.workGallery">Work Gallery</a></li>
+        <li><a href="../blog/index.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About</a></li>
       </ul>
       <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
         <span></span>
@@ -47,9 +36,9 @@
          ============================================ -->
     <section class="project-hero">
       <div class="project-hero-content">
-        <h1 class="project-title">SpongeBob Soundtrack</h1>
+        <h1 class="project-title">SpongeBob Musical</h1>
         <p class="project-summary">
-          Post-show soundtrack production.
+          Juvenile version of the Broadway musical: SpongeBob
         </p>
         <div class="project-meta">
           <span class="meta-item">
@@ -65,14 +54,14 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
             </svg>
-            Audio Production
+            Theater
           </span>
           <span class="meta-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"></circle>
               <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
-            2 months
+            9 Months
           </span>
         </div>
         
@@ -80,26 +69,27 @@
         <div class="hero-tech-stack">
           <div class="hero-details-container">
             <div class="hero-details-column">
-              <h3>Tech Stack</h3>
+              <h3 data-i18n="project.techStack">Tech Stack</h3>
               <ul class="tech-list">
-                <li><span class="tech-tag">Studio One</span></li>
-                <li><span class="tech-tag">Recording</span></li>
-                <li><span class="tech-tag">Micing</span></li>
-                <li><span class="tech-tag">Mixing</span></li>
+                <li><span class="tech-tag">Logic Pro</span></li>
+                <li><span class="tech-tag">Mainstage</span></li>
+                <li><span class="tech-tag">Theater Sound</span></li>
+                <li><span class="tech-tag">Live Mixing</span></li>
+                <li><span class="tech-tag">Sound Reinforcement</span></li>
+                <li><span class="tech-tag">Microphone Setup</span></li>
               </ul>
             </div>
             <div class="hero-details-column">
-              <h3>My Role</h3>
+              <h3 data-i18n="project.myRole">My Role</h3>
               <ul class="role-list">
-                <li>Recording Engineer</li>
-                <li>Audio Editing</li>
-                <li>Mixing</li>
+                <li>Head of Crew</li>
+                <li>Sound Designer</li>
               </ul>
             </div>
             <div class="hero-details-column">
-              <h3>Team</h3>
+              <h3 data-i18n="project.team">Team</h3>
               <ul class="team-list">
-                <li>4 Audio Engineers</li>
+                <li>5 Crew Members</li>
               </ul>
             </div>
           </div>
@@ -116,8 +106,8 @@
       <!-- Full-width Image Block -->
       <section class="content-block content-block--full-image" data-reveal>
         <figure class="full-image-container">
-          <img src="../assets/images/project-pages/Jianghao Li - SpongeBob Soundtrack/SpongeBob Soundtrack (1).jpg" 
-               alt="SpongeBob Musical" 
+          <img src="/assets/images/project-pages/Jianghao Li - SpongeBob Musical/SpongeBob Musical (1).jpg" 
+               alt="SpongeBob Musical stage performance with colorful set design and cast" 
                class="full-image"
                loading="lazy">
           <figcaption class="image-caption">SpongeBob Musical</figcaption>
@@ -127,40 +117,16 @@
       <!-- Text Block - Overview -->
       <section class="content-block content-block--text" data-reveal>
         <div class="text-container">
-          <h2>Best Day Ever</h2>
+          <h2>Overview</h2>
           <p>
-            A musical song performed in SpongeBob Musical.
-          </p>
-          <p>
-            I recorded every cast member singing the soundtrack and then mixed it.
+            This musical was performed four times in April 2024.
           </p>
           <p>
-            Special thanks to Hanyu Qin for help tuning each person's recording.
+            I was the head of sound for this musical, in charge of sound tech, sound effects, 
+            and mic and other sound-related devices management.
+          <p>
+            The profit of the show was donated to help minority people.
           </p>
-        </div>
-      </section>
-
-      <!-- Image + Text Block (Image Left) -->
-      <section class="content-block content-block--media-text" data-reveal>
-        <div class="media-text-container">
-          <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - SpongeBob Soundtrack/SpongeBob Soundtrack (5).jpg" 
-                 alt="Recording session with microphone and audio equipment" 
-                 loading="lazy">
-                 <figcaption class="image-caption">Recording Session</figcaption>
-          </figure>
-          <div class="media-text-content">
-            <h2>Recording</h2>
-            <p>
-              The recording sessions happened during school hours when casts were available.
-            </p>
-            <p>
-              Special thanks to my music instructor Mr. Steffan Incze for providing the mic stand, shock mount, and pop filter.
-            </p>
-            <p>
-            Studio One was used in each recording session.            
-          </p>
-          </div>
         </div>
       </section>
 
@@ -168,16 +134,55 @@
       <section class="content-block content-block--media-text content-block--reverse" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - SpongeBob Soundtrack/SpongeBob Soundtrack (2).png" 
-                 alt="Recording session setup with microphone, pop filter, and audio interface" 
+            <img src="/assets/images/project-pages/Jianghao Li - SpongeBob Musical/SpongeBob Musical (4).jpg" 
+                 alt="Behind the scenes view of the musical production setup" 
                  loading="lazy">
           </figure>
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - SpongeBob Soundtrack/SpongeBob Soundtrack (3).png" 
-                 alt="Recording session setup with microphone, pop filter, and audio interface" 
+            <img src="/assets/images/project-pages/Jianghao Li - SpongeBob Musical/SpongeBob Musical (5).jpg" 
+                 alt="Stage view showing theatrical lighting and set pieces" 
                  loading="lazy">
           </figure>
         </div>
+      </section>
+
+      <!-- Image + Text Block (Image Right) -->
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - SpongeBob Musical/SpongeBob Musical (3).jpg" 
+                 alt="Backstage audio cabling and sound system setup with mixer" 
+                 loading="lazy">
+            <figcaption class="image-caption">Cabling and Setup</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>Sound Implementation</h2>
+            <p>
+              With the help of our instructor Steffan Incze, we set up the whole theatre's 
+              sound system by placing a mixer backstage. All sounds go into the mixer and 
+              get premixed, where we EQ, compress and limit them. This mixer has two output routes, 
+              one goes into the on-stage monitor system, while the other one goes to the theater's PA
+               system and the signal is thus
+               amplified and played through the theater speakers.
+            </p>
+            <p>
+              For sound effects specifically, I used a MIDI keyboard and Mainstage program to trigger them.
+               Each sound effect was mapped into a particular key on the keyboards, either one-shot or looping. I made my own cue sheet using the script,
+               and played the sounds as the cue sheet indicated. 
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Full-width Image Block -->
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/project-pages/Jianghao Li - SpongeBob Musical/SpongeBob Musical (2).jpg" 
+               alt="Cast performing on stage during live SpongeBob Musical show" 
+               class="full-image"
+               loading="lazy">
+          <figcaption class="image-caption">Live Performance</figcaption>
+        </figure>
       </section>
 
       <!-- Text Block - Overview -->
@@ -185,37 +190,34 @@
         <div class="text-container">
           <h2>Credits</h2>
           <p>
+            <strong><em>Director:</em></strong>
+            Gregory Allan
+          </p>
+          <p>
             <strong><em>Cast:</em></strong>
             Minfei Qiu, Ziting Mi, Yajun Yang, Lijie Qin, Ruien Luo, Hefei Sun, Jiabao Lin, Mei Hua, Qile Zhu, Wenshuo Zheng, Lilu Liu, Sicheng Yu, Hanmo Yang, Yiting Chen, Xiangqi Tan, Yutong Chen, Zihan Guo, Xinze Li, Ruitong Ye, Liyou Wang
           </p>
           <p>
             <strong><em>Music and Tech:</em></strong>
-            Ziyu Wang, Hanyu Qin, Steffan Inzce
+            Keyong Du, Chenhua Li, Simian Li, Steffan Inzce, Mary Siew, Sean Coleman, Ruixiang Wu
           </p>
+          <p><strong><em><u>Credit goes to every other backstage member who contributed to this show, including those who supported our performance.</u></em></strong></p>
         </div>
       </section>
 
-      
-      <!-- Highlight/Quote Block -->
-      <section class="content-block content-block--highlight" data-reveal>
-        <blockquote class="highlight-quote">
-          <p>"Great work on this SpongeBobbers!"</p>
-          <cite>— Gregory Allan</cite>
-        </blockquote>
-      </section>
 
       <!-- Call to Action / Links Block -->
       <section class="content-block content-block--cta" data-reveal>
         <div class="cta-container">
-          <h2>Explore the Project</h2>
+          <h2 data-i18n="project.cta.heading">Explore the Project</h2>
           <div class="cta-buttons">
-            <a href="https://drive.google.com/file/d/1-jvO_n5YdvFRZa4DF1eu-l9V_-qzSd7v/view" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
+            <a href="https://mp.weixin.qq.com/s/Pm9cUDCVk4pkClJPOTvDow" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                 <polyline points="15 3 21 3 21 9"></polyline>
                 <line x1="10" y1="14" x2="21" y2="3"></line>
               </svg>
-              Available for Download
+              Read More
             </a>
           </div>
         </div>
@@ -224,7 +226,7 @@
       <!-- Project Navigation -->
       <nav class="project-navigation" data-reveal>
         <a href="../work-gallery/index.html" class="nav-link nav-link--all">
-          <span class="nav-label">All Projects</span>
+          <span class="nav-label" data-i18n="project.nav.all">All Projects</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="3" y="3" width="7" height="7"></rect>
             <rect x="14" y="3" width="7" height="7"></rect>
@@ -239,11 +241,13 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <p>&copy; 2026 Jianghao Li. All rights reserved.</p>
+    <p data-i18n="footer.copyright">&copy; 2026 Jianghao Li. All rights reserved.</p>
   </footer>
 
   <!-- Scripts -->
-  <script src="../js/main.js"></script>
-  <script src="../js/project-detail.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/project-detail.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
 </body>
 </html>

@@ -221,12 +221,19 @@
   border-radius: var(--radius-md);
   overflow: var(--overflow-clip);
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .flip-card-back .card-link:hover {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--bg);
+}
+
+.flip-card-back .card-link svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 /* Navigation Arrows */

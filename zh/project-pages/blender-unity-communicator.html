@@ -5,21 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jianghao Li - Blender Unity Communicator</title>
   
-  <!-- Language redirect -->
-  <script>
-  (function(){
-    var p = location.pathname;
-    if (p.indexOf('/en/') === 0 || p.indexOf('/zh/') === 0) return;
-    var lang = localStorage.getItem('preferred-lang') ||
-      (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
-    location.replace('/' + lang + p);
-  })();
-  </script>
-  
   <!-- Styles -->
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/pages/project-detail.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/project-detail.css">
 </head>
 <body>
   <!-- Header -->
@@ -27,10 +16,10 @@
     <nav>
       <button class="lang-toggle" aria-label="Toggle Language">EN/中文</button>
       <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../work-gallery/index.html">Work Gallery</a></li>
-        <li><a href="../blog/index.html">Blog</a></li>
-        <li><a href="../about.html">About</a></li>
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../work-gallery/index.html" data-i18n="nav.workGallery">Work Gallery</a></li>
+        <li><a href="../blog/index.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About</a></li>
       </ul>
       <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
         <span></span>
@@ -49,7 +38,7 @@
       <div class="project-hero-content">
         <h1 class="project-title">Blender Unity Communicator</h1>
         <p class="project-summary">
-          A Blender and Unity add-on that helps model developers.
+          简化3D工作者在Blender和Unity之间的资产管理和更新流程的工具。
         </p>
         <div class="project-meta">
           <span class="meta-item">
@@ -65,14 +54,14 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
             </svg>
-            Development Tool
+            开发工具
           </span>
           <span class="meta-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"></circle>
               <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
-            1 month
+            1 个月
           </span>
         </div>
         
@@ -80,7 +69,7 @@
         <div class="hero-tech-stack">
           <div class="hero-details-container">
             <div class="hero-details-column">
-              <h3>Tech Stack</h3>
+              <h3 data-i18n="project.techStack">Tech Stack</h3>
               <ul class="tech-list">
                 <li><span class="tech-tag">Python</span></li>
                 <li><span class="tech-tag">C#</span></li>
@@ -91,15 +80,15 @@
               </ul>
             </div>
             <div class="hero-details-column">
-              <h3>My Role</h3>
+              <h3 data-i18n="project.myRole">My Role</h3>
               <ul class="role-list">
-                <li>Developer</li>
+                <li>开发者</li>
               </ul>
             </div>
             <div class="hero-details-column">
-              <h3>Team</h3>
+              <h3 data-i18n="project.team">Team</h3>
               <ul class="team-list">
-                <li>Solo</li>
+                <li>独立开发</li>
               </ul>
             </div>
           </div>
@@ -116,7 +105,7 @@
       <!-- Full-width Image Block -->
       <section class="content-block content-block--full-image" data-reveal>
         <figure class="full-image-container">
-          <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/interface (2).png" 
+          <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/interface (2).png" 
                alt="Blender Unity Communicator application interface showing export options and settings" 
                class="full-image"
                loading="lazy">
@@ -127,19 +116,13 @@
       <!-- Text Block - Overview -->
       <section class="content-block content-block--text" data-reveal>
         <div class="text-container">
-          <h2>Overview</h2>
+          <h2>概述</h2>
           <p>
-            This is a Blender and Unity add-on that helps developers easily
-             export models to the designated Unity project folder, and also 
-             provides a function to overwrite all objects 
-            using a specific .FBX model with the newly exported .FBX model. 
+            这是一个Blender和Unity的插件，帮助开发者轻松地将模型导出到指定的Unity项目文件夹，并提供一个功能，可以用新导出的.FBX模型覆盖所有使用特定.FBX模型的对象。
+            该工具旨在简化Blender和Unity之间的工作流程，使开发者更高效地管理和更新他们的3D资产。
           </p>
           <p>
-            The tool is designed to streamline the workflow between Blender and Unity, 
-            making it more efficient for developers to manage and update their 3D assets.
-          </p>
-          <p>
-            The application is built using Python for the Blender add-on and C# for the Unity integration.
+            我使用了Python编写Blender插件，使用C#编写Unity集成部分。
           </p>
         </div>
       </section>
@@ -148,20 +131,19 @@
       <section class="content-block content-block--media-text" data-reveal>
         <div class="media-text-container">
           <div class="media-text-content">
-            <h2>Implementation</h2>
+            <h2>实现</h2>
             <p>
-              This tool consists of two main components: a Blender add-on written in Python
-               and a Unity script written in C#. The Blender add-on allows users to export
-                their models directly to a specified Unity project folder with a single click.
+              该工具由两个主要组件组成：一个用Python编写的Blender插件和一个用C#编写的Unity脚本。
+              Blender插件允许用户通过单击将模型直接导出到指定的Unity项目文件夹。
+            
             </p>
             <p>
-              This was achieved by utilizing Blender's built-in FBX export functionality and
-               integrating it with a user-friendly interface that allows users to set their
-              Unity project path and export settings.
+              该插件提供了一个用户友好的界面，允许用户设置Unity项目路径和导出设置，
+              并利用Blender内置的FBX导出功能将模型导出到Unity项目中。
             </p>
           </div>
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/save method.png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/save method.png" 
                  alt="Code snippet showing the save method in Blender Unity Communicator" 
                  loading="lazy">
                  <figcaption class="image-caption">Code Snippet</figcaption>
@@ -173,39 +155,35 @@
       <section class="content-block content-block--media-text" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/select overwrite obj.png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/select overwrite obj.png" 
                  alt="Code snippet showing the overwrite function in Blender Unity Communicator" 
                  loading="lazy">
                  <figcaption class="image-caption">Code Snippet</figcaption>
           </figure>
           <div class="media-text-content">
-            <h2>Overwrite Function</h2>
+            <h2>覆盖功能</h2>
             <p>
-              One thing that makes this tool stand out is the overwrite function.
-               This function allows users to overwrite all objects in the Unity project
-                that use a specific .FBX model with the newly exported .FBX model from Blender.
+              该工具的一个突出特点是覆盖功能。
+                该功能允许用户使用Blender中导出的新.FBX模型覆盖Unity项目中使用特定.FBX模型的所有对象。
             </p>
+            
             <p>
-              Designers are often required to make frequent updates to 3D models during the development process.
-               This function significantly reduces the time and effort needed to update models
-                in Unity, as users no longer need to manually replace each instance of the model.
+              模型设计师们在开发过程中经常需要频繁更新3D模型。
+               这个功能显著减少了在Unity中更新模型所需的时间和精力，因为用户不再需要手动替换每个模型实例。
             </p>
           </div>
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/unity overwrite.png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/unity overwrite.png" 
                  alt="Code snippet showing the overwrite function in Blender Unity Communicator" 
                  loading="lazy">
                  <figcaption class="image-caption">Code Snippet</figcaption>
           </figure>
           <div class="media-text-content">
             <p>
-              Specifically, the overwrite function works by searching through all GameObjects
-               in the Unity project for references to the old .FBX model and replacing them
-                with references to the newly exported model.
+              具体来说，覆盖功能通过在Unity项目中搜索对旧.FBX模型的引用，并将它们替换为新导出的模型来实现。
             </p>
             <p>
-              This is done using Unity's AssetDatabase and GameObject APIs, allowing for
-               efficient and automated updates to the project.
+              该功能利用了Unity的AssetDatabase和GameObject API，实现了对项目的高效自动化更新。
             </p>
         </div>
       </section>
@@ -215,19 +193,19 @@
         <div class="image-grid-container">
           <div class="image-grid image-grid--3col">
             <figure class="grid-image-item">
-              <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/overwrite all obj in unity.png" 
+              <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/overwrite all obj in unity.png" 
                    alt="Overwrite all objects in Unity" 
                    loading="lazy">
               <figcaption class="image-caption">Overwrite All Objects in Unity</figcaption>
             </figure>
             <figure class="grid-image-item">
-              <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/interface (3).png" 
+              <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/interface (3).png" 
                    alt="Before Overwriting Models in Unity" 
                    loading="lazy">
                    <figcaption class="image-caption">Before Overwriting Models in Unity</figcaption>
             </figure>
             <figure class="grid-image-item">
-              <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/interface (1).png" 
+              <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/interface (1).png" 
                    alt="After Overwriting Models in Unity" 
                    loading="lazy">
                    <figcaption class="image-caption">After Overwriting Models in Unity</figcaption>
@@ -241,36 +219,34 @@
       <section class="content-block content-block--media-text content-block--reverse" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/unity json.png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/unity json.png" 
                  alt="Diagram showing the JSON structure used for UDP communication between Blender and Unity" 
                  loading="lazy">
             <figcaption class="image-caption">JSON Structure</figcaption>
           </figure>
           <div class="media-text-content">
-            <h2>UDP Connection</h2>
+            <h2>UDP 连接</h2>
             <p>
-              To facilitate communication between Blender and Unity, 
-              I implemented a UDP connection that allows the two applications to exchange data in real-time.
+              为了实现Blender和Unity之间的通信，我实现了一个UDP连接，允许两个应用程序实时交换数据。
             </p>
             <p>
-              This connection enables Blender to send export commands to Unity, 
-              and Unity to receive notifications when new models are available.
+              这个连接使Blender能够向Unity发送导出命令，Unity能够在有新模型可用时接收通知。
+
             </p>
             <p>
-              A json structure is used to format the data being sent over the UDP connection, 
-              ensuring that both applications can easily parse and understand the information.
+              我使用了JSON结构来格式化通过UDP连接发送的数据，确保两个应用程序都能轻松解析和理解这些信息。
             </p>
           </div>
 
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/udp (1).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/udp (1).png" 
                  alt="Code for UDP communication in Python" 
                  loading="lazy">
             <figcaption class="image-caption">UDP Python Script</figcaption>
           </figure>
 
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/udp (2).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/udp (2).png" 
                  alt="Code for UDP communication in Unity" 
                  loading="lazy">
             <figcaption class="image-caption">UDP Unity Script</figcaption>
@@ -290,7 +266,7 @@
       <!-- Call to Action / Links Block -->
       <section class="content-block content-block--cta" data-reveal>
         <div class="cta-container">
-          <h2>Explore the Project</h2>
+          <h2 data-i18n="project.cta.heading">Explore the Project</h2>
           <div class="cta-buttons">
             <a href="https://github.com/JianghaoL/Blender_Unity_Communicator" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -307,7 +283,7 @@
       <!-- Project Navigation -->
       <nav class="project-navigation" data-reveal>
         <a href="../work-gallery/index.html" class="nav-link nav-link--all">
-          <span class="nav-label">All Projects</span>
+          <span class="nav-label" data-i18n="project.nav.all">All Projects</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="3" y="3" width="7" height="7"></rect>
             <rect x="14" y="3" width="7" height="7"></rect>
@@ -322,11 +298,13 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <p>&copy; 2026 Jianghao Li. All rights reserved.</p>
+    <p data-i18n="footer.copyright">&copy; 2026 Jianghao Li. All rights reserved.</p>
   </footer>
 
   <!-- Scripts -->
-  <script src="../js/main.js"></script>
-  <script src="../js/project-detail.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/project-detail.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
 </body>
 </html>

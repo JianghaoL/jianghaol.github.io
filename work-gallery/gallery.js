@@ -14,141 +14,146 @@
 
 // ============================================
 // CATEGORY DEFINITIONS
-// Categories are defined once here and used across the gallery
-// Keep these in sync with the categories in project detail pages
+// Categories use translation keys from translations.js
+// These keys are used throughout the gallery and reference:
+//   category.{key} in translations.js
 // ============================================
 const CATEGORIES = {
-  GAME_DEVELOPMENT: 'Game Development',
-  GAME_AUDIO: 'Game Audio',
-  DEVELOPMENT_TOOL: 'Development Tool',
-  AUDIO_TOOL: 'Audio Tool',
-  AUDIO_PRODUCTION: 'Audio Production',
-  THEATER: 'Theater'
+  GAME_DEVELOPMENT: 'category.gameDevelopment',
+  GAME_AUDIO: 'category.gameAudio',
+  DEVELOPMENT_TOOL: 'category.developmentTool',
+  AUDIO_TOOL: 'category.audioTool',
+  AUDIO_PRODUCTION: 'category.audioProduction',
+  THEATER: 'category.theater'
 };
 
 // ============================================
 // GALLERY DATA - Add new projects here
 // Each project links to its corresponding detail page
 // Thumbnail paths can be empty strings to show placeholder
+// 
+// Use translation keys for title and description:
+//   titleKey: references project.{slug}.title in translations.js
+//   descriptionKey: references project.{slug}.summary in translations.js
 // ============================================
 const galleryData = [
   {
     id: 1,
-    title: "Dough it Yourself",
+    titleKey: "project.doughItYourself.title",
     category: CATEGORIES.GAME_DEVELOPMENT,
     year: 2025,
     date: "2025-08-01",
-    thumbnail: "../assets/images/thumbnails/thumbnails (7).png", // Placeholder - add actual thumbnail path when available
-    description: "A donut making puzzle game made for GMTK 2025.",
+    thumbnail: "/assets/images/thumbnails/thumbnails (7).png",
+    descriptionKey: "project.doughItYourself.summary",
     techStack: ["Unity", "C#", "Git"],
     projectPage: "../project-pages/dough-it-yourself.html",
     roles: ["Level Design", "Game Programming", "Game Prototyping", "Audio Implementation", "Sound Design"],
-    aiUsed: false  // Set to true to display "AI Used" tag
+    aiUsed: false
   },
   {
     id: 2,
-    title: "Forest Fears",
+    titleKey: "project.forestFears.title",
     category: CATEGORIES.GAME_DEVELOPMENT,
     year: 2025,
     date: "2025-03-15",
-    thumbnail: "../assets/images/thumbnails/thumbnails (11).png",
-    description: "An educational game that aims to help players gain awareness of nature and its connection with humans.",
+    thumbnail: "/assets/images/thumbnails/thumbnails (11).png",
+    descriptionKey: "project.forestFears.summary",
     techStack: ["Unity", "C#", "Wwise", "Logic Pro", "Git"],
     projectPage: "../project-pages/forest-fears.html",
     roles: ["Level Design", "Game Programming", "Narrative Design", "Audio Implementation", "Composing"]
   },
   {
     id: 3,
-    title: "Mantle",
+    titleKey: "project.mantle.title",
     category: CATEGORIES.GAME_AUDIO,
     year: 2025,
     date: "2025-05-20",
-    thumbnail: "../assets/images/thumbnails/thumbnails (14).png",
-    description: "A game that focuses on narrative, seeking ways to guide players into believing different design ideas.",
+    thumbnail: "/assets/images/thumbnails/thumbnails (14).png",
+    descriptionKey: "project.mantle.summary",
     techStack: ["Unity", "Logic Pro", "Recording", "Perforce", "Sound Design"],
     projectPage: "../project-pages/mantle.html",
     roles: ["Sound Design"]
   },
   {
     id: 4,
-    title: "CrossfadER",
+    titleKey: "project.crossfader.title",
     category: CATEGORIES.AUDIO_TOOL,
     year: 2025,
     date: "2025-10-10",
-    thumbnail: "../assets/images/thumbnails/thumbnails (21).png",
-    description: "An audio tool automating the looping sound production workflow.",
+    thumbnail: "/assets/images/thumbnails/thumbnails (21).png",
+    descriptionKey: "project.crossfader.summary",
     techStack: ["DSP", "C#", "Avalonia", "Git"],
     projectPage: "../project-pages/crossfadER.html",
     roles: ["Audio Programming"]
   },
   {
     id: 5,
-    title: "SpongeBob Musical",
+    titleKey: "project.spongebobMusical.title",
     category: CATEGORIES.THEATER,
     year: 2024,
     date: "2024-04-15",
-    thumbnail: "../assets/images/thumbnails/thumbnails (9).jpg",
-    description: "Juvenile version of the Broadway musical: SpongeBob",
+    thumbnail: "/assets/images/thumbnails/thumbnails (9).jpg",
+    descriptionKey: "project.spongebobMusical.summary",
     techStack: ["Logic Pro", "Mainstage", "Theater Sound", "Live Mixing", "Sound Reinforcement", "Microphone Setup"],
     projectPage: "../project-pages/spongebob-musical.html",
     roles: ["Head of Crew", "Sound Designer"]
   },
   {
     id: 6,
-    title: "SpongeBob Soundtrack",
+    titleKey: "project.spongebobSoundtrack.title",
     category: CATEGORIES.AUDIO_PRODUCTION,
     year: 2024,
     date: "2024-06-20",
-    thumbnail: "../assets/images/thumbnails/thumbnails (8).jpg",
-    description: "Post-show soundtrack production.",
+    thumbnail: "/assets/images/thumbnails/thumbnails (8).jpg",
+    descriptionKey: "project.spongebobSoundtrack.summary",
     techStack: ["Studio One", "Recording", "Micing", "Mixing"],
     projectPage: "../project-pages/spongebob-soundtrack.html",
     roles: ["Recording Engineer", "Audio Editing", "Mixing"]
   },
   {
     id: 7,
-    title: "Theme for Carnival",
+    titleKey: "project.themeCarnival.title",
     category: CATEGORIES.AUDIO_PRODUCTION,
     year: 2023,
     date: "2023-12-31",
-    thumbnail: "../assets/images/thumbnails/thumbnails (19).png",
-    description: "Instrumental music piece produced for an annual carnival.",
+    thumbnail: "/assets/images/thumbnails/thumbnails (19).png",
+    descriptionKey: "project.themeCarnival.summary",
     techStack: ["Studio One", "Recording", "Micing", "Mixing"],
     projectPage: "../project-pages/theme-for-carnival.html",
     roles: ["Recording Engineer", "Audio Editing", "Mixing"]
   },
   {
     id: 8,
-    title: "Blender-Unity Communicator",
+    titleKey: "project.blenderUnity.title",
     category: CATEGORIES.DEVELOPMENT_TOOL,
     year: 2025,
     date: "2025-11-05",
-    thumbnail: "../assets/images/thumbnails/thumbnails (3).png",
-    description: "A tool to streamline the workflow of transferring 3D models from Blender to Unity.",
+    thumbnail: "/assets/images/thumbnails/thumbnails (3).png",
+    descriptionKey: "project.blenderUnity.summary",
     techStack: ["Python", "C#", "Blender API", "Unity", "Git"],
     projectPage: "../project-pages/blender-unity-communicator.html",
     roles: ["Developer"]
   },
   {
     id: 9,
-    title: "Sisyphus's Worst Day",
+    titleKey: "project.sisyphus.title",
     category: CATEGORIES.GAME_AUDIO,
     year: 2026,
     date: "2026-05-05",
-    thumbnail: "../assets/images/thumbnails/thumbnails (6).jpg",
-    description: "An innovative puzzle game that reimagines the myth of Sisyphus in a modern context.",
+    thumbnail: "/assets/images/thumbnails/thumbnails (6).jpg",
+    descriptionKey: "project.sisyphus.summary",
     techStack: ["FMOD", "C#", "Unity", "Perforce", "Sound Design"],
     projectPage: "../project-pages/sisyphus-worst-day.html",
-    roles: ["Lead Technical Sound Designer", "Audio Implementation",]
+    roles: ["Lead Technical Sound Designer", "Audio Implementation"]
   },
   {
-    id: 9,
-    title: "Whiteout",
+    id: 10,
+    titleKey: "project.whiteout.title",
     category: CATEGORIES.GAME_DEVELOPMENT,
     year: 2026,
     date: "2026-02-06",
-    thumbnail: "../assets/images/thumbnails/whiteout-main.png",
-    description: "An innovative puzzle game that reimagines the myth of Sisyphus in a modern context.",
+    thumbnail: "/assets/images/thumbnails/whiteout-main.png",
+    descriptionKey: "project.whiteout.summary",
     techStack: ["Unity", "C#", "Perforce", "Studio One"],
     projectPage: "../project-pages/whiteout.html",
     roles: ["Game Programming", "Level Design", "Audio Implementation", "Composing"]
@@ -190,8 +195,25 @@ class WorkGallery {
     this.data = [...data];
     this.currentSort = 'category';
     this.sortedData = [...this.data];
+    this.currentLang = this.detectLanguage();
 
     this.init();
+  }
+
+  // Detect current language from URL path
+  detectLanguage() {
+    const path = window.location.pathname;
+    if (path.indexOf('/zh/') === 0) return 'zh';
+    if (path.indexOf('/en/') === 0) return 'en';
+    return 'en'; // default
+  }
+
+  // Get translated text for a key
+  getTranslation(key) {
+    if (!window.__translations || !window.__translations[this.currentLang]) {
+      return key; // Fallback to key if translations not loaded
+    }
+    return window.__translations[this.currentLang][key] || key;
   }
 
   init() {
@@ -238,6 +260,10 @@ class WorkGallery {
   // Generate card HTML (shared across all views)
   // Cards link to their project detail pages
   generateCardHTML(item, index) {
+    // Get translated text
+    const title = this.getTranslation(item.titleKey);
+    const description = this.getTranslation(item.descriptionKey);
+    
     const techTags = item.techStack
       .slice(0, 4) // Show max 4 tech tags on card
       .map(tech => `<span class="tech-tag">${tech}</span>`)
@@ -270,7 +296,7 @@ class WorkGallery {
 
     return `
       <article class="gallery-card" data-id="${item.id}" data-project-url="${item.projectPage}" style="--card-index: ${index}">
-        <a href="${item.projectPage}" class="gallery-card-link" aria-label="View ${item.title} project details">
+        <a href="${item.projectPage}" class="gallery-card-link" aria-label="View ${title} project details">
           <div class="gallery-card-inner">
             <!-- Front Side -->
             <div class="gallery-card-front">
@@ -284,18 +310,18 @@ class WorkGallery {
                 </div>
               </div>
               <div class="card-front-content">
-                <h3>${item.title}</h3>
-                <span class="card-category-badge">${item.category}</span>
+                <h3>${title}</h3>
+                <span class="card-category-badge">${this.getTranslation(item.category)}</span>
               </div>
             </div>
             <!-- Back Side -->
             <div class="gallery-card-back">
-              <h3>${item.title}</h3>
-              <p class="card-back-description">${item.description}</p>
+              <h3>${title}</h3>
+              <p class="card-back-description">${description}</p>
               <div class="card-back-meta">
                 <div class="meta-item">
                   ${this.getIcon('folder')}
-                  <span>${item.category}</span>
+                  <span>${this.getTranslation(item.category)}</span>
                 </div>
                 <div class="meta-item">
                   ${this.getIcon('calendar')}
@@ -309,7 +335,7 @@ class WorkGallery {
               <div class="card-back-links">
                 <span class="card-link card-link--view">
                   ${this.getIcon('external')}
-                  <span>View Project</span>
+                  <span>${this.getTranslation('gallery.viewProject')}</span>
                 </span>
                 ${aiTag}
               </div>
@@ -409,7 +435,7 @@ class WorkGallery {
             <div class="category-icon">
               ${this.getIcon('category')}
             </div>
-            <h3 class="category-title">${category}</h3>
+            <h3 class="category-title">${this.getTranslation(category)}</h3>
             <span class="category-count">${items.length} project${items.length !== 1 ? 's' : ''}</span>
           </div>
           <div class="category-cards">
@@ -442,7 +468,8 @@ class WorkGallery {
     });
 
     this.sortedData.forEach(item => {
-      const firstLetter = item.title.charAt(0).toUpperCase();
+      const title = this.getTranslation(item.titleKey);
+      const firstLetter = title.charAt(0).toUpperCase();
       for (const range of alphaRanges) {
         if (range.letters.includes(firstLetter)) {
           byRange[range.id].items.push(item);
@@ -600,12 +627,21 @@ class WorkGallery {
 // ============================================
 // INITIALIZATION
 // ============================================
-document.addEventListener('DOMContentLoaded', () => {
+function initGallery() {
   // Initialize the gallery
   const gallery = new WorkGallery('#gallery-grid', galleryData);
 
   // Expose gallery instance for debugging (optional)
   window.workGallery = gallery;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Wait for translations to be ready before initializing gallery
+  if (window.__translations) {
+    initGallery();
+  } else {
+    window.addEventListener('i18nReady', initGallery);
+  }
 });
 
 // ============================================
@@ -613,39 +649,45 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 /**
  * Helper function to add a new project to the gallery
- * Usage: addProject({ title: '...', category: '...', ... })
+ * Usage: addProject({ titleKey: '...', category: '...', ... })
  * 
  * Required fields:
  * - id: unique identifier (number)
- * - title: project title (string)
- * - category: category name - use CATEGORIES constant for consistency
+ * - titleKey: translation key for title (e.g., 'project.myProject.title')
+ * - category: category translation key - use CATEGORIES constant for consistency
  * - year: year (number)
  * - date: ISO date string (e.g., '2025-01-15')
  * - thumbnail: path to thumbnail image (can be empty string for placeholder)
- * - description: project description
+ * - descriptionKey: translation key for description (e.g., 'project.myProject.summary')
  * - techStack: array of technologies used
  * - projectPage: relative path to project detail page (e.g., '../project-pages/my-project.html')
  * 
  * Optional fields:
  * - roles: array of roles performed on the project
+ * - aiUsed: boolean, set to true to display "AI Used" badge
+ * 
+ * Note: Before adding a project, add the translation keys to translations.js:
+ *   - project.myProject.title (in both en and zh sections)
+ *   - project.myProject.summary (in both en and zh sections)
  * 
  * Example:
  * addProject({
- *   id: 8,
- *   title: 'New Project',
+ *   id: 11,
+ *   titleKey: 'project.newProject.title',
  *   category: CATEGORIES.GAME_AUDIO,
  *   year: 2025,
  *   date: '2025-06-01',
- *   thumbnail: '../assets/images/thumbnails/new-project-thumb.jpg',
- *   description: 'Description of the project...',
+ *   thumbnail: '/assets/images/thumbnails/new-project-thumb.jpg',
+ *   descriptionKey: 'project.newProject.summary',
  *   techStack: ['Unity', 'FMOD'],
  *   projectPage: '../project-pages/new-project.html',
- *   roles: ['Sound Designer', 'Composer']
+ *   roles: ['Sound Designer', 'Composer'],
+ *   aiUsed: false
  * });
  */
 function addProject(project) {
   // Validate required fields
-  const required = ['id', 'title', 'category', 'year', 'date', 'description', 'techStack', 'projectPage'];
+  const required = ['id', 'titleKey', 'category', 'year', 'date', 'descriptionKey', 'techStack', 'projectPage'];
   const missing = required.filter(field => !project.hasOwnProperty(field));
   
   if (missing.length > 0) {

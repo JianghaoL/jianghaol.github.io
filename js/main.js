@@ -105,17 +105,27 @@ const observer = new IntersectionObserver((entries) => {
 revealElements.forEach(el => observer.observe(el));
 
 // Small typewriter effect for the intro line
-const typeEl = document.getElementById('intro-type');
-if (typeEl) {
-  const text = typeEl.textContent.trim();
-  typeEl.textContent = '';
-  let i = 0;
-  const speed = 28;
-  const typer = setInterval(() => {
-    typeEl.textContent += text.charAt(i);
-    i++;
-    if (i >= text.length) clearInterval(typer);
-  }, speed);
+// Wait for i18n translations to complete before running typewriter effect
+function initTypewriter() {
+  const typeEl = document.getElementById('intro-type');
+  if (typeEl) {
+    const text = typeEl.textContent.trim();
+    typeEl.textContent = '';
+    let i = 0;
+    const speed = 28;
+    const typer = setInterval(() => {
+      typeEl.textContent += text.charAt(i);
+      i++;
+      if (i >= text.length) clearInterval(typer);
+    }, speed);
+  }
+}
+
+// Listen for i18n ready event if translations.js is loaded, otherwise run immediately
+if (typeof window.__translations !== 'undefined') {
+  document.addEventListener('i18nReady', initTypewriter);
+} else {
+  initTypewriter();
 }
 
 // =============================================

@@ -5,21 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jianghao Li - Forest Fears</title>
   
-  <!-- Language redirect -->
-  <script>
-  (function(){
-    var p = location.pathname;
-    if (p.indexOf('/en/') === 0 || p.indexOf('/zh/') === 0) return;
-    var lang = localStorage.getItem('preferred-lang') ||
-      (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
-    location.replace('/' + lang + p);
-  })();
-  </script>
-  
   <!-- Styles -->
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/pages/project-detail.css">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/project-detail.css">
 </head>
 <body>
   <!-- Header -->
@@ -27,10 +16,10 @@
     <nav>
       <button class="lang-toggle" aria-label="Toggle Language">EN/中文</button>
       <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../work-gallery/index.html">Work Gallery</a></li>
-        <li><a href="../blog/index.html">Blog</a></li>
-        <li><a href="../about.html">About</a></li>
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../work-gallery/index.html" data-i18n="nav.workGallery">Work Gallery</a></li>
+        <li><a href="../blog/index.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About</a></li>
       </ul>
       <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
         <span></span>
@@ -80,7 +69,7 @@
         <div class="hero-tech-stack">
           <div class="hero-details-container">
             <div class="hero-details-column">
-              <h3>Tech Stack</h3>
+              <h3 data-i18n="project.techStack">Tech Stack</h3>
               <ul class="tech-list">
                 <li><span class="tech-tag">Unity</span></li>
                 <li><span class="tech-tag">C#</span></li>
@@ -91,7 +80,7 @@
               </ul>
             </div>
             <div class="hero-details-column">
-              <h3>My Role</h3>
+              <h3 data-i18n="project.myRole">My Role</h3>
               <ul class="role-list">
                 <li>Level Design</li>
                 <li>Game Programming</li>
@@ -101,7 +90,7 @@
               </ul>
             </div>
             <div class="hero-details-column">
-              <h3>Team</h3>
+              <h3 data-i18n="project.team">Team</h3>
               <ul class="team-list">
                 <li>4 Developers</li>
               </ul>
@@ -120,7 +109,7 @@
       <!-- Full-width Image Block -->
       <section class="content-block content-block--full-image" data-reveal>
         <figure class="full-image-container">
-          <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (8).png" 
+          <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (8).png" 
                alt="Forest Fears game title screen with nature-themed 2.5D platformer visuals" 
                class="full-image"
                loading="lazy">
@@ -150,13 +139,13 @@
       <section class="content-block content-block--media-text" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (6).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (6).png" 
                  alt="Early brainstorming sketches showing game structure and characters" 
                  loading="lazy">
                  <figcaption class="image-caption">Prototype Development</figcaption>
           </figure>
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (1).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (1).png" 
                  alt="Paper prototype of level design with platform layouts" 
                  loading="lazy">
                  <figcaption class="image-caption">Prototype Development</figcaption>
@@ -181,7 +170,7 @@
                which might result in impossible jumps, etc.</p>
           </div>
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (7).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (7).png" 
                  alt="Collaborative level design document created in Figma" 
                  loading="lazy">
                  <figcaption class="image-caption">Level Design in Figma</figcaption>
@@ -193,7 +182,7 @@
       <section class="content-block content-block--media-text content-block--reverse" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (9).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (9).png" 
                  alt="Wwise sound banks configuration for ambience, effects, and music" 
                  loading="lazy">
             <figcaption class="image-caption">Sound Banks</figcaption>
@@ -216,13 +205,13 @@
           </div>
 
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (18).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (18).png" 
                  alt="Wwise events hierarchy showing organized audio event structure" 
                  loading="lazy">
             <figcaption class="image-caption">Events Hierarchy</figcaption>
           </figure>
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (2).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (2).png" 
                  alt="Sound effects library and audio files prepared in Logic Pro" 
                  loading="lazy">
             <figcaption class="image-caption">Sound Effects</figcaption>
@@ -233,7 +222,7 @@
       <section class="content-block content-block--media-text content-block--reverse" data-reveal>
         <div class="media-text-container">
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (17).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (17).png" 
                  alt="Wwise interactive music setup with layered stems for each game area" 
                  loading="lazy">
                  <figcaption class="image-caption">Music Setup</figcaption>
@@ -259,27 +248,27 @@
           </div>
 
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (15).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (15).png" 
                  alt="Wwise state machine controlling music transitions between game areas" 
                  loading="lazy">
                  <figcaption class="image-caption">States</figcaption>
           </figure>
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (12).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (12).png" 
                  alt="Music trigger configuration for seamless area transitions" 
                  loading="lazy">
                  <figcaption class="image-caption">Music Triggers</figcaption>
           </figure>
         </div>
         <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (4).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (4).png" 
                  alt="Unity scene view showing trigger zones for music state changes" 
                  loading="lazy">
                  <figcaption class="image-caption">Trigger Zones in Unity</figcaption>
           </figure>
 
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (3).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (3).png" 
                  alt="C# code for triggering Wwise music states from Unity" 
                  loading="lazy">
                  <figcaption class="image-caption">Music Script</figcaption>
@@ -305,19 +294,19 @@
           </div>
 
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (10).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (10).png" 
                  alt="RTPC parameter setup for volume control in Wwise" 
                  loading="lazy">
                  
           </figure>
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (5).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (5).png" 
                  alt="Settings menu slider connected to RTPC for game volume" 
                  loading="lazy">
           </figure>
 
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (13).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (13).png" 
                  alt="Unity script linking RTPC values for dynamic sound control" 
                  loading="lazy">
                  <figcaption class="image-caption">RTPCs Linked in Scripts</figcaption>
@@ -347,21 +336,21 @@
           </div>
 
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (14).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (14).png" 
                  alt="Wwise switch container for randomized footstep sound variations" 
                  loading="lazy">
                  <figcaption class="image-caption">Footstep Container</figcaption>
           </figure>
 
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (11).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (11).png" 
                  alt="Unity animation events triggering footstep sounds on foot contact" 
                  loading="lazy">
                  <figcaption class="image-caption">Animation Triggered Sounds</figcaption>
           </figure>
 
           <figure class="media-text-image">
-            <img src="../assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (16).png" 
+            <img src="/assets/images/project-pages/Jianghao Li - Forest Fears/Forest-fear (16).png" 
                  alt="C# implementation code for footstep material detection using raycast" 
                  loading="lazy">
                  <figcaption class="image-caption">Implementation Code</figcaption>
@@ -381,7 +370,7 @@
       <!-- Call to Action / Links Block -->
       <section class="content-block content-block--cta" data-reveal>
         <div class="cta-container">
-          <h2>Explore the Project</h2>
+          <h2 data-i18n="project.cta.heading">Explore the Project</h2>
           <div class="cta-buttons">
             <a href="https://checkerskd.itch.io/forest-fears" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -404,7 +393,7 @@
       <!-- Project Navigation -->
       <nav class="project-navigation" data-reveal>
         <a href="../work-gallery/index.html" class="nav-link nav-link--all">
-          <span class="nav-label">All Projects</span>
+          <span class="nav-label" data-i18n="project.nav.all">All Projects</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="3" y="3" width="7" height="7"></rect>
             <rect x="14" y="3" width="7" height="7"></rect>
@@ -419,11 +408,13 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <p>&copy; 2026 Jianghao Li. All rights reserved.</p>
+    <p data-i18n="footer.copyright">&copy; 2026 Jianghao Li. All rights reserved.</p>
   </footer>
 
   <!-- Scripts -->
-  <script src="../js/main.js"></script>
-  <script src="../js/project-detail.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/project-detail.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
 </body>
 </html>
