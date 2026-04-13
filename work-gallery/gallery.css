@@ -498,7 +498,6 @@
    Flip Card Styles
    ============================================= */
 .gallery-card {
-  perspective: 1000px;
   height: 400px;
   cursor: pointer;
 }
@@ -511,6 +510,7 @@
   text-decoration: none;
   color: inherit;
   outline: none;
+  perspective: 1000px;
 }
 
 .gallery-card-link:focus-visible .gallery-card-inner {
