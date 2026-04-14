@@ -229,6 +229,10 @@ window.__translations = {
     'project.whiteout.title':   'Whiteout',
     'project.whiteout.summary': 'An innovative puzzle game that reimagines the myth of Sisyphus in a modern context.',
 
+    // -- Soundboard --
+    'project.soundboard.title':   'Soundboard',
+    'project.soundboard.summary': 'A soundboard application for quick Wwise sound management and overview.',
+
     // =================================================================
     // WORK CAROUSEL — Generic labels (project-specific content uses project.* keys)
     // =================================================================
@@ -436,6 +440,9 @@ window.__translations = {
 
     'project.whiteout.title':   'Whiteout',
     'project.whiteout.summary': 'Game Jam作品，探索人类在社会压力下的心理状态。',
+
+    'project.soundboard.title':   'Soundboard',
+    'project.soundboard.summary': '一款用于快速管理与预览 Wwise 声音资源的 Soundboard 应用。',
 
     // =================================================================
     // WORK CAROUSEL — Generic labels (project-specific content uses project.* keys)

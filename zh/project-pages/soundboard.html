@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jianghao Li - Soundboard</title>
+  
+  <!-- Language redirect (disabled: no en/zh version of this page yet) -->
+  <!--
+  <script>
+  (function(){
+    var p = location.pathname;
+    if (p.indexOf('/en/') === 0 || p.indexOf('/zh/') === 0) return;
+    var lang = localStorage.getItem('preferred-lang') ||
+      (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
+    location.replace('/' + lang + p);
+  })();
+  </script>
+  -->
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pages/project-detail.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <nav>
+      <button class="lang-toggle" aria-label="Toggle Language">EN/中文</button>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../work-gallery/index.html">Work Gallery</a></li>
+        <li><a href="../blog/index.html">Blog</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="project-page">
+    <!-- ============================================
+         HERO SECTION
+         Centered project title and short description
+         ============================================ -->
+    <section class="project-hero">
+      <div class="project-hero-content">
+        <h1 class="project-title">Soundboard</h1>
+        <p class="project-summary">
+          允许用户在一个简单的界面中管理和播放声音的音频工具。
+        </p>
+        <div class="project-meta">
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            2026
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+            音频工具
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            1 个月
+          </span>
+        </div>
+        
+        <!-- Tech Stack in Hero -->
+        <div class="hero-tech-stack">
+          <div class="hero-details-container">
+            <div class="hero-details-column">
+              <h3 data-i18n="project.techStack">Tech Stack</h3>
+              <ul class="tech-list">
+                <li><span class="tech-tag">C#</span></li>
+                <li><span class="tech-tag">Wwise Authoring API</span></li>
+                <li><span class="tech-tag">Avalonia</span></li>
+                <li><span class="tech-tag">AI Agent</span></li>
+                <li><span class="tech-tag">Git</span></li>
+
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3 data-i18n="project.myRole">My Role</h3>
+              <ul class="role-list">
+                <li>开发者</li>
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3 data-i18n="project.team">Team</h3>
+              <ul class="team-list">
+                <li>个人</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         CONTENT SECTIONS
+         Modular content blocks for flexible layouts
+         ============================================ -->
+    <div class="project-content">
+      
+      <!-- Full-width Image Block -->
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="../assets/images/project-pages/Jianghao Li - Soundboard/detail.png" 
+               alt="Soundboard application interface showing sound management and overview" 
+               class="full-image"
+               loading="lazy">
+          <figcaption class="image-caption">Soundboard界面</figcaption>
+        </figure>
+      </section>
+
+      <!-- Text Block - Overview -->
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2 >概述</h2>
+          <p>
+            这是一个音频工具，允许用户在一个简单的界面中管理和播放声音。
+          </p>
+          <p>
+            它直接从打开的Wwise项目中读取，并自动加载所有声音对象及其事件，为用户提供了快速概览其声音资产的能力，并且能够在不需要导航Wwise界面的情况下播放它们。
+            该应用程序使用C#和Wwise Authoring API构建，用户界面使用Avalonia框架创建。
+          </p>
+          <p>
+            该项目的开发周期为1个月，主要由我个人完成。软件的界面使用了AI Agent进行开发。融合了Gemini，ChatGPT，Claude等多个AI模型的能力，极大地加速了开发过程。
+           </p>
+        </div>
+      </section>
+
+      <!-- Image + Text Block (Image Left) -->
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <div class="media-text-content">
+            <h2>实现</h2>
+            <p>
+              该工具由两个主要组件组成：一个用Python编写的Blender插件和一个用C#编写的Unity脚本。Blender插件允许用户通过单击将他们的模型直接导出到指定的Unity项目文件夹中。
+              This tool consists of two main components: a Blender add-on written in Python
+               and a Unity script written in C#. The Blender add-on allows users to export
+                their models directly to a specified Unity project folder with a single click.
+            </p>
+            <p>
+              This was achieved by utilizing Blender's built-in FBX export functionality and
+               integrating it with a user-friendly interface that allows users to set their
+              Unity project path and export settings.
+            </p>
+          </div>
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/save method.png" 
+                 alt="Code snippet showing the save method in Blender Unity Communicator" 
+                 loading="lazy">
+                 <figcaption class="image-caption">Code Snippet</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Image + Text Block (Image Left) -->
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/select overwrite obj.png" 
+                 alt="Code snippet showing the overwrite function in Blender Unity Communicator" 
+                 loading="lazy">
+                 <figcaption class="image-caption">Code Snippet</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>Overwrite Function</h2>
+            <p>
+              One thing that makes this tool stand out is the overwrite function.
+               This function allows users to overwrite all objects in the Unity project
+                that use a specific .FBX model with the newly exported .FBX model from Blender.
+            </p>
+            <p>
+              Designers are often required to make frequent updates to 3D models during the development process.
+               This function significantly reduces the time and effort needed to update models
+                in Unity, as users no longer need to manually replace each instance of the model.
+            </p>
+          </div>
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/unity overwrite.png" 
+                 alt="Code snippet showing the overwrite function in Blender Unity Communicator" 
+                 loading="lazy">
+                 <figcaption class="image-caption">Code Snippet</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <p>
+              Specifically, the overwrite function works by searching through all GameObjects
+               in the Unity project for references to the old .FBX model and replacing them
+                with references to the newly exported model.
+            </p>
+            <p>
+              This is done using Unity's AssetDatabase and GameObject APIs, allowing for
+               efficient and automated updates to the project.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mechanics Image Grid -->
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <div class="image-grid image-grid--3col">
+            <figure class="grid-image-item">
+              <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/overwrite all obj in unity.png" 
+                   alt="Overwrite all objects in Unity" 
+                   loading="lazy">
+              <figcaption class="image-caption">Overwrite All Objects in Unity</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/interface (3).png" 
+                   alt="Before Overwriting Models in Unity" 
+                   loading="lazy">
+                   <figcaption class="image-caption">Before Overwriting Models in Unity</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/interface (1).png" 
+                   alt="After Overwriting Models in Unity" 
+                   loading="lazy">
+                   <figcaption class="image-caption">After Overwriting Models in Unity</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Image + Text Block (Image Right) -->
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/unity json.png" 
+                 alt="Diagram showing the JSON structure used for UDP communication between Blender and Unity" 
+                 loading="lazy">
+            <figcaption class="image-caption">JSON Structure</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>UDP Connection</h2>
+            <p>
+              To facilitate communication between Blender and Unity, 
+              I implemented a UDP connection that allows the two applications to exchange data in real-time.
+            </p>
+            <p>
+              This connection enables Blender to send export commands to Unity, 
+              and Unity to receive notifications when new models are available.
+            </p>
+            <p>
+              A json structure is used to format the data being sent over the UDP connection, 
+              ensuring that both applications can easily parse and understand the information.
+            </p>
+          </div>
+
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/udp (1).png" 
+                 alt="Code for UDP communication in Python" 
+                 loading="lazy">
+            <figcaption class="image-caption">UDP Python Script</figcaption>
+          </figure>
+
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - Blender Unity/udp (2).png" 
+                 alt="Code for UDP communication in Unity" 
+                 loading="lazy">
+            <figcaption class="image-caption">UDP Unity Script</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Highlight/Quote Block -->
+      <section class="content-block content-block--highlight" data-reveal>
+        <blockquote class="highlight-quote">
+          <p>"That's sick!!"</p>
+          <cite>— USC Fellow Game Student</cite>
+        </blockquote>
+      </section>
+
+
+      <!-- Call to Action / Links Block -->
+      <section class="content-block content-block--cta" data-reveal>
+        <div class="cta-container">
+          <h2>Explore the Project</h2>
+          <div class="cta-buttons">
+            <a href="https://github.com/JianghaoL/Blender_Unity_Communicator" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              View Source Code
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Navigation -->
+      <nav class="project-navigation" data-reveal>
+        <a href="../work-gallery/index.html" class="nav-link nav-link--all">
+          <span class="nav-label">All Projects</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+        </a>
+      </nav>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2026 Jianghao Li. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/main.js"></script>
+  <script src="../js/project-detail.js"></script>
+</body>
+</html>
