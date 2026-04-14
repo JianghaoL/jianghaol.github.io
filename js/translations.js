@@ -63,6 +63,11 @@ window.__translations = {
     'home.work.heading':  'Selected Work',
     'home.work.subtitle': 'Hover over a card to see details',
 
+    // Mixing Demos Section
+    'home.mixing.heading':    'Mixing Demos',
+    'home.mixing.subtitle':   'Original mixes and sound design showcases',
+    'home.mixing.comingSoon': 'Coming soon',
+
     // Work Gallery Section
     'home.gallery.heading': 'My Work Gallery',
     'home.gallery.text':    'Explore my projects and designs.',
@@ -277,6 +282,11 @@ window.__translations = {
 
     'home.work.heading':  '精选作品',
     'home.work.subtitle': '将鼠标悬停在卡片上查看详情',
+
+    // Mixing Demos Section
+    'home.mixing.heading':    '混音示例',
+    'home.mixing.subtitle':   '原创混音与声音设计展示',
+    'home.mixing.comingSoon': '即将上线',
 
     'home.gallery.heading': '我的作品展廊',
     'home.gallery.text':    '探索我的项目和设计。',
