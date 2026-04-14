@@ -228,6 +228,18 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* ---- Note (shown when audio IS set) ---- */
+.mix-card-note {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: right;
+  font-style: italic;
+}
+
+.mix-card.no-audio .mix-card-note {
+  display: none;
+}
+
 /* ---- No-audio state ---- */
 .mix-card.no-audio .mix-card-play-btn {
   background: rgba(255, 255, 255, 0.08);
