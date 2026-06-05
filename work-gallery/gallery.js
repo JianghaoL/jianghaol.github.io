@@ -164,7 +164,7 @@ const galleryData = [
     category: CATEGORIES.AUDIO_PRODUCTION,
     year: 2026,
     date: "2026-05-09",
-    thumbnail: "/assets/images/thumbnails/thumbnails (19).png",
+    thumbnail: "/assets/images/thumbnails/black-cat-carpet-live.png",
     descriptionKey: "project.blackCatCarpetLive.summary",
     techStack: ["Studio One", "Recording", "Micing", "Mixing"],
     projectPage: "../project-pages/black-cat-carpet-live.html",

@@ -234,8 +234,8 @@ window.__translations = {
     'project.soundboard.summary': 'A soundboard application for quick Wwise sound management and overview.',
 
     // -- Black Cat Carpet --
-    'project.blackCatCarpet.title':   'Black Cat Carpet Live',
-    'project.blackCatCarpet.summary': 'Band live performance. Live mixing, multitrack recording, and post-show production.',
+    'project.blackCatCarpetLive.title':   'Black Cat Carpet Live',
+    'project.blackCatCarpetLive.summary': 'Band live performance. Live mixing, multitrack recording, and post-show production.',
 
 
     // =================================================================
@@ -449,8 +449,8 @@ window.__translations = {
     'project.soundboard.title':   'Soundboard',
     'project.soundboard.summary': '一款用于快速管理与预览 Wwise 声音资源的 Soundboard 应用。',
 
-    'project.blackCatCarpet.title':   'Black Cat Carpet 现场表演',
-    'project.blackCatCarpet.summary': '乐队现场演出。现场混音、多轨录音，和演出后制作。',
+    'project.blackCatCarpetLive.title':   'Black Cat Carpet 现场表演',
+    'project.blackCatCarpetLive.summary': '乐队现场演出。现场混音、多轨录音，和演出后制作。',
 
     // =================================================================
     // WORK CAROUSEL — Generic labels (project-specific content uses project.* keys)
