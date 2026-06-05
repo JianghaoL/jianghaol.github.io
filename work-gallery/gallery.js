@@ -157,7 +157,19 @@ const galleryData = [
     techStack: ["Unity", "C#", "Perforce", "Studio One"],
     projectPage: "../project-pages/whiteout.html",
     roles: ["Game Programming", "Level Design", "Audio Implementation", "Composing"]
-  }
+  },
+  {
+    id: 11,
+    titleKey: "project.blackCatCarpetLive.title",
+    category: CATEGORIES.AUDIO_PRODUCTION,
+    year: 2026,
+    date: "2026-05-09",
+    thumbnail: "/assets/images/thumbnails/thumbnails (19).png",
+    descriptionKey: "project.blackCatCarpetLive.summary",
+    techStack: ["Studio One", "Recording", "Micing", "Mixing"],
+    projectPage: "../project-pages/black-cat-carpet-live.html",
+    roles: ["Recording Engineer", "Audio Editing", "Mixing"]
+  },
 ];
 
 // ============================================
