@@ -123,7 +123,9 @@
       e.preventDefault();
       var newLang = (lang === 'en') ? 'zh' : 'en';
       localStorage.setItem('preferred-lang', newLang);
-      window.location.href = getAlternateUrl(lang);
+      // Pages whose localized versions use different filenames can provide
+      // their explicit counterpart with data-alt-lang-url.
+      window.location.href = btn.getAttribute('data-alt-lang-url') || getAlternateUrl(lang);
     });
   }
 

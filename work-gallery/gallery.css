@@ -582,6 +582,35 @@
   opacity: 0.6;
 }
 
+.card-thumbnail--video .card-thumbnail-placeholder {
+  flex-direction: column;
+  gap: 0.75rem;
+  background:
+    radial-gradient(circle at center, rgba(106, 176, 243, 0.2), transparent 38%),
+    linear-gradient(135deg, #11152d, #1b2445 55%, #101326);
+}
+
+.card-thumbnail--video .card-thumbnail-placeholder svg {
+  width: 58px;
+  height: 58px;
+  padding: 17px;
+  fill: var(--bg);
+  stroke: none;
+  color: var(--bg);
+  opacity: 1;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 24px rgba(106, 176, 243, 0.35);
+}
+
+.card-thumbnail--video .card-thumbnail-placeholder span {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 /* Hide placeholder when thumbnail image is loaded */
 .card-thumbnail[style*="background-image"] .card-thumbnail-placeholder {
   opacity: 0;

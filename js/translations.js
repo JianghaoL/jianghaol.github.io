@@ -68,6 +68,17 @@ window.__translations = {
     'home.mixing.subtitle':   'Original mixes and sound design showcases',
     'home.mixing.comingSoon': 'Coming soon',
 
+    // Sound Redesign Reels Section
+    'home.reels.heading':          'Sound Redesign Reels',
+    'home.reels.subtitle':         'Selected scenes reimagined through original sound design',
+    'home.reels.comingSoon':       'Coming soon',
+    'home.reels.available':        'Watch now',
+    'home.reels.card.title':       'Ripout Redesign',
+    'home.reels.card.description': 'A game clip rebuilt with synthesizers, Foley, sound libraries, and an entirely new mix.',
+    'home.reels.card.category':    'Sound Design',
+    'home.reels.card.cta':         'View reel →',
+    'home.reels.card.aria':        'View Ripout Redesign',
+
     // Work Gallery Section
     'home.gallery.heading': 'My Work Gallery',
     'home.gallery.text':    'Explore my projects and designs.',
@@ -237,6 +248,10 @@ window.__translations = {
     'project.blackCatCarpetLive.title':   'Black Cat Carpet Live',
     'project.blackCatCarpetLive.summary': 'Band live performance. Live mixing, multitrack recording, and post-show production.',
 
+    // -- Sound Redesign Reel --
+    'project.soundRedesignReel.title':   'Ripout Redesign',
+    'project.soundRedesignReel.summary': 'A game clip rebuilt with synthesizers, Foley, sound libraries, and an entirely new mix.',
+
 
     // =================================================================
     // WORK CAROUSEL — Generic labels (project-specific content uses project.* keys)
@@ -252,8 +267,12 @@ window.__translations = {
     'category.developmentTool':  'Development Tool',
     'category.audioTool':        'Audio Tool',
     'category.audioProduction':  'Audio Production',
+    'category.soundRedesignReels': 'Sound Redesign Reels',
     'category.theater':          'Theater',
     'gallery.viewProject':       'View Project',
+    'gallery.reelPreview':       'Video showcase',
+    'gallery.projectCount.one':  'project',
+    'gallery.projectCount.many': 'projects',
   },
 
   // =========================================================================
@@ -296,6 +315,17 @@ window.__translations = {
     'home.mixing.heading':    '混音示例',
     'home.mixing.subtitle':   '原创混音与声音设计展示',
     'home.mixing.comingSoon': '即将上线',
+
+    // Sound Redesign Reels Section
+    'home.reels.heading':          '声音重设计作品集',
+    'home.reels.subtitle':         '以原创声音设计重新演绎精选影像片段',
+    'home.reels.comingSoon':       '即将上线',
+    'home.reels.available':        '立即观看',
+    'home.reels.card.title':       'Ripout 声音重设计',
+    'home.reels.card.description': '以合成器、拟音、声音库和全新混音重塑游戏片段。',
+    'home.reels.card.category':    '声音设计',
+    'home.reels.card.cta':         '查看作品 →',
+    'home.reels.card.aria':        '查看 Ripout 声音重设计',
 
     'home.gallery.heading': '我的作品展廊',
     'home.gallery.text':    '探索我的项目和设计。',
@@ -452,6 +482,9 @@ window.__translations = {
     'project.blackCatCarpetLive.title':   'Black Cat Carpet 现场表演',
     'project.blackCatCarpetLive.summary': '乐队现场演出。现场混音、多轨录音，和演出后制作。',
 
+    'project.soundRedesignReel.title':   'Ripout 声音重设计',
+    'project.soundRedesignReel.summary': '以合成器、拟音、声音库和全新混音重塑游戏片段。',
+
     // =================================================================
     // WORK CAROUSEL — Generic labels (project-specific content uses project.* keys)
     // =================================================================
@@ -466,7 +499,11 @@ window.__translations = {
     'category.developmentTool':  '开发工具',
     'category.audioTool':        '音频工具',
     'category.audioProduction':  '音频制作',
+    'category.soundRedesignReels': '声音重设计作品集',
     'category.theater':          '戏剧',
     'gallery.viewProject':       '查看项目',
+    'gallery.reelPreview':       '视频作品',
+    'gallery.projectCount.one':  '个项目',
+    'gallery.projectCount.many': '个项目',
   }
 };

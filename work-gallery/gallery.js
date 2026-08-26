@@ -24,6 +24,7 @@ const CATEGORIES = {
   DEVELOPMENT_TOOL: 'category.developmentTool',
   AUDIO_TOOL: 'category.audioTool',
   AUDIO_PRODUCTION: 'category.audioProduction',
+  SOUND_REDESIGN_REELS: 'category.soundRedesignReels',
   THEATER: 'category.theater'
 };
 
@@ -170,6 +171,22 @@ const galleryData = [
     projectPage: "../project-pages/black-cat-carpet-live.html",
     roles: ["Recording Engineer", "Audio Editing", "Mixing"]
   },
+  {
+    id: 12,
+    titleKey: "project.soundRedesignReel.title",
+    category: CATEGORIES.SOUND_REDESIGN_REELS,
+    year: 2026,
+    date: "2026-08-25",
+    thumbnail: "",
+    mediaType: "video",
+    descriptionKey: "project.soundRedesignReel.summary",
+    techStack: ["Reaper", "Vital", "Recording", "Foley", "Mixing"],
+    projectPage: {
+      en: "../project-pages/ripout-redesign.html",
+      zh: "../project-pages/ripout-redesign.html"
+    },
+    roles: ["Sound Designer", "Foley Artist", "Re-recording Mixer"]
+  },
 ];
 
 // ============================================
@@ -253,9 +270,14 @@ class WorkGallery {
         );
         break;
       case 'alpha':
-        this.sortedData = [...this.data].sort((a, b) => 
-          a.title.localeCompare(b.title)
-        );
+        // The navigation ranges are A-Z, so use the English project name for
+        // stable grouping while cards continue to display the active language.
+        this.sortedData = [...this.data].sort((a, b) => {
+          const english = (window.__translations && window.__translations.en) || {};
+          const aTitle = english[a.titleKey] || this.getTranslation(a.titleKey);
+          const bTitle = english[b.titleKey] || this.getTranslation(b.titleKey);
+          return aTitle.localeCompare(bTitle, 'en');
+        });
         break;
       default:
         this.sortedData = [...this.data];
@@ -275,6 +297,9 @@ class WorkGallery {
     // Get translated text
     const title = this.getTranslation(item.titleKey);
     const description = this.getTranslation(item.descriptionKey);
+    const projectPage = typeof item.projectPage === 'object'
+      ? (item.projectPage[this.currentLang] || item.projectPage.en)
+      : item.projectPage;
     
     const techTags = item.techStack
       .slice(0, 4) // Show max 4 tech tags on card
@@ -292,9 +317,15 @@ class WorkGallery {
       : '';
 
     // Check if thumbnail exists or use placeholder
-    const thumbnailStyle = item.thumbnail 
+    const thumbnailStyle = item.thumbnail
       ? `background-image: url('${item.thumbnail}')`
       : '';
+    const thumbnailClass = item.mediaType === 'video'
+      ? 'card-thumbnail card-thumbnail--video'
+      : 'card-thumbnail';
+    const thumbnailPlaceholder = item.mediaType === 'video'
+      ? `${this.getIcon('play')}<span>${this.getTranslation('gallery.reelPreview')}</span>`
+      : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>`;
 
     // AI Used tag (optional)
     const aiTag = item.aiUsed ? `
@@ -307,18 +338,14 @@ class WorkGallery {
     ` : '';
 
     return `
-      <article class="gallery-card" data-id="${item.id}" data-project-url="${item.projectPage}" style="--card-index: ${index}">
-        <a href="${item.projectPage}" class="gallery-card-link" aria-label="View ${title} project details">
+      <article class="gallery-card" data-id="${item.id}" data-project-url="${projectPage}" style="--card-index: ${index}">
+        <a href="${projectPage}" class="gallery-card-link" aria-label="View ${title} project details">
           <div class="gallery-card-inner">
             <!-- Front Side -->
             <div class="gallery-card-front">
-              <div class="card-thumbnail" style="${thumbnailStyle}">
+              <div class="${thumbnailClass}" style="${thumbnailStyle}">
                 <div class="card-thumbnail-placeholder">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                    <polyline points="21 15 16 10 5 21"></polyline>
-                  </svg>
+                  ${thumbnailPlaceholder}
                 </div>
               </div>
               <div class="card-front-content">
@@ -418,7 +445,8 @@ class WorkGallery {
     // Preferred ordering: Game Development and Game Audio first
     const preferredOrder = [
       CATEGORIES.GAME_DEVELOPMENT,
-      CATEGORIES.GAME_AUDIO
+      CATEGORIES.GAME_AUDIO,
+      CATEGORIES.SOUND_REDESIGN_REELS
     ];
 
     // Get categories and sort with preference first, then alphabetically
@@ -448,7 +476,7 @@ class WorkGallery {
               ${this.getIcon('category')}
             </div>
             <h3 class="category-title">${this.getTranslation(category)}</h3>
-            <span class="category-count">${items.length} project${items.length !== 1 ? 's' : ''}</span>
+            <span class="category-count">${items.length} ${this.getTranslation(items.length === 1 ? 'gallery.projectCount.one' : 'gallery.projectCount.many')}</span>
           </div>
           <div class="category-cards">
             ${items.map((item, idx) => {
@@ -480,7 +508,10 @@ class WorkGallery {
     });
 
     this.sortedData.forEach(item => {
-      const title = this.getTranslation(item.titleKey);
+      // A-Z ranges are based on the English project name so localized titles
+      // that begin with Chinese characters remain reachable in this view.
+      const english = (window.__translations && window.__translations.en) || {};
+      const title = english[item.titleKey] || this.getTranslation(item.titleKey);
       const firstLetter = title.charAt(0).toUpperCase();
       for (const range of alphaRanges) {
         if (range.letters.includes(firstLetter)) {
