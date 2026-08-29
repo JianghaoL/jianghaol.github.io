@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>About Me</title>
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/apple-refactor.css">
 </head>
 <body>
   {{> header/header-19ffe1c5df}}
@@ -103,7 +106,7 @@
       <div class="resume-modal-content">
         <div class="resume-html-content">
           <h2 data-i18n="resume.name">Jianghao Li</h2>
-          <p style="color: var(--accent); margin-bottom: 0.5rem;" data-i18n="resume.role">Game Designer & Developer</p>
+          <p class="resume-role" data-i18n="resume.role">Game Designer & Developer</p>
           
           <div class="resume-contact-info">
             <span>

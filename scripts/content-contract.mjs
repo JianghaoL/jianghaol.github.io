@@ -26,9 +26,10 @@ function extractContract(html) {
     .filter(Boolean);
 
   const urls = [];
+  const contentElementPattern = /<(?:a|img|source|video|audio|iframe)\b[^>]*>/gi;
   const urlPattern = /\b(?:href|src|poster|data-audio)\s*=\s*(["'])(.*?)\1/gi;
-  for (const match of withoutNonContent.matchAll(urlPattern)) {
-    urls.push(match[2]);
+  for (const element of withoutNonContent.matchAll(contentElementPattern)) {
+    for (const match of element[0].matchAll(urlPattern)) urls.push(match[2]);
   }
 
   return { text, urls };

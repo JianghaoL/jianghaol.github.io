@@ -71,8 +71,6 @@
         "Download Resume (PDF)"
       ],
       "urls": [
-        "css/reset.css",
-        "css/style.css",
         "index.html",
         "work-gallery/index.html",
         "blog/index.html",
@@ -80,7 +78,7 @@
         "assets/images/about/me.jpg",
         "assets/documents/Jianghao Li - Resume (EN).pdf"
       ],
-      "digest": "1c1154f9076f3eb088f9b7407d8aabd95eb70113191bc683f8421ce7004774f4"
+      "digest": "d296b3874d596749fcdde5fb062456e9ee6e01b7761f307990ab403b86facc2d"
     },
     "blog/index.html": {
       "text": [
@@ -96,15 +94,12 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "../css/reset.css",
-        "../css/style.css",
-        "blog.css",
         "../index.html",
         "../work-gallery/index.html",
         "index.html",
         "../about.html"
       ],
-      "digest": "8c6d4a1c71f309d13fcb96e32562a7305f5292d65e3c0cc2e3bb0190642079b7"
+      "digest": "3a7a7f48f908adc7175ecfd5dbd5508bc16aac5d3d2bbdceb178ef1a4f3fc58f"
     },
     "en/about.html": {
       "text": [
@@ -176,8 +171,6 @@
         "Download Resume (PDF)"
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
         "index.html",
         "work-gallery/index.html",
         "blog/index.html",
@@ -185,7 +178,7 @@
         "/assets/images/about/me.jpg",
         "/assets/documents/Jianghao Li - Resume (EN).pdf"
       ],
-      "digest": "afb8bbe51a5cc942dcb282497e2ccf9491f152a10ad48fd42c6fee4efc523797"
+      "digest": "89fcafcd233caf1d5bdf5cf0d039cbbc6a3df2337cc7e609e716b1abaf4543ac"
     },
     "en/blog/index.html": {
       "text": [
@@ -201,15 +194,12 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/blog/blog.css",
         "../index.html",
         "../work-gallery/index.html",
         "index.html",
         "../about.html"
       ],
-      "digest": "b567b34ddcb466cf63da627d3e1b061ed6dbb9f0ca8e85a0537a1978b81e9c31"
+      "digest": "3a7a7f48f908adc7175ecfd5dbd5508bc16aac5d3d2bbdceb178ef1a4f3fc58f"
     },
     "en/index.html": {
       "text": [
@@ -313,15 +303,10 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
         "index.html",
         "work-gallery/index.html",
         "blog/index.html",
         "about.html",
-        "/assets/audio/mix-demos/The Hardest Part - Mixdown.mp3",
-        "",
-        "",
         "project-pages/ripout-redesign.html",
         "/assets/images/thumbnails/ripout.jpg",
         "work-gallery/index.html",
@@ -332,7 +317,7 @@
         "https://github.com/JianghaoL",
         "/assets/documents/Jianghao Li - Resume (EN).pdf"
       ],
-      "digest": "8b4bbd11d03c47c67328dfee032ab79e26235690ae7387d4fd08af455378b7e8"
+      "digest": "1c733f91975f232fe94f50bfad832fdfb89f09725d813558b11552e63dc2bec6"
     },
     "en/project-pages/blender-unity-communicator.html": {
       "text": [
@@ -409,9 +394,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -429,7 +411,7 @@
         "https://github.com/JianghaoL/Blender_Unity_Communicator",
         "../work-gallery/index.html"
       ],
-      "digest": "67d343ad7e5865b2c93c3fc088402863899eb1332ae5197795adb32ba9998dff"
+      "digest": "042e3615761b36bc077733bc6470e3373e8c7f92fe26ee93e065672529c93f21"
     },
     "en/project-pages/crossfadER.html": {
       "text": [
@@ -500,9 +482,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -517,7 +496,7 @@
         "https://github.com/JianghaoL/CrossfadER/releases/tag/v1.0.0",
         "../work-gallery/index.html"
       ],
-      "digest": "07d63448815c90824e7a70a1d50b5561da00cbd76198dc97892036a697b129a7"
+      "digest": "302500129f3c6dbff0b1629db1490b0fac1988d57fa84cc187bd9912a568de69"
     },
     "en/project-pages/dough-it-yourself.html": {
       "text": [
@@ -597,9 +576,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -615,7 +591,7 @@
         "https://legend-lou.itch.io/dough",
         "../work-gallery/index.html"
       ],
-      "digest": "0af2e2194143234843dd9cc08af885ff1dc35074da8fc1169850eabd06011a32"
+      "digest": "12667cef11816ffa565338e956ce75f611789962e321a80e0d54f6f1afe30b6d"
     },
     "en/project-pages/forest-fears.html": {
       "text": [
@@ -727,9 +703,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -756,7 +729,7 @@
         "https://github.com/JianghaoL/Forest-Fears",
         "../work-gallery/index.html"
       ],
-      "digest": "2ff8ce7003815799e2ede7e5dd35f5d652d81bcb311dd24552fb8b7aa72a3f3c"
+      "digest": "152d6eef9a7850a15779ba4ef9434d6d0a05b2278d6f912da82b0c449f3583d4"
     },
     "en/project-pages/mantle.html": {
       "text": [
@@ -820,9 +793,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -835,7 +805,7 @@
         "https://store.steampowered.com/app/3714810/Mantle/?beta=0",
         "../work-gallery/index.html"
       ],
-      "digest": "15a03a6b6ced50e3f7d3baabc2282a7baa7f55354affad75c5d17b128a667521"
+      "digest": "964e09a5729777cfc3e87bf485cdb0bffb154d2c9d6fea3e5cd57f8e9e91fb95"
     },
     "en/project-pages/ripout-redesign.html": {
       "text": [
@@ -883,9 +853,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -895,7 +862,7 @@
         "/assets/videos/sound-redesign-reels/Ripout_Redesign.mp4",
         "../index.html#sound-redesign-reels"
       ],
-      "digest": "a7f313e6db642c8698c4f02943b1e4e2a95df696371df69756069724c706780e"
+      "digest": "7e192abda1a18a2bb25e5721f2ee72f21c9093fbc8fb0b42dc7933f22b4aa282"
     },
     "en/project-pages/sisyphus-worst-day.html": {
       "text": [
@@ -976,9 +943,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -1000,7 +964,7 @@
         "https://store.steampowered.com/app/4700250/Sisyphuss_Worst_Day_again/",
         "../work-gallery/index.html"
       ],
-      "digest": "568ed783c95ad937149e60e930703baca9f1acd9f50e37741b0d2f7e50b38654"
+      "digest": "3771c0ab0466d79bf9fa0638c7f6ddbf7411f5406525a1c6d9b42a5775c6f76d"
     },
     "en/project-pages/sound-redesign-reel.html": {
       "text": [
@@ -1048,9 +1012,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -1058,7 +1019,7 @@
         "../index.html#sound-redesign-reels",
         "../index.html#sound-redesign-reels"
       ],
-      "digest": "1303c241668f2d473956b501ab7ef838aa071921ca67a28d808853dc46a71038"
+      "digest": "fc4c421ac350dda52674bd45b1dce998fa86b3dfdb30590d704649f6822cf5ce"
     },
     "en/project-pages/soundboard.html": {
       "text": [
@@ -1122,9 +1083,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -1144,7 +1102,7 @@
         "https://github.com/JianghaoL/WwiseSoundCaster",
         "../work-gallery/index.html"
       ],
-      "digest": "c853eb04c50670a5ae8829404d6160e6c3250ed50aeb781261c717e12c35c009"
+      "digest": "1611efc339fc23e61e2565cdce5deb4a4e0fb6406935f61326f910d150c27207"
     },
     "en/project-pages/spongebob-musical.html": {
       "text": [
@@ -1203,9 +1161,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -1218,7 +1173,7 @@
         "https://mp.weixin.qq.com/s/Pm9cUDCVk4pkClJPOTvDow",
         "../work-gallery/index.html"
       ],
-      "digest": "f191cf2b1c1833e67fe97234a41cf812b3f6384606b621a9e821ec65b2c55f3f"
+      "digest": "e02fec28d3167b5bbda24584c8894445b95372595fa9349335a23abdf45ded4b"
     },
     "en/project-pages/spongebob-soundtrack.html": {
       "text": [
@@ -1267,9 +1222,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -1281,7 +1233,7 @@
         "https://drive.google.com/file/d/1-jvO_n5YdvFRZa4DF1eu-l9V_-qzSd7v/view",
         "../work-gallery/index.html"
       ],
-      "digest": "1ab99195066b9c6c92b8820b0b71b1379f7c0658d237a1c271f48024becd2477"
+      "digest": "67047ad5f3b642db2e18ec021a2e093aa2f3d3838277cedec222750ca36871ec"
     },
     "en/project-pages/theme-for-carnival.html": {
       "text": [
@@ -1326,9 +1278,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -1340,7 +1289,7 @@
         "https://drive.google.com/file/d/15JC6R9L5IOW_GV32cHWXat0LoK1xFJGG/view",
         "../work-gallery/index.html"
       ],
-      "digest": "6093ed7a5a9e21a25725c66b5c8f4d9860e22b2bf419d36403986ed885985845"
+      "digest": "e47a00516b10c5cd4a5f32becd07f65f3c7ec84ce8e23150e5afde15edb927fe"
     },
     "en/project-pages/unity-audio-callback-system.html": {
       "text": [
@@ -1421,9 +1370,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -1440,7 +1386,7 @@
         "https://github.com/JianghaoL/Unity-Audio-Callback-System",
         "../work-gallery/index.html"
       ],
-      "digest": "623e692db2aafe0ba8962afb92a8869fcc74a4618b310959bc0d076bd34c9b9f"
+      "digest": "1a1c9580d4bba4807d30818f0f61156cf3dc9197a9ed6563ca1bb1e90924747e"
     },
     "en/project-pages/whiteout.html": {
       "text": [
@@ -1547,9 +1493,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -1568,7 +1511,7 @@
         "https://mrfroglijianghao.itch.io/whiteout",
         "../work-gallery/index.html"
       ],
-      "digest": "46c55936fe5fd52b862a5e5a642773f061db15e63ef3029474c83edd78874b71"
+      "digest": "80f6173a7d71ed55da67aace9ba855a12eb89a68f33289881ed2d180b0ed281a"
     },
     "en/work-gallery/index.html": {
       "text": [
@@ -1586,15 +1529,12 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/work-gallery/gallery.css",
         "../index.html",
         "index.html",
         "../blog/index.html",
         "../about.html"
       ],
-      "digest": "3979913db6241e2f0a67e0aa816b38f410511609d83f0e18fe606154bc3edc2d"
+      "digest": "38106ee9511db11b66b00dd86cbc01cabef1c7215c1f78ac887a9f2ce05c179d"
     },
     "index.html": {
       "text": [
@@ -1699,15 +1639,10 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "css/reset.css",
-        "css/style.css",
         "index.html",
         "work-gallery/index.html",
         "blog/index.html",
         "about.html",
-        "assets/audio/mix-demos/The Hardest Part - Mixdown.mp3",
-        "",
-        "",
         "project-pages/ripout-redesign.html",
         "/assets/images/thumbnails/ripout.jpg",
         "work-gallery/index.html",
@@ -1718,7 +1653,7 @@
         "https://github.com/JianghaoL",
         "assets/documents/Jianghao Li - Resume (EN).pdf"
       ],
-      "digest": "b13ce03ae43698bace4d2d814478a3ea56e671eccc39869bbb3d3cd04c2ec507"
+      "digest": "cc69539fd8524db3b5e809a3cc32abe3c7e3c7e57f1dcbc46aeeacd49cd11856"
     },
     "project-pages/blender-unity-communicator.html": {
       "text": [
@@ -1795,9 +1730,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "../css/reset.css",
-        "../css/style.css",
-        "../css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -1815,7 +1747,7 @@
         "https://github.com/JianghaoL/Blender_Unity_Communicator",
         "../work-gallery/index.html"
       ],
-      "digest": "65670f356122becf5aa73f50d7503803b64eb06acf12199e27e26602cc2bef86"
+      "digest": "022bf939dd39e6e76ae574d991bf083f1c7fd9e4eed4910499c47a31e0b892b7"
     },
     "project-pages/crossfadER.html": {
       "text": [
@@ -1886,9 +1818,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "../css/reset.css",
-        "../css/style.css",
-        "../css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -1903,7 +1832,7 @@
         "https://github.com/JianghaoL/CrossfadER/releases/tag/v1.0.0",
         "../work-gallery/index.html"
       ],
-      "digest": "432244d58a1dd205d8ba2cbcc97dc9a065980b253e9f67f453f62c7a20f85ee4"
+      "digest": "bbf0dbc8d9408a54a1a068c12586595e520eb867f9cf185f139c9282bfbe51d6"
     },
     "project-pages/dough-it-yourself.html": {
       "text": [
@@ -1983,9 +1912,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "../css/reset.css",
-        "../css/style.css",
-        "../css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -2001,7 +1927,7 @@
         "https://legend-lou.itch.io/dough",
         "../work-gallery/index.html"
       ],
-      "digest": "1fbfd13b6dc7af317895a75924aac5c7254f72dce746b6f3bc87c935789804a0"
+      "digest": "d9195b528c85d7e03ec413d0901853a267c75db9ce56572bfe869d060d349ade"
     },
     "project-pages/forest-fears.html": {
       "text": [
@@ -2113,9 +2039,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "../css/reset.css",
-        "../css/style.css",
-        "../css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -2142,7 +2065,7 @@
         "https://github.com/JianghaoL/Forest-Fears",
         "../work-gallery/index.html"
       ],
-      "digest": "8b317b9d2549db1e796a32132515e4bfd00ecde729738ef236722734db6dfde5"
+      "digest": "c4c0a3850b945154e02daa3e06070d07c8d392d53145a236b93816664d0c0870"
     },
     "project-pages/mantle.html": {
       "text": [
@@ -2206,9 +2129,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "../css/reset.css",
-        "../css/style.css",
-        "../css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -2221,7 +2141,7 @@
         "https://store.steampowered.com/app/3714810/Mantle/?beta=0",
         "../work-gallery/index.html"
       ],
-      "digest": "302377d22026c3c6bb8f0930e1617d8c63a89ace63b47dd08a46fc143b553a5a"
+      "digest": "b3c8fe162dff7e883706925aba2842be557268319c42af8d3a06b1f42b225e0a"
     },
     "project-pages/ripout-redesign.html": {
       "text": [
@@ -2279,9 +2199,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "../css/reset.css",
-        "../css/style.css",
-        "../css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -2294,7 +2211,7 @@
         "https://store.steampowered.com/app/4700250/Sisyphuss_Worst_Day_again/",
         "../work-gallery/index.html"
       ],
-      "digest": "aaa6ae1778f95c33313654863dabbd1e38d68ce1bae6e18ad31192dfabe0d5d5"
+      "digest": "19a58b9e29b237e8349588e8ec7631833fcdc6e96b15f9b7e0634a5724ff6e22"
     },
     "project-pages/sound-redesign-reel.html": {
       "text": [
@@ -2381,9 +2298,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "../css/reset.css",
-        "../css/style.css",
-        "../css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -2401,7 +2315,7 @@
         "https://github.com/JianghaoL/Blender_Unity_Communicator",
         "../work-gallery/index.html"
       ],
-      "digest": "cc7f77dfa3a768e9db9d5a6aad7eb461f48fd3034510e945f2cfe3c543f409e4"
+      "digest": "8ffe305b0c7ddb68e36287a1559544ffb54cf90b286c2286f9cf1e1961bdb167"
     },
     "project-pages/spongebob-musical.html": {
       "text": [
@@ -2460,9 +2374,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "../css/reset.css",
-        "../css/style.css",
-        "../css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -2475,7 +2386,7 @@
         "https://mp.weixin.qq.com/s/Pm9cUDCVk4pkClJPOTvDow",
         "../work-gallery/index.html"
       ],
-      "digest": "40ffb3ae0bf3d8599e11804d375aafcf24d6737bf156f20e69c746269141cac3"
+      "digest": "2f9ff0a7223120064f04dcd45960de79f7a22bb851d994746c4d2bf976aa01a4"
     },
     "project-pages/spongebob-soundtrack.html": {
       "text": [
@@ -2524,9 +2435,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "../css/reset.css",
-        "../css/style.css",
-        "../css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -2538,7 +2446,7 @@
         "https://drive.google.com/file/d/1-jvO_n5YdvFRZa4DF1eu-l9V_-qzSd7v/view",
         "../work-gallery/index.html"
       ],
-      "digest": "43dc64188c2c548afc63070344c1322c9b957126dfd2a01c782938df17659bff"
+      "digest": "3491738d1c8f191bae560f167fd245a80459b1f8198ee7768488727c3fbcf4be"
     },
     "project-pages/theme-for-carnival.html": {
       "text": [
@@ -2583,9 +2491,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "../css/reset.css",
-        "../css/style.css",
-        "../css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -2597,7 +2502,7 @@
         "https://drive.google.com/file/d/15JC6R9L5IOW_GV32cHWXat0LoK1xFJGG/view",
         "../work-gallery/index.html"
       ],
-      "digest": "770c6d1adbcbc468a6502685d1e05ab5b3b0919650960ddec68bbee0229042cb"
+      "digest": "71a215aba418047df74ff55f3abb3cc197bc4dc03de14d414d542c9e60a66d92"
     },
     "project-pages/unity-audio-callback-system.html": {
       "text": [
@@ -2605,12 +2510,8 @@
         "Unity Audio Callback System",
         "Redirecting to the selected language…"
       ],
-      "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css"
-      ],
-      "digest": "bb93690b4a3be6fcff2e8e1baf0893349bf69b97220522592d906ce995d5cc8f"
+      "urls": [],
+      "digest": "466ede015c09a3ce1a60e0782860d7cf617a2881e18cf6d64173c74599433b9b"
     },
     "project-pages/whiteout.html": {
       "text": [
@@ -2717,9 +2618,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "../css/reset.css",
-        "../css/style.css",
-        "../css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -2738,7 +2636,7 @@
         "https://mrfroglijianghao.itch.io/whiteout",
         "../work-gallery/index.html"
       ],
-      "digest": "34aac51a0ea48d0d08b861eb006765d75e900aad7bb39fb212cf692837180b76"
+      "digest": "711ed67996080e0afbd3c2355453c852922a55dae839783c1d667e4b8cc242ca"
     },
     "project-template.html": {
       "text": [
@@ -2831,9 +2729,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "css/reset.css",
-        "css/style.css",
-        "css/pages/project-detail.css",
         "index.html",
         "work-gallery/index.html",
         "blog/index.html",
@@ -2850,7 +2745,7 @@
         "#",
         "work-gallery/index.html"
       ],
-      "digest": "a4354b0a252932e14f797a39fc8d4e4869fa4c602918b7083e8f46b63071d456"
+      "digest": "f61089b47a1a2d67cf253230020b91da1aae9fe595c1109f18d74437efcfcc26"
     },
     "work-gallery/index.html": {
       "text": [
@@ -2868,15 +2763,12 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "../css/reset.css",
-        "../css/style.css",
-        "gallery.css",
         "../index.html",
         "index.html",
         "../blog/index.html",
         "../about.html"
       ],
-      "digest": "395f5792a776332dd7044d0659f1921a68043f490ad41eec1529abaa4f20ae7f"
+      "digest": "38106ee9511db11b66b00dd86cbc01cabef1c7215c1f78ac887a9f2ce05c179d"
     },
     "zh/about.html": {
       "text": [
@@ -2948,8 +2840,6 @@
         "下载简历 (PDF)"
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
         "index.html",
         "work-gallery/index.html",
         "blog/index.html",
@@ -2957,7 +2847,7 @@
         "/assets/images/about/me.jpg",
         "/assets/documents/Jianghao Li - Resume (CN).pdf"
       ],
-      "digest": "22d37a11af84691b205d4577e8e07564ba8314d087dd6b5c58505d851458b5f9"
+      "digest": "39de6d1c6e0bed032736637d44ae778fa271da7c0fa971bf58790eae2149260f"
     },
     "zh/blog/index.html": {
       "text": [
@@ -2973,15 +2863,12 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/blog/blog.css",
         "../index.html",
         "../work-gallery/index.html",
         "index.html",
         "../about.html"
       ],
-      "digest": "b567b34ddcb466cf63da627d3e1b061ed6dbb9f0ca8e85a0537a1978b81e9c31"
+      "digest": "3a7a7f48f908adc7175ecfd5dbd5508bc16aac5d3d2bbdceb178ef1a4f3fc58f"
     },
     "zh/index.html": {
       "text": [
@@ -3085,15 +2972,10 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
         "index.html",
         "work-gallery/index.html",
         "blog/index.html",
         "about.html",
-        "/assets/audio/mix-demos/The Hardest Part - Mixdown.mp3",
-        "",
-        "",
         "project-pages/ripout-redesign.html",
         "/assets/images/thumbnails/ripout.jpg",
         "work-gallery/index.html",
@@ -3104,7 +2986,7 @@
         "https://github.com/JianghaoL",
         "/assets/documents/Jianghao Li - Resume (CN).pdf"
       ],
-      "digest": "ef6339feb2acc5ea71d0c40f7f864e2eaa88dfc2cfad8afdbc28779c05bb1cf9"
+      "digest": "9e5a0fe1967b9aa2d72a3df94b9eab9ba92e799b4f8b81ae78122f15232bc7bd"
     },
     "zh/project-pages/blender-unity-communicator.html": {
       "text": [
@@ -3167,9 +3049,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -3187,7 +3066,7 @@
         "https://github.com/JianghaoL/Blender_Unity_Communicator",
         "../work-gallery/index.html"
       ],
-      "digest": "63c69169d30121340a3de696d601f59a62ecc84b3b41b455eb80afe497fcc016"
+      "digest": "54a8e8b37159bb658a409180a99c66546aedc25fad15fe4bc3bab6d9a5c75662"
     },
     "zh/project-pages/crossfadER.html": {
       "text": [
@@ -3248,9 +3127,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -3265,7 +3141,7 @@
         "https://github.com/JianghaoL/CrossfadER/releases/tag/v1.0.0",
         "../work-gallery/index.html"
       ],
-      "digest": "dc0636c3084e980c9ab96a883622f66cc1ec9d83f7e62c2376fb880e778717fc"
+      "digest": "5915d312f84a94b487870a0be2d72534eb6fcc79f65e9bf48f02d606a56b093e"
     },
     "zh/project-pages/dough-it-yourself.html": {
       "text": [
@@ -3342,9 +3218,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -3360,7 +3233,7 @@
         "https://legend-lou.itch.io/dough",
         "../work-gallery/index.html"
       ],
-      "digest": "da7584d17a6af06ccfe34d15cefcbdc9dd6a696d007f6764a9f5a03d2d071d55"
+      "digest": "56357795f315f007d8b39abc54ca6292f88b61ba3ea473ccacd98752a332c282"
     },
     "zh/project-pages/forest-fears.html": {
       "text": [
@@ -3468,9 +3341,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -3497,7 +3367,7 @@
         "https://github.com/JianghaoL/Forest-Fears",
         "../work-gallery/index.html"
       ],
-      "digest": "80631abb2295b73813fc8b9b5e9f9f809dfc7ccbcb24f5990dabd44e08375006"
+      "digest": "9dab395cf577bd5c30dc2175bfa87358c1790daa07477e838578050784ac8673"
     },
     "zh/project-pages/mantle.html": {
       "text": [
@@ -3557,9 +3427,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -3572,7 +3439,7 @@
         "https://store.steampowered.com/app/3714810/Mantle/?beta=0",
         "../work-gallery/index.html"
       ],
-      "digest": "72a303f2d61e6c91992d7d447a6bd0b4815ca37f0b73da0e7692f7abd0a9684f"
+      "digest": "ba2ed43264a06d72f895f445d57bba7ba0b8478435a8a29b3848134b46363e5c"
     },
     "zh/project-pages/ripout-redesign.html": {
       "text": [
@@ -3620,9 +3487,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -3632,7 +3496,7 @@
         "/assets/videos/sound-redesign-reels/Ripout_Redesign.mp4",
         "../index.html#sound-redesign-reels"
       ],
-      "digest": "2b6443be71938d4f3447d18c0db6d1692cdea1c970ef56f5fe527c59875abbe4"
+      "digest": "f95781f0ea634ef5f1ceabf2cb3516f218c54a8f8c155faa529d9e26fcfc1bf1"
     },
     "zh/project-pages/sisyphus-worst-day.html": {
       "text": [
@@ -3710,9 +3574,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -3734,7 +3595,7 @@
         "https://store.steampowered.com/app/4700250/Sisyphuss_Worst_Day_again/",
         "../work-gallery/index.html"
       ],
-      "digest": "aed886d4a6c2993d43b531b3b418b99e5b9c2041f4525b3f28d7b06f7f34b400"
+      "digest": "843a9bae196a986f17d22e02d173e945dd55997a1dc83d1df7ac4f5557d251d5"
     },
     "zh/project-pages/soundboard.html": {
       "text": [
@@ -3798,9 +3659,6 @@
         "&copy; 2026 Jianghao Li. 保留所有权利。"
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -3820,7 +3678,7 @@
         "https://github.com/JianghaoL/WwiseSoundCaster",
         "../work-gallery/index.html"
       ],
-      "digest": "5a66c20884688e1433769b62db184db90fc83277296a7762656293d00939caf0"
+      "digest": "e86350c7d79d478f9924da3a86b00a037744e93678bcbc67a9add4216379320d"
     },
     "zh/project-pages/spongebob-musical.html": {
       "text": [
@@ -3877,9 +3735,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -3892,7 +3747,7 @@
         "https://mp.weixin.qq.com/s/Pm9cUDCVk4pkClJPOTvDow",
         "../work-gallery/index.html"
       ],
-      "digest": "bfa11ea617fc8993bc6b771a2dc65dd1cbc2d9b17903d7818b5f7f7e38296789"
+      "digest": "8d65f948a00e2218d1d9faaee8253b220798176ecab87f01349743068aae26f3"
     },
     "zh/project-pages/spongebob-soundtrack.html": {
       "text": [
@@ -3941,9 +3796,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -3955,7 +3807,7 @@
         "https://drive.google.com/file/d/1-jvO_n5YdvFRZa4DF1eu-l9V_-qzSd7v/view",
         "../work-gallery/index.html"
       ],
-      "digest": "9a3d5ff2bebe9e56a5a8691ce76eb45a04a10fa1d8bfd9c2130c722420c20467"
+      "digest": "9bd02876b81a1ba88288e49e0456e0842af3b7aec773c189bf1510ca006cf521"
     },
     "zh/project-pages/theme-for-carnival.html": {
       "text": [
@@ -4000,9 +3852,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -4014,7 +3863,7 @@
         "https://drive.google.com/file/d/15JC6R9L5IOW_GV32cHWXat0LoK1xFJGG/view",
         "../work-gallery/index.html"
       ],
-      "digest": "e415a0ef185f41efc13b4e96e0e182821b22304a24b00d2ac3a5e7efb90dd975"
+      "digest": "59415543527988ea2dd03cda839c2a3610cc09b2ad45e84691dd1bc00aeb2829"
     },
     "zh/project-pages/unity-audio-callback-system.html": {
       "text": [
@@ -4095,9 +3944,6 @@
         "&copy; 2026 Jianghao Li. 版权所有。"
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -4114,7 +3960,7 @@
         "https://github.com/JianghaoL/Unity-Audio-Callback-System",
         "../work-gallery/index.html"
       ],
-      "digest": "c6f756cf8794e72b0aadad60181f76c3c47dd99a11c64fa8717215a2c1df4582"
+      "digest": "ba39154bbc3b2e95c4d63574c778328a150066eb8bfca9c0decd9cdd2ae2859e"
     },
     "zh/project-pages/whiteout.html": {
       "text": [
@@ -4215,9 +4061,6 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/css/pages/project-detail.css",
         "../index.html",
         "../work-gallery/index.html",
         "../blog/index.html",
@@ -4236,7 +4079,7 @@
         "https://mrfroglijianghao.itch.io/whiteout",
         "../work-gallery/index.html"
       ],
-      "digest": "12e2479815bc2baf0cf6e6073536fe07307df0eddb6469067d4ebb2c92e0aec6"
+      "digest": "aa3c9e1480398c64a65b0eb5bcc2b9e9b912524af956601522e1dff8c8a49ecc"
     },
     "zh/work-gallery/index.html": {
       "text": [
@@ -4254,15 +4097,12 @@
         "&copy; 2026 Jianghao Li. All rights reserved."
       ],
       "urls": [
-        "/css/reset.css",
-        "/css/style.css",
-        "/work-gallery/gallery.css",
         "../index.html",
         "index.html",
         "../blog/index.html",
         "../about.html"
       ],
-      "digest": "3979913db6241e2f0a67e0aa816b38f410511609d83f0e18fe606154bc3edc2d"
+      "digest": "38106ee9511db11b66b00dd86cbc01cabef1c7215c1f78ac887a9f2ce05c179d"
     }
   }
 }

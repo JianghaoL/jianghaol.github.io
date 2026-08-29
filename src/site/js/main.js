@@ -1,35 +1,22 @@
-// Dynamic waveform backgrounds for multiple sections
+// Dynamic waveform backgrounds for multiple sections. Rendering is visibility
+// driven: an off-screen waveform should cost no animation frames or battery.
 const waveCanvases = Array.from(document.querySelectorAll('#waveCanvas, .intro-wave-canvas, .section-wave-canvas'));
 const waveContexts = [];
-const dpr = window.devicePixelRatio || 1;
+const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const dpr = Math.min(window.devicePixelRatio || 1, 2);
+let animationFrame = null;
 
-function resizeAllCanvases() {
-  waveCanvases.forEach(c => {
-    const parent = c.parentElement;
-    const rect = parent.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    
-    c.width = width * dpr;
-    c.height = height * dpr;
-    c.style.width = width + 'px';
-    c.style.height = height + 'px';
-  });
-  
-  // Reset contexts with proper scaling
-  waveContexts.forEach(state => {
-    state.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  });
+function resizeCanvas(state) {
+  const rect = state.canvas.parentElement.getBoundingClientRect();
+  const width = Math.max(1, Math.round(rect.width));
+  const height = Math.max(1, Math.round(rect.height));
+  state.canvas.width = width * dpr;
+  state.canvas.height = height * dpr;
+  state.canvas.style.width = `${width}px`;
+  state.canvas.style.height = `${height}px`;
+  state.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  drawOnCanvas(state);
 }
-
-// Prepare contexts and per-canvas state
-waveCanvases.forEach((c, i) => {
-  const ctx = c.getContext('2d');
-  waveContexts.push({ canvas: c, ctx, time: Math.random() * 1000, speed: 0.12 + i * 0.02 });
-});
-
-resizeAllCanvases();
-window.addEventListener('resize', resizeAllCanvases);
 
 function drawOnCanvas(state) {
   const { canvas, ctx } = state;
@@ -39,9 +26,9 @@ function drawOnCanvas(state) {
   ctx.clearRect(0, 0, width, height);
 
   const waves = [
-    { freq: 0.008, amp: Math.max(20, height * 0.06), phase: 0, color: 'rgba(106, 176, 243, 0.35)', lineWidth: 2.5 },
-    { freq: 0.012, amp: Math.max(14, height * 0.045), phase: Math.PI / 4, color: 'rgba(147, 112, 219, 0.28)', lineWidth: 2 },
-    { freq: 0.015, amp: Math.max(25, height * 0.08), phase: Math.PI / 2, color: 'rgba(106, 176, 243, 0.25)', lineWidth: 2 }
+    { freq: 0.0065, amp: Math.max(22, height * 0.065), phase: 0, color: 'rgba(112, 186, 255, 0.42)', lineWidth: 1.4 },
+    { freq: 0.0105, amp: Math.max(15, height * 0.044), phase: Math.PI / 4, color: 'rgba(154, 140, 255, 0.28)', lineWidth: 1.15 },
+    { freq: 0.014, amp: Math.max(26, height * 0.075), phase: Math.PI / 2, color: 'rgba(87, 151, 232, 0.24)', lineWidth: 1.05 }
   ];
 
   const centerY = height / 2;
@@ -53,8 +40,8 @@ function drawOnCanvas(state) {
     ctx.lineJoin = 'round';
     ctx.beginPath();
 
-    for (let x = 0; x <= width; x += 3) {
-      const timeShift = state.time * (0.08 + idx * 0.02);
+    for (let x = 0; x <= width; x += 4) {
+      const timeShift = state.time * (0.055 + idx * 0.012);
       const y = centerY +
                 Math.sin(x * wave.freq + timeShift + wave.phase) * wave.amp +
                 Math.sin(x * wave.freq * 0.5 + timeShift * 0.7 + wave.phase) * (wave.amp * 0.35);
@@ -66,43 +53,76 @@ function drawOnCanvas(state) {
     ctx.stroke();
   });
 
-  state.time += state.speed;
+  if (!reducedMotionQuery.matches) state.time += state.speed;
 }
 
-function drawAll() {
-  waveContexts.forEach(state => drawOnCanvas(state));
-  requestAnimationFrame(drawAll);
+function scheduleWaveFrame() {
+  if (animationFrame !== null || reducedMotionQuery.matches || document.hidden) return;
+  if (!waveContexts.some(state => state.visible)) return;
+  animationFrame = requestAnimationFrame(drawVisibleWaves);
 }
 
-if (waveContexts.length) drawAll();
-
-// 背景流体动效（Vanta Waves）
-if (typeof VANTA !== 'undefined') {
-  VANTA.WAVES({
-    el: "#hero",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.0,
-    minWidth: 200.0,
-    waveHeight: 12.0,
-    waveSpeed: 0.85,
-    color: 0x1e1e2d,
-    shininess: 50.0
-  });
+function drawVisibleWaves() {
+  animationFrame = null;
+  waveContexts.filter(state => state.visible).forEach(drawOnCanvas);
+  scheduleWaveFrame();
 }
+
+waveCanvases.forEach((canvas, index) => {
+  const context = canvas.getContext('2d', { alpha: true });
+  if (!context) return;
+  waveContexts.push({ canvas, ctx: context, time: index * 31.7, speed: 0.045 + index * 0.004, visible: true });
+});
+
+const canvasObserver = 'IntersectionObserver' in window
+  ? new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const state = waveContexts.find(item => item.canvas === entry.target);
+        if (state) state.visible = entry.isIntersecting;
+      });
+      scheduleWaveFrame();
+    }, { rootMargin: '120px 0px', threshold: 0 })
+  : null;
+
+waveContexts.forEach(state => {
+  resizeCanvas(state);
+  canvasObserver?.observe(state.canvas);
+});
+
+const resizeObserver = 'ResizeObserver' in window
+  ? new ResizeObserver(entries => {
+      entries.forEach(entry => {
+        const state = waveContexts.find(item => item.canvas.parentElement === entry.target);
+        if (state) resizeCanvas(state);
+      });
+    })
+  : null;
+
+waveContexts.forEach(state => resizeObserver?.observe(state.canvas.parentElement));
+if (!resizeObserver) window.addEventListener('resize', () => waveContexts.forEach(resizeCanvas), { passive: true });
+
+document.addEventListener('visibilitychange', scheduleWaveFrame);
+reducedMotionQuery.addEventListener('change', () => {
+  waveContexts.forEach(drawOnCanvas);
+  scheduleWaveFrame();
+});
+scheduleWaveFrame();
 
 // Scroll Reveal 功能
 const revealElements = document.querySelectorAll("[data-reveal]");
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries, revealObserver) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("visible");
+      revealObserver.unobserve(entry.target);
     }
   });
 }, { threshold: 0.2 });
 
-revealElements.forEach(el => observer.observe(el));
+revealElements.forEach(el => {
+  if (reducedMotionQuery.matches) el.classList.add('visible');
+  else observer.observe(el);
+});
 
 // Small typewriter effect for the intro line
 // Wait for i18n translations to complete before running typewriter effect
@@ -110,6 +130,7 @@ function initTypewriter() {
   const typeEl = document.getElementById('intro-type');
   if (typeEl) {
     const text = typeEl.textContent.trim();
+    if (reducedMotionQuery.matches || !text) return;
     typeEl.textContent = '';
     let i = 0;
     const speed = 28;

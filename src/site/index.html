@@ -3,23 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Jianghao Li — Portfolio</title>
 
   <!-- Language redirect: route to /en/ or /zh/ based on preference -->
-  <script>
-  (function(){
-    var p = location.pathname;
-    if (p.indexOf('/en/') === 0 || p.indexOf('/zh/') === 0) return;
-    var lang = localStorage.getItem('preferred-lang') ||
-      (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
-    var target = '/' + lang + (p === '/' ? '/index.html' : p);
-    location.replace(target);
-  })();
-  </script>
+  <script src="/js/language-redirect.js"></script>
 
   <!-- 主样式 -->
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/apple-refactor.css">
 </head>
 <body>
 
@@ -28,7 +22,7 @@
     <nav>
       <button class="lang-toggle" aria-label="Toggle Language">EN/中文</button>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
         <li><a href="work-gallery/index.html">Work Gallery</a></li>
         <li><a href="blog/index.html">Blog</a></li>
         <li><a href="about.html">About</a></li>
@@ -55,7 +49,7 @@
   <!-- Personal Introduction -->
   <section id="intro" data-reveal>
     <div class="intro-grid">
-      <div class="intro-photo" aria-hidden="true" style="background-image: url('assets/images/main_page/me.jpg')"></div>
+      <div class="intro-photo intro-photo--portrait" aria-hidden="true" ></div>
       <div class="intro-card">
         <h2>Hello — I'm Jianghao</h2>
         <p class="intro-lead">I build interactive experiences and design immersive soundscapes. I work across game development, audio engineering, and interactive media.</p>
@@ -195,11 +189,11 @@
           <img class="reel-card-thumbnail" src="/assets/images/thumbnails/ripout.jpg" alt="" loading="lazy">
           <span class="reel-card-status">Watch now</span>
           <div class="reel-card-waveform" aria-hidden="true">
-            <span style="--wave-height: 25%"></span><span style="--wave-height: 48%"></span><span style="--wave-height: 72%"></span>
-            <span style="--wave-height: 42%"></span><span style="--wave-height: 88%"></span><span style="--wave-height: 58%"></span>
-            <span style="--wave-height: 100%"></span><span style="--wave-height: 64%"></span><span style="--wave-height: 82%"></span>
-            <span style="--wave-height: 36%"></span><span style="--wave-height: 68%"></span><span style="--wave-height: 46%"></span>
-            <span style="--wave-height: 28%"></span>
+            <span class="wave-height-25"></span><span class="wave-height-48"></span><span class="wave-height-72"></span>
+            <span class="wave-height-42"></span><span class="wave-height-88"></span><span class="wave-height-58"></span>
+            <span class="wave-height-100"></span><span class="wave-height-64"></span><span class="wave-height-82"></span>
+            <span class="wave-height-36"></span><span class="wave-height-68"></span><span class="wave-height-46"></span>
+            <span class="wave-height-28"></span>
           </div>
           <span class="reel-card-play" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
@@ -376,7 +370,7 @@
         <div class="resume-html-content">
           <!-- Personal Info -->
           <h2>Jianghao Li</h2>
-          <p style="color: var(--accent); margin-bottom: 0.5rem;">Game Designer & Developer</p>
+          <p class="resume-role">Game Designer & Developer</p>
           
           <div class="resume-contact-info">
             <span>
@@ -484,8 +478,6 @@
     <p>&copy; 2026 Jianghao Li. All rights reserved.</p>
   </footer>
 
-  <script src="libs/three.min.js"></script>
-  <script src="libs/vanta.waves.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/translations.js"></script>
   <script src="js/work-carousel.js"></script>

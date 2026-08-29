@@ -1,6 +1,4 @@
 [
-  "en/index.html::/libs/three.min.js",
-  "en/index.html::/libs/vanta.waves.min.js",
   "en/project-pages/ripout-redesign.html::/assets/images/YOUR_POSTER.jpg",
   "en/project-pages/sisyphus-worst-day.html::YOUR_EMBED_URL",
   "en/project-pages/sisyphus-worst-day.html::/assets/images/YOUR_POSTER.jpg",
@@ -8,13 +6,9 @@
   "en/project-pages/sound-redesign-reel.html::YOUR_EMBED_URL",
   "en/project-pages/sound-redesign-reel.html::/assets/images/YOUR_POSTER.jpg",
   "en/project-pages/sound-redesign-reel.html::/assets/video/YOUR_REEL.mp4",
-  "index.html::libs/three.min.js",
-  "index.html::libs/vanta.waves.min.js",
   "project-template.html::assets/images/work-thumbs/project01.jpg",
   "project-template.html::assets/images/work-thumbs/project02.jpg",
   "project-template.html::assets/images/work-thumbs/project03.jpg",
-  "zh/index.html::/libs/three.min.js",
-  "zh/index.html::/libs/vanta.waves.min.js",
   "zh/project-pages/ripout-redesign.html::YOUR_EMBED_URL",
   "zh/project-pages/ripout-redesign.html::/assets/images/YOUR_POSTER.jpg",
   "zh/project-pages/ripout-redesign.html::/assets/video/YOUR_REEL.mp4"

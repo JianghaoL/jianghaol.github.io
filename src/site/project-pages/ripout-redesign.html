@@ -3,14 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Ripout Redesign</title>
-  <script>
-    (function () {
-      var lang = localStorage.getItem('preferred-lang') ||
-        (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
-      location.replace('/' + lang + '/project-pages/ripout-redesign.html');
-    })();
-  </script>
+  <script src="/js/language-redirect.js"></script>
 </head>
 <body>
   <p><a href="/en/project-pages/ripout-redesign.html">View Ripout Redesign</a></p>
