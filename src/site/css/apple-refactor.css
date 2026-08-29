@@ -34,6 +34,7 @@
   --shadow-lg: 0 38px 110px rgba(0, 0, 0, 0.46);
   --content-wide: 1240px;
   --content-reading: 780px;
+  --surface-padding: clamp(1.5rem, 2.5vw, 2.25rem);
   --radius-xs: 8px;
   --radius-sm: 12px;
   --radius-md: 18px;
@@ -112,12 +113,23 @@ button:active,
   -webkit-backdrop-filter: blur(24px) saturate(145%);
 }
 
-.site-header nav { max-width: none; }
+.site-header nav {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .nav-links {
+  position: absolute;
+  top: 50%;
   right: 0;
   gap: 0.2rem;
   padding: 4px;
+  transform: translateY(-50%);
   border-radius: 13px;
   background: rgba(255, 255, 255, 0.035);
 }
@@ -140,9 +152,12 @@ button:active,
 .nav-links a.active::after { display: none; }
 
 .lang-toggle {
+  position: absolute;
+  top: 50%;
   left: 0;
   min-height: 36px;
   padding: 0 0.72rem;
+  transform: translateY(-50%);
   border: 1px solid var(--hairline-strong);
   border-radius: 11px;
   background: rgba(255, 255, 255, 0.045);
@@ -345,8 +360,16 @@ section.wave-section {
 .project-title { max-width: 980px; font-size: clamp(3.2rem, 8vw, 7.2rem); font-weight: 700; letter-spacing: -0.06em; }
 .project-summary { max-width: 760px; color: var(--text-secondary); font-size: clamp(1.08rem, 2vw, 1.42rem); line-height: 1.55; }
 .project-meta { color: var(--text-tertiary); }
-.project-content { max-width: 1180px; padding-inline: max(24px, 4vw); }
+.project-content {
+  --project-gutter: max(24px, 4vw);
+  max-width: 1180px;
+  padding-inline: var(--project-gutter);
+}
 .content-block { margin-block: clamp(5rem, 10vw, 9rem); }
+.content-block--full-image {
+  margin-inline: calc(-1 * var(--project-gutter));
+  padding-inline: var(--project-gutter);
+}
 .content-block--text .text-container { max-width: var(--content-reading); }
 .content-block--text h2,
 .media-text-content h2,
@@ -366,6 +389,7 @@ section.wave-section {
 .image-caption { color: var(--text-tertiary); }
 .hero-details-container,
 .details-container { border-radius: var(--radius-lg); }
+.hero-details-container { padding: var(--surface-padding); }
 .tech-tag,
 .role-tag { border-color: var(--hairline); background: rgba(255, 255, 255, 0.05); color: var(--text-secondary); }
 .project-inline-video { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: var(--radius-lg); }
@@ -387,7 +411,7 @@ section.wave-section {
 .sort-btn:hover { color: var(--text); background: rgba(255, 255, 255, 0.055); }
 .sort-btn.active { color: var(--text); border-color: rgba(112, 186, 255, 0.2); background: rgba(112, 186, 255, 0.1); box-shadow: none; }
 .gallery-card { perspective: 1200px; }
-.gallery-card-inner { transition: transform 440ms var(--ease-fluid); }
+.gallery-card-inner { transition: transform 720ms cubic-bezier(0.4, 0, 0.2, 1); }
 .gallery-card:hover { transform: translateY(-5px); }
 .gallery-card:hover .gallery-card-inner { transform: rotateY(180deg); }
 .gallery-card-front { border-radius: var(--radius-lg); }
@@ -417,10 +441,17 @@ section.wave-section {
 .vision-header { font-size: clamp(2.8rem, 7vw, 6.6rem); font-weight: 700; letter-spacing: -0.06em; }
 .vision-text { color: var(--text-secondary); }
 .section-separator { border-color: var(--hairline); }
-.about-details-section { max-width: 980px; }
+.about-details-section {
+  max-width: 980px;
+  gap: clamp(1.5rem, 5vw, 4rem);
+}
 .about-introduction,
 .about-education,
-.about-skills { border-radius: var(--radius-lg); }
+.about-skills {
+  min-width: 0;
+  padding: var(--surface-padding);
+  border-radius: var(--radius-lg);
+}
 
 .contact-modal-overlay,
 .resume-modal-overlay,
@@ -446,6 +477,13 @@ section.wave-section {
   to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 }
 
+@media (max-width: 900px) {
+  .about-details-section { grid-template-columns: 1fr; }
+  .about-introduction,
+  .about-education,
+  .about-skills { grid-column: 1; }
+}
+
 @media (max-width: 768px) {
   body { padding-top: 68px; }
   .site-header { top: 8px; width: calc(100% - 16px); height: 52px; padding: 0 8px; border-radius: 16px; }
@@ -457,6 +495,7 @@ section.wave-section {
     right: 0;
     gap: 4px;
     padding: 8px;
+    transform: translateY(-12px);
     border: 1px solid var(--hairline);
     border-radius: 16px;
     background: rgba(9, 13, 20, 0.94);
@@ -464,6 +503,7 @@ section.wave-section {
     backdrop-filter: blur(26px);
     -webkit-backdrop-filter: blur(26px);
   }
+  .nav-links.active { transform: translateY(0); }
   .nav-links li { height: 44px; }
   .nav-links a { justify-content: flex-start; padding-inline: 0.85rem; }
   #hero { min-height: 720px; height: 100svh; margin-top: -68px; padding-top: 68px; }
