@@ -14,6 +14,7 @@ class ResumeModal {
     this.lastFocusedElement = null;
     this.focusableElements = [];
     this.isOpen = false;
+    this.closeTimer = null;
     
     // Configuration with defaults
     this.config = {
@@ -133,6 +134,8 @@ class ResumeModal {
   
   open() {
     if (this.isOpen || !this.overlay) return;
+    if (this.closeTimer) clearTimeout(this.closeTimer);
+    this.overlay.classList.remove('closing');
     
     // Store the element that triggered the modal
     this.lastFocusedElement = document.activeElement;
@@ -144,7 +147,10 @@ class ResumeModal {
     this.overlay.classList.add('active');
     this.overlay.setAttribute('aria-hidden', 'false');
     
-    // Set focus to close button after animation
+    this.isOpen = true;
+
+    // Move focus as soon as the surface becomes interactive so keyboard input
+    // remains live throughout the materialization transition.
     setTimeout(() => {
       this.updateFocusableElements();
       if (this.closeBtn) {
@@ -153,8 +159,6 @@ class ResumeModal {
         this.focusableElements[0].focus();
       }
     }, 100);
-    
-    this.isOpen = true;
     
     // Dispatch custom event
     this.overlay.dispatchEvent(new CustomEvent('resumeModalOpen'));
@@ -165,9 +169,14 @@ class ResumeModal {
     
     // Add closing animation class
     this.overlay.classList.add('closing');
+    this.isOpen = false;
     
-    // Remove classes after animation completes
-    setTimeout(() => {
+    const duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? 0
+      : this.config.animationDuration * 0.75;
+
+    this.closeTimer = setTimeout(() => {
+      if (!this.overlay.classList.contains('closing')) return;
       this.overlay.classList.remove('active', 'closing');
       this.overlay.setAttribute('aria-hidden', 'true');
       
@@ -179,11 +188,10 @@ class ResumeModal {
         this.lastFocusedElement.focus();
       }
       
-      this.isOpen = false;
-      
+      this.closeTimer = null;
       // Dispatch custom event
       this.overlay.dispatchEvent(new CustomEvent('resumeModalClose'));
-    }, this.config.animationDuration * 0.75);
+    }, duration);
   }
   
   // Public method to update resume PDF URL

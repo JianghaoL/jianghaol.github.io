@@ -42,6 +42,14 @@ async function check() {
   const htmlFiles = await walkHtml(ROOT);
   for (const file of htmlFiles) {
     const html = await readFile(path.join(ROOT, file), "utf8");
+    const cspCount = (html.match(/http-equiv=["']Content-Security-Policy["']/gi) || []).length;
+    if (cspCount !== 1) errors.push(`${file}: expected exactly one Content Security Policy`);
+    if (/<script(?![^>]*\bsrc=)[^>]*>/i.test(html)) errors.push(`${file}: inline script is not allowed`);
+    if (/\sstyle=["']/i.test(html)) errors.push(`${file}: inline style attribute is not allowed`);
+    if (/<link\s+rel=["']stylesheet["']/i.test(html) && !html.includes('/css/apple-refactor.css')) {
+      errors.push(`${file}: presentation page is missing the Apple design layer`);
+    }
+
     const ids = [...html.matchAll(/\bid\s*=\s*(["'])(.*?)\1/gi)].map((match) => match[2]);
     const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
     if (duplicates.length) errors.push(`${file}: duplicate ids ${[...new Set(duplicates)].join(", ")}`);
@@ -62,6 +70,9 @@ async function check() {
       }
     }
   }
+
+  const cname = (await readFile(path.join(ROOT, "CNAME"), "utf8")).trim();
+  if (cname !== "www.lijianghao.com") errors.push(`CNAME: expected www.lijianghao.com, received ${cname}`);
 
   if (errors.length) {
     console.error(errors.map((error) => `- ${error}`).join("\n"));

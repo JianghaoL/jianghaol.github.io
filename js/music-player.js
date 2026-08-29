@@ -15,17 +15,38 @@
 (function () {
   'use strict';
 
-  // SVG icons ----------------------------------------------------------------
-  const ICON_PLAY =
-    '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-      '<polygon points="5,3 19,12 5,21"/>' +
-    '</svg>';
+  const SVG_NS = 'http://www.w3.org/2000/svg';
 
-  const ICON_PAUSE =
-    '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-      '<rect x="5" y="3" width="4" height="18" rx="1"/>' +
-      '<rect x="15" y="3" width="4" height="18" rx="1"/>' +
-    '</svg>';
+  // Icons are built as DOM nodes rather than injected HTML. This keeps the
+  // player compatible with a strict script policy and prevents future metadata
+  // from accidentally becoming executable markup.
+  function createIcon(type) {
+    const svg = document.createElementNS(SVG_NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('aria-hidden', 'true');
+
+    if (type === 'pause') {
+      [[5, 3], [15, 3]].forEach(([x, y]) => {
+        const rect = document.createElementNS(SVG_NS, 'rect');
+        rect.setAttribute('x', x);
+        rect.setAttribute('y', y);
+        rect.setAttribute('width', '4');
+        rect.setAttribute('height', '18');
+        rect.setAttribute('rx', '1');
+        svg.append(rect);
+      });
+    } else {
+      const polygon = document.createElementNS(SVG_NS, 'polygon');
+      polygon.setAttribute('points', '5,3 19,12 5,21');
+      svg.append(polygon);
+    }
+
+    return svg;
+  }
+
+  function setButtonIcon(button, type) {
+    if (button) button.replaceChildren(createIcon(type));
+  }
 
   // Helpers ------------------------------------------------------------------
   function formatTime(seconds) {
@@ -55,7 +76,7 @@
       if (playBtn) {
         playBtn.disabled = true;
         playBtn.setAttribute('aria-label', 'No audio available');
-        playBtn.innerHTML = ICON_PLAY;
+        setButtonIcon(playBtn, 'play');
       }
       return;
     }
@@ -70,7 +91,7 @@
       card.classList.toggle('is-playing', playing);
       if (playBtn) {
         playBtn.classList.toggle('is-playing', playing);
-        playBtn.innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
+        setButtonIcon(playBtn, playing ? 'pause' : 'play');
         playBtn.setAttribute('aria-label', playing ? 'Pause' : 'Play');
       }
     }
@@ -82,12 +103,17 @@
       if (progressFill)  progressFill.style.width = pct + '%';
       if (progressThumb) progressThumb.style.left  = pct + '%';
       if (currentTime)   currentTime.textContent   = formatTime(audio.currentTime);
-      if (!audio.paused) rafId = requestAnimationFrame(updateProgress);
+      if (progressTrack) progressTrack.setAttribute('aria-valuenow', String(Math.round(audio.currentTime)));
+      if (!audio.paused) {
+        rafId = requestAnimationFrame(updateProgress);
+        card._mixRaf = rafId;
+      }
     }
 
     // ---- Duration ready ----
     audio.addEventListener('loadedmetadata', function () {
       if (durationEl) durationEl.textContent = formatTime(audio.duration);
+      if (progressTrack) progressTrack.setAttribute('aria-valuemax', String(Math.round(audio.duration)));
     });
 
     // ---- Ended ----
@@ -104,10 +130,10 @@
 
     // ---- Play / Pause button ----
     if (playBtn) {
-      playBtn.innerHTML = ICON_PLAY;
+      setButtonIcon(playBtn, 'play');
       playBtn.setAttribute('aria-label', 'Play');
 
-      playBtn.addEventListener('click', function () {
+      playBtn.addEventListener('click', async function () {
         if (audio.paused) {
           // Pause whatever is playing
           if (activeCard && activeCard !== card) {
@@ -120,16 +146,21 @@
             const prevBtn = activeCard.querySelector('.mix-card-play-btn');
             if (prevBtn) {
               prevBtn.classList.remove('is-playing');
-              prevBtn.innerHTML = ICON_PLAY;
+              setButtonIcon(prevBtn, 'play');
               prevBtn.setAttribute('aria-label', 'Play');
             }
           }
-          audio.play().catch(function (err) {
+          try {
+            await audio.play();
+          } catch (err) {
             console.warn('[music-player] Playback failed:', err);
-          });
+            setPlaying(false);
+            return;
+          }
           setPlaying(true);
           activeCard = card;
           rafId = requestAnimationFrame(updateProgress);
+          card._mixRaf = rafId;
         } else {
           audio.pause();
           setPlaying(false);
@@ -141,14 +172,28 @@
 
     // ---- Seek on progress track click ----
     if (progressTrack) {
+      progressTrack.tabIndex = 0;
+      progressTrack.setAttribute('role', 'slider');
+      progressTrack.setAttribute('aria-label', 'Audio position');
+      progressTrack.setAttribute('aria-valuemin', '0');
+      progressTrack.setAttribute('aria-valuenow', '0');
+
+      function seekToRatio(ratio) {
+        if (!audio.duration) return;
+        const clamped = Math.max(0, Math.min(1, ratio));
+        audio.currentTime = clamped * audio.duration;
+        if (progressFill)  progressFill.style.width = (clamped * 100) + '%';
+        if (progressThumb) progressThumb.style.left  = (clamped * 100) + '%';
+        if (currentTime)   currentTime.textContent   = formatTime(audio.currentTime);
+        progressTrack.setAttribute('aria-valuemax', String(Math.round(audio.duration)));
+        progressTrack.setAttribute('aria-valuenow', String(Math.round(audio.currentTime)));
+        progressTrack.setAttribute('aria-valuetext', formatTime(audio.currentTime));
+      }
+
       progressTrack.addEventListener('click', function (e) {
         if (!audio.duration) return;
         const rect = progressTrack.getBoundingClientRect();
-        const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-        audio.currentTime = ratio * audio.duration;
-        if (progressFill)  progressFill.style.width = (ratio * 100) + '%';
-        if (progressThumb) progressThumb.style.left  = (ratio * 100) + '%';
-        if (currentTime)   currentTime.textContent   = formatTime(audio.currentTime);
+        seekToRatio((e.clientX - rect.left) / rect.width);
       });
 
       // Pointer-drag seek
@@ -156,17 +201,27 @@
       progressTrack.addEventListener('pointerdown', function (e) {
         dragging = true;
         progressTrack.setPointerCapture(e.pointerId);
+        const rect = progressTrack.getBoundingClientRect();
+        seekToRatio((e.clientX - rect.left) / rect.width);
       });
       progressTrack.addEventListener('pointermove', function (e) {
         if (!dragging || !audio.duration) return;
         const rect = progressTrack.getBoundingClientRect();
-        const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-        audio.currentTime = ratio * audio.duration;
-        if (progressFill)  progressFill.style.width = (ratio * 100) + '%';
-        if (progressThumb) progressThumb.style.left  = (ratio * 100) + '%';
-        if (currentTime)   currentTime.textContent   = formatTime(audio.currentTime);
+        seekToRatio((e.clientX - rect.left) / rect.width);
       });
       progressTrack.addEventListener('pointerup', function () { dragging = false; });
+      progressTrack.addEventListener('pointercancel', function () { dragging = false; });
+      progressTrack.addEventListener('keydown', function (e) {
+        if (!audio.duration) return;
+        const steps = { ArrowLeft: -5, ArrowDown: -5, ArrowRight: 5, ArrowUp: 5 };
+        if (e.key in steps) {
+          e.preventDefault();
+          seekToRatio((audio.currentTime + steps[e.key]) / audio.duration);
+        } else if (e.key === 'Home' || e.key === 'End') {
+          e.preventDefault();
+          seekToRatio(e.key === 'Home' ? 0 : 1);
+        }
+      });
     }
 
     // Stash references on the card element for cross-card communication

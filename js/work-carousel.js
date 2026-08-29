@@ -98,6 +98,7 @@ class WorkCarousel {
     this.progressStartTime = null;
     this.slides = [];
     this.currentLang = this.detectLanguage();
+    this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     this.init();
   }
@@ -121,9 +122,11 @@ class WorkCarousel {
   init() {
     this.render();
     this.cacheElements();
+    this.container.setAttribute('role', 'region');
+    this.container.setAttribute('aria-roledescription', 'carousel');
     this.updateSlidePositions();
     this.bindEvents();
-    if (this.options.autoPlay) {
+    if (this.options.autoPlay && !this.reducedMotion.matches) {
       this.startAutoPlay();
     }
   }
@@ -242,6 +245,10 @@ class WorkCarousel {
     this.slides.forEach((slide, index) => {
       const position = this.getSlidePosition(index);
       slide.setAttribute('data-position', position);
+      slide.setAttribute('aria-hidden', position === 'center' ? 'false' : 'true');
+      slide.querySelectorAll('a, button').forEach(control => {
+        control.tabIndex = position === 'center' ? 0 : -1;
+      });
     });
   }
 
@@ -267,9 +274,27 @@ class WorkCarousel {
 
     this.carousel.addEventListener('mouseleave', () => {
       this.isHovering = false;
-      if (this.options.autoPlay) {
+      if (this.options.autoPlay && !this.reducedMotion.matches && !document.hidden) {
         this.startAutoPlay();
       }
+    });
+
+    // Keyboard users receive the same pause guarantee as pointer users. The
+    // timer also stops in background tabs so a project never changes while the
+    // visitor cannot see it.
+    this.carousel.addEventListener('focusin', () => this.pauseAutoPlay());
+    this.carousel.addEventListener('focusout', (event) => {
+      if (!this.carousel.contains(event.relatedTarget) && this.options.autoPlay && !this.reducedMotion.matches) {
+        this.startAutoPlay();
+      }
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) this.pauseAutoPlay();
+      else if (this.options.autoPlay && !this.isHovering && !this.reducedMotion.matches) this.startAutoPlay();
+    });
+    this.reducedMotion.addEventListener('change', () => {
+      if (this.reducedMotion.matches) this.pauseAutoPlay();
+      else if (this.options.autoPlay && !this.isHovering && !document.hidden) this.startAutoPlay();
     });
 
     // Touch support for flip cards
@@ -344,10 +369,12 @@ class WorkCarousel {
     // Update dots
     this.dots.forEach((dot, i) => {
       dot.classList.toggle('active', i === index);
+      if (i === index) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
     });
 
     // Reset progress
-    if (this.options.autoPlay && !this.isHovering) {
+    if (this.options.autoPlay && !this.isHovering && !this.reducedMotion.matches) {
       this.resetProgress();
     }
   }
@@ -362,6 +389,7 @@ class WorkCarousel {
 
   // Auto-play methods
   startAutoPlay() {
+    if (this.reducedMotion.matches || document.hidden) return;
     this.pauseAutoPlay();
     this.progressStartTime = Date.now();
     

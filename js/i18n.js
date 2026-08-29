@@ -9,7 +9,6 @@
  *
  * Supports:
  *   data-i18n="key"            → sets element.textContent
- *   data-i18n-html="key"       → sets element.innerHTML
  *   data-i18n-placeholder="key"→ sets element.placeholder
  *   data-i18n-aria="key"       → sets element.getAttribute('aria-label')
  *
@@ -38,7 +37,8 @@
       }
     }
     // Fallback: localStorage → browser language → default
-    var stored = localStorage.getItem('preferred-lang');
+    var stored = null;
+    try { stored = localStorage.getItem('preferred-lang'); } catch (_) { stored = null; }
     if (stored && SUPPORTED_LANGS.indexOf(stored) !== -1) return stored;
     if (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0) return 'zh';
     return DEFAULT_LANG;
@@ -67,14 +67,6 @@
       var key = els[i].getAttribute('data-i18n');
       var val = t(key, lang);
       if (val !== null) els[i].textContent = val;
-    }
-
-    // data-i18n-html  →  innerHTML
-    els = document.querySelectorAll('[data-i18n-html]');
-    for (var i = 0; i < els.length; i++) {
-      var key = els[i].getAttribute('data-i18n-html');
-      var val = t(key, lang);
-      if (val !== null) els[i].innerHTML = val;
     }
 
     // data-i18n-placeholder  →  placeholder attribute
@@ -122,7 +114,7 @@
     btn.addEventListener('click', function (e) {
       e.preventDefault();
       var newLang = (lang === 'en') ? 'zh' : 'en';
-      localStorage.setItem('preferred-lang', newLang);
+      try { localStorage.setItem('preferred-lang', newLang); } catch (_) { /* URL routing still works. */ }
       // Pages whose localized versions use different filenames can provide
       // their explicit counterpart with data-alt-lang-url.
       window.location.href = btn.getAttribute('data-alt-lang-url') || getAlternateUrl(lang);
@@ -133,7 +125,7 @@
   // Public API — exposed on window.i18n
   // ---------------------------------------------------------------
   var currentLang = detectLang();
-  localStorage.setItem('preferred-lang', currentLang);
+  try { localStorage.setItem('preferred-lang', currentLang); } catch (_) { /* Storage is optional. */ }
 
   window.i18n = {
     lang:  currentLang,
