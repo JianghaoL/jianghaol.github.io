@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Jianghao Li - Work Gallery</title>
+
+  <!-- Language redirect -->
+  <script src="/js/language-redirect.js"></script>
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="gallery.css">
+  <link rel="stylesheet" href="/css/apple-refactor.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <nav>
+      <button class="lang-toggle" aria-label="Toggle Language">EN/中文</button>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html" class="active" aria-current="page">Work Gallery</a></li>
+        <li><a href="../blog/index.html">Blog</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Gallery Hero Section -->
+  <section id="gallery-hero" class="gallery-hero">
+    <div class="gallery-hero-content">
+      <h1>Work Gallery</h1>
+      <p class="gallery-subtitle">Explore my projects and creative works</p>
+    </div>
+  </section>
+
+  <!-- Gallery Content Wrapper (for sticky controls) -->
+  <div class="gallery-content-wrapper">
+    <!-- Filter/Sort Controls -->
+    <div class="gallery-controls">
+    <div class="sort-buttons">
+      <button class="sort-btn active" data-sort="category" aria-pressed="true">
+        <svg class="sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span>By Category</span>
+      </button>
+      <button class="sort-btn" data-sort="date" aria-pressed="false">
+        <svg class="sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <span>By Date</span>
+      </button>
+      <button class="sort-btn" data-sort="alpha" aria-pressed="false">
+        <svg class="sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18M3 12h12M3 18h6"></path>
+        </svg>
+        <span>A – Z</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Gallery Grid -->
+  <section class="gallery-section">
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- Cards will be rendered by JavaScript -->
+    </div>
+  </section>
+  
+  </div><!-- End gallery-content-wrapper -->
+
+  <!-- Footer -->
+  {{> footer/footer-46e659299c}}
+
+  <script src="../js/main.js"></script>
+  <script src="gallery.js"></script>
+</body>
+</html>

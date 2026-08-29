@@ -3,21 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>About Me</title>
 
   <!-- Language redirect -->
-  <script>
-  (function(){
-    var p = location.pathname;
-    if (p.indexOf('/en/') === 0 || p.indexOf('/zh/') === 0) return;
-    var lang = localStorage.getItem('preferred-lang') ||
-      (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
-    location.replace('/' + lang + p);
-  })();
-  </script>
+  <script src="/js/language-redirect.js"></script>
 
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/apple-refactor.css">
 </head>
 <body>
   <header class="site-header">
@@ -27,7 +22,7 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="work-gallery/index.html">Work Gallery</a></li>
         <li><a href="blog/index.html">Blog</a></li>
-        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="about.html" class="active" aria-current="page">About</a></li>
       </ul>
       <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
         <span></span>
@@ -139,7 +134,7 @@
         <div class="resume-html-content">
           <!-- Personal Info -->
           <h2>Jianghao Li</h2>
-          <p style="color: var(--accent); margin-bottom: 0.5rem;">Game Designer & Developer</p>
+          <p class="resume-role">Game Designer & Developer</p>
           
           <div class="resume-contact-info">
             <span>

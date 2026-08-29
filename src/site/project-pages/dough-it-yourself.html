@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Jianghao Li - Dough it Yourself</title>
+  
+  <!-- Language redirect -->
+  <script src="/js/language-redirect.js"></script>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pages/project-detail.css">
+  <link rel="stylesheet" href="/css/apple-refactor.css">
+</head>
+<body>
+  <!-- Header -->
+  {{> header/header-7953b74b1a}}
+
+  <main class="project-page">
+    <!-- ============================================
+         HERO SECTION
+         Centered project title and short description
+         ============================================ -->
+    <section class="project-hero">
+      <div class="project-hero-content">
+        <h1 class="project-title">Dough it Yourself</h1>
+        <p class="project-summary">
+          A donut making puzzle game made for GMTK 2025.
+        </p>
+        <div class="project-meta">
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            2025
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Game Development
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            1 month
+          </span>
+        </div>
+        
+        <!-- Tech Stack in Hero -->
+        <div class="hero-tech-stack">
+          <div class="hero-details-container">
+            <div class="hero-details-column">
+              <h3>Tech Stack</h3>
+              <ul class="tech-list">
+                <li><span class="tech-tag">Unity</span></li>
+                <li><span class="tech-tag">C#</span></li>
+                <li><span class="tech-tag">Git</span></li>
+
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3>My Role</h3>
+              <ul class="role-list">
+                <li>Level Design</li>
+                <li>Game Programming</li>
+                <li>Game Prototyping</li>
+                <li>Audio Implementation</li>
+                <li>Sound Design</li>
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3>Team</h3>
+              <ul class="team-list">
+                <li>4 Developers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         CONTENT SECTIONS
+         Modular content blocks for flexible layouts
+         ============================================ -->
+    <div class="project-content">
+      
+      <!-- Full-width Image Block -->
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="../assets/images/project-pages/Jianghao Li - Dough it Urself/Dough-it-yourself (6).png" 
+               alt="Dough it Yourself game title screen showing colorful donut-themed puzzle interface" 
+               class="full-image"
+               loading="lazy">
+          <figcaption class="image-caption">Dough it Yourself</figcaption>
+        </figure>
+      </section>
+
+      <!-- Text Block - Overview -->
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>Overview</h2>
+          <p>
+            Dough it Urself is an innovative puzzle game inspired by the GMTK 2025 theme "loop".
+          </p>
+          <p>
+            While I originally came up with the concept of the game, my teammates collaboratively designed all levels and refined game mechanics.
+            I worked as a programmer and composer and made the gameplay prototype, some level buildings, and the theme music for this game.
+          </p>
+          <p>
+            The game is collaboratively done by me, Ruimeng Bai, Enrui Luo, Kexin Liu, Xinran Wei, Hefei Sun.
+          </p>
+        </div>
+      </section>
+
+      <!-- Image + Text Block (Image Left) -->
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - Dough it Urself/Dough-it-yourself (5).png" 
+                 alt="Early game prototype using simple geometric shapes to represent game pieces" 
+                 loading="lazy">
+                 <figcaption class="image-caption">Prototype Development</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>Gameplay Prototype</h2>
+            <p>
+              I started prototyping the game as soon as we settled the basic concept of this game. 
+              The very first version of the game was built using simple geometric shapes, each representing a different game piece.
+            </p>
+            <p>
+              Using raycasts, I was able to easily detect the exact tile on which the player's cursor 
+              is currently hovering and exclude the obstacles on which no game pieces should be placed.
+            </p>
+            <p>
+              We confirmed the playability and feasibility of our idea using my prototype, and could thus work more on designing the game.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Image + Text Block (Image Right) -->
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - Dough it Urself/Dough-it-yourself (2).png" 
+                 alt="Diagram showing the algorithm for checking if a donut shape is valid" 
+                 loading="lazy">
+            <figcaption class="image-caption">Legality Check</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>Algorithms and Win Check</h2>
+            <p>
+              The win check was one of the difficulties we faced when making the game. 
+            </p>
+            <p>
+              As we have designed, a legal "donut" is a closed loop of a uniform 1 width, 
+              and at least 1 empty tile must be enveloped by such a loop. 
+            </p>
+            <p>
+              To convert this into a solvable programming problem, I concluded that, 
+              within such a legal shape, each piece (dough block) must have exactly 2 adjacent blocks. 
+              This ensures that the shape would have a uniform width of 1 unit, 
+              and it prevents two blocks from connecting diagonally.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - Dough it Urself/Dough-it-yourself (3).png" 
+                 alt="Visualization of raycast tile checking to verify enclosed empty tiles" 
+                 loading="lazy">
+                 <figcaption class="image-caption">Tile Check</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <p>
+              This, however, does not ensure that the shape envelops at least 1 empty tile. To solve this issue, 
+              I randomly pick one dough block as the origin, and send a ray to every other dough block.
+               As long as the ray hits one empty tile, the shape is legal. 
+            </p>
+            <p>
+              This would not cause any issue even if the hit empty tile is not enclosed by the loop, 
+              because we have previously checked that the blocks that make up the shape have and only 
+              have 2 adjacent blocks, where no solid convex shape would be identified as legal. 
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Image + Text Block (Image Left) -->
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - Dough it Urself/Dough-it-yourself (4).png" 
+                 alt="Level selection screen showing camera movement boundaries and thresholds" 
+                 loading="lazy">
+                 <figcaption class="image-caption">Camera Movement (a)</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>Camera Movement</h2>
+            <p>
+              When selecting levels, the camera moves as the cursor is near both the left and right edges of the screen. 
+              This is achieved by constantly comparing the mouse's position and the threshold, which is computed by:
+            </p>
+            <p>
+              Threshold Position = Screen Width x Ratio
+            </p>
+            <p>
+              The camera movement is locked when the camera hits a "stopper", placed on both sides of the screen. 
+              This prevents the camera from moving too far.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Image + Text Block (Image Right) -->
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - Dough it Urself/Dough-it-yourself (1).png" 
+                 alt="Level selection buttons with hover effect using material color changes" 
+                 loading="lazy">
+                 <figcaption class="image-caption">Camera Movement (b)</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <p>
+              The level selection button effect is made possible by changing material colors.
+              To detect any possible clicking and hovering, we send out a ray to see if the cursor is hovering above a button. 
+              If it does, the material of that particular button is darkened to mimic a highlight effect. 
+              This is, in fact, how most of our buttons work in the game. 
+            </p>
+            <p>
+              The level selection buttons are all connected to an individual level, 
+              which the player goes to when pressing the buttons.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Highlight/Quote Block -->
+      <section class="content-block content-block--highlight" data-reveal>
+        <blockquote class="highlight-quote">
+          <p>"I liked the game, it was unique, fun, and I found myself enjoying the game, great job, love the art!"</p>
+          <cite>— Player Review</cite>
+        </blockquote>
+      </section>
+
+      <!-- Two-Column Image Grid -->
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <div class="image-grid image-grid--2col">
+            <figure class="grid-image-item">
+              <img src="../assets/images/project-pages/Jianghao Li - Dough it Urself/AveI1l.jpg" 
+                   alt="In-game view of Dough it Yourself puzzle gameplay" 
+                   loading="lazy">
+              <figcaption>Game View</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="../assets/images/project-pages/Jianghao Li - Dough it Urself/NilGS1.jpg" 
+                   alt="Tutorial page explaining game mechanics and controls" 
+                   loading="lazy">
+              <figcaption>Tutorial Page</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Call to Action / Links Block -->
+      <section class="content-block content-block--cta" data-reveal>
+        <div class="cta-container">
+          <h2>Explore the Project</h2>
+          <div class="cta-buttons">
+            <a href="https://legend-lou.itch.io/dough" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              Play Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Navigation -->
+      <nav class="project-navigation" data-reveal>
+        <a href="../work-gallery/index.html" class="nav-link nav-link--all">
+          <span class="nav-label">All Projects</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+        </a>
+      </nav>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  {{> footer/footer-46e659299c}}
+
+  <!-- Scripts -->
+  <script src="../js/main.js"></script>
+  <script src="../js/project-detail.js"></script>
+</body>
+</html>

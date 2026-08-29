@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Jianghao Li - Blender Unity Communicator</title>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/project-detail.css">
+  <link rel="stylesheet" href="/css/apple-refactor.css">
+</head>
+<body>
+  <!-- Header -->
+  {{> header/header-2c74c71c46}}
+
+  <main class="project-page">
+    <!-- ============================================
+         HERO SECTION
+         Centered project title and short description
+         ============================================ -->
+    <section class="project-hero">
+      <div class="project-hero-content">
+        <h1 class="project-title">Blender Unity 通信工具</h1>
+        <p class="project-summary">
+          简化3D工作者在Blender和Unity之间的资产管理和更新流程的工具。
+        </p>
+        <div class="project-meta">
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            2025
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+            开发工具
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            1 个月
+          </span>
+        </div>
+        
+        <!-- Tech Stack in Hero -->
+        <div class="hero-tech-stack">
+          <div class="hero-details-container">
+            <div class="hero-details-column">
+              <h3 data-i18n="project.techStack">Tech Stack</h3>
+              <ul class="tech-list">
+                <li><span class="tech-tag">Python</span></li>
+                <li><span class="tech-tag">C#</span></li>
+                <li><span class="tech-tag">Blender API</span></li>
+                <li><span class="tech-tag">Unity</span></li>
+                <li><span class="tech-tag">Git</span></li>
+
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3 data-i18n="project.myRole">My Role</h3>
+              <ul class="role-list">
+                <li>开发者</li>
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3 data-i18n="project.team">Team</h3>
+              <ul class="team-list">
+                <li>独立开发</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         CONTENT SECTIONS
+         Modular content blocks for flexible layouts
+         ============================================ -->
+    <div class="project-content">
+      
+      <!-- Full-width Image Block -->
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/interface (2).png" 
+               alt="Blender Unity Communicator application interface showing export options and settings" 
+               class="full-image"
+               loading="lazy">
+          <figcaption class="image-caption">Blender Unity 通信工具界面</figcaption>
+        </figure>
+      </section>
+
+      <!-- Text Block - Overview -->
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>概述</h2>
+          <p>
+            这是一个Blender和Unity的插件，帮助开发者轻松地将模型导出到指定的Unity项目文件夹，并提供一个功能，可以用新导出的.FBX模型覆盖所有使用特定.FBX模型的对象。
+            该工具旨在简化Blender和Unity之间的工作流程，使开发者更高效地管理和更新他们的3D资产。
+          </p>
+          <p>
+            我使用了Python编写Blender插件，使用C#编写Unity集成部分。
+          </p>
+        </div>
+      </section>
+
+      <!-- Image + Text Block (Image Left) -->
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <div class="media-text-content">
+            <h2>实现</h2>
+            <p>
+              该工具由两个主要组件组成：一个用Python编写的Blender插件和一个用C#编写的Unity脚本。
+              Blender插件允许用户通过单击将模型直接导出到指定的Unity项目文件夹。
+            
+            </p>
+            <p>
+              该插件提供了一个用户友好的界面，允许用户设置Unity项目路径和导出设置，
+              并利用Blender内置的FBX导出功能将模型导出到Unity项目中。
+            </p>
+          </div>
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/save method.png" 
+                 alt="Code snippet showing the save method in Blender Unity Communicator" 
+                 loading="lazy">
+                 <figcaption class="image-caption">代码片段</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Image + Text Block (Image Left) -->
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/select overwrite obj.png" 
+                 alt="Code snippet showing the overwrite function in Blender Unity Communicator" 
+                 loading="lazy">
+                 <figcaption class="image-caption">Code Snippet</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>覆盖功能</h2>
+            <p>
+              该工具的一个突出特点是覆盖功能。
+                该功能允许用户使用Blender中导出的新.FBX模型覆盖Unity项目中使用特定.FBX模型的所有对象。
+            </p>
+            
+            <p>
+              模型设计师们在开发过程中经常需要频繁更新3D模型。
+               这个功能显著减少了在Unity中更新模型所需的时间和精力，因为用户不再需要手动替换每个模型实例。
+            </p>
+          </div>
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/unity overwrite.png" 
+                 alt="Code snippet showing the overwrite function in Blender Unity Communicator" 
+                 loading="lazy">
+                 <figcaption class="image-caption">代码片段</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <p>
+              具体来说，覆盖功能通过在Unity项目中搜索对旧.FBX模型的引用，并将它们替换为新导出的模型来实现。
+            </p>
+            <p>
+              该功能利用了Unity的AssetDatabase和GameObject API，实现了对项目的高效自动化更新。
+            </p>
+        </div>
+      </section>
+
+      <!-- Mechanics Image Grid -->
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <div class="image-grid image-grid--3col">
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/overwrite all obj in unity.png" 
+                   alt="Overwrite all objects in Unity" 
+                   loading="lazy">
+              <figcaption class="image-caption">覆盖所有Unity中的对象</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/interface (3).png" 
+                   alt="Before Overwriting Models in Unity" 
+                   loading="lazy">
+                   <figcaption class="image-caption">覆盖模型之前的Unity界面</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/interface (1).png" 
+                   alt="After Overwriting Models in Unity" 
+                   loading="lazy">
+                   <figcaption class="image-caption">覆盖模型之后的Unity界面</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Image + Text Block (Image Right) -->
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/unity json.png" 
+                 alt="Diagram showing the JSON structure used for UDP communication between Blender and Unity" 
+                 loading="lazy">
+            <figcaption class="image-caption">JSON Structure</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>UDP 连接</h2>
+            <p>
+              为了实现Blender和Unity之间的通信，我实现了一个UDP连接，允许两个应用程序实时交换数据。
+            </p>
+            <p>
+              这个连接使Blender能够向Unity发送导出命令，Unity能够在有新模型可用时接收通知。
+
+            </p>
+            <p>
+              我使用了JSON结构来格式化通过UDP连接发送的数据，确保两个应用程序都能轻松解析和理解这些信息。
+            </p>
+          </div>
+
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/udp (1).png" 
+                 alt="Code for UDP communication in Python" 
+                 loading="lazy">
+            <figcaption class="image-caption">UDP Python 脚本</figcaption>
+          </figure>
+
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Blender Unity/udp (2).png" 
+                 alt="Code for UDP communication in Unity" 
+                 loading="lazy">
+            <figcaption class="image-caption">UDP Unity 脚本</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Highlight/Quote Block -->
+      <section class="content-block content-block--highlight" data-reveal>
+        <blockquote class="highlight-quote">
+          <p>"That's sick!!"</p>
+          <cite>— USC Fellow Game Student</cite>
+        </blockquote>
+      </section>
+
+
+      <!-- Call to Action / Links Block -->
+      <section class="content-block content-block--cta" data-reveal>
+        <div class="cta-container">
+          <h2 data-i18n="project.cta.heading">Explore the Project</h2>
+          <div class="cta-buttons">
+            <a href="https://github.com/JianghaoL/Blender_Unity_Communicator" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              查看源代码
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Navigation -->
+      <nav class="project-navigation" data-reveal>
+        <a href="../work-gallery/index.html" class="nav-link nav-link--all">
+          <span class="nav-label" data-i18n="project.nav.all">All Projects</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+        </a>
+      </nav>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  {{> footer/footer-a76700955c}}
+
+  <!-- Scripts -->
+  <script src="/js/main.js"></script>
+  <script src="/js/project-detail.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
+</body>
+</html>

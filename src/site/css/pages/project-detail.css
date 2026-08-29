@@ -1,0 +1,947 @@
+/* =============================================
+   Project Detail Page Styles
+   A modular, flexible layout system for showcasing
+   individual project case studies
+   ============================================= */
+
+/* =============================================
+   PROJECT PAGE CONTAINER
+   ============================================= */
+.project-page {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+/* =============================================
+   HERO SECTION
+   Centered, prominent but not overwhelming
+   ============================================= */
+.project-hero {
+  position: relative;
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+  background: linear-gradient(180deg, 
+    rgba(106, 176, 243, 0.05) 0%, 
+    transparent 100%
+  );
+}
+
+.project-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Breadcrumb Navigation */
+.project-breadcrumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.project-breadcrumb a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.project-breadcrumb a:hover {
+  color: var(--accent);
+}
+
+.breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.breadcrumb-current {
+  color: var(--accent);
+}
+
+/* Project Title */
+.project-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+/* Project Summary */
+.project-summary {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 650px;
+  margin: 0 auto 2rem;
+}
+
+/* Project Meta (date, category, duration) */
+.project-meta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.meta-item svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--accent);
+}
+
+/* Hero Tech Stack Section */
+.hero-tech-stack {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-details-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.hero-details-column h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.hero-details-column .tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-details-column .tech-tag {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  background: rgba(106, 176, 243, 0.12);
+  color: var(--accent);
+  font-size: 0.8rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(106, 176, 243, 0.25);
+}
+
+.hero-details-column .role-list,
+.hero-details-column .team-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-details-column .role-list li,
+.hero-details-column .team-list li {
+  padding: 0.25rem 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+}
+
+/* =============================================
+   CONTENT AREA
+   Main container for modular content blocks
+   ============================================= */
+.project-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* =============================================
+   CONTENT BLOCKS
+   Modular sections that can be mixed and matched
+   ============================================= */
+.content-block {
+  margin-bottom: 4rem;
+}
+
+/* =============================================
+   JUSTIFIED TEXT STYLING
+   Two-side justified alignment for long-form content
+   with improved readability settings
+   ============================================= */
+.justified-text,
+.content-block--text p,
+.media-text-content p,
+.results-list li {
+  text-align: justify;
+  text-justify: inter-word;
+  
+  /* Enable hyphenation to avoid excessive gaps */
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  
+  /* Improved word spacing for justified text */
+  word-spacing: -0.05em;
+  
+  /* Prevent orphans and widows */
+  orphans: 3;
+  widows: 3;
+  
+  /* Ensure proper language for hyphenation */
+  -webkit-locale: "en";
+}
+
+/* Enhanced line-height for justified text readability */
+.content-block--text p,
+.media-text-content p {
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+/* Responsive adjustments for justified text */
+@media (max-width: 768px) {
+  /* On smaller screens, left-align for better readability */
+  .content-block--text p,
+  .media-text-content p,
+  .results-list li {
+    text-align: left;
+    hyphens: none;
+    word-spacing: normal;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Tablet: slightly relaxed justified settings */
+  .content-block--text p,
+  .media-text-content p {
+    word-spacing: -0.03em;
+  }
+}
+
+/* Scroll reveal animation */
+.content-block[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.content-block[data-reveal].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =============================================
+   FULL-WIDTH IMAGE BLOCK
+   ============================================= */
+.content-block--full-image {
+  margin-left: -2rem;
+  margin-right: -2rem;
+  padding: 0 2rem;
+}
+
+.full-image-container {
+  margin: 0;
+  max-width: 100%;
+  position: relative;
+}
+
+.full-image-container img,
+img.full-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.full-image-container img:hover,
+img.full-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+}
+
+.image-caption {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  font-style: italic;
+}
+
+/* =============================================
+   TEXT BLOCK
+   ============================================= */
+.content-block--text .text-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.content-block--text h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--accent);
+  /* Titles remain left-aligned, not justified */
+  text-align: left;
+}
+
+.content-block--text p {
+  font-size: 1.05rem;
+  /* line-height handled by justified text section */
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1.25rem;
+  /* text-align: justify applied via justified text section */
+}
+
+.content-block--text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Results list styling */
+.results-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.results-list li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.results-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+/* =============================================
+   MEDIA + TEXT BLOCK
+   Image alongside text content
+   ============================================= */
+.media-text-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.media-text-image {
+  margin: 0;
+}
+
+.media-text-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.media-text-image:hover img {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.media-text-content h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+.media-text-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1rem;
+}
+
+.media-text-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Reverse layout (image on right) */
+.content-block--reverse .media-text-container {
+  direction: rtl;
+}
+
+.content-block--reverse .media-text-container > * {
+  direction: ltr;
+}
+
+/* =============================================
+   IMAGE GRID BLOCK
+   ============================================= */
+.image-grid-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.image-grid-container h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+  text-align: center;
+}
+
+.image-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.image-grid--2col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.image-grid--3col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-image-item {
+  margin: 0;
+}
+
+.grid-image-item img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.grid-image-item:hover img {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.grid-image-item figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+/* =============================================
+   HIGHLIGHT/QUOTE BLOCK
+   ============================================= */
+.content-block--highlight {
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, 
+    rgba(106, 176, 243, 0.08) 0%, 
+    rgba(106, 176, 243, 0.02) 100%
+  );
+  border-radius: var(--radius-xl);
+  border-left: 4px solid var(--accent);
+}
+
+.highlight-quote {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.highlight-quote p {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.highlight-quote cite {
+  font-size: 1rem;
+  color: var(--accent);
+  font-style: normal;
+}
+
+/* =============================================
+   DETAILS BLOCK
+   Tech stack, role, team information
+   ============================================= */
+.details-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2.5rem;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.details-column h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.tech-list,
+.role-list,
+.team-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background: rgba(106, 176, 243, 0.15);
+  color: var(--accent);
+  font-size: 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(106, 176, 243, 0.3);
+}
+
+.role-list li,
+.team-list li {
+  padding: 0.4rem 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+}
+
+/* =============================================
+   VIDEO BLOCK
+   ============================================= */
+.video-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.video-container h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+  text-align: center;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.video-placeholder svg {
+  width: 64px;
+  height: 64px;
+  opacity: 0.5;
+}
+
+.video-placeholder p {
+  font-size: 0.95rem;
+}
+
+/* =============================================
+   CTA BLOCK
+   Call to action with project links
+   ============================================= */
+.cta-container {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(180deg, 
+    rgba(106, 176, 243, 0.05) 0%, 
+    transparent 100%
+  );
+  border-radius: var(--radius-xl);
+}
+
+.cta-container h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Primary Project Button */
+.btn-primary-project {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--accent);
+  transition: all 0.3s ease;
+}
+
+.btn-primary-project svg {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-primary-project:hover {
+  background: transparent;
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(106, 176, 243, 0.3);
+}
+
+/* Secondary Project Button */
+.btn-secondary-project {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary-project svg {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-secondary-project:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* =============================================
+   PROJECT NAVIGATION
+   Previous/Next project links
+   ============================================= */
+.project-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem 0;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.nav-link--prev {
+  text-align: left;
+}
+
+.nav-link--next {
+  text-align: right;
+}
+
+.nav-link--all {
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  color: var(--accent);
+}
+
+.nav-link--all svg {
+  width: 24px;
+  height: 24px;
+  margin-top: 0.5rem;
+}
+
+.nav-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover .nav-title {
+  color: var(--accent);
+}
+
+/* =============================================
+   FOOTER (Project Page Specific)
+   ============================================= */
+.project-page + .site-footer {
+  margin-top: 0;
+}
+
+/* =============================================
+   RESPONSIVE DESIGN
+   ============================================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .media-text-container {
+    gap: 2rem;
+  }
+  
+  .details-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  
+  .details-column:last-child {
+    grid-column: span 2;
+  }
+  
+  .hero-details-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  
+  .hero-details-column:last-child {
+    grid-column: span 2;
+    text-align: center;
+  }
+  
+  .hero-details-column:last-child .team-list {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .project-hero {
+    padding: 4rem 1.5rem 3rem;
+  }
+  
+  .project-content {
+    padding: 1.5rem;
+  }
+  
+  .content-block {
+    margin-bottom: 3rem;
+  }
+  
+  /* Hero tech stack mobile */
+  .hero-details-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  
+  .hero-details-column:last-child {
+    grid-column: span 1;
+  }
+  
+  .hero-details-column .tech-list {
+    justify-content: center;
+  }
+  
+  .hero-details-column:last-child .team-list {
+    justify-content: center;
+  }
+  
+  /* Stack media + text vertically */
+  .media-text-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .content-block--reverse .media-text-container {
+    direction: ltr;
+  }
+  
+  /* Image grids become 2 columns max */
+  .image-grid--3col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .image-grid--3col .grid-image-item:last-child {
+    grid-column: span 2;
+  }
+  
+  /* Details stack vertically */
+  .details-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  .details-column:last-child {
+    grid-column: span 1;
+  }
+  
+  /* Project navigation */
+  .project-navigation {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .nav-link--prev,
+  .nav-link--next {
+    text-align: center;
+  }
+  
+  .nav-link--all {
+    order: -1;
+  }
+  
+  /* CTA buttons stack */
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .btn-primary-project,
+  .btn-secondary-project {
+    justify-content: center;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .project-title {
+    font-size: 2rem;
+  }
+  
+  .project-meta {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .image-grid--2col,
+  .image-grid--3col {
+    grid-template-columns: 1fr;
+  }
+  
+  .image-grid--3col .grid-image-item:last-child {
+    grid-column: span 1;
+  }
+  
+  .content-block--highlight {
+    padding: 2rem 1.5rem;
+  }
+  
+  .highlight-quote p {
+    font-size: 1.15rem;
+  }
+}
+
+/* =============================================
+   ACCESSIBILITY
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+  .content-block[data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  
+  .full-image,
+  .media-text-image img,
+  .grid-image-item img,
+  .btn-primary-project,
+  .btn-secondary-project,
+  .nav-link {
+    transition: none;
+  }
+  
+  .full-image:hover,
+  .media-text-image:hover img,
+  .grid-image-item:hover img {
+    transform: none;
+  }
+}
+
+/* High contrast mode adjustments */
+@media (prefers-contrast: high) {
+  .project-breadcrumb a,
+  .meta-item {
+    color: var(--text);
+  }
+  
+  .content-block--text p,
+  .media-text-content p,
+  .role-list li,
+  .team-list li {
+    color: var(--text);
+  }
+}

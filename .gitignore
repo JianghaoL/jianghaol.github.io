@@ -1,1 +1,3 @@
 .DS_Store
+.site-build-tmp/
+.site-check-output/
