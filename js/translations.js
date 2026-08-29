@@ -234,11 +234,13 @@ window.__translations = {
 
     // -- Sisyphus's Worst Day --
     'project.sisyphus.title':   "Sisyphus's Worst Day",
+    'project.sisyphus.shortDesc': 'Technical sound design for a modern myth',
     'project.sisyphus.summary': 'An innovative puzzle game that reimagines the myth of Sisyphus in a modern context.',
 
     // -- Whiteout --
     'project.whiteout.title':   'Whiteout',
-    'project.whiteout.summary': 'An innovative puzzle game that reimagines the myth of Sisyphus in a modern context.',
+    'project.whiteout.shortDesc': 'A psychological Game Jam experience',
+    'project.whiteout.summary': 'A Game Jam project exploring the human psychological state under social pressure.',
 
     // -- Soundboard --
     'project.soundboard.title':   'Soundboard',
@@ -471,9 +473,11 @@ window.__translations = {
     'project.blenderUnity.summary': '一个简化从 Blender 到 Unity 传输 3D 模型工作流程的工具。',
 
     'project.sisyphus.title':   'Sisyphus\'s Worst Day',
-    'project.sisyphus.summary': '一款创新性的解密游戏，将西西弗斯的神话重新构想于现代背景。',
+    'project.sisyphus.shortDesc': '以现代神话为背景的技术声音设计',
+    'project.sisyphus.summary': '一款创新性的解谜游戏，在现代背景下重新诠释西西弗斯的神话。',
 
     'project.whiteout.title':   'Whiteout',
+    'project.whiteout.shortDesc': '聚焦心理体验的 Game Jam 作品',
     'project.whiteout.summary': 'Game Jam作品，探索人类在社会压力下的心理状态。',
 
     'project.soundboard.title':   'Soundboard',

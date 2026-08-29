@@ -42,24 +42,24 @@ const workData = [
   },
   {
     id: 2,
-    titleKey: "project.spongebobMusical.title",
-    shortDescKey: "project.spongebobMusical.shortDesc",
-    image: "/assets/images/thumbnails/thumbnails (9).jpg",
-    descriptionKey: "project.spongebobMusical.summary",
-    techStack: ["Logic Pro", "Mainstage", "Theater Sound", "Live Mixing"],
+    titleKey: "project.whiteout.title",
+    shortDescKey: "project.whiteout.shortDesc",
+    image: "/assets/images/thumbnails/whiteout-main.png",
+    descriptionKey: "project.whiteout.summary",
+    techStack: ["Unity", "C#", "Perforce", "Studio One"],
     links: [
-      { labelKey: "carousel.viewProject", url: "project-pages/spongebob-musical.html", icon: "external" }
+      { labelKey: "carousel.viewProject", url: "project-pages/whiteout.html", icon: "external" }
     ]
   },
   {
     id: 3,
-    titleKey: "project.doughItYourself.title",
-    shortDescKey: "project.doughItYourself.shortDesc",
-    image: "/assets/images/thumbnails/thumbnails (7).png",
-    descriptionKey: "project.doughItYourself.summary",
-    techStack: ["Unity", "C#", "Git"],
+    titleKey: "project.sisyphus.title",
+    shortDescKey: "project.sisyphus.shortDesc",
+    image: "/assets/images/thumbnails/thumbnails (6).jpg",
+    descriptionKey: "project.sisyphus.summary",
+    techStack: ["FMOD", "C#", "Unity", "Perforce", "Sound Design"],
     links: [
-      { labelKey: "carousel.viewProject", url: "project-pages/dough-it-yourself.html", icon: "external" }
+      { labelKey: "carousel.viewProject", url: "project-pages/sisyphus-worst-day.html", icon: "external" }
     ]
   }
 ];
