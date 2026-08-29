@@ -1,0 +1,15 @@
+{
+  "name": "jianghao-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "baseline": "node scripts/content-contract.mjs snapshot",
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check-site.mjs",
+    "dev": "node scripts/dev.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jianghao Li - SoundBoard</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/project-detail.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav>
+      <button class="lang-toggle" aria-label="切换语言">EN/中文</button>
+      <ul class="nav-links">
+        <li><a href="../index.html" data-i18n="nav.home">首页</a></li>
+        <li><a href="../work-gallery/index.html" data-i18n="nav.workGallery">作品展廊</a></li>
+        <li><a href="../blog/index.html" data-i18n="nav.blog">博客</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">关于</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" aria-label="打开导航菜单" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <main class="project-page">
+    <section class="project-hero">
+      <div class="project-hero-content">
+        <h1 class="project-title">SoundBoard</h1>
+        <p class="project-summary">一款通过 WAAPI 独立运行的 Wwise 音频工具，让设计师能够在更专注的界面中浏览、试听并控制声音对象。</p>
+        <div class="project-meta">
+          <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2026</span>
+          <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>音频工具</span>
+          <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>1 个月</span>
+        </div>
+        <div class="hero-tech-stack">
+          <div class="hero-details-container">
+            <div class="hero-details-column">
+              <h3 data-i18n="project.techStack">技术栈</h3>
+              <ul class="tech-list">
+                <li><span class="tech-tag">C#</span></li><li><span class="tech-tag">Wwise WAAPI</span></li><li><span class="tech-tag">Avalonia</span></li><li><span class="tech-tag">MVVM</span></li><li><span class="tech-tag">AI Agent</span></li><li><span class="tech-tag">Git</span></li>
+              </ul>
+            </div>
+            <div class="hero-details-column"><h3 data-i18n="project.myRole">我的职责</h3><ul class="role-list"><li>工具设计</li><li>WAAPI 开发</li><li>技术指导</li></ul></div>
+            <div class="hero-details-column"><h3 data-i18n="project.team">团队</h3><ul class="team-list"><li>个人项目</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="project-content">
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/main_window.png" alt="连接 Wwise 项目后的 SoundBoard 主界面" class="full-image" loading="lazy"><figcaption class="image-caption">载入 Wwise 项目后的主工作界面</figcaption></figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>项目概述</h2>
+          <p>SoundBoard 起源于一个很实际的工作流问题：设计师经常需要快速试听声音、测试交互参数，但如果每次都要打开游戏引擎集成，或在 Wwise 的多个界面之间来回切换，一次简单的创作判断也会被打断。</p>
+          <p>因此，我设计了这款能够通过 Wwise Authoring API 直接连接已打开项目的独立桌面工具。它会读取项目层级，并把每个声音对象所关联的控制集中展示出来。设计师不必依赖 Unity，就能实时试听 Event、调整 RTPC，或切换 Switch 状态。</p>
+          <p>我的目标并不是取代 Wwise，而是在它之上增加一层更专注的入口，让声音审阅时最常用的信息和操作能够立即被看到、被听到。</p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <div class="media-text-content">
+            <h2>连接 Wwise</h2>
+            <p>SoundBoard 启动时会先显示一个简洁的连接向导。只要 Wwise 项目已经打开，并在项目设置中启用了 WAAPI，工具就会建立连接并自动读取可用的声音对象。</p>
+            <p>我将连接步骤与主窗口分开，让应用当前所处的状态更清楚：在任何项目控制出现之前，用户能够先确认 Wwise 是否准备就绪；连接与数据载入的问题，也会被限制在一个简单明确的入口中。</p>
+          </div>
+          <figure class="media-text-image"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/connection_wizard.png" alt="SoundBoard 连接向导" loading="lazy"><figcaption class="image-caption">连接向导</figcaption></figure>
+          <figure class="media-text-image"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/connection_wizard_success.png" alt="SoundBoard 成功连接 Wwise" loading="lazy"><figcaption class="image-caption">WAAPI 连接成功</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/object_list.png" alt="SoundBoard 中按层级展示的 Wwise 对象列表" loading="lazy"><figcaption class="image-caption">Wwise 对象层级</figcaption></figure>
+          <div class="media-text-content">
+            <h2>更快速的项目导航</h2>
+            <p>左侧面板会把连接到的 Wwise 项目转换为可展开的树状结构。文件夹、Switch Container 和普通声音对象拥有不同的视觉标记，即使项目规模变大，层级关系依然容易辨认。</p>
+            <p>我还加入了关键词搜索，以及隐藏 Wwise 2025 Factory 默认文件夹的选项。两种筛选都会从完整层级的保留副本中生成结果，因此用户可以随时更换搜索内容或恢复被隐藏的对象，无须重新向 Wwise 请求数据，也不会破坏原有结构。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container"><div class="image-grid image-grid--3col">
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/expand_objects.png" alt="展开后的 Wwise 对象层级" loading="lazy"><figcaption class="image-caption">可展开的对象树</figcaption></figure>
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/search.png" alt="在 SoundBoard 中搜索 Wwise 对象" loading="lazy"><figcaption class="image-caption">关键词搜索</figcaption></figure>
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/filter.png" alt="在 SoundBoard 中过滤 Wwise Factory 文件夹" loading="lazy"><figcaption class="image-caption">Factory 文件夹筛选</figcaption></figure>
+        </div></div>
+      </section>
+
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/detail.png" alt="SoundBoard 详情面板中的关联 Event 与 RTPC 参数" class="full-image" loading="lazy"><figcaption class="image-caption">集中显示所选声音对象的全部关联控制</figcaption></figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>让控制回到声音语境中</h2>
+          <p>选择一个声音对象后，右侧详情面板会显示它在 Wwise 中的备注，以及相关的 Event、RTPC 和 Switch Group。Event 名称直接从项目中获取，每个播放按钮都会把对应事件发送给 Wwise Sound Engine。</p>
+          <p>RTPC 的范围会从曲线中自动读取，并转换成滑杆；用户既可以拖动控制，也可以直接输入数值。滑动产生的变化会经过轻量节流后再通过 WAAPI 发送，在维持即时反馈的同时，避免向 Wwise 提交过多重复更新。Switch 选项同样会被自动读取，并通过下拉菜单切换。</p>
+          <p>当这些关系被放在同一个界面里，设计师可以一边听见声音对象的实际表现，一边理解究竟有哪些参数正在驱动它。</p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container"><div class="image-grid image-grid--3col">
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/events_detail.png" alt="SoundBoard 中可播放的 Wwise Event" loading="lazy"><figcaption class="image-caption">关联 Event</figcaption></figure>
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/rtpc.png" alt="SoundBoard 中实时控制的 RTPC" loading="lazy"><figcaption class="image-caption">RTPC 控制</figcaption></figure>
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/switch_object.png" alt="SoundBoard 中的 Wwise Switch Group 控制" loading="lazy"><figcaption class="image-caption">Switch Group 控制</figcaption></figure>
+        </div></div>
+      </section>
+
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <div class="media-text-content">
+            <h2>开发方式</h2>
+            <p>我负责定义产品方向、监督整体架构，并在开发过程中进行宏观层面的结构调整。在这一方向下，Avalonia 界面与 MVVM 架构的具体代码实现由 AI agent 完成。</p>
+            <p>Wwise Authoring API 的集成则由我独立完成，包括项目数据查询、Event 播放、RTPC 控制、Switch 切换和连接流程。将 WAAPI 通信放在独立的服务层中，也让 AI 实现的界面层与面向 Wwise 的核心逻辑可以分别迭代，而不会彼此紧密耦合。</p>
+            <p>考虑到设计师可能会在 SoundBoard 开启期间继续修改 Wwise 项目，我加入了 Refresh Project 功能，按需重新构建对象层级和控制数据。新增的 Event、RTPC 与 Switch Group 因此能够直接进入同一套工作流，无须重启应用。</p>
+          </div>
+          <figure class="media-text-image"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/refresh.png" alt="SoundBoard 中的 Refresh Project 按钮" loading="lazy"><figcaption class="image-caption">重新载入最新的 Wwise 项目数据</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="content-block content-block--cta" data-reveal>
+        <div class="cta-container"><h2>探索项目</h2><div class="cta-buttons">
+          <a href="https://github.com/JianghaoL/WwiseSoundCaster" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>查看源代码与使用说明</a>
+        </div></div>
+      </section>
+
+      <nav class="project-navigation" data-reveal>
+        <a href="../work-gallery/index.html" class="nav-link nav-link--all"><span class="nav-label">全部项目</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer"><p data-i18n="footer.copyright">&copy; 2026 Jianghao Li. 保留所有权利。</p></footer>
+  <script src="/js/main.js"></script><script src="/js/project-detail.js"></script><script src="/js/translations.js"></script><script src="/js/i18n.js"></script>
+</body>
+</html>

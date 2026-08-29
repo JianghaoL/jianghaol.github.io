@@ -1,0 +1,327 @@
+/* =============================================
+   Button Base Styles - Shared Hover Effect
+   ============================================= */
+
+/* 
+ * Base button class with flowing light hover effect
+ * All buttons inherit this elegant shimmer animation
+ */
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  overflow: var(--overflow-clip);
+  cursor: pointer;
+  transition: 
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Flowing light pseudo-element */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 30%,
+    rgba(106, 176, 243, 0.15) 45%,
+    rgba(106, 176, 243, 0.3) 50%,
+    rgba(106, 176, 243, 0.15) 55%,
+    transparent 70%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Hover state - trigger flowing light */
+.btn:hover::before {
+  left: 100%;
+}
+
+/* Subtle glow on hover */
+.btn:hover {
+  box-shadow: 
+    0 0 20px rgba(106, 176, 243, 0.15),
+    0 4px 12px rgba(0, 0, 0, 0.2);
+  border-color: rgba(106, 176, 243, 0.8);
+}
+
+/* Active/click state */
+.btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Focus state for accessibility - keyboard navigation */
+.btn:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(106, 176, 243, 0.4),
+    0 0 20px rgba(106, 176, 243, 0.15);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  box-shadow: 
+    0 0 0 3px rgba(106, 176, 243, 0.4),
+    0 0 20px rgba(106, 176, 243, 0.15);
+}
+
+/* =============================================
+   Primary Button Variant
+   ============================================= */
+.btn-primary {
+  position: relative;
+  display: inline-block;
+  margin-top: 2rem;
+  background: transparent;
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  color: #ffffff;
+  text-decoration: none;
+  border: 2px solid var(--accent);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: var(--overflow-clip);
+  cursor: pointer;
+  transition: 
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Flowing light effect for primary button */
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 30%,
+    rgba(106, 176, 243, 0.2) 45%,
+    rgba(106, 176, 243, 0.4) 50%,
+    rgba(106, 176, 243, 0.2) 55%,
+    transparent 70%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  box-shadow: 
+    0 0 25px rgba(106, 176, 243, 0.2),
+    0 6px 16px rgba(0, 0, 0, 0.25);
+  border-color: rgba(106, 176, 243, 0.9);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Focus state for primary button */
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(106, 176, 243, 0.4),
+    0 0 25px rgba(106, 176, 243, 0.2);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* =============================================
+   View Gallery Button - Special Variant
+   Includes scale effect in addition to flowing light
+   ============================================= */
+.btn-gallery {
+  position: relative;
+  display: inline-block;
+  margin-top: 2rem;
+  background: transparent;
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  color: #ffffff;
+  text-decoration: none;
+  border: 2px solid var(--accent);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: var(--overflow-clip);
+  cursor: pointer;
+  transition: 
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Constant flowing light animation for gallery button - triggers on hover */
+.btn-gallery::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 30%,
+    rgba(106, 176, 243, 0.2) 45%,
+    rgba(106, 176, 243, 0.4) 50%,
+    rgba(106, 176, 243, 0.2) 55%,
+    transparent 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Start the continuous animation on hover */
+.btn-gallery:hover::before {
+  animation: galleryFlowingLight 1.5s ease-in-out infinite;
+}
+
+@keyframes galleryFlowingLight {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Gallery button hover - includes scale(1.05) and color fill */
+.btn-gallery:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, rgba(106, 176, 243, 0.25) 0%, rgba(74, 141, 195, 0.35) 100%);
+  box-shadow: 
+    0 0 30px rgba(106, 176, 243, 0.25),
+    0 8px 20px rgba(0, 0, 0, 0.3);
+  border-color: rgba(106, 176, 243, 0.9);
+}
+
+.btn-gallery:active {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Focus state for gallery button */
+.btn-gallery:focus {
+  outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(106, 176, 243, 0.4),
+    0 0 30px rgba(106, 176, 243, 0.25);
+}
+
+.btn-gallery:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* =============================================
+   Contact Button Styles
+   ============================================= */
+.btn.email,
+.btn.linkedin,
+.btn.github {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure contact buttons inherit the flowing light effect */
+.btn.email::before,
+.btn.linkedin::before,
+.btn.github::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 30%,
+    rgba(106, 176, 243, 0.15) 45%,
+    rgba(106, 176, 243, 0.3) 50%,
+    rgba(106, 176, 243, 0.15) 55%,
+    transparent 70%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.btn.email:hover::before,
+.btn.linkedin:hover::before,
+.btn.github:hover::before {
+  left: 100%;
+}
+
+/* =============================================
+   Reduced Motion Support
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+  .btn::before,
+  .btn-primary::before,
+  .btn.email::before,
+  .btn.linkedin::before,
+  .btn.github::before {
+    transition: none;
+  }
+  
+  .btn-gallery::before {
+    animation: none;
+  }
+  
+  .btn:hover::before,
+  .btn-primary:hover::before,
+  .btn.email:hover::before,
+  .btn.linkedin:hover::before,
+  .btn.github:hover::before {
+    left: -100%;
+  }
+  
+  .btn,
+  .btn-primary,
+  .btn-gallery {
+    transition: 
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "headers": {
+    "header/header-19ffe1c5df": [
+      "en/about.html",
+      "zh/about.html"
+    ],
+    "header/header-c8574b1cce": [
+      "en/blog/index.html",
+      "zh/blog/index.html"
+    ],
+    "header/header-4311f931e9": [
+      "en/index.html",
+      "zh/index.html"
+    ],
+    "header/header-2c74c71c46": [
+      "en/project-pages/blender-unity-communicator.html",
+      "en/project-pages/crossfadER.html",
+      "en/project-pages/dough-it-yourself.html",
+      "en/project-pages/forest-fears.html",
+      "en/project-pages/mantle.html",
+      "en/project-pages/sisyphus-worst-day.html",
+      "en/project-pages/spongebob-musical.html",
+      "en/project-pages/spongebob-soundtrack.html",
+      "en/project-pages/theme-for-carnival.html",
+      "en/project-pages/whiteout.html",
+      "zh/project-pages/blender-unity-communicator.html",
+      "zh/project-pages/crossfadER.html",
+      "zh/project-pages/dough-it-yourself.html",
+      "zh/project-pages/forest-fears.html",
+      "zh/project-pages/mantle.html",
+      "zh/project-pages/sisyphus-worst-day.html",
+      "zh/project-pages/spongebob-musical.html",
+      "zh/project-pages/spongebob-soundtrack.html",
+      "zh/project-pages/theme-for-carnival.html",
+      "zh/project-pages/whiteout.html"
+    ],
+    "header/header-78430dc9df": [
+      "en/project-pages/ripout-redesign.html",
+      "en/project-pages/sound-redesign-reel.html"
+    ],
+    "header/header-68cb47a46c": [
+      "en/project-pages/soundboard.html",
+      "en/project-pages/unity-audio-callback-system.html"
+    ],
+    "header/header-2e8313f31e": [
+      "en/work-gallery/index.html",
+      "zh/work-gallery/index.html"
+    ],
+    "header/header-7953b74b1a": [
+      "project-pages/blender-unity-communicator.html",
+      "project-pages/crossfadER.html",
+      "project-pages/dough-it-yourself.html",
+      "project-pages/forest-fears.html",
+      "project-pages/mantle.html",
+      "project-pages/sisyphus-worst-day.html",
+      "project-pages/soundboard.html",
+      "project-pages/spongebob-musical.html",
+      "project-pages/spongebob-soundtrack.html",
+      "project-pages/theme-for-carnival.html",
+      "project-pages/whiteout.html"
+    ]
+  },
+  "footers": {
+    "footer/footer-46e659299c": [
+      "about.html",
+      "blog/index.html",
+      "project-pages/blender-unity-communicator.html",
+      "project-pages/crossfadER.html",
+      "project-pages/dough-it-yourself.html",
+      "project-pages/forest-fears.html",
+      "project-pages/mantle.html",
+      "project-pages/sisyphus-worst-day.html",
+      "project-pages/soundboard.html",
+      "project-pages/spongebob-musical.html",
+      "project-pages/spongebob-soundtrack.html",
+      "project-pages/theme-for-carnival.html",
+      "project-pages/whiteout.html",
+      "project-template.html",
+      "work-gallery/index.html"
+    ],
+    "footer/footer-a76700955c": [
+      "en/about.html",
+      "en/blog/index.html",
+      "en/project-pages/blender-unity-communicator.html",
+      "en/project-pages/crossfadER.html",
+      "en/project-pages/dough-it-yourself.html",
+      "en/project-pages/forest-fears.html",
+      "en/project-pages/mantle.html",
+      "en/project-pages/sisyphus-worst-day.html",
+      "en/project-pages/spongebob-musical.html",
+      "en/project-pages/spongebob-soundtrack.html",
+      "en/project-pages/theme-for-carnival.html",
+      "en/project-pages/whiteout.html",
+      "en/work-gallery/index.html",
+      "zh/about.html",
+      "zh/blog/index.html",
+      "zh/project-pages/blender-unity-communicator.html",
+      "zh/project-pages/crossfadER.html",
+      "zh/project-pages/dough-it-yourself.html",
+      "zh/project-pages/forest-fears.html",
+      "zh/project-pages/mantle.html",
+      "zh/project-pages/sisyphus-worst-day.html",
+      "zh/project-pages/spongebob-musical.html",
+      "zh/project-pages/spongebob-soundtrack.html",
+      "zh/project-pages/theme-for-carnival.html",
+      "zh/project-pages/whiteout.html",
+      "zh/work-gallery/index.html"
+    ],
+    "footer/footer-03dff517d1": [
+      "en/project-pages/ripout-redesign.html",
+      "en/project-pages/sound-redesign-reel.html",
+      "en/project-pages/soundboard.html",
+      "en/project-pages/unity-audio-callback-system.html",
+      "zh/project-pages/ripout-redesign.html"
+    ]
+  }
+}

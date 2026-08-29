@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jianghao Li - Mantle</title>
+  
+  <!-- Language redirect -->
+  <script>
+  (function(){
+    var p = location.pathname;
+    if (p.indexOf('/en/') === 0 || p.indexOf('/zh/') === 0) return;
+    var lang = localStorage.getItem('preferred-lang') ||
+      (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
+    location.replace('/' + lang + p);
+  })();
+  </script>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pages/project-detail.css">
+</head>
+<body>
+  <!-- Header -->
+  {{> header/header-7953b74b1a}}
+
+  <main class="project-page">
+    <!-- ============================================
+         HERO SECTION
+         Centered project title and short description
+         ============================================ -->
+    <section class="project-hero">
+      <div class="project-hero-content">
+        <h1 class="project-title">Sisyphus's Worst Day</h1>
+        <p class="project-summary">
+          An innovative puzzle game that reimagines the myth of Sisyphus in a modern context.
+        </p>
+        <div class="project-meta">
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            2026
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Game Audio
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            10 month
+          </span>
+        </div>
+        
+        <!-- Tech Stack in Hero -->
+        <div class="hero-tech-stack">
+          <div class="hero-details-container">
+            <div class="hero-details-column">
+              <h3>Tech Stack</h3>
+              <ul class="tech-list">
+                <li><span class="tech-tag">FMOD</span></li>
+                <li><span class="tech-tag">C#</span></li>
+                <li><span class="tech-tag">Unity</span></li>
+                <li><span class="tech-tag">Perforce</span></li>
+                <li><span class="tech-tag">Sound Design</span></li>
+
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3>My Role</h3>
+              <ul class="role-list">
+                <li>Lead Technical Sound Designer</li>
+                <li>Audio Implementation</li>
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3>Team</h3>
+              <ul class="team-list">
+                <li>5 Sound Designers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         CONTENT SECTIONS
+         Modular content blocks for flexible layouts
+         ============================================ -->
+    <div class="project-content">
+      
+      <!-- Full-width Image Block -->
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="../assets/images/thumbnails/thumbnails (6).jpg" 
+               alt="Sisyphus's Worst Day game screenshot showcasing innovative puzzle gameplay and visual style" 
+               class="full-image"
+               loading="lazy">
+          <figcaption class="image-caption">Sisyphus's Worst Day</figcaption>
+        </figure>
+      </section>
+
+      <!-- Text Block - Overview -->
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>Overview</h2>
+          <p>
+            Sisyphus's Worst Day is a USC Advanced Game Project that has a development period of 10 months.
+             It is a third-person puzzle game that reimagines the myth of Sisyphus in a humorous and modern context.
+             Players take on the role of an office worker, led by the gods, who must trap Sisyphus in an endless loop of mundane tasks.
+          </p>
+          <p>
+           As the Lead Technical Sound Designer, I was responsible for overseeing the audio production process,
+            ensuring that all sound elements were effectively integrated into the game using FMOD and Unity.
+             I collaborated closely with a team of five sound designers to create an immersive audio experience that complemented the game's unique narrative and gameplay mechanics.
+          </p>
+          <p>
+            I worked intensively on audio implementation, utilizing C# scripting within Unity to ensure seamless integration of sound effects and music.
+             This involved setting up interactive audio systems that responded dynamically to player actions and game events, enhancing the overall player experience.
+          </p>
+          <p>
+            Throughout the development process, I coordinated with other departments to ensure that the audio design aligned with the game's visual style and storytelling.
+            I provided technical support and guidance to the sound design team, helping them to optimize their workflows and achieve high-quality results.
+            Having close collaboration with the design team, we ensured that the audio elements effectively conveyed the game's humor and themes.
+             The result is a cohesive and engaging puzzle game that offers players a fresh take on the classic myth of Sisyphus.
+          </p>
+        </div>
+      </section>
+
+    
+      <!-- Full-width Image Block -->
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="../assets/images/project-pages/Jianghao Li - Sisyphus/sisyphus_1.jpg" 
+               alt="Sisyphus's Worst Day game screenshot showcasing innovative puzzle gameplay and visual style" 
+               class="full-image"
+               loading="lazy">
+          <!-- figcaption class="image-caption">Sisyphus's Worst Day</figcaption -->
+        </figure>
+      </section>
+
+      <!-- Full-width Image Block -->
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="../assets/images/project-pages/Jianghao Li - Sisyphus/sisyphus_2.jpg" 
+               alt="Sisyphus's Worst Day game screenshot showcasing innovative puzzle gameplay and visual style" 
+               class="full-image"
+               loading="lazy">
+          <!-- figcaption class="image-caption">Sisyphus's Worst Day</figcaption -->
+        </figure>
+      </section>
+
+      <!-- Full-width Image Block -->
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="../assets/images/project-pages/Jianghao Li - Sisyphus/sisyphus_3.jpg" 
+               alt="Sisyphus's Worst Day game screenshot showcasing innovative puzzle gameplay and visual style" 
+               class="full-image"
+               loading="lazy">
+          <!-- figcaption class="image-caption">Sisyphus's Worst Day</figcaption -->
+        </figure>
+      </section>
+
+      <!-- Full-width Image Block -->
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="../assets/images/project-pages/Jianghao Li - Sisyphus/sisyphus_4.jpg" 
+               alt="Sisyphus's Worst Day game screenshot showcasing innovative puzzle gameplay and visual style" 
+               class="full-image"
+               loading="lazy">
+          <!-- figcaption class="image-caption">Sisyphus's Worst Day</figcaption -->
+        </figure>
+      </section>
+
+      <!-- Highlight/Quote Block -->
+      <section class="content-block content-block--highlight" data-reveal>
+        <blockquote class="highlight-quote">
+          <p>"Wow awesome game. Hype. I feel like Sisyphus!"</p>
+          <cite>— Steam Review</cite>
+        </blockquote>
+      </section>
+
+      <!-- Call to Action / Links Block -->
+      <section class="content-block content-block--cta" data-reveal>
+        <div class="cta-container">
+          <h2>Explore the Project</h2>
+          <div class="cta-buttons">
+            <a href="https://store.steampowered.com/app/4700250/Sisyphuss_Worst_Day_again/" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              Available on Steam
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Navigation -->
+      <nav class="project-navigation" data-reveal>
+        <a href="../work-gallery/index.html" class="nav-link nav-link--all">
+          <span class="nav-label">All Projects</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+        </a>
+      </nav>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  {{> footer/footer-46e659299c}}
+
+  <!-- Scripts -->
+  <script src="../js/main.js"></script>
+  <script src="../js/project-detail.js"></script>
+</body>
+</html>

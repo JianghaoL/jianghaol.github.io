@@ -1,0 +1,491 @@
+/* Selected Work Carousel Styles - Pseudo-3D Effect */
+
+/* Container */
+.work-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 0;
+  perspective: 1200px;
+  overflow: visible;
+}
+
+/* Slider Track - 3D Stage */
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  transform-style: preserve-3d;
+}
+
+/* Individual Slide - 3D Positioned */
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1),
+              opacity 0.7s cubic-bezier(0.4, 0.2, 0.2, 1),
+              filter 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+}
+
+/* Position states for slides */
+.carousel-slide[data-position="center"] {
+  transform: translateX(-50%) translateZ(0) scale(1);
+  opacity: 1;
+  z-index: 10;
+  filter: brightness(1);
+}
+
+.carousel-slide[data-position="left-1"] {
+  transform: translateX(-130%) translateZ(-150px) scale(0.8) rotateY(15deg);
+  opacity: 0.7;
+  z-index: 5;
+  filter: brightness(0.6);
+}
+
+.carousel-slide[data-position="left-2"] {
+  transform: translateX(-160%) translateZ(-300px) scale(0.6) rotateY(20deg);
+  opacity: 0.4;
+  z-index: 2;
+  filter: brightness(0.4);
+}
+
+.carousel-slide[data-position="right-1"] {
+  transform: translateX(30%) translateZ(-150px) scale(0.8) rotateY(-15deg);
+  opacity: 0.7;
+  z-index: 5;
+  filter: brightness(0.6);
+}
+
+.carousel-slide[data-position="right-2"] {
+  transform: translateX(60%) translateZ(-300px) scale(0.6) rotateY(-20deg);
+  opacity: 0.4;
+  z-index: 2;
+  filter: brightness(0.4);
+}
+
+.carousel-slide[data-position="hidden"] {
+  transform: translateX(-50%) translateZ(-500px) scale(0.4);
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+  filter: brightness(0.2);
+}
+
+/* Flip Card Container */
+.flip-card {
+  width: 100%;
+  max-width: 500px;
+  height: 400px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+/* Only allow hover flip on center card */
+.carousel-slide[data-position="center"] .flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Card Faces */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  overflow: var(--overflow-clip);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Front Face */
+.flip-card-front {
+  background: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-card-front .card-image {
+  width: 100%;
+  height: 65%;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  background-color: #2a2a3d;
+}
+
+.flip-card-front .card-title {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flip-card-front .card-title h3 {
+  font-size: 1.4rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.flip-card-front .card-title p {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.4;
+}
+
+/* Back Face */
+.flip-card-back {
+  background: linear-gradient(145deg, var(--card-bg), #252538);
+  transform: rotateY(180deg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flip-card-back h3 {
+  font-size: 1.3rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.flip-card-back .card-description {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.flip-card-back .card-tech {
+  margin-bottom: 1.5rem;
+}
+
+.flip-card-back .card-tech h4 {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+
+.flip-card-back .tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.flip-card-back .tech-tag {
+  background: rgba(106, 176, 243, 0.15);
+  color: var(--accent);
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  border: 1px solid rgba(106, 176, 243, 0.3);
+}
+
+.flip-card-back .card-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.flip-card-back .card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-md);
+  overflow: var(--overflow-clip);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.flip-card-back .card-link:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.flip-card-back .card-link svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Navigation Arrows */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  /* make nav span the full viewport so both buttons are equidistant from screen edges */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  /* increase horizontal inset so buttons sit further from viewport edges */
+  padding: 0 3rem;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.carousel-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: rgba(30, 30, 45, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  overflow: var(--overflow-clip);
+  /* position absolute so we can place prev/next explicitly */
+  position: relative;
+}
+
+.carousel-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.1);
+}
+
+.carousel-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Dots Navigation */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 15;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.carousel-dot.active {
+  background: var(--accent);
+  transform: scale(1.2);
+}
+
+/* Progress Bar */
+.carousel-progress {
+  width: 100%;
+  max-width: 500px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 1rem auto 0;
+  border-radius: var(--radius-full);
+  overflow: var(--overflow-clip);
+  position: relative;
+  z-index: 15;
+}
+
+.carousel-progress-bar {
+  height: 100%;
+  background: var(--accent);
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .work-carousel {
+    max-width: 100%;
+    padding: 2rem 1rem;
+  }
+
+  /* slightly reduce nav inset on medium screens */
+  .carousel-nav {
+    padding: 0 2rem;
+  }
+
+  .carousel-slide[data-position="left-1"] {
+    transform: translateX(-120%) translateZ(-120px) scale(0.75) rotateY(12deg);
+  }
+
+  .carousel-slide[data-position="right-1"] {
+    transform: translateX(20%) translateZ(-120px) scale(0.75) rotateY(-12deg);
+  }
+
+  .carousel-slide[data-position="left-2"],
+  .carousel-slide[data-position="right-2"] {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .work-carousel {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .carousel-track {
+    height: 400px;
+  }
+
+  .flip-card {
+    max-width: 350px;
+    height: 350px;
+  }
+
+  .flip-card-front .card-title h3 {
+    font-size: 1.2rem;
+  }
+
+  .flip-card-front .card-title p {
+    font-size: 0.85rem;
+  }
+
+  .flip-card-back {
+    padding: 1.5rem;
+  }
+
+  .flip-card-back h3 {
+    font-size: 1.1rem;
+  }
+
+  .flip-card-back .card-description {
+    font-size: 0.85rem;
+  }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .carousel-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* reduce nav inset on small screens */
+  .carousel-nav {
+    padding: 0 1.5rem;
+  }
+
+  /* Show only adjacent cards on tablet */
+  .carousel-slide[data-position="left-1"] {
+    transform: translateX(-110%) translateZ(-100px) scale(0.7) rotateY(10deg);
+    opacity: 0.5;
+  }
+
+  .carousel-slide[data-position="right-1"] {
+    transform: translateX(10%) translateZ(-100px) scale(0.7) rotateY(-10deg);
+    opacity: 0.5;
+  }
+
+  .carousel-slide[data-position="left-2"],
+  .carousel-slide[data-position="right-2"] {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-track {
+    height: 360px;
+  }
+
+  .flip-card {
+    max-width: 280px;
+    height: 320px;
+  }
+
+  .flip-card-front .card-image {
+    height: 55%;
+  }
+
+  .flip-card-back .card-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .flip-card-back .card-link {
+    justify-content: center;
+  }
+
+  .carousel-nav {
+    /* keep a small inset on very small screens */
+    padding: 0 1rem;
+  }
+
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Hide side cards on mobile */
+  .carousel-slide[data-position="left-1"],
+  .carousel-slide[data-position="right-1"],
+  .carousel-slide[data-position="left-2"],
+  .carousel-slide[data-position="right-2"] {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+}
+
+/* Touch device adjustments */
+@media (hover: none) {
+  .flip-card {
+    cursor: default;
+  }
+  
+  /* On touch devices, tap to flip instead of hover */
+  .carousel-slide[data-position="center"] .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .carousel-slide[data-position="center"] .flip-card:hover .flip-card-inner {
+    transform: rotateY(0deg);
+  }
+  
+  .carousel-slide[data-position="center"] .flip-card.flipped:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+}

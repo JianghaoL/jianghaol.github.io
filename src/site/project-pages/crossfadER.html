@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jianghao Li - CrossfadER</title>
+  
+  <!-- Language redirect -->
+  <script>
+  (function(){
+    var p = location.pathname;
+    if (p.indexOf('/en/') === 0 || p.indexOf('/zh/') === 0) return;
+    var lang = localStorage.getItem('preferred-lang') ||
+      (navigator.language && navigator.language.toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
+    location.replace('/' + lang + p);
+  })();
+  </script>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pages/project-detail.css">
+</head>
+<body>
+  <!-- Header -->
+  {{> header/header-7953b74b1a}}
+
+  <main class="project-page">
+    <!-- ============================================
+         HERO SECTION
+         Centered project title and short description
+         ============================================ -->
+    <section class="project-hero">
+      <div class="project-hero-content">
+        <h1 class="project-title">CrossfadER</h1>
+        <p class="project-summary">
+          An audio tool automating the looping sound production workflow.
+        </p>
+        <div class="project-meta">
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            2025
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Audio Tool
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            1 month
+          </span>
+        </div>
+        
+        <!-- Tech Stack in Hero -->
+        <div class="hero-tech-stack">
+          <div class="hero-details-container">
+            <div class="hero-details-column">
+              <h3>Tech Stack</h3>
+              <ul class="tech-list">
+                <li><span class="tech-tag">DSP</span></li>
+                <li><span class="tech-tag">C#</span></li>
+                <li><span class="tech-tag">Avalonia</span></li>
+                <li><span class="tech-tag">Git</span></li>
+
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3>My Role</h3>
+              <ul class="role-list">
+                <li>Audio Programming</li>
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3>Team</h3>
+              <ul class="team-list">
+                <li>Solo</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         CONTENT SECTIONS
+         Modular content blocks for flexible layouts
+         ============================================ -->
+    <div class="project-content">
+      
+      <!-- Full-width Image Block -->
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (2).png" 
+               alt="CrossfadER application interface showing crossfade options and audio processing controls" 
+               class="full-image"
+               loading="lazy">
+          <figcaption class="image-caption">CrossfadER Interface</figcaption>
+        </figure>
+      </section>
+
+      <!-- Text Block - Overview -->
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>Overview</h2>
+          <p>
+            This is a tool developed to help with the sound design and game audio prototyping process. 
+          </p>
+          <p>
+            It now provides several crossfade time options, allowing flexibility when
+             handling audio assets. 3 modes of crossfade are also available, 
+             each being linear, logarithmic, and sine.
+             More features are now in development.
+          </p>
+          <p>
+            The application is built based on Avalonia and the .NET Framework, with the functioning language being C#.
+          </p>
+        </div>
+      </section>
+
+      <!-- Image + Text Block (Image Left) -->
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <div class="media-text-content">
+            <h2>Implementation</h2>
+            <p>
+              This program emulates the typical way of processing a looping audio in a DAW system.
+            </p>
+            <p>
+              To make a looping sound, the audio clip will first need to be cut in half and 
+              swapped in position. This means that the former half of the audio now becomes
+               the latter half, and vice versa. Then, the two audio tracks will need to be overlapped 
+              and crossfaded so they merge perfectly into each other.
+            </p>
+            <p>
+              This program, essentially, does the same thing.
+            </p>
+            <p>Using the NAudio library, the program first reads the audio file into a 
+              float array that stores all the data. It then cuts the audio 
+              into two pieces and performs a swapping operation.</p>
+          </div>
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (5).png" 
+                 alt="Diagram illustrating the audio data swapping process for loop creation" 
+                 loading="lazy">
+                 <figcaption class="image-caption">Swapping Audio Data</figcaption>
+          </figure>
+
+          <div class="media-text-content">
+
+            <p>
+              The swapped audio data array will then be used to generate the crossfaded
+               result. The program will start with the midpoint of the array, 
+               perform a special computation (see Phase Issue below), 
+              and mix the two tracks beginning at the computed index.
+            </p>
+            <p>
+              Different crossfade modes specify how the program will render the 
+              crossfaded area. In its core essence, the program adds the two data
+               multiplied by a weight coefficient that is calculated 
+              based on the relative index and functions.
+            <p>
+              After these steps, the audio clip is ready for exporting. 
+              The program will automatically provide a postfix to the 
+              file name if no customized file name is specified.
+            </p>
+          </div>
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (6).png" 
+                 alt="Visualization of the crossfade mixing algorithm and weight coefficients" 
+                 loading="lazy">
+                 <figcaption class="image-caption">Audio Processing</figcaption>
+          </figure>
+          
+        </div>
+          
+        
+      </section>
+
+      <!-- Mechanics Image Grid -->
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <div class="image-grid image-grid--3col">
+            <figure class="grid-image-item">
+              <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/mechanics (3).png" 
+                   alt="Linear crossfade curve showing equal power transition" 
+                   loading="lazy">
+            </figure>
+            <figure class="grid-image-item">
+              <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/mechanics (2).png" 
+                   alt="Logarithmic crossfade curve for natural volume transitions" 
+                   loading="lazy">
+            </figure>
+            <figure class="grid-image-item">
+              <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/mechanics (1).png" 
+                   alt="Sine crossfade curve for smooth audio blending" 
+                   loading="lazy">
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Image + Text Block (Image Left) -->
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="../assets/images/project-pages/Jianghao Li - CrossfadER/CrossfadER (7).png" 
+                 alt="Waveform diagram showing zero-crossing detection for phase alignment" 
+                 loading="lazy">
+                 <figcaption class="image-caption">Phase Handling</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>Phase Issue</h2>
+            <p>
+              When dealing with audio, phase is always an issue. This tool has a special computation method, 
+              to the greatest extent, to eliminate the phase problem.
+            </p>
+            <p>
+              The program, starting at the midpoint of the array, finds the nearest index 
+              at which the wave has an amplitude of zero. This ensures that the
+               crossfaded audio will always start at a zero point,
+               avoiding abrupt jumps in phase and amplitude.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Highlight/Quote Block -->
+      <section class="content-block content-block--highlight" data-reveal>
+        <blockquote class="highlight-quote">
+          <p>"Actually goated that’s crazy"</p>
+          <cite>— USC Fellow Game Student</cite>
+        </blockquote>
+      </section>
+
+
+      <!-- Call to Action / Links Block -->
+      <section class="content-block content-block--cta" data-reveal>
+        <div class="cta-container">
+          <h2>Explore the Project</h2>
+          <div class="cta-buttons">
+            <a href="https://github.com/JianghaoL/CrossfadER/releases/tag/v1.0.0" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              Download Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Navigation -->
+      <nav class="project-navigation" data-reveal>
+        <a href="../work-gallery/index.html" class="nav-link nav-link--all">
+          <span class="nav-label">All Projects</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+        </a>
+      </nav>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  {{> footer/footer-46e659299c}}
+
+  <!-- Scripts -->
+  <script src="../js/main.js"></script>
+  <script src="../js/project-detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jianghao Li - Unity Audio Callback System</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/project-detail.css">
+</head>
+<body>
+  {{> header/header-68cb47a46c}}
+
+  <main class="project-page">
+    <section class="project-hero">
+      <div class="project-hero-content">
+        <h1 class="project-title">Unity Audio Callback System</h1>
+        <p class="project-summary">An open-source, thread-safe callback workflow for synchronizing Unity events with precise moments in audio.</p>
+        <div class="project-meta">
+          <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2026</span>
+          <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>Audio Tool</span>
+          <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>Open Source</span>
+        </div>
+        <div class="hero-tech-stack">
+          <div class="hero-details-container">
+            <div class="hero-details-column">
+              <h3 data-i18n="project.techStack">Tech Stack</h3>
+              <ul class="tech-list"><li><span class="tech-tag">Unity</span></li><li><span class="tech-tag">C#</span></li><li><span class="tech-tag">Unity Editor</span></li><li><span class="tech-tag">Timeline</span></li><li><span class="tech-tag">AI Used: UI</span></li><li><span class="tech-tag">Git</span></li></ul>
+            </div>
+            <div class="hero-details-column"><h3 data-i18n="project.myRole">My Role</h3><ul class="role-list"><li>Tool Designer</li><li>Audio Programmer</li><li>Editor Tool Developer</li></ul></div>
+            <div class="hero-details-column"><h3 data-i18n="project.team">Team</h3><ul class="team-list"><li>Solo Project</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="project-content">
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/audio-event-waveform-editor.png" alt="Unity Audio Event Waveform Editor with an audio waveform and timed event markers" class="full-image"><figcaption class="image-caption">Audio Event Waveform Editor</figcaption></figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>Overview</h2>
+          <p>Unity's built-in audio system can play clips reliably, but synchronizing gameplay, animation, or visual effects to exact moments in those clips often requires one-off timing code. I built this system to bring a marker-and-callback workflow—similar to the event callbacks found in FMOD and Wwise—directly into a standard Unity project.</p>
+          <p>Designers package a clip, playback settings, and named markers inside an <code>AudioEventAsset</code>. An <code>AudioEventPlayer</code> then plays the clip and invokes each marker's UnityEvent at the correct moment. The same marker can also be found by name from code, making the workflow useful both in the Inspector and through runtime subscriptions.</p>
+          <p>The result is a lightweight, open-source layer that keeps audio timing reusable, visible, and close to the people authoring the experience.</p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <div class="media-text-content">
+            <h2>Reusable Audio Event Assets</h2>
+            <p>The ScriptableObject-based <code>AudioEventAsset</code> is the system's source of truth. Alongside the AudioClip, it stores volume, pitch, looping, spatial blend, mixer routing, and whether callbacks should retrigger on each loop.</p>
+            <p>Each marker combines a readable name, a timestamp, and a UnityEvent. This separates the timing data from any one scene object, so the same authored audio event can be assigned to different players and wired to different gameplay responses.</p>
+          </div>
+          <figure class="media-text-image"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/audio-event-asset.png" alt="AudioEventAsset Inspector with playback parameters and event markers" loading="lazy"><figcaption class="image-caption">AudioEventAsset Inspector</figcaption></figure>
+          <figure class="media-text-image"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/markers.png" alt="Marker Inspector showing a named timestamp and UnityEvent callback" loading="lazy"><figcaption class="image-caption">A marker's timing and callback data</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/waveform.gif" alt="Playback cursor moving across a waveform with audio event markers" loading="lazy"><figcaption class="image-caption">Previewing marker timing against the waveform</figcaption></figure>
+          <div class="media-text-content">
+            <h2>Thread-Safe by Design</h2>
+            <p>The player schedules playback against <code>AudioSettings.dspTime</code> and checks elapsed DSP time inside <code>OnAudioFilterRead</code>. Because this callback runs on Unity's audio thread, it never invokes a UnityEvent or touches gameplay objects directly. Reached markers are written to a <code>ConcurrentQueue&lt;EventMarker&gt;</code> through the non-blocking <code>Enqueue</code> operation.</p>
+            <p>On the main thread, <code>Update</code> repeatedly calls <code>TryDequeue</code> and only then invokes each marker's UnityEvent. The queue forms a clear thread boundary: the audio thread owns precise timing detection, while the main thread owns every Unity-facing side effect. No shared list is iterated by both threads, and no lock is held inside the real-time audio callback.</p>
+            <p>Looping clips can optionally reset the marker index and retrigger their events on every pass, while one-shot playback naturally stops processing once the clip ends.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container"><h2>One Queue, Two Thread Responsibilities</h2><div class="image-grid image-grid--2col">
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/thread-safe-audio-thread.png" alt="C sharp source code showing markers enqueued from OnAudioFilterRead" loading="lazy"><figcaption class="image-caption">Audio thread: detect marker timing and enqueue only</figcaption></figure>
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/thread-safe-main-thread.png" alt="C sharp source code showing markers dequeued and invoked during Update" loading="lazy"><figcaption class="image-caption">Main thread: dequeue and safely invoke UnityEvents</figcaption></figure>
+        </div></div>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>Visual Waveform Authoring</h2>
+          <p>I created a custom Unity Editor window so timing can be authored by listening and looking, instead of repeatedly entering seconds by hand. It renders the selected clip's waveform, previews audio with a moving cursor, and provides zoom and horizontal navigation for precise placement.</p>
+          <p>Markers can be added directly on the waveform, dragged to a new moment, selected from the list, renamed, deleted, or fine-tuned numerically. The selected marker's UnityEvent is exposed in the same window, keeping timing and behavior together throughout iteration.</p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container"><div class="image-grid image-grid--2col">
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/add-drag-marker.gif" alt="Adding and dragging event markers on the waveform" loading="lazy"><figcaption class="image-caption">Add and drag markers directly on the waveform</figcaption></figure>
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/marker-detail.gif" alt="Selecting and editing marker details and UnityEvents" loading="lazy"><figcaption class="image-caption">Edit timing and UnityEvents in one workspace</figcaption></figure>
+        </div></div>
+      </section>
+
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <div class="media-text-content">
+            <h2>Timeline Support</h2>
+            <p>A custom <code>AudioEventTrack</code>, PlayableAsset, and PlayableBehaviour extend the same event system into Unity Timeline. An AudioEventPlayer can be bound to the track, allowing playback and callbacks to follow the Timeline graph alongside animation, particles, cameras, and other authored sequences.</p>
+            <p>This keeps cinematic and gameplay workflows on the same reusable AudioEventAsset model instead of requiring a second timing implementation.</p>
+          </div>
+          <figure class="media-text-image"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/timeline-support.gif" alt="Adding an Audio Event Track and clip in Unity Timeline" loading="lazy"><figcaption class="image-caption">AudioEventAsset workflow inside Unity Timeline</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="content-block content-block--cta" data-reveal>
+        <div class="cta-container"><h2>Explore the Project</h2><div class="cta-buttons">
+          <a href="https://github.com/JianghaoL/Unity-Audio-Callback-System" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>View Source Code &amp; Documentation</a>
+        </div></div>
+      </section>
+
+      <nav class="project-navigation" data-reveal>
+        <a href="../work-gallery/index.html" class="nav-link nav-link--all"><span class="nav-label">All Projects</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></a>
+      </nav>
+    </div>
+  </main>
+
+  {{> footer/footer-03dff517d1}}
+  <script src="/js/main.js"></script><script src="/js/project-detail.js"></script><script src="/js/translations.js"></script><script src="/js/i18n.js"></script>
+</body>
+</html>

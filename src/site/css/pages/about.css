@@ -1,0 +1,180 @@
+/* Vision Section Styles */
+.centered-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--bg);
+}
+
+.vision-content {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the image */
+}
+
+.vision-image {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  aspect-ratio: 5 / 3;
+  border-radius: var(--radius-md); /* Chamfered rectangle */
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow effect */
+  overflow: var(--overflow-clip);
+}
+
+.vision-header {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--accent); /* Make the header pop */
+  margin-bottom: 1rem;
+}
+
+.vision-text {
+  font-size: 1.0rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Separator Styles */
+.section-separator {
+  border: none;
+  height: 1px; /* Subtle height */
+  background: rgba(255, 255, 255, 0.2); /* Lighter color for subtle effect */
+  margin: 2rem auto; /* Center the separator */
+  width: 80%; /* Restrict width to 80% of the container */
+  border-radius: var(--radius-full);
+}
+
+/* About Details Section Styles */
+.about-details-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns layout */
+  gap: 4rem 7rem; /* Row gap / Column gap */
+  padding: 2rem;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  text-align: left; /* Ensure text is left-aligned */
+  justify-content: center; /* Center the text section */
+  max-width: 800px; /* Limit the width of the section */
+  margin: 20px auto; /* Center the section horizontally */
+}
+
+.about-details-section h3 {
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.about-details-section p, .about-details-section ul {
+  margin-bottom: 1.5rem;
+}
+
+.about-details-section ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.about-details-section li {
+  margin-bottom: 0.5rem;
+}
+
+.about-introduction, .about-education {
+  grid-column: 1; /* Place in the first column */
+}
+
+.about-skills {
+  grid-column: 2; /* Place in the second column */
+}
+
+/* =============================================
+   About Page Responsive Styles
+   ============================================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .centered-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .vision-image {
+    max-width: 600px;
+    max-height: 400px;
+  }
+
+  .vision-header {
+    font-size: 1.5rem;
+  }
+
+  .vision-text {
+    font-size: 0.95rem;
+  }
+
+  .about-details-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+
+  .about-introduction, .about-education, .about-skills {
+    grid-column: 1;
+  }
+
+  .about-details-section h3 {
+    font-size: 1.3rem;
+  }
+
+  .resume-button-container {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .centered-section {
+    padding: 2rem 1rem;
+  }
+
+  .vision-image {
+    max-width: 100%;
+    max-height: 300px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .vision-header {
+    font-size: 1.3rem;
+  }
+
+  .vision-text {
+    font-size: 0.9rem;
+  }
+
+  .section-separator {
+    margin: 1.5rem auto;
+    width: 90%;
+  }
+
+  .about-details-section {
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .about-details-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .about-details-section p, .about-details-section ul {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+}

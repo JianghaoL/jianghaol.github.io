@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jianghao Li - SoundBoard</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/project-detail.css">
+</head>
+<body>
+  {{> header/header-68cb47a46c}}
+
+  <main class="project-page">
+    <section class="project-hero">
+      <div class="project-hero-content">
+        <h1 class="project-title">SoundBoard</h1>
+        <p class="project-summary">A standalone WAAPI tool for browsing, previewing, and controlling Wwise sound objects without leaving a designer-focused interface.</p>
+        <div class="project-meta">
+          <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2026</span>
+          <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>Audio Tool</span>
+          <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>1 month</span>
+        </div>
+        <div class="hero-tech-stack">
+          <div class="hero-details-container">
+            <div class="hero-details-column">
+              <h3 data-i18n="project.techStack">Tech Stack</h3>
+              <ul class="tech-list">
+                <li><span class="tech-tag">C#</span></li><li><span class="tech-tag">Wwise WAAPI</span></li><li><span class="tech-tag">Avalonia</span></li><li><span class="tech-tag">MVVM</span></li><li><span class="tech-tag">AI Agent</span></li><li><span class="tech-tag">Git</span></li>
+              </ul>
+            </div>
+            <div class="hero-details-column"><h3 data-i18n="project.myRole">My Role</h3><ul class="role-list"><li>Tool Designer</li><li>WAAPI Developer</li><li>Technical Director</li></ul></div>
+            <div class="hero-details-column"><h3 data-i18n="project.team">Team</h3><ul class="team-list"><li>Solo Project</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="project-content">
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/main_window.png" alt="SoundBoard main window connected to a Wwise project" class="full-image" loading="lazy"><figcaption class="image-caption">The main workspace after loading a Wwise project</figcaption></figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>Overview</h2>
+          <p>SoundBoard began with a simple workflow problem: designers often need to audition sounds and test interactive parameters, but opening an engine integration or moving through several Wwise views adds friction to a quick creative decision.</p>
+          <p>I designed a standalone desktop tool that connects directly to an open Wwise project through the Wwise Authoring API. It collects the project hierarchy and presents the controls attached to each sound object in one place, so events can be previewed and RTPC or Switch values can be tested in real time without relying on Unity.</p>
+          <p>The goal was not to replace Wwise. It was to create a focused layer on top of it—one that makes the parts most useful during sound review immediately visible and playable.</p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <div class="media-text-content">
+            <h2>Connecting to Wwise</h2>
+            <p>SoundBoard opens with a small connection wizard. Once a Wwise project is open and WAAPI is enabled in its project settings, the tool establishes the connection and loads the available sound objects automatically.</p>
+            <p>Keeping this step separate from the main window makes the application state clear: the user knows whether Wwise is ready before any project controls appear, while connection and data-loading errors remain contained in a simple entry point.</p>
+          </div>
+          <figure class="media-text-image"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/connection_wizard.png" alt="SoundBoard connection wizard" loading="lazy"><figcaption class="image-caption">Connection Wizard</figcaption></figure>
+          <figure class="media-text-image"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/connection_wizard_success.png" alt="SoundBoard showing a successful Wwise connection" loading="lazy"><figcaption class="image-caption">Successful WAAPI connection</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/object_list.png" alt="Hierarchical Wwise object browser in SoundBoard" loading="lazy"><figcaption class="image-caption">Wwise object hierarchy</figcaption></figure>
+          <div class="media-text-content">
+            <h2>A Faster Way to Navigate</h2>
+            <p>The left panel turns the connected Wwise project into a collapsible tree. Folders, Switch Containers, and regular sound objects use distinct visual markers, allowing the structure to stay readable even in a larger project.</p>
+            <p>I also added keyword search and an option to hide the Factory folders included with Wwise 2025. Both filters work from a preserved copy of the complete hierarchy, so users can change search terms or restore hidden content without querying Wwise again or losing the original structure.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container"><div class="image-grid image-grid--3col">
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/expand_objects.png" alt="Expanded Wwise object hierarchy" loading="lazy"><figcaption class="image-caption">Expandable object tree</figcaption></figure>
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/search.png" alt="Searching for Wwise objects in SoundBoard" loading="lazy"><figcaption class="image-caption">Keyword search</figcaption></figure>
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/filter.png" alt="Filtering Wwise Factory folders in SoundBoard" loading="lazy"><figcaption class="image-caption">Factory-folder filter</figcaption></figure>
+        </div></div>
+      </section>
+
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/detail.png" alt="SoundBoard detail panel with related events and RTPC parameters" class="full-image" loading="lazy"><figcaption class="image-caption">All controls associated with the selected sound object</figcaption></figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>Controls in Context</h2>
+          <p>Selecting a sound object opens a detail panel with its Wwise notes, related Events, RTPCs, and Switch Groups. Event names are retrieved directly from the project, and each play button posts the corresponding event to the Wwise Sound Engine.</p>
+          <p>RTPC ranges are read from their curves and displayed as sliders, with both drag control and direct numeric entry. Slider changes are lightly debounced before being sent through WAAPI, keeping the response immediate without flooding Wwise with redundant updates. Switch options are also loaded automatically and can be changed from a dropdown.</p>
+          <p>Bringing these relationships into one view helps designers hear what an object does and understand what drives it at the same time.</p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container"><div class="image-grid image-grid--3col">
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/events_detail.png" alt="Playable Wwise events in SoundBoard" loading="lazy"><figcaption class="image-caption">Related Events</figcaption></figure>
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/rtpc.png" alt="Real-time RTPC controls in SoundBoard" loading="lazy"><figcaption class="image-caption">RTPC controls</figcaption></figure>
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/switch_object.png" alt="Wwise Switch Group controls in SoundBoard" loading="lazy"><figcaption class="image-caption">Switch Group controls</figcaption></figure>
+        </div></div>
+      </section>
+
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <div class="media-text-content">
+            <h2>Development Approach</h2>
+            <p>I defined the product direction, supervised the overall architecture, and made the high-level structural adjustments throughout development. An AI agent handled the concrete implementation of the Avalonia interface and MVVM structure under that direction.</p>
+            <p>I implemented the Wwise Authoring API integration myself, including project queries, event playback, RTPC control, Switch changes, and the connection workflow. Keeping WAAPI communication behind dedicated services allowed the generated interface layer and the Wwise-facing logic to evolve without becoming tightly coupled.</p>
+            <p>Because the Wwise project may keep changing while SoundBoard is open, Refresh Project rebuilds the object hierarchy and control data on demand. Newly added Events, RTPCs, and Switch Groups can enter the same workflow without restarting the application.</p>
+          </div>
+          <figure class="media-text-image"><img src="/assets/images/project-pages/Jianghao Li - Soundboard/refresh.png" alt="Refresh Project button in SoundBoard" loading="lazy"><figcaption class="image-caption">Reloading the latest Wwise project data</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="content-block content-block--cta" data-reveal>
+        <div class="cta-container"><h2>Explore the Project</h2><div class="cta-buttons">
+          <a href="https://github.com/JianghaoL/WwiseSoundCaster" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>View Source Code &amp; Documentation</a>
+        </div></div>
+      </section>
+
+      <nav class="project-navigation" data-reveal>
+        <a href="../work-gallery/index.html" class="nav-link nav-link--all"><span class="nav-label">All Projects</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></a>
+      </nav>
+    </div>
+  </main>
+
+  {{> footer/footer-03dff517d1}}
+  <script src="/js/main.js"></script><script src="/js/project-detail.js"></script><script src="/js/translations.js"></script><script src="/js/i18n.js"></script>
+</body>
+</html>

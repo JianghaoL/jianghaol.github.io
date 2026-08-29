@@ -1,0 +1,22 @@
+/* Card Styles */
+.work-card {
+  background: var(--card-bg);
+  padding: 1.6rem;
+  border-radius: var(--radius-md);
+  overflow: var(--overflow-clip);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.work-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+}
+
+.work-preview {
+  height: 160px;
+  border-radius: var(--radius-sm);
+  background-size: cover;
+  background-position: center;
+  margin-bottom: .8rem;
+  overflow: var(--overflow-clip);
+}
