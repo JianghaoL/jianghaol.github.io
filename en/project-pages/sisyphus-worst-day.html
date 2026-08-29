@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jianghao Li - Sisyphus's Worst Day</title>
-  
+
   <!-- Styles -->
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -102,16 +102,21 @@
          Modular content blocks for flexible layouts
          ============================================ -->
     <div class="project-content">
-      
-      <!-- Full-width Image Block -->
-      <section class="content-block content-block--full-image" data-reveal>
-        <figure class="full-image-container">
-          <img src="/assets/images/thumbnails/thumbnails (6).jpg" 
-               alt="Sisyphus's Worst Day game screenshot showcasing innovative puzzle gameplay and visual style" 
-               class="full-image"
-               loading="lazy">
-          <figcaption class="image-caption">Sisyphus's Worst Day</figcaption>
-        </figure>
+      <section class="content-block content-block--video" data-reveal>
+        <div class="video-container showcase-video-shell">
+          <h2>Watch the Trailer</h2>
+          <div class="video-wrapper">
+            <!-- YouTube/Vimeo: replace the placeholder with:
+            <iframe src="YOUR_EMBED_URL" title="Sound Redesign Reel 01" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            -->
+            <!-- Local MP4 alternative:
+            <video controls preload="metadata" poster="/assets/images/YOUR_POSTER.jpg">
+              <source src="/assets/video/YOUR_REEL.mp4" type="video/mp4">
+            </video>
+            -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/icdENSKTgJo?si=hKu2SMldeLtKRRBR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
       </section>
 
       <!-- Text Block - Overview -->
@@ -127,16 +132,6 @@
             As the Lead Technical Sound Designer, I oversaw the audio production process and ensured that every sound element was effectively integrated into the game through FMOD and Unity.
             I collaborated closely with four other sound designers to create an immersive audio experience that complemented the game's distinctive narrative and gameplay mechanics.
           </p>
-          <p>
-            I focused on audio implementation, using C# scripts in Unity to integrate sound effects and music seamlessly.
-            This involved building interactive audio systems that respond to player actions and game events, enhancing the overall player experience.
-          </p>
-          <p>
-            Throughout development, I coordinated with other departments to ensure that the audio design remained aligned with the game's visual style and narrative.
-            I provided technical support and guidance to the sound design team, helping them optimize their workflows and achieve high-quality results.
-            Close collaboration with the design team ensured that the audio effectively communicated the game's humor and themes.
-            The result is a cohesive and engaging puzzle game that offers players a fresh interpretation of the classic myth of Sisyphus.
-          </p>
         </div>
       </section>
       <!-- Full-width Image Blocks -->
@@ -147,6 +142,189 @@
                class="full-image"
                loading="lazy">
         </figure>
+      </section>
+
+
+
+      <!-- Image + Text Block (Image Right) -->
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/fmod-master.png"
+                 alt="Spreadsheet showing organized audio asset list with sound descriptions and implementation notes"
+                 loading="lazy">
+            <figcaption class="image-caption">FMOD Assets</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>FMOD & Unity</h2>
+            <p>
+              The audio implementation process involved using FMOD to create interactive audio events and Unity to integrate these events into the game.
+              I developed a structured workflow that allowed for efficient collaboration between the sound design team and the development team,
+              ensuring that all audio assets were properly organized and implemented.
+            </p>
+            <p>
+              The FMOD project was managed and maintained in Perforce, allowing for version control and collaboration among fellow sound designers.
+              We organized and categorized all audio assets in FMOD, ensuring a consistent and efficient workflow.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Image + Text Block (Image Right) -->
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/interactive-music.png"
+                 alt="Spreadsheet showing organized audio asset list with sound descriptions and implementation notes"
+                 loading="lazy">
+            <figcaption class="image-caption">Interactive Music</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>Interactive Music & 3D Audio</h2>
+            <p>
+              The game featureed an interactive music system that dynamically changes music based on the state of the game.
+            </p>
+            <p>
+              There were 2 stages in the game, both placing stage (where the player sets up the puzzle) and playing stage (where Sisyphus attempts to push the boulder).
+              The music would do a horizontal change, meaning the two fully mixed tracks would crossfade when the transition happens. This was achieved by using FMOD's parameter system.
+            </p>
+
+            <p>
+              All diegetic sound effects were implemented in 3D space using FMOD's 3D audio capabilities. This allowed for a more immersive experience,
+              as sounds would change based on the player's position and orientation within the game world.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/3d-settings.png"
+               alt="Sisyphus's Worst Day 3D audio settings"
+               class="full-image"
+               loading="lazy">
+               <figcaption class="image-caption">3D Audio Settings</figcaption>
+        </figure>
+      </section>
+
+      <!-- Image + Text Block (Image Left) -->
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/audio-manager.png"
+                 alt="Custom audio manager in C# for integrating FMOD events into Unity"
+                 loading="lazy">
+                 <figcaption class="image-caption">Audio Manager Snippet</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>C# Development</h2>
+            <p>
+              We developed a custom master audio manager in C# to handle the integration of FMOD events into Unity.
+
+            </p>
+            <p>
+              This script managed audio playback, transitions, and parameter control, ensuring that the audio responded dynamically to player actions and game events.
+              It provides a centralized and encapsulated system for managing FMOD related functionalities. APIs were designed so that the engineers were able to
+              easily call the audio manager to trigger sound effects and music events without needing to understand the underlying FMOD implementation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Image + Text Block (Image Right) -->
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/voiceSO.png"
+                 alt="Spreadsheet showing organized audio asset list with sound descriptions and implementation notes"
+                 loading="lazy">
+            <figcaption class="image-caption">Voice ScriptableObjects</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>Voiceovers</h2>
+            <p>
+              We implemented voiceovers for multiple scenes in the game. To ensure a clear technical architecture and practice a data driven approach,
+              we designed ScriptableObjects in Unity to manage the voiceover lines and their corresponding audio files. This allowed for easy updates and modifications to the voiceover content without requiring changes to the codebase.
+            </p>
+            <p>
+              The ScriptableObjects automtically linked the voiceover lines to their respective audio files, ensuring that the game system would get the correct audio file for each line of dialogue.
+            </p>
+            <p>
+              To manage each voice data, we also created a VoiceOver ScriptableObject that contained a list of all the voice lines for a specific character or scene.
+              This allowed us to easily organize and manage the voiceover content, making it easier to implement and maintain throughout the development process.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Image + Text Block (Image Left) -->
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/voiceoverSO.png"
+                 alt="Custom audio manager in C# for integrating FMOD events into Unity"
+                 loading="lazy">
+                 <figcaption class="image-caption">Voiceover ScriptableObjects</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <p>
+              We developed a custom master audio manager in C# to handle the integration of FMOD events into Unity.
+
+            </p>
+            <p>
+              This script managed audio playback, transitions, and parameter control, ensuring that the audio responded dynamically to player actions and game events.
+              It provides a centralized and encapsulated system for managing FMOD related functionalities. APIs were designed so that the engineers were able to
+              easily call the audio manager to trigger sound effects and music events without needing to understand the underlying FMOD implementation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Image + Text Block (Image Right) -->
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/vo-label.png"
+                 alt="Spreadsheet showing organized audio asset list with sound descriptions and implementation notes"
+                 loading="lazy">
+            <figcaption class="image-caption">FMOD Parameter Labels</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <p>
+              One of the key challenges in implementing voiceovers was the bark lines.
+            </p>
+            <p>
+              The design team wanted to have a bark line that represented different moods, which were then paired with different emojis to create a more expressive and engaging experience for the player.
+            </p>
+            <p>
+              To help the engineer team achieve this, we used FMOD's built-in parameter and audio callback system to dynamically look for the correct mood label and then pass it to a thread-safe queue.
+              The script that handled such playing behavior would then dequeue the label in the Update thread and execute the corresponding emoji behavior.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mechanics Image Grid -->
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <div class="image-grid image-grid--2col">
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/fmod-callback.png"
+                   alt="FMOD Callback System"
+                   loading="lazy">
+              <figcaption class="image-caption">FMOD Callback System</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/update-thread.png"
+                   alt="Update Thread"
+                   loading="lazy">
+                   <figcaption class="image-caption">Update Thread</figcaption>
+            </figure>
+
+          </div>
+        </div>
       </section>
 
       <section class="content-block content-block--full-image" data-reveal>
@@ -174,6 +352,14 @@
                class="full-image"
                loading="lazy">
         </figure>
+      </section>
+
+      <!-- Highlight/Quote Block -->
+      <section class="content-block content-block--highlight" data-reveal>
+        <blockquote class="highlight-quote">
+          <p>“Wow, awesome game. Hype. I feel like Sisyphus!”</p>
+          <cite>— Steam Review</cite>
+        </blockquote>
       </section>
 
 

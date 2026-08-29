@@ -102,16 +102,15 @@
          Modular content blocks for flexible layouts
          ============================================ -->
     <div class="project-content">
-      
-      <!-- Full-width Image Block -->
-      <section class="content-block content-block--full-image" data-reveal>
-        <figure class="full-image-container">
-          <img src="/assets/images/thumbnails/thumbnails (6).jpg" 
-               alt="Sisyphus's Worst Day game screenshot showcasing innovative puzzle gameplay and visual style" 
-               class="full-image"
-               loading="lazy">
-          <figcaption class="image-caption">Sisyphus's Worst Day</figcaption>
-        </figure>
+
+      <!-- Trailer -->
+      <section class="content-block content-block--video" data-reveal>
+        <div class="video-container showcase-video-shell">
+          <h2>观看预告片</h2>
+          <div class="video-wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/icdENSKTgJo?si=hKu2SMldeLtKRRBR" title="《Sisyphus's Worst Day》游戏预告片" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
       </section>
 
       <!-- Text Block - Overview -->
@@ -120,23 +119,12 @@
           <h2>概述</h2>
           <p>
             Sisyphus's Worst Day 是 USC 的一个高级游戏项目，开发周期为 10 个月。
-             这是一款第三人称解谜游戏，在幽默和现代的背景下重新诠释了西西弗斯的神话。
-              玩家扮演一个办公室职员，在众神的引导下，必须将西西弗斯困在无尽的日常任务循环中。
+            这是一款第三人称解谜游戏，以幽默而现代的方式重新诠释了西西弗斯的神话。
+            玩家将扮演一名受众神指引的办公室职员，设法让西西弗斯困在永无止境的日常任务循环中。
           </p>
           <p>
-           作为首席技术声音设计师，我负责监督音频制作过程，
-            确保所有声音元素通过 FMOD 和 Unity 有效地集成到游戏中。
-             我与四名声音设计师紧密合作，创造出与游戏独特叙事和玩法机制相辅相成的沉浸式音频体验。
-          </p>
-          <p>
-            我专注于音频实现，利用 Unity 中的 C# 脚本确保音效和音乐的无缝集成。
-             这涉及设置响应玩家动作和游戏事件的交互式音频系统，增强整体玩家体验。
-          </p>
-          <p>
-            在整个开发过程中，我与其他部门协调，确保音频设计与游戏的视觉风格和叙事保持一致。
-            我为声音设计团队提供技术支持和指导，帮助他们优化工作流程并实现高质量的成果。
-            与设计团队的密切合作确保音频元素有效传达了游戏的幽默感和主题。
-             结果是一个连贯且引人入胜的解谜游戏，为玩家提供了对西西弗斯经典神话的新颖诠释。
+            作为首席技术声音设计师，我负责统筹音频制作流程，并确保所有声音元素都能通过 FMOD 与 Unity 有效整合进游戏。
+            我与另外四名声音设计师紧密合作，共同打造与游戏独特叙事和玩法机制相辅相成的沉浸式音频体验。
           </p>
         </div>
       </section>
@@ -151,6 +139,176 @@
                loading="lazy">
           <!-- figcaption class="image-caption">Sisyphus's Worst Day</figcaption -->
         </figure>
+      </section>
+
+      <!-- FMOD 与 Unity -->
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/fmod-master.png"
+                 alt="FMOD 中经过分类整理的游戏音频资源"
+                 loading="lazy">
+            <figcaption class="image-caption">FMOD 音频资源</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>FMOD 与 Unity</h2>
+            <p>
+              音频实现主要通过 FMOD 创建交互式音频事件，再由 Unity 将这些事件整合进游戏。
+              我搭建了一套结构清晰的工作流程，让声音设计团队与开发团队能够高效协作，并确保所有音频资源都得到妥善整理与实现。
+            </p>
+            <p>
+              FMOD 工程通过 Perforce 进行管理与维护，为声音设计师之间的版本控制和协作提供支持。
+              我们在 FMOD 中统一整理并分类所有音频资源，从而保持稳定而高效的制作流程。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 互动音乐与 3D 音频 -->
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/interactive-music.png"
+                 alt="FMOD 中的互动音乐系统"
+                 loading="lazy">
+            <figcaption class="image-caption">互动音乐</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>互动音乐与 3D 音频</h2>
+            <p>
+              游戏采用了一套互动音乐系统，音乐会根据当前游戏状态动态变化。
+            </p>
+            <p>
+              游戏分为布置阶段与运行阶段：玩家先设置谜题，随后观察西西弗斯尝试推动巨石。
+              音乐在两个阶段之间采用横向切换，通过 FMOD 的参数系统让两条完整混音的曲目自然交叉淡化。
+            </p>
+            <p>
+              所有画内音效都通过 FMOD 的 3D 音频功能置于三维空间中。
+              声音会随玩家在游戏世界中的位置与朝向产生变化，让整体体验更具沉浸感。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/3d-settings.png"
+               alt="《Sisyphus's Worst Day》的 3D 音频设置"
+               class="full-image"
+               loading="lazy">
+          <figcaption class="image-caption">3D 音频设置</figcaption>
+        </figure>
+      </section>
+
+      <!-- C# 开发 -->
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/audio-manager.png"
+                 alt="用于连接 FMOD 与 Unity 的 C# 音频管理器"
+                 loading="lazy">
+            <figcaption class="image-caption">音频管理器代码片段</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>C# 开发</h2>
+            <p>
+              我们使用 C# 开发了一套自定义的全局音频管理器，负责将 FMOD 事件整合进 Unity。
+            </p>
+            <p>
+              该脚本统一管理音频播放、过渡与参数控制，确保声音能够动态响应玩家操作和游戏事件。
+              它将 FMOD 相关功能集中封装，并提供简洁的 API，让工程师无需了解底层 FMOD 实现，也能方便地触发音效和音乐事件。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 配音系统 -->
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/voiceSO.png"
+                 alt="用于管理配音台词的 Unity ScriptableObject"
+                 loading="lazy">
+            <figcaption class="image-caption">配音 ScriptableObject</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>配音系统</h2>
+            <p>
+              游戏中的多个场景都加入了配音。为了建立清晰的技术架构并贯彻数据驱动的设计方式，
+              我们在 Unity 中使用 ScriptableObject 管理配音台词及其对应音频文件，让内容可以在不修改代码的情况下轻松更新和调整。
+            </p>
+            <p>
+              ScriptableObject 会自动将每句台词与相应的音频文件关联，确保游戏系统始终能为对话取得正确的声音资源。
+            </p>
+            <p>
+              我们还为每个角色或场景创建了 VoiceOver ScriptableObject，用列表集中管理其所有台词。
+              这让配音内容的整理、实现与后续维护都更加清晰高效。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/voiceoverSO.png"
+                 alt="Unity 中的 VoiceOver ScriptableObject 数据结构"
+                 loading="lazy">
+            <figcaption class="image-caption">VoiceOver ScriptableObject</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <p>
+              我们使用 C# 开发了一套自定义的全局音频管理器，用于处理 FMOD 事件与 Unity 之间的连接。
+            </p>
+            <p>
+              该系统负责音频播放、过渡和参数控制，使声音能够动态响应玩家操作与游戏事件。
+              集中封装的架构让工程师可以直接调用 API 触发音效和音乐，而不必理解底层的 FMOD 实现细节。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 情绪短句与回调 -->
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/vo-label.png"
+                 alt="FMOD 中用于配音情绪的参数标签"
+                 loading="lazy">
+            <figcaption class="image-caption">FMOD 参数标签</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <p>
+              配音实现中的一个关键挑战，是角色在游戏过程中触发的情绪短句。
+            </p>
+            <p>
+              设计团队希望这些短句能够呈现不同情绪，并与对应的表情符号配合，为玩家创造更生动、更具表现力的反馈。
+            </p>
+            <p>
+              为了实现这一点，我们利用 FMOD 内置的参数与音频回调系统，动态查找正确的情绪标签，并将其传入线程安全队列。
+              负责播放行为的脚本随后会在 Update 线程中取出标签，再执行相应的表情符号逻辑。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <div class="image-grid image-grid--2col">
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/fmod-callback.png"
+                   alt="FMOD 回调系统"
+                   loading="lazy">
+              <figcaption class="image-caption">FMOD 回调系统</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Sisyphus/update-thread.png"
+                   alt="Update 线程中的队列处理"
+                   loading="lazy">
+              <figcaption class="image-caption">Update 线程</figcaption>
+            </figure>
+          </div>
+        </div>
       </section>
 
       <!-- Full-width Image Block -->
@@ -186,12 +344,20 @@
         </figure>
       </section>
 
+      <!-- 玩家评价 -->
+      <section class="content-block content-block--highlight" data-reveal>
+        <blockquote class="highlight-quote">
+          <p>“哇，这游戏太棒了，太燃了！我感觉自己就是西西弗斯！”</p>
+          <cite>— Steam 玩家评测</cite>
+        </blockquote>
+      </section>
+
 
 
       <!-- Call to Action / Links Block -->
       <section class="content-block content-block--cta" data-reveal>
         <div class="cta-container">
-          <h2>Explore the Project</h2>
+          <h2>探索项目</h2>
           <div class="cta-buttons">
             <a href="https://store.steampowered.com/app/4700250/Sisyphuss_Worst_Day_again/" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -199,7 +365,7 @@
                 <polyline points="15 3 21 3 21 9"></polyline>
                 <line x1="10" y1="14" x2="21" y2="3"></line>
               </svg>
-              Steam上可用
+              在 Steam 上查看
             </a>
           </div>
         </div>
