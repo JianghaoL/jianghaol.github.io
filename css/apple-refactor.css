@@ -97,6 +97,28 @@ button:active,
   transition-duration: 90ms;
 }
 
+/*
+ * The reading-progress track defines the lower edge of the fixed navigation
+ * region on project pages. This full-width material sits below both the
+ * navigation controls and progress indicator, so content crossing the top of
+ * the viewport remains spatially connected without becoming visually noisy.
+ */
+body::before {
+  content: "";
+  position: fixed;
+  z-index: 9997;
+  inset: 0 0 auto;
+  height: 80px;
+  border-bottom: 1px solid rgba(226, 237, 252, 0.09);
+  background: rgba(8, 12, 18, 0.66);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(26px) saturate(145%);
+  -webkit-backdrop-filter: blur(26px) saturate(145%);
+  pointer-events: none;
+}
+
+.reading-progress { top: 80px !important; }
+
 /* Floating chrome: larger material than controls, therefore stronger blur. */
 .site-header {
   top: 12px;
@@ -105,37 +127,16 @@ button:active,
   height: 60px;
   padding: 0 18px;
   transform: translateX(-50%);
-  overflow: clip;
-  isolation: isolate;
-  border: 1px solid rgba(225, 237, 252, 0.16);
+  border: 1px solid var(--hairline);
   border-radius: 20px;
-  background-color: rgba(7, 11, 17, 0.9);
-  background-image:
-    radial-gradient(ellipse at 18% -35%, rgba(161, 210, 255, 0.14), transparent 48%),
-    linear-gradient(180deg, rgba(27, 35, 46, 0.9) 0%, rgba(12, 18, 27, 0.92) 52%, rgba(7, 11, 17, 0.95) 100%);
-  box-shadow:
-    0 20px 55px rgba(0, 0, 0, 0.38),
-    inset 0 1px rgba(255, 255, 255, 0.14),
-    inset 0 -1px rgba(112, 186, 255, 0.07);
-  backdrop-filter: blur(36px) saturate(165%) contrast(108%);
-  -webkit-backdrop-filter: blur(36px) saturate(165%) contrast(108%);
-}
-
-.site-header::before {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  border-radius: inherit;
-  background:
-    linear-gradient(105deg, rgba(255, 255, 255, 0.07), transparent 22% 74%, rgba(112, 186, 255, 0.045)),
-    radial-gradient(ellipse at 72% 120%, rgba(95, 161, 236, 0.09), transparent 50%);
-  pointer-events: none;
+  background: rgba(8, 12, 18, 0.72);
+  box-shadow: var(--shadow-sm), inset 0 1px rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(24px) saturate(145%);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
 }
 
 .site-header nav {
   position: relative;
-  z-index: 1;
   display: flex;
   width: 100%;
   height: 100%;
@@ -151,10 +152,8 @@ button:active,
   gap: 0.2rem;
   padding: 4px;
   transform: translateY(-50%);
-  border: 1px solid rgba(255, 255, 255, 0.035);
   border-radius: 13px;
-  background: rgba(2, 5, 9, 0.3);
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.035);
 }
 
 .nav-links a {
@@ -183,8 +182,7 @@ button:active,
   transform: translateY(-50%);
   border: 1px solid var(--hairline-strong);
   border-radius: 11px;
-  background: rgba(18, 26, 38, 0.72);
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.045);
   color: var(--text-secondary);
   font-size: 0.76rem;
   font-weight: 650;
@@ -510,7 +508,9 @@ section.wave-section {
 
 @media (max-width: 768px) {
   body { padding-top: 68px; }
-  .site-header { top: 8px; width: calc(100% - 16px); height: 52px; padding: 0 8px; overflow: visible; border-radius: 16px; }
+  body::before { height: 68px; }
+  .reading-progress { top: 68px !important; }
+  .site-header { top: 8px; width: calc(100% - 16px); height: 52px; padding: 0 8px; border-radius: 16px; }
   .mobile-menu-toggle { right: 2px; }
   .lang-toggle { left: 2px; }
   .nav-links {
@@ -561,6 +561,11 @@ section.wave-section {
 }
 
 @media (prefers-reduced-transparency: reduce) {
+  body::before {
+    background: var(--surface-solid) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
   .site-header,
   .nav-links,
   .gallery-controls,
@@ -580,12 +585,11 @@ section.wave-section {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
-  .site-header { background-image: none !important; }
-  .site-header::before { display: none; }
 }
 
 @media (prefers-contrast: more) {
   :root { --text-secondary: rgba(255, 255, 255, 0.92); --text-tertiary: rgba(255, 255, 255, 0.78); --hairline: rgba(255, 255, 255, 0.38); }
+  body::before { border-bottom-color: rgba(255, 255, 255, 0.38); background: rgba(8, 12, 18, 0.9); }
   .site-header,
   .mix-card,
   .reel-card,
