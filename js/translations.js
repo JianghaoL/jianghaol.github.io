@@ -243,8 +243,13 @@ window.__translations = {
     'project.whiteout.summary': 'A Game Jam project exploring the human psychological state under social pressure.',
 
     // -- Soundboard --
-    'project.soundboard.title':   'Soundboard',
-    'project.soundboard.summary': 'A soundboard application for quick Wwise sound management and overview.',
+    'project.soundboard.title':   'SoundBoard',
+    'project.soundboard.summary': 'A standalone WAAPI tool for browsing, previewing, and controlling Wwise sound objects.',
+
+    // -- Unity Audio Callback System --
+    'project.unityAudioCallback.title':     'Unity Audio Callback System',
+    'project.unityAudioCallback.shortDesc': 'Thread-safe audio events, built into Unity',
+    'project.unityAudioCallback.summary':   'An open-source, thread-safe callback system with visual waveform authoring and Timeline support for Unity\'s built-in audio engine.',
 
     // -- Black Cat Carpet --
     'project.blackCatCarpetLive.title':   'Black Cat Carpet Live',
@@ -273,6 +278,7 @@ window.__translations = {
     'category.theater':          'Theater',
     'gallery.viewProject':       'View Project',
     'gallery.reelPreview':       'Video showcase',
+    'gallery.aiUsed':            'AI Used',
     'gallery.projectCount.one':  'project',
     'gallery.projectCount.many': 'projects',
   },
@@ -480,8 +486,12 @@ window.__translations = {
     'project.whiteout.shortDesc': '聚焦心理体验的 Game Jam 作品',
     'project.whiteout.summary': 'Game Jam作品，探索人类在社会压力下的心理状态。',
 
-    'project.soundboard.title':   'Soundboard',
-    'project.soundboard.summary': '一款用于快速管理与预览 Wwise 声音资源的 Soundboard 应用。',
+    'project.soundboard.title':   'SoundBoard',
+    'project.soundboard.summary': '一款用于浏览、试听并控制 Wwise 声音对象的独立 WAAPI 工具。',
+
+    'project.unityAudioCallback.title':     'Unity 音频回调系统',
+    'project.unityAudioCallback.shortDesc': '直接集成于 Unity 的线程安全音频事件',
+    'project.unityAudioCallback.summary':   '一套面向 Unity 内置音频引擎的开源线程安全回调系统，支持可视化波形编辑与 Timeline 工作流。',
 
     'project.blackCatCarpetLive.title':   'Black Cat Carpet 现场表演',
     'project.blackCatCarpetLive.summary': '乐队现场演出。现场混音、多轨录音，和演出后制作。',
@@ -507,6 +517,7 @@ window.__translations = {
     'category.theater':          '戏剧',
     'gallery.viewProject':       '查看项目',
     'gallery.reelPreview':       '视频作品',
+    'gallery.aiUsed':            '使用 AI',
     'gallery.projectCount.one':  '个项目',
     'gallery.projectCount.many': '个项目',
   }

@@ -177,7 +177,7 @@ const galleryData = [
     category: CATEGORIES.SOUND_REDESIGN_REELS,
     year: 2026,
     date: "2026-08-25",
-    thumbnail: "",
+    thumbnail: "/assets/images/thumbnails/ripout.jpg",
     mediaType: "video",
     descriptionKey: "project.soundRedesignReel.summary",
     techStack: ["Reaper", "Vital", "Recording", "Foley", "Mixing"],
@@ -186,6 +186,32 @@ const galleryData = [
       zh: "../project-pages/ripout-redesign.html"
     },
     roles: ["Sound Designer", "Foley Artist", "Re-recording Mixer"]
+  },
+  {
+    id: 13,
+    titleKey: "project.soundboard.title",
+    category: CATEGORIES.AUDIO_TOOL,
+    year: 2026,
+    date: "2026-08-29",
+    thumbnail: "/assets/images/thumbnails/soundboard-gallery.png",
+    descriptionKey: "project.soundboard.summary",
+    techStack: ["C#", "Wwise WAAPI", "Avalonia", "MVVM", "AI Agent", "Git"],
+    projectPage: "../project-pages/soundboard.html",
+    roles: ["Tool Design", "WAAPI Development", "Technical Direction"],
+    aiUsed: true
+  },
+  {
+    id: 14,
+    titleKey: "project.unityAudioCallback.title",
+    category: CATEGORIES.AUDIO_TOOL,
+    year: 2026,
+    date: "2026-02-25",
+    thumbnail: "/assets/images/thumbnails/unity-audio-callback-system.png",
+    descriptionKey: "project.unityAudioCallback.summary",
+    techStack: ["Unity", "C#", "Unity Editor", "Timeline", "AI-Assisted UI", "Git"],
+    projectPage: "../project-pages/unity-audio-callback-system.html",
+    roles: ["Tool Design", "Audio Programming", "Editor Tool Development"],
+    aiUsed: true
   },
 ];
 
@@ -333,7 +359,7 @@ class WorkGallery {
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
         </svg>
-        <span>AI Used</span>
+        <span>${this.getTranslation('gallery.aiUsed')}</span>
       </div>
     ` : '';
 

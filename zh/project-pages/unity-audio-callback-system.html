@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jianghao Li - Unity 音频回调系统</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/project-detail.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav>
+      <button class="lang-toggle" aria-label="切换语言">EN/中文</button>
+      <ul class="nav-links">
+        <li><a href="../index.html" data-i18n="nav.home">主页</a></li>
+        <li><a href="../work-gallery/index.html" data-i18n="nav.workGallery">作品画廊</a></li>
+        <li><a href="../blog/index.html" data-i18n="nav.blog">博客</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">关于</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" aria-label="切换导航菜单" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <main class="project-page">
+    <section class="project-hero">
+      <div class="project-hero-content">
+        <h1 class="project-title">Unity 音频回调系统</h1>
+        <p class="project-summary">一套开源、线程安全的回调工作流，用于将 Unity 事件与音频中的精确时间点同步。</p>
+        <div class="project-meta">
+          <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2026</span>
+          <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>音频工具</span>
+          <span class="meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>开源项目</span>
+        </div>
+        <div class="hero-tech-stack">
+          <div class="hero-details-container">
+            <div class="hero-details-column">
+              <h3 data-i18n="project.techStack">技术栈</h3>
+              <ul class="tech-list"><li><span class="tech-tag">Unity</span></li><li><span class="tech-tag">C#</span></li><li><span class="tech-tag">Unity Editor</span></li><li><span class="tech-tag">Timeline</span></li><li><span class="tech-tag">AI Used：UI</span></li><li><span class="tech-tag">Git</span></li></ul>
+            </div>
+            <div class="hero-details-column"><h3 data-i18n="project.myRole">我的职责</h3><ul class="role-list"><li>工具设计</li><li>音频程序开发</li><li>编辑器工具开发</li></ul></div>
+            <div class="hero-details-column"><h3 data-i18n="project.team">团队</h3><ul class="team-list"><li>个人项目</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="project-content">
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/audio-event-waveform-editor.png" alt="带有音频波形与定时事件标记的 Unity 音频事件波形编辑器" class="full-image"><figcaption class="image-caption">音频事件波形编辑器</figcaption></figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>项目概述</h2>
+          <p>Unity 内置音频系统能够稳定地播放音频，但若要让游戏逻辑、动画或视觉效果与音频中的精确时刻同步，往往需要为每个场景单独编写计时代码。我开发了这套系统，将 FMOD 和 Wwise 中常见的“标记 + 回调”工作流直接带入标准 Unity 项目。</p>
+          <p>设计师可以在 <code>AudioEventAsset</code> 中统一保存音频片段、播放参数和具名标记。<code>AudioEventPlayer</code> 负责播放音频，并在准确时刻触发每个标记对应的 UnityEvent；其他脚本也可以通过名称查找并订阅回调，因此该系统同时支持 Inspector 配置和运行时代码两种使用方式。</p>
+          <p>最终成果是一套轻量、开源的音频事件层，让时间信息可以复用、可视化，并始终贴近内容创作者的工作流程。</p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <div class="media-text-content">
+            <h2>可复用的音频事件资产</h2>
+            <p>基于 ScriptableObject 的 <code>AudioEventAsset</code> 是系统的数据核心。除了 AudioClip，它还保存音量、音高、循环、空间混合、Mixer 路由，以及循环时是否重复触发回调等参数。</p>
+            <p>每个标记由易读名称、时间戳和 UnityEvent 组成。计时数据因此不再依附于某个场景对象，同一份音频事件资产可以被不同播放器复用，并连接到不同的游戏反馈。</p>
+          </div>
+          <figure class="media-text-image"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/audio-event-asset.png" alt="包含播放参数和事件标记的 AudioEventAsset Inspector" loading="lazy"><figcaption class="image-caption">AudioEventAsset Inspector</figcaption></figure>
+          <figure class="media-text-image"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/markers.png" alt="显示名称、时间戳和 UnityEvent 的标记 Inspector" loading="lazy"><figcaption class="image-caption">单个标记的时间与回调数据</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/waveform.gif" alt="播放指针在带有音频事件标记的波形上移动" loading="lazy"><figcaption class="image-caption">对照波形试听并检查标记时间</figcaption></figure>
+          <div class="media-text-content">
+            <h2>线程安全是系统设计的核心</h2>
+            <p>播放器以 <code>AudioSettings.dspTime</code> 为基准调度播放，并在 <code>OnAudioFilterRead</code> 中检查已经过的 DSP 时间。由于该回调运行在 Unity 音频线程，系统绝不会在这里直接触发 UnityEvent 或访问游戏对象；到达时间点的标记只会通过非阻塞的 <code>Enqueue</code> 写入 <code>ConcurrentQueue&lt;EventMarker&gt;</code>。</p>
+            <p>主线程中的 <code>Update</code> 会持续调用 <code>TryDequeue</code>，并在成功取出标记后才触发对应的 UnityEvent。这条队列建立了清晰的线程边界：音频线程只负责精确的时间检测，主线程负责所有与 Unity 对象相关的副作用。两个线程不会同时遍历同一个共享列表，实时音频回调中也不需要持有锁。</p>
+            <p>对于循环音频，设计师可以选择在每次循环时重置标记索引并再次触发事件；非循环音频则会在播放结束后自然停止处理。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container"><h2>一条队列，两种清晰的线程职责</h2><div class="image-grid image-grid--2col">
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/thread-safe-audio-thread.png" alt="展示 OnAudioFilterRead 将标记写入队列的 C# 源码" loading="lazy"><figcaption class="image-caption">音频线程：检测标记时间，只负责入队</figcaption></figure>
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/thread-safe-main-thread.png" alt="展示 Update 取出标记并触发事件的 C# 源码" loading="lazy"><figcaption class="image-caption">主线程：取出标记，安全触发 UnityEvent</figcaption></figure>
+        </div></div>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>可视化波形编辑</h2>
+          <p>我制作了自定义 Unity Editor 窗口，让设计师可以通过聆听和观察来调整时间，而不是反复手动输入秒数。编辑器会绘制当前音频的波形，支持带移动指针的音频预览，并提供缩放与水平滚动，以便进行精细定位。</p>
+          <p>用户可以直接点击波形添加标记、拖拽调整时间、从列表中选中、重命名、删除或输入精确数值。所选标记的 UnityEvent 也在同一窗口中编辑，让时间和行为在迭代过程中始终保持在一起。</p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container"><div class="image-grid image-grid--2col">
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/add-drag-marker.gif" alt="在波形上添加并拖拽事件标记" loading="lazy"><figcaption class="image-caption">直接在波形上添加和拖拽标记</figcaption></figure>
+          <figure class="grid-image-item"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/marker-detail.gif" alt="选择并编辑标记详情和 UnityEvent" loading="lazy"><figcaption class="image-caption">在同一工作区编辑时间与 UnityEvent</figcaption></figure>
+        </div></div>
+      </section>
+
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <div class="media-text-content">
+            <h2>Timeline 支持</h2>
+            <p>自定义 <code>AudioEventTrack</code>、PlayableAsset 和 PlayableBehaviour 将同一事件系统扩展到 Unity Timeline。AudioEventPlayer 可以绑定到轨道，让播放与回调跟随 Timeline Graph，与动画、粒子、镜头及其他序列内容共同运行。</p>
+            <p>电影化内容与常规游戏逻辑因此可以复用同一套 AudioEventAsset 数据模型，无需维护第二套计时实现。</p>
+          </div>
+          <figure class="media-text-image"><img src="/assets/images/project-pages/Jianghao Li - Unity Audio Callback/timeline-support.gif" alt="在 Unity Timeline 中添加 Audio Event Track 与片段" loading="lazy"><figcaption class="image-caption">Unity Timeline 中的 AudioEventAsset 工作流</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="content-block content-block--cta" data-reveal>
+        <div class="cta-container"><h2>探索项目</h2><div class="cta-buttons">
+          <a href="https://github.com/JianghaoL/Unity-Audio-Callback-System" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>查看源代码与文档</a>
+        </div></div>
+      </section>
+
+      <nav class="project-navigation" data-reveal>
+        <a href="../work-gallery/index.html" class="nav-link nav-link--all"><span class="nav-label">全部项目</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer"><p data-i18n="footer.copyright">&copy; 2026 Jianghao Li. 版权所有。</p></footer>
+  <script src="/js/main.js"></script><script src="/js/project-detail.js"></script><script src="/js/translations.js"></script><script src="/js/i18n.js"></script>
+</body>
+</html>

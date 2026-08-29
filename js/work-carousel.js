@@ -61,6 +61,17 @@ const workData = [
     links: [
       { labelKey: "carousel.viewProject", url: "project-pages/sisyphus-worst-day.html", icon: "external" }
     ]
+  },
+  {
+    id: 4,
+    titleKey: "project.unityAudioCallback.title",
+    shortDescKey: "project.unityAudioCallback.shortDesc",
+    image: "/assets/images/thumbnails/unity-audio-callback-system.png",
+    descriptionKey: "project.unityAudioCallback.summary",
+    techStack: ["Unity", "C#", "Unity Editor", "Timeline", "AI-Assisted UI"],
+    links: [
+      { labelKey: "carousel.viewProject", url: "project-pages/unity-audio-callback-system.html", icon: "external" }
+    ]
   }
 ];
 
