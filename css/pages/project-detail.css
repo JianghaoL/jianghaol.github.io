@@ -270,6 +270,12 @@ img.full-image {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+/* Portrait code captures stay readable without becoming wall-sized. */
+img.full-image--code {
+  width: min(100%, 760px);
+  margin-inline: auto;
+}
+
 .full-image-container img:hover,
 img.full-image:hover {
   transform: translateY(-5px);

@@ -213,6 +213,19 @@ const galleryData = [
     roles: ["Tool Design", "Audio Programming", "Editor Tool Development"],
     aiUsed: true
   },
+  {
+    id: 15,
+    titleKey: "project.cosmicCustodian.title",
+    category: CATEGORIES.GAME_DEVELOPMENT,
+    year: 2026,
+    date: "2026-09-01",
+    thumbnail: "/assets/images/thumbnails/cosmic-custodian.png",
+    descriptionKey: "project.cosmicCustodian.summary",
+    techStack: ["Unity", "C#", "Input System", "DOTween"],
+    projectPage: "../project-pages/cosmic-custodian.html",
+    roles: ["Game Design", "Gameplay Programming", "Systems Architecture", "UI & Audio Integration"],
+    aiUsed: false
+  },
 ];
 
 // ============================================
