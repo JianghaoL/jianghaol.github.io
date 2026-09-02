@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="description" content="Cosmic Custodian 是一款基于 Unity 开发的数据驱动 3D 推箱子游戏，包含事件驱动架构、跨平台输入、撤销系统与代码生成关卡。">
+  <meta property="og:title" content="Cosmic Custodian | 李江浩">
+  <meta property="og:description" content="一款基于 Unity 开发的数据驱动 3D 推箱子游戏技术案例。">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.lijianghao.com/assets/images/project-pages/Jianghao%20Li%20-%20Cosmic%20Custodian/main-menu-unity.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>李江浩 - Cosmic Custodian</title>
+
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/project-detail.css">
+  <link rel="stylesheet" href="/css/apple-refactor.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav>
+      <button class="lang-toggle" aria-label="Toggle Language">EN/中文</button>
+      <ul class="nav-links">
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../work-gallery/index.html" data-i18n="nav.workGallery">Work Gallery</a></li>
+        <li><a href="../blog/index.html" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="project-page">
+    <section class="project-hero">
+      <div class="project-hero-content">
+        <h1 class="project-title">Cosmic Custodian</h1>
+        <p class="project-summary">
+          一款基于 Unity 开发的数据驱动 3D 推箱子游戏，拥有跨平台输入、
+          事件驱动系统与带动画的代码生成关卡。
+        </p>
+        <div class="project-meta">
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            2026
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+            游戏开发
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M8 12h8M12 8v8"></path>
+            </svg>
+            Windows · macOS · iOS
+          </span>
+        </div>
+
+        <div class="hero-tech-stack">
+          <div class="hero-details-container">
+            <div class="hero-details-column">
+              <h3>技术栈</h3>
+              <ul class="tech-list">
+                <li><span class="tech-tag">Unity 6.3.6</span></li>
+                <li><span class="tech-tag">C#</span></li>
+                <li><span class="tech-tag">Input System</span></li>
+                <li><span class="tech-tag">DOTween</span></li>
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3>我的职责</h3>
+              <ul class="role-list">
+                <li>游戏设计</li>
+                <li>玩法编程</li>
+                <li>系统架构</li>
+                <li>UI 与音频整合</li>
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3>发布平台</h3>
+              <ul class="team-list">
+                <li>Windows PC</li>
+                <li>macOS</li>
+                <li>iPhone 与 iPad</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="project-content">
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/main-menu-unity.png"
+               alt="Unity 编辑器中的 Cosmic Custodian 主菜单，画面包含科幻角色以及开始、设置和退出按钮"
+               class="full-image" width="1288" height="724" fetchpriority="high">
+          <figcaption class="image-caption">Unity 中的 Cosmic Custodian 主菜单</figcaption>
+        </figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>项目概述</h2>
+          <p>
+            Cosmic Custodian 将经典推箱子玩法重新包装为一款 3D 科幻游戏。玩家需要在网格地图中移动，
+            避免将箱子推入死角，并把箱子送到目标位置。三个文本关卡、平台自适应教程、可保存的音量设置，
+            以及可复用的事件层，共同构成了一套完整的游戏流程。
+          </p>
+          <p>
+            我使用 Unity 6.3.6，在 macOS Sequoia 15.6.1 环境中完成开发。项目采用 URP 与 Unity Input System，
+            并结合低多边形科幻场景、角色模型、独立 UI 素材、界面音效、背景音乐，以及由 DOTween 驱动的运动反馈。
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/package-manager.png"
+                 alt="Unity Package Manager 中展示的 DOTween、科幻场景、角色与界面素材包"
+                 width="962" height="752" loading="lazy">
+            <figcaption class="image-caption">项目包与导入素材</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>制作基础</h2>
+            <p>
+              项目由模块化的环境、角色、动画、UI、音乐和音效资源构成。DOTween 负责关卡生成与角色移动的运动语言，
+              其余部分尽量保持在 Unity 原生工作流之内。
+            </p>
+            <p>
+              表现层与谜题模型相互分离，使美术、时序和反馈可以独立调整，而不需要重写游戏规则。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <h2>文本驱动的关卡编辑</h2>
+          <div class="image-grid image-grid--3col">
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/grid-block-scriptable-object.jpeg"
+                   alt="定义网格物体预制件、高度偏移、旋转和缩放的 C# ScriptableObject"
+                   width="1274" height="385" loading="lazy">
+              <figcaption>可复用的网格物体数据</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/level-notation.png"
+                   alt="将符号映射为墙壁、玩家、箱子和目标点的关卡记号说明"
+                   width="659" height="871" loading="lazy">
+              <figcaption>紧凑的关卡记号</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/level-data.png"
+                   alt="Cosmic Custodian 谜题关卡的文本布局示例"
+                   width="468" height="708" loading="lazy">
+              <figcaption>以文本文件保存的关卡</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>数据驱动的地图管线</h2>
+          <p>
+            关卡不需要逐个摆放物体，而是直接在文本文件中编写。每个字符分别代表墙壁、玩家、箱子、目标点或空白格。
+            ScriptableObject 则保存预制件、位移、旋转和缩放信息，并把二维记号转换成三维场景。
+          </p>
+          <p>
+            LevelLoader 从 <code>Application.streamingAssetsPath</code> 读取 <code>LevelData/level_{n}.txt</code>，
+            逐字解析文本，并把生成的 GridBlock 存入以 Vector2Int 为键的字典。仓库当前包含三个关卡文件，
+            因此修改谜题时不需要在 Unity 场景中重新手动摆放物体。
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/level-loader.png"
+               alt="读取文本文件并把字符转换为网格物体的 C# LevelLoader 代码"
+               class="full-image full-image--code" width="672" height="1627" loading="lazy">
+          <figcaption class="image-caption">LevelLoader 将文本数据解析为基于坐标的网格物体</figcaption>
+        </figure>
+      </section>
+
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/initialization-manager-code.png"
+                 alt="对可初始化系统排序并依次启动的 C# InitializationManager 代码"
+                 width="1492" height="1829" loading="lazy">
+            <figcaption class="image-caption">用显式顺序替代隐式的场景启动时序</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>确定性的初始化顺序</h2>
+            <p>
+              地图生成依赖当前 Game Config，多个单例系统在启动阶段也存在先后依赖。为使这种顺序清晰可见且稳定可靠，
+              所有相关类都实现了轻量的 IInitializable 接口。
+            </p>
+            <p>
+              InitializationManager 会先按 Inspector 中的 order 排序，同步依次调用 <code>InitializeOnAwake</code>，
+              再经过短暂的实时延迟触发各系统的 <code>InitializeOnStart</code>。接口提供默认空实现，
+              因此每个类只需要选择自己真正需要的启动阶段。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <h2>由设计师控制的启动顺序</h2>
+          <div class="image-grid image-grid--2col">
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/iinitializable-interface.png"
+                   alt="包含可选 Awake 与 Start 初始化方法的 IInitializable 接口"
+                   width="1492" height="375" loading="lazy">
+              <figcaption>轻量的初始化契约</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/initialization-order-inspector.png"
+                   alt="Unity Inspector 中可排序的初始化条目与依赖说明"
+                   width="1660" height="1634" loading="lazy">
+              <figcaption>在 Inspector 中配置顺序与依赖说明</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/map-constructor.png"
+                 alt="定义地图数据、事件订阅和建图辅助方法的 C# MapConstructor 代码"
+                 width="976" height="2098" loading="lazy">
+            <figcaption class="image-caption">MapConstructor 将加载的数据转化为可玩的 3D 棋盘</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>带动画的地图生成</h2>
+            <p>
+              MapConstructor 监听 LevelLoader 的完成事件，并根据坐标字典建立棋盘。Game Config 保存每个关卡会变化的参数，
+              让镜头位置、支撑层数、动画时序和预制件选择都能在不修改构造器的前提下调整。
+            </p>
+            <p>
+              生成的物体通过 DOTween 协程依次升入场景。随机化的延迟形成有节奏的入场效果，
+              同时底层谜题状态仍保持确定性。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/dotween-rise-routine.png"
+               alt="通过 DOTween 将生成的地图物体移动到目标位置的 C# 协程"
+               class="full-image" width="1492" height="626" loading="lazy">
+          <figcaption class="image-caption">DOTween 为代码生成的关卡加入分阶段入场动画</figcaption>
+        </figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>统一输入契约，多平台控制</h2>
+          <p>
+            PC 端使用 Unity Input System 处理移动、撤销、重新开始和暂停；移动端按钮则通过 IPointerDownHandler 接收触屏输入。
+            PlatformManager 根据 <code>Application.isMobilePlatform</code> 判断当前模式，UIManager 随后选择桌面端或移动端 UI Handler，
+            TutorialManager 也会显示对应平台的教程文案。两条输入路径最终仍调用同一组 InputHandler 请求方法。
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <h2>跨平台输入</h2>
+          <div class="image-grid image-grid--3col">
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/input-actions.png"
+                   alt="为键盘移动、撤销、重开和暂停设置映射的 Unity Input Actions 编辑器"
+                   width="1047" height="644" loading="lazy">
+              <figcaption>PC 端 Input Actions</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/mobile-input.png"
+                   alt="通过 IPointerDownHandler 发送方向请求的 C# 移动端按钮代码"
+                   width="1105" height="758" loading="lazy">
+              <figcaption>移动端触屏控制</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/input-handler.png"
+                   alt="把桌面端与移动端请求映射为统一游戏事件的 C# InputHandler"
+                   width="1367" height="1722" loading="lazy">
+              <figcaption>统一的输入契约</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/game-events-manager.png"
+                 alt="声明移动、网格更新、撤销、暂停与胜负事件的 C# GameEventsManager"
+                 width="779" height="1662" loading="lazy">
+            <figcaption class="image-caption">一个统一的事件表面协调彼此独立的系统</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>事件驱动的玩法架构</h2>
+            <p>
+              各玩法系统通过静态 GameEventsManager 协作，避免 Manager 之间互相持有引用。地图加载、镜头与 UI 状态、
+              移动、网格更新、单步撤销数据、暂停状态、教程节点与胜负检查，都通过职责明确的 UnityEvent 传递。
+            </p>
+            <p>
+              这种分离让输入、动画、规则和 UI 可以独立测试，也让平台相关代码只承担适配职责，
+              而不需要复制第二套玩法实现。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/player-movement-manager.png"
+               alt="验证移动请求并更新玩家网格坐标的 C# PlayerMovementManager"
+               class="full-image full-image--code" width="827" height="1657" loading="lazy">
+          <figcaption class="image-caption">PlayerMovementManager 先验证请求，再更新可视模型的位置</figcaption>
+        </figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>不依赖物理系统的网格逻辑</h2>
+          <p>
+            谜题模型由一个 Vector2Int 坐标到格子类型的字典构成，格子类型包括空白、墙壁、玩家、箱子和目标点。
+            PlayerMovementManager 只允许玩家进入空白、目标点或箱子所在格；遇到箱子时，BoxMovementManager 会单独检查
+            箱子前方是否为墙壁，在发送任何移动事件前拦截非法推动。
+          </p>
+          <p>
+            验证通过后，非目标格会立即更新，DOTween 再把可视模型移动到新位置。GameDataManager 会保留目标格原本的类型，
+            让 WinLoseManager 能在动画结束后识别箱子是否抵达终点。CommandManager 保存最近一次玩家与箱子的前后坐标，
+            并为最近一步移动提供一次撤销。
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <h2>移动验证与撤销</h2>
+          <div class="image-grid image-grid--2col">
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/box-move-validation.png"
+                   alt="检查箱子前方网格类型的 C# 移动合法性验证代码"
+                   width="1491" height="454" loading="lazy">
+              <figcaption>验证被推动箱子前方的格子</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/undo-command.png"
+                   alt="恢复玩家与箱子历史坐标的 C# 撤销处理代码"
+                   width="1490" height="477" loading="lazy">
+              <figcaption>恢复上一步移动</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>轻量的胜利与死角检测</h2>
+          <p>
+            箱子移动后，WinLoseManager 会检查它是否到达目标点。失败检测则使用 HashSet 收集箱子周围的墙壁方向：
+            超过两面墙表示箱子进入无法推出的 U 形空间；互相垂直的墙壁组合则表示箱子被卡在角落。
+          </p>
+          <p>
+            该算法无需执行完整路径搜索，就能识别紧凑推箱子地图中最常见的不可逆状态。
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <h2>结果判定</h2>
+          <div class="image-grid image-grid--2col">
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/win-check.png"
+                   alt="确认箱子到达目标点的 C# 胜利判定代码"
+                   width="1041" height="469" loading="lazy">
+              <figcaption>基于目标点的胜利判定</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/dead-corner-check.png"
+                   alt="使用相邻墙壁方向 HashSet 检测死角的 C# 代码"
+                   width="1490" height="1322" loading="lazy">
+              <figcaption>基于 HashSet 的死角检测</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--cta" data-reveal>
+        <div class="cta-container">
+          <h2>探索项目</h2>
+          <div class="cta-buttons">
+            <a href="https://github.com/JianghaoL/CosmicCustodian" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              查看源代码
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <nav class="project-navigation" data-reveal aria-label="项目导航">
+        <a href="../work-gallery/index.html" class="nav-link nav-link--all">
+          <span class="nav-label">全部项目</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p data-i18n="footer.copyright">&copy; 2026 Jianghao Li. All rights reserved.</p>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/project-detail.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
+</body>
+</html>

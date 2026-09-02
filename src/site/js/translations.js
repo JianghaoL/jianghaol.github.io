@@ -242,6 +242,10 @@ window.__translations = {
     'project.whiteout.shortDesc': 'A psychological Game Jam experience',
     'project.whiteout.summary': 'A Game Jam project exploring the human psychological state under social pressure.',
 
+    // -- Cosmic Custodian --
+    'project.cosmicCustodian.title':   'Cosmic Custodian',
+    'project.cosmicCustodian.summary': 'A data-driven 3D Sokoban game with three text-authored levels, platform-aware controls, single-step undo, and event-driven gameplay.',
+
     // -- Soundboard --
     'project.soundboard.title':   'SoundBoard',
     'project.soundboard.summary': 'A standalone WAAPI tool for browsing, previewing, and controlling Wwise sound objects.',
@@ -485,6 +489,10 @@ window.__translations = {
     'project.whiteout.title':   'Whiteout',
     'project.whiteout.shortDesc': '聚焦心理体验的 Game Jam 作品',
     'project.whiteout.summary': 'Game Jam作品，探索人类在社会压力下的心理状态。',
+
+    // -- Cosmic Custodian --
+    'project.cosmicCustodian.title':   'Cosmic Custodian',
+    'project.cosmicCustodian.summary': '一款数据驱动的 3D 推箱子游戏，包含三个文本关卡、平台自适应控制、单步撤销与事件驱动玩法。',
 
     'project.soundboard.title':   'SoundBoard',
     'project.soundboard.summary': '一款用于浏览、试听并控制 Wwise 声音对象的独立 WAAPI 工具。',

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="description" content="Cosmic Custodian is a data-driven 3D Sokoban puzzle game built in Unity with event-driven systems, cross-platform input, undo support, and code-generated levels.">
+  <meta property="og:title" content="Cosmic Custodian | Jianghao Li">
+  <meta property="og:description" content="A technical case study of a data-driven 3D Sokoban game built in Unity.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.lijianghao.com/assets/images/project-pages/Jianghao%20Li%20-%20Cosmic%20Custodian/main-menu-unity.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Jianghao Li - Cosmic Custodian</title>
+
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/project-detail.css">
+  <link rel="stylesheet" href="/css/apple-refactor.css">
+</head>
+<body>
+  {{> header/header-2c74c71c46}}
+
+  <main class="project-page">
+    <section class="project-hero">
+      <div class="project-hero-content">
+        <h1 class="project-title">Cosmic Custodian</h1>
+        <p class="project-summary">
+          A data-driven 3D Sokoban puzzle game built in Unity, with cross-platform input,
+          event-driven systems, and animated code-generated levels.
+        </p>
+        <div class="project-meta">
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            2026
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Game Development
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M8 12h8M12 8v8"></path>
+            </svg>
+            Windows · macOS · iOS
+          </span>
+        </div>
+
+        <div class="hero-tech-stack">
+          <div class="hero-details-container">
+            <div class="hero-details-column">
+              <h3>Tech Stack</h3>
+              <ul class="tech-list">
+                <li><span class="tech-tag">Unity 6.3.6</span></li>
+                <li><span class="tech-tag">C#</span></li>
+                <li><span class="tech-tag">Input System</span></li>
+                <li><span class="tech-tag">DOTween</span></li>
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3>My Role</h3>
+              <ul class="role-list">
+                <li>Game Design</li>
+                <li>Gameplay Programming</li>
+                <li>Systems Architecture</li>
+                <li>UI &amp; Audio Integration</li>
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3>Platforms</h3>
+              <ul class="team-list">
+                <li>Windows PC</li>
+                <li>macOS</li>
+                <li>iPhone &amp; iPad</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="project-content">
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/main-menu-unity.png"
+               alt="Unity editor showing the Cosmic Custodian main menu with a sci-fi character and start, settings, and quit buttons"
+               class="full-image" width="1288" height="724" fetchpriority="high">
+          <figcaption class="image-caption">The Cosmic Custodian main menu in Unity</figcaption>
+        </figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>Overview</h2>
+          <p>
+            Cosmic Custodian reframes the classic box-pushing puzzle as a 3D sci-fi game. Players move through a grid,
+            avoid dead corners, and push the box onto its destination. Three text-authored levels, a platform-aware tutorial,
+            persistent audio settings, and a reusable event layer turn the compact puzzle loop into a complete game flow.
+          </p>
+          <p>
+            I developed the game in Unity 6.3.6 on macOS Sequoia 15.6.1. The project uses URP, Unity Input System,
+            low-poly sci-fi environments and characters, a dedicated UI kit, interface sound effects, background music,
+            and DOTween-driven motion.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/package-manager.png"
+                 alt="Unity Package Manager showing DOTween and the imported sci-fi art and interface packages"
+                 width="962" height="752" loading="lazy">
+            <figcaption class="image-caption">Project packages and imported assets</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>Production Foundation</h2>
+            <p>
+              I assembled the project from modular environment, character, animation, UI, music, and sound-effect resources.
+              DOTween provides the motion language for level construction and character movement, while the rest of the stack
+              stays close to Unity's built-in workflows.
+            </p>
+            <p>
+              Keeping the presentation layer separate from the puzzle model made it possible to change art, timing, and feedback
+              without rewriting the rules of the game.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <h2>Text-Driven Level Authoring</h2>
+          <div class="image-grid image-grid--3col">
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/grid-block-scriptable-object.jpeg"
+                   alt="C sharp ScriptableObject defining a grid block prefab, vertical offset, rotation, and scale"
+                   width="1274" height="385" loading="lazy">
+              <figcaption>Reusable grid-block data</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/level-notation.png"
+                   alt="Level notation mapping symbols to walls, player, box, and destination"
+                   width="659" height="871" loading="lazy">
+              <figcaption>Compact level notation</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/level-data.png"
+                   alt="Example text layout for a Cosmic Custodian puzzle level"
+                   width="468" height="708" loading="lazy">
+              <figcaption>A level stored as text</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>A Data-Driven Map Pipeline</h2>
+          <p>
+            Levels are authored in text files rather than assembled one object at a time. Each symbol maps to a wall, player,
+            box, destination, or empty cell. ScriptableObjects hold the prefab and transform data needed to turn that notation
+            into a three-dimensional scene.
+          </p>
+          <p>
+            LevelLoader reads <code>LevelData/level_{n}.txt</code> from <code>Application.streamingAssetsPath</code>, parses every
+            character, and stores the resulting GridBlock objects in a Vector2Int-keyed dictionary. The repository currently ships
+            three level files, so a puzzle can be revised without manually rebuilding the Unity scene.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/level-loader.png"
+               alt="C sharp LevelLoader code that reads text files and converts characters into grid blocks"
+               class="full-image full-image--code" width="672" height="1627" loading="lazy">
+          <figcaption class="image-caption">LevelLoader parses text data into coordinate-based grid blocks</figcaption>
+        </figure>
+      </section>
+
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/initialization-manager-code.png"
+                 alt="C sharp InitializationManager code sorting and starting initializable systems"
+                 width="1492" height="1829" loading="lazy">
+            <figcaption class="image-caption">Explicit initialization instead of implicit scene timing</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>Deterministic Initialization</h2>
+            <p>
+              Map generation depends on the active Game Config, and several singleton systems depend on one another during startup.
+              To make that order visible and reliable, every participating class implements a small IInitializable interface.
+            </p>
+            <p>
+              InitializationManager sorts its Inspector entries, calls <code>InitializeOnAwake</code> synchronously in that order,
+              then schedules each <code>InitializeOnStart</code> call after a short real-time delay. Empty default interface methods
+              let a class opt into only the phase it needs.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <h2>Designer-Controlled Startup Order</h2>
+          <div class="image-grid image-grid--2col">
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/iinitializable-interface.png"
+                   alt="IInitializable interface with optional Awake and Start initialization methods"
+                   width="1492" height="375" loading="lazy">
+              <figcaption>The lightweight initialization contract</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/initialization-order-inspector.png"
+                   alt="Unity Inspector showing ordered initialization entries and dependency notes"
+                   width="1660" height="1634" loading="lazy">
+              <figcaption>Order and dependency notes exposed in the Inspector</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/map-constructor.png"
+                 alt="C sharp MapConstructor code defining map data, event subscriptions, and construction helpers"
+                 width="976" height="2098" loading="lazy">
+            <figcaption class="image-caption">MapConstructor turns loaded data into a playable 3D board</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>Animated Map Construction</h2>
+            <p>
+              MapConstructor listens for LevelLoader's completion event and builds the board from the coordinate dictionary.
+              Game Config stores the values that vary by level, so camera placement, support depth, timing, and prefab choices can
+              be tuned without changing the constructor itself.
+            </p>
+            <p>
+              Each generated object rises into place through a DOTween coroutine. Randomized delays add a controlled rhythm while
+              preserving the deterministic puzzle state underneath.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/dotween-rise-routine.png"
+               alt="C sharp DOTween coroutine that animates generated map objects into position"
+               class="full-image" width="1492" height="626" loading="lazy">
+          <figcaption class="image-caption">DOTween gives generated levels a staged entrance</figcaption>
+        </figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>One Input Contract, Multiple Platforms</h2>
+          <p>
+            Desktop controls use Unity's Input System for movement, undo, restart, and pause. Mobile buttons implement
+            IPointerDownHandler for touch input. PlatformManager derives the active mode from <code>Application.isMobilePlatform</code>;
+            UIManager then selects the desktop or mobile UI handler, while TutorialManager displays platform-specific guidance.
+            Both input paths still feed the same InputHandler request methods.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <h2>Cross-Platform Input</h2>
+          <div class="image-grid image-grid--3col">
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/input-actions.png"
+                   alt="Unity Input Actions editor mapping keyboard movement, undo, restart, and pause"
+                   width="1047" height="644" loading="lazy">
+              <figcaption>Desktop Input Actions</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/mobile-input.png"
+                   alt="C sharp mobile move button sending a direction through IPointerDownHandler"
+                   width="1105" height="758" loading="lazy">
+              <figcaption>Touch controls</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/input-handler.png"
+                   alt="C sharp InputHandler mapping desktop and mobile requests to shared game events"
+                   width="1367" height="1722" loading="lazy">
+              <figcaption>Shared input contract</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/game-events-manager.png"
+                 alt="C sharp GameEventsManager declaring movement, grid update, undo, pause, win, and loss events"
+                 width="779" height="1662" loading="lazy">
+            <figcaption class="image-caption">A single event surface coordinates otherwise independent systems</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>Event-Driven Gameplay</h2>
+            <p>
+              Gameplay systems coordinate through the static GameEventsManager instead of direct manager-to-manager references.
+              Map loading, camera and UI state, movement, grid updates, single-step undo data, pause state, tutorial milestones,
+              and win or loss checks all travel through focused UnityEvents.
+            </p>
+            <p>
+              This separation keeps input, animation, rules, and UI independently testable. It also makes platform-specific code a
+              thin adapter instead of a second gameplay implementation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/player-movement-manager.png"
+               alt="C sharp PlayerMovementManager validating requests and updating coordinate-based player movement"
+               class="full-image full-image--code" width="827" height="1657" loading="lazy">
+          <figcaption class="image-caption">PlayerMovementManager validates a request before updating the visual transform</figcaption>
+        </figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>Grid Logic Without Physics</h2>
+          <p>
+            The puzzle model is a dictionary from Vector2Int coordinates to block types: void, wall, player, box, or destination.
+            PlayerMovementManager accepts only void, destination, or box cells. When a box is ahead, BoxMovementManager separately
+            rejects a push whose next cell is a wall before any movement event is sent.
+          </p>
+          <p>
+            After validation, non-destination cells update immediately and DOTween moves the visible models. Destination cells keep
+            their original type in GameDataManager, which allows WinLoseManager to recognize arrival after the animation. CommandManager
+            stores the latest player and box coordinates and exposes one undo for the most recent move.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <h2>Move Validation &amp; Undo</h2>
+          <div class="image-grid image-grid--2col">
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/box-move-validation.png"
+                   alt="C sharp box movement validation checking the next grid block type"
+                   width="1491" height="454" loading="lazy">
+              <figcaption>Validating the cell beyond a pushed box</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/undo-command.png"
+                   alt="C sharp undo handler restoring recorded player and box coordinates"
+                   width="1490" height="477" loading="lazy">
+              <figcaption>Restoring the previous move</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>Lightweight Win &amp; Dead-Corner Checks</h2>
+          <p>
+            After a box moves, WinLoseManager checks whether it reached a destination. For failure detection, the system gathers
+            adjacent wall directions in a HashSet. More than two walls indicate a trapped U-shaped space; perpendicular wall pairs
+            identify a corner from which the box cannot be recovered.
+          </p>
+          <p>
+            The algorithm avoids a full search while still catching the irreversible states most relevant to a compact Sokoban board.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--image-grid" data-reveal>
+        <div class="image-grid-container">
+          <h2>Outcome Evaluation</h2>
+          <div class="image-grid image-grid--2col">
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/win-check.png"
+                   alt="C sharp win check confirming that a box reached a destination"
+                   width="1041" height="469" loading="lazy">
+              <figcaption>Destination-based win check</figcaption>
+            </figure>
+            <figure class="grid-image-item">
+              <img src="/assets/images/project-pages/Jianghao Li - Cosmic Custodian/dead-corner-check.png"
+                   alt="C sharp dead-corner detection using a HashSet of adjacent wall directions"
+                   width="1490" height="1322" loading="lazy">
+              <figcaption>HashSet-based dead-corner detection</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--cta" data-reveal>
+        <div class="cta-container">
+          <h2>Explore the Project</h2>
+          <div class="cta-buttons">
+            <a href="https://github.com/JianghaoL/CosmicCustodian" class="btn btn-primary-project" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              View Source Code
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <nav class="project-navigation" data-reveal aria-label="Project navigation">
+        <a href="../work-gallery/index.html" class="nav-link nav-link--all">
+          <span class="nav-label">All Projects</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  {{> footer/footer-a76700955c}}
+
+  <script src="/js/main.js"></script>
+  <script src="/js/project-detail.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
+</body>
+</html>
