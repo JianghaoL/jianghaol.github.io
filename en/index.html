@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/apple-refactor.css">
+  <link rel="stylesheet" href="/css/portfolio-refresh.css">
 </head>
 <body>
 
@@ -62,13 +63,49 @@
     </div>
   </section>
 
-  <!-- Selected Works -->
   <section id="work" class="wave-section" data-reveal>
-    <canvas class="section-wave-canvas" aria-hidden="true"></canvas>
     <h2 data-i18n="home.work.heading">Selected Work</h2>
-    <p class="section-subtitle" data-i18n="home.work.subtitle">Hover over a card to see details</p>
-    <div class="work-grid">
-      <!-- Carousel will be rendered here by JavaScript -->
+    <div class="featured-projects">
+      <a class="featured-project" href="project-pages/dreamcatcher.html">
+        <img src="/assets/images/thumbnails/dreamcatcher.png" alt="" loading="lazy">
+        <span class="featured-project__content">
+          <span class="featured-project__text">
+            <strong data-i18n="project.dreamcatcher.title">Dreamcatcher</strong>
+            <span data-i18n="project.dreamcatcher.shortDesc"></span>
+          </span>
+          <span class="featured-project__arrow" aria-hidden="true">↗</span>
+        </span>
+      </a>
+      <a class="featured-project" href="project-pages/sisyphus-worst-day.html">
+        <img src="/assets/images/thumbnails/thumbnails (6).jpg" alt="" loading="lazy">
+        <span class="featured-project__content">
+          <span class="featured-project__text">
+            <strong data-i18n="project.sisyphus.title">Sisyphus's Worst Day</strong>
+            <span data-i18n="project.sisyphus.shortDesc"></span>
+          </span>
+          <span class="featured-project__arrow" aria-hidden="true">↗</span>
+        </span>
+      </a>
+      <a class="featured-project" href="project-pages/mantle.html">
+        <img src="/assets/images/thumbnails/thumbnails (14).png" alt="" loading="lazy">
+        <span class="featured-project__content">
+          <span class="featured-project__text">
+            <strong data-i18n="project.mantle.title">Mantle</strong>
+            <span data-i18n="project.mantle.shortDesc"></span>
+          </span>
+          <span class="featured-project__arrow" aria-hidden="true">↗</span>
+        </span>
+      </a>
+      <a class="featured-project" href="project-pages/unity-audio-callback-system.html">
+        <img src="/assets/images/thumbnails/unity-audio-callback-system.png" alt="" loading="lazy">
+        <span class="featured-project__content">
+          <span class="featured-project__text">
+            <strong data-i18n="project.unityAudioCallback.title">Unity Audio Callback System</strong>
+            <span data-i18n="project.unityAudioCallback.shortDesc"></span>
+          </span>
+          <span class="featured-project__arrow" aria-hidden="true">↗</span>
+        </span>
+      </a>
     </div>
   </section>
 
@@ -109,68 +146,6 @@
           </div>
         </div>
         <span class="mix-card-note">2026 USC Mixing Competition</span>
-        <span class="mix-card-coming-soon" data-i18n="home.mixing.comingSoon">Coming soon</span>
-      </div>
-
-      <div class="mix-card" data-audio="">
-        <div class="mix-card-header">
-          <div class="mix-card-art">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M9 18V5l12-2v13"></path>
-              <circle cx="6" cy="18" r="3"></circle>
-              <circle cx="18" cy="16" r="3"></circle>
-            </svg>
-          </div>
-          <div class="mix-card-info">
-            <h3 class="mix-card-title">Demo Track 2</h3>
-            <p class="mix-card-artist">Artist Name</p>
-          </div>
-        </div>
-        <div class="mix-card-controls">
-          <button class="mix-card-play-btn" type="button" aria-label="Play"></button>
-          <div class="mix-card-progress-area">
-            <div class="mix-card-progress-track">
-              <div class="mix-card-progress-fill"></div>
-              <div class="mix-card-progress-thumb"></div>
-            </div>
-            <div class="mix-card-time">
-              <span class="mix-card-current">0:00</span>
-              <span class="mix-card-duration">0:00</span>
-            </div>
-          </div>
-        </div>
-        <span class="mix-card-note"></span>
-        <span class="mix-card-coming-soon" data-i18n="home.mixing.comingSoon">Coming soon</span>
-      </div>
-
-      <div class="mix-card" data-audio="">
-        <div class="mix-card-header">
-          <div class="mix-card-art">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M9 18V5l12-2v13"></path>
-              <circle cx="6" cy="18" r="3"></circle>
-              <circle cx="18" cy="16" r="3"></circle>
-            </svg>
-          </div>
-          <div class="mix-card-info">
-            <h3 class="mix-card-title">Demo Track 3</h3>
-            <p class="mix-card-artist">Artist Name</p>
-          </div>
-        </div>
-        <div class="mix-card-controls">
-          <button class="mix-card-play-btn" type="button" aria-label="Play"></button>
-          <div class="mix-card-progress-area">
-            <div class="mix-card-progress-track">
-              <div class="mix-card-progress-fill"></div>
-              <div class="mix-card-progress-thumb"></div>
-            </div>
-            <div class="mix-card-time">
-              <span class="mix-card-current">0:00</span>
-              <span class="mix-card-duration">0:00</span>
-            </div>
-          </div>
-        </div>
-        <span class="mix-card-note"></span>
         <span class="mix-card-coming-soon" data-i18n="home.mixing.comingSoon">Coming soon</span>
       </div>
 
@@ -219,121 +194,15 @@
     <a href="work-gallery/index.html" class="btn-gallery" data-i18n="home.gallery.btn">View Gallery</a>
   </section>
 
-  <!-- Contact 区 -->
   <section id="contact" class="wave-section" data-reveal>
-    <canvas class="section-wave-canvas" aria-hidden="true"></canvas>
     <h2 data-i18n="home.contact.heading">Contact</h2>
-    <p data-i18n="home.contact.text">Let's build together — reach out!</p>
-    <ul class="contact-buttons">
-      <li>
-        <button type="button" class="btn contact-btn my-contact" aria-haspopup="dialog">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
-          </svg>
-          <span data-i18n="home.contact.myContact">My Contact</span>
-        </button>
-      </li>
-      <li>
-        <button type="button" class="btn contact-btn resume" aria-haspopup="dialog" aria-controls="resume-modal-overlay">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11zm-3-7H9v-2h6v2zm0 4H9v-2h6v2z"></path>
-          </svg>
-          <span data-i18n="home.contact.resume">Resume</span>
-        </button>
-      </li>
-      <li>
-        <a href="https://www.linkedin.com/in/lijiangh" class="btn contact-btn linkedin" target="_blank" rel="noopener noreferrer">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-            <rect x="2" y="9" width="4" height="12"></rect>
-            <circle cx="4" cy="4" r="2"></circle>
-          </svg>
-          <span data-i18n="home.contact.linkedin">LinkedIn</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/JianghaoL" class="btn contact-btn github" target="_blank" rel="noopener noreferrer">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-          </svg>
-          <span data-i18n="home.contact.github">GitHub</span>
-        </a>
-      </li>
-    </ul>
-  </section>
-
-  <!-- Contact Card Modal -->
-  <div id="contact-modal-overlay" 
-       class="contact-modal-overlay" 
-       role="dialog" 
-       aria-modal="true" 
-       aria-labelledby="contact-card-title"
-       aria-hidden="true">
-    <div class="contact-card">
-      <!-- Close Button -->
-      <button type="button" class="contact-card-close" aria-label="Close contact card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-      
-      <!-- Contact Information -->
-      <ul class="contact-card-info">
-        <li data-contact="phone">
-          <div class="contact-info-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-          </div>
-          <div class="contact-info-content">
-            <p class="contact-info-label" data-i18n="contact.phone.label">Phone</p>
-            <p class="contact-info-value" data-i18n="contact.phone.value">+1 (213) 994-2364</p>
-          </div>
-        </li>
-        <li data-contact="email">
-          <div class="contact-info-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-          </div>
-          <div class="contact-info-content">
-            <p class="contact-info-label" data-i18n="contact.email.label">Email</p>
-            <p class="contact-info-value"><a href="mailto:lijiangh@usc.edu">lijiangh@usc.edu</a></p>
-          </div>
-        </li>
-        <li data-contact="location">
-          <div class="contact-info-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-          </div>
-          <div class="contact-info-content">
-            <p class="contact-info-label" data-i18n="contact.location.label">Location</p>
-            <p class="contact-info-value" data-i18n="contact.location.value">Los Angeles, CA</p>
-          </div>
-        </li>
-      </ul>
-      
-      <!-- Social Links -->
-      <div class="contact-card-social">
-        <a href="https://www.linkedin.com/in/lijiangh" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-          <svg viewBox="0 0 24 24">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-            <rect x="2" y="9" width="4" height="12"></rect>
-            <circle cx="4" cy="4" r="2"></circle>
-          </svg>
-        </a>
-        <a href="https://github.com/JianghaoL" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
-          <svg viewBox="0 0 24 24">
-            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-          </svg>
-        </a>
-      </div>
+    <div class="contact-links">
+      <a href="mailto:jianghaoli800@gmail.com"><span data-i18n="contact.email.label">Email</span><strong>jianghaoli800@gmail.com</strong></a>
+      <a href="tel:+12139942364"><span data-i18n="contact.phone.label">Phone</span><strong>+1 (213) 994-2364</strong></a>
+      <a href="https://www.linkedin.com/in/lijiangh" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><strong>lijiangh ↗</strong></a>
+      <a href="https://github.com/JianghaoL" target="_blank" rel="noopener noreferrer"><span>GitHub</span><strong>JianghaoL ↗</strong></a>
     </div>
-  </div>
+  </section>
 
   <!-- Resume Modal Overlay -->
   <div id="resume-modal-overlay" 
@@ -479,9 +348,7 @@
   </footer>
 
   <script src="/js/main.js"></script>
-  <script src="/js/work-carousel.js"></script>
   <script src="/js/music-player.js"></script>
-  <script src="/js/contact-modal.js"></script>
   <script src="/js/resume-modal.js"></script>
   <script src="/js/translations.js"></script>
   <script src="/js/i18n.js"></script>

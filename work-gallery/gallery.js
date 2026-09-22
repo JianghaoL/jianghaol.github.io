@@ -388,12 +388,15 @@ class WorkGallery {
       </div>
     ` : '';
 
+    const featured = [16, 9, 14].includes(item.id);
+
     return `
-      <article class="gallery-card" data-id="${item.id}" data-project-url="${projectPage}" style="--card-index: ${index}">
+      <article class="gallery-card${featured ? ' gallery-card--featured' : ''}" data-id="${item.id}" data-project-url="${projectPage}" style="--card-index: ${index}">
         <a href="${projectPage}" class="gallery-card-link" aria-label="View ${title} project details">
           <div class="gallery-card-inner">
             <!-- Front Side -->
             <div class="gallery-card-front">
+              ${featured ? '<span class="featured-star" aria-label="Featured project">✦</span>' : ''}
               <div class="${thumbnailClass}" style="${thumbnailStyle}">
                 <div class="card-thumbnail-placeholder">
                   ${thumbnailPlaceholder}
@@ -401,7 +404,7 @@ class WorkGallery {
               </div>
               <div class="card-front-content">
                 <h3>${title}</h3>
-                <span class="card-category-badge">${this.getTranslation(item.category)}</span>
+                ${this.currentSort === 'category' ? '' : `<span class="card-category-badge">${this.getTranslation(item.category)}</span>`}
               </div>
             </div>
             <!-- Back Side -->
@@ -493,10 +496,10 @@ class WorkGallery {
       byCategory[item.category].push(item);
     });
 
-    // Preferred ordering: Game Development and Game Audio first
+    // Lead with technical audio in the category view.
     const preferredOrder = [
-      CATEGORIES.GAME_DEVELOPMENT,
       CATEGORIES.GAME_AUDIO,
+      CATEGORIES.GAME_DEVELOPMENT,
       CATEGORIES.SOUND_REDESIGN_REELS
     ];
 
@@ -518,7 +521,14 @@ class WorkGallery {
     let globalIndex = 0;
 
     categories.forEach((category, sectionIdx) => {
-      const items = byCategory[category];
+      const items = category === CATEGORIES.GAME_AUDIO
+        ? [...byCategory[category]].sort((a, b) => {
+            const priority = [16, 9, 3]; // Dreamcatcher, Sisyphus, Mantle
+            const aIndex = priority.indexOf(a.id);
+            const bIndex = priority.indexOf(b.id);
+            return (aIndex < 0 ? Infinity : aIndex) - (bIndex < 0 ? Infinity : bIndex);
+          })
+        : byCategory[category];
       
       html += `
         <div class="category-section" style="--section-index: ${sectionIdx}">
@@ -527,7 +537,6 @@ class WorkGallery {
               ${this.getIcon('category')}
             </div>
             <h3 class="category-title">${this.getTranslation(category)}</h3>
-            <span class="category-count">${items.length} ${this.getTranslation(items.length === 1 ? 'gallery.projectCount.one' : 'gallery.projectCount.many')}</span>
           </div>
           <div class="category-cards">
             ${items.map((item, idx) => {

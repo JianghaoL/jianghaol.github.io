@@ -279,7 +279,7 @@ window.__translations = {
     // WORK GALLERY — Category labels and UI
     // =================================================================
     'category.gameDevelopment':  'Game Development',
-    'category.gameAudio':        'Game Audio',
+    'category.gameAudio':        'Technical Audio',
     'category.developmentTool':  'Development Tool',
     'category.audioTool':        'Audio Tool',
     'category.audioProduction':  'Audio Production',
@@ -527,7 +527,7 @@ window.__translations = {
     // WORK GALLERY — Category labels and UI
     // =================================================================
     'category.gameDevelopment':  '游戏开发',
-    'category.gameAudio':        '游戏音频',
+    'category.gameAudio':        '技术音频',
     'category.developmentTool':  '开发工具',
     'category.audioTool':        '音频工具',
     'category.audioProduction':  '音频制作',
