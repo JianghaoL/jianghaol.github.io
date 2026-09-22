@@ -226,6 +226,18 @@ const galleryData = [
     roles: ["Game Design", "Gameplay Programming", "Systems Architecture", "UI & Audio Integration"],
     aiUsed: false
   },
+  {
+    id: 16,
+    titleKey: "project.dreamcatcher.title",
+    category: CATEGORIES.GAME_AUDIO,
+    year: 2025,
+    date: "2025-12-01",
+    thumbnail: "/assets/images/thumbnails/dreamcatcher.png",
+    descriptionKey: "project.dreamcatcher.summary",
+    techStack: ["Unreal Engine 5", "C++", "Wwise", "RNNoise", "Perforce"],
+    projectPage: "../project-pages/dreamcatcher.html",
+    roles: ["Audio Lead", "Technical Audio", "Audio Engineering", "Sound Design & Implementation"]
+  },
 ];
 
 // ============================================

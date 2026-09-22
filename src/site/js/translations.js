@@ -246,6 +246,10 @@ window.__translations = {
     'project.cosmicCustodian.title':   'Cosmic Custodian',
     'project.cosmicCustodian.summary': 'A data-driven 3D Sokoban game with three text-authored levels, platform-aware controls, single-step undo, and event-driven gameplay.',
 
+    // -- Dreamcatcher --
+    'project.dreamcatcher.title':   'Dreamcatcher',
+    'project.dreamcatcher.summary': 'An in-development cooperative game with networked voice, Wwise spatial audio, and sound-reactive mechanics.',
+
     // -- Soundboard --
     'project.soundboard.title':   'SoundBoard',
     'project.soundboard.summary': 'A standalone WAAPI tool for browsing, previewing, and controlling Wwise sound objects.',
@@ -493,6 +497,10 @@ window.__translations = {
     // -- Cosmic Custodian --
     'project.cosmicCustodian.title':   'Cosmic Custodian',
     'project.cosmicCustodian.summary': '一款数据驱动的 3D 推箱子游戏，包含三个文本关卡、平台自适应控制、单步撤销与事件驱动玩法。',
+
+    // -- Dreamcatcher --
+    'project.dreamcatcher.title':   'Dreamcatcher',
+    'project.dreamcatcher.summary': '一款正在开发的合作游戏，融合网络语音、Wwise 空间音频与声音驱动玩法。',
 
     'project.soundboard.title':   'SoundBoard',
     'project.soundboard.summary': '一款用于浏览、试听并控制 Wwise 声音对象的独立 WAAPI 工具。',

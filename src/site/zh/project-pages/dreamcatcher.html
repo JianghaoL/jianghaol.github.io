@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="description" content="Dreamcatcher 是一款开发中的 Unreal Engine 游戏，包含网络近距离语音、RNNoise 处理、Wwise 集成与声音驱动的拉线电话机制。">
+  <meta property="og:title" content="Dreamcatcher | 李江浩">
+  <meta property="og:description" content="关于实时语音、麦克风校准、Wwise 集成与声音驱动玩法的技术音频案例。">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.lijianghao.com/assets/images/thumbnails/dreamcatcher.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>李江浩 - Dreamcatcher</title>
+
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/project-detail.css">
+  <link rel="stylesheet" href="/css/apple-refactor.css">
+</head>
+<body>
+  {{> header/header-2c74c71c46}}
+
+  <main class="project-page">
+    <section class="project-hero">
+      <div class="project-hero-content">
+        <h1 class="project-title">Dreamcatcher</h1>
+        <p class="project-summary">
+          一款正在开发的合作游戏，在 Unreal Engine 5 中融合音频制作、网络语音系统与声音驱动玩法。
+        </p>
+        <div class="project-meta">
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            2025 - 至今
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            游戏音频
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            开发中
+          </span>
+        </div>
+
+        <div class="hero-tech-stack">
+          <div class="hero-details-container">
+            <div class="hero-details-column">
+              <h3>技术栈</h3>
+              <ul class="tech-list">
+                <li><span class="tech-tag">Unreal Engine 5.6</span></li>
+                <li><span class="tech-tag">C++</span></li>
+                <li><span class="tech-tag">Wwise</span></li>
+                <li><span class="tech-tag">RNNoise</span></li>
+                <li><span class="tech-tag">Perforce</span></li>
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3>我的角色</h3>
+              <ul class="role-list">
+                <li>音频负责人</li>
+                <li>技术音频</li>
+                <li>音频工程</li>
+                <li>声音设计与实现</li>
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3>技术重点</h3>
+              <ul class="team-list">
+                <li>实时语音</li>
+                <li>交互音频</li>
+                <li>声学系统</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="project-content">
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/thumbnails/dreamcatcher.png"
+               alt="Dreamcatcher 游戏画面，两个小角色在黑暗卧室中照亮前方"
+               class="full-image" width="1920" height="1080" fetchpriority="high">
+          <figcaption class="image-caption">Dreamcatcher</figcaption>
+        </figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>项目概述</h2>
+          <p>
+            Dreamcatcher 是一个仍在推进中的游戏项目，声音既承担表现，也构成玩法基础设施。作为音频负责人，
+            我负责音频制作流程、Wwise 实现、实时语音处理、声音驱动机制，以及把麦克风输入连接到游戏世界的工程工作。
+          </p>
+          <p>
+            在前期制作中，我合成了 10 个音效，组织持续更新的资源流程，并搭建了覆盖角色、物件、怪物、UI、
+            语音聊天、混响与空间音频内容的 Wwise 结构。本页重点展示我用 C++ 设计和实现的技术系统。
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>实时近距离语音</h2>
+          <p>
+            本地客户端以 48 kHz 单声道采集 PCM，将数据累积为 RNNoise 所需的帧并实时降噪，然后再编码。
+            干湿比让降噪强度可调，校准后的输入增益则在电平检测与发送之前应用到信号上。
+          </p>
+          <p>
+            压缩语音包通过 Unreliable Server RPC 与 Multicast 链路传输，远端客户端解码后写入线程安全队列，
+            再由 Wwise Audio Input 消费。Wwise 负责空间定位与距离衰减，使语音聊天和游戏中的其他声音处于同一个声学世界。
+            网络部分由我与 Junhang Ma 共同开发。
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/project-pages/Jianghao Li - Dreamcatcher/voice-pipeline.png"
+               alt="C++ 代码，展示 RNNoise 帧处理、麦克风输入增益、本地电平检测、语音编码与网络发送"
+               class="full-image full-image--code" width="1600" height="1204" loading="lazy">
+          <figcaption class="image-caption">RNNoise 处理、增益校准、电平检测与语音包发送</figcaption>
+        </figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>麦克风校准</h2>
+          <p>
+            校准界面直接复用实时麦克风链路，而不是使用独立的模拟电平表。Wwise 通过 RTPC 返回输入电平，
+            UI 将其映射到清晰的 0-100 范围，玩家可调整降噪干湿比与 -90 dB 至 +24 dB 的麦克风增益。
+          </p>
+          <p>
+            游戏暂停时校准仍会继续运行，但语音包发送会被明确禁止。这样电平表可以持续响应，同时不会把设置过程中的声音广播给其他玩家。
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>拉线电话</h2>
+          <p>
+            拉线电话把网络语音变成实体玩法机制。远端玩家进入一只纸杯的拾取区域后，麦克风组件会把另一端纸杯注册为实时接收端。
+            解码后的样本进入远端专用的 Wwise Audio Input 组件，因此语音会从游戏世界中的正确位置传出。
+          </p>
+          <p>
+            可配置的延迟线会先缓存首个语音包，直到积累足够音频。若丢包或静音使队列耗尽，原子化 underrun 标记会在下一个包到达时重新建立延迟，
+            防止设计好的传输时间逐渐归零。同一份延迟后的响度历史还会驱动纸杯光效与玩法光照半径，让可见反馈与语音同时抵达。
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/project-pages/Jianghao Li - Dreamcatcher/telephone-delay.png"
+               alt="C++ 代码，展示拉线电话延迟线、PCM 队列播放与 underrun 恢复"
+               class="full-image full-image--code" width="1600" height="1387" loading="lazy">
+          <figcaption class="image-caption">发生 underrun 后，延迟线会重新建立音频缓冲</figcaption>
+        </figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>Wwise 制作架构</h2>
+          <p>
+            Wwise 项目把语音聊天、拉线电话、玩家拟音、物件、怪物、UI 与混响拆分到独立的 Work Unit 和总线中。
+            这种结构明确了制作职责，同时让实时语音与预制游戏音频共享衰减、路由、RTPC 与空间音频系统。
+          </p>
+          <p>
+            当前制作内容覆盖球体动作、材质脚步、角色拟音、怪物声音、UI 反馈、语音参考、环境声与房间声学处理；
+            资源清单会随着游戏开发持续更新。
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Dreamcatcher/dreamir-convolver.png"
+                 alt="DreamIR 有限冲激响应卷积器的 C++ 代码"
+                 width="1600" height="1161" loading="lazy">
+            <figcaption class="image-caption">DreamIR 卷积核心</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>DreamIR - 开发中</h2>
+            <p>
+              我正在开发 DreamIR，一款自定义 Wwise 卷积混响效果器。当前 C++ 实现可以验证并载入冲激响应媒体，
+              为每个声道分配独立 FIR 卷积器，并在 Wwise 声音引擎中原地处理音频。
+            </p>
+            <p>
+              同时，我正在研究基于房间几何匹配的工作流，为每个空间生成自定义冲激响应。插件与逐房间 IR 生成流程目前都仍在开发中。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <nav class="project-navigation" data-reveal aria-label="项目导航">
+        <a href="../work-gallery/index.html" class="nav-link nav-link--all">
+          <span class="nav-label">所有项目</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  {{> footer/footer-a76700955c}}
+
+  <script src="/js/main.js"></script>
+  <script src="/js/project-detail.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
+</body>
+</html>
