@@ -248,6 +248,7 @@ window.__translations = {
 
     // -- Dreamcatcher --
     'project.dreamcatcher.title':   'Dreamcatcher',
+    'project.dreamcatcher.shortDesc': 'Networked voice as a cooperative game mechanic',
     'project.dreamcatcher.summary': 'An in-development cooperative game with networked voice, Wwise spatial audio, and sound-reactive mechanics.',
 
     // -- Soundboard --
@@ -500,6 +501,7 @@ window.__translations = {
 
     // -- Dreamcatcher --
     'project.dreamcatcher.title':   'Dreamcatcher',
+    'project.dreamcatcher.shortDesc': '以网络语音驱动合作玩法',
     'project.dreamcatcher.summary': '一款正在开发的合作游戏，融合网络语音、Wwise 空间音频与声音驱动玩法。',
 
     'project.soundboard.title':   'SoundBoard',

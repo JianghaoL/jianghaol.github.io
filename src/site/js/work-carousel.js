@@ -30,6 +30,17 @@
 // ============================================
 const workData = [
   {
+    id: 5,
+    titleKey: "project.dreamcatcher.title",
+    shortDescKey: "project.dreamcatcher.shortDesc",
+    image: "/assets/images/thumbnails/dreamcatcher.png",
+    descriptionKey: "project.dreamcatcher.summary",
+    techStack: ["Unreal Engine 5", "C++", "Wwise", "RNNoise", "Technical Audio"],
+    links: [
+      { labelKey: "carousel.viewProject", url: "project-pages/dreamcatcher.html", icon: "external" }
+    ]
+  },
+  {
     id: 1,
     titleKey: "project.mantle.title",
     shortDescKey: "project.mantle.shortDesc",
