@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="description" content="Dreamcatcher is an in-development Unreal Engine game featuring networked proximity voice, RNNoise processing, Wwise integration, and a sound-reactive string telephone mechanic.">
+  <meta property="og:title" content="Dreamcatcher | Jianghao Li">
+  <meta property="og:description" content="A technical audio case study covering realtime voice, microphone calibration, Wwise integration, and sound-reactive gameplay.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://www.lijianghao.com/assets/images/thumbnails/dreamcatcher.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Jianghao Li - Dreamcatcher</title>
+
+  <script src="/js/language-redirect.js"></script>
+
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/pages/project-detail.css">
+  <link rel="stylesheet" href="/css/apple-refactor.css">
+</head>
+<body>
+  {{> header/header-7953b74b1a}}
+
+  <main class="project-page">
+    <section class="project-hero">
+      <div class="project-hero-content">
+        <h1 class="project-title">Dreamcatcher</h1>
+        <p class="project-summary">
+          An in-development cooperative game with production audio, networked voice systems,
+          and sound-reactive mechanics built in Unreal Engine 5.
+        </p>
+        <div class="project-meta">
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            2025 - Present
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            Game Audio
+          </span>
+          <span class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            In Development
+          </span>
+        </div>
+
+        <div class="hero-tech-stack">
+          <div class="hero-details-container">
+            <div class="hero-details-column">
+              <h3>Tech Stack</h3>
+              <ul class="tech-list">
+                <li><span class="tech-tag">Unreal Engine 5.6</span></li>
+                <li><span class="tech-tag">C++</span></li>
+                <li><span class="tech-tag">Wwise</span></li>
+                <li><span class="tech-tag">RNNoise</span></li>
+                <li><span class="tech-tag">Perforce</span></li>
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3>My Role</h3>
+              <ul class="role-list">
+                <li>Audio Lead</li>
+                <li>Technical Audio</li>
+                <li>Audio Engineering</li>
+                <li>Sound Design &amp; Implementation</li>
+              </ul>
+            </div>
+            <div class="hero-details-column">
+              <h3>Technical Focus</h3>
+              <ul class="team-list">
+                <li>Realtime Voice</li>
+                <li>Interactive Audio</li>
+                <li>Acoustic Systems</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="project-content">
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/thumbnails/dreamcatcher.png"
+               alt="Dreamcatcher gameplay scene showing two small characters illuminating a dark bedroom"
+               class="full-image" width="1920" height="1080" fetchpriority="high">
+          <figcaption class="image-caption">Dreamcatcher</figcaption>
+        </figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>Overview</h2>
+          <p>
+            Dreamcatcher is an ongoing game project where sound is both presentation and gameplay infrastructure.
+            As Audio Lead, I own the audio production pipeline, Wwise implementation, realtime voice processing,
+            sound-reactive mechanics, and the engineering work that connects microphone input to the game world.
+          </p>
+          <p>
+            During preproduction I synthesized 10 sound effects, organized the evolving asset workflow, and built
+            Wwise structures for character, object, monster, UI, voice-chat, reverb, and spatial-audio content.
+            The live production tracker now covers 25 named SFX cues. This page focuses on the technical systems I
+            designed and implemented in C++.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>Realtime Proximity Voice</h2>
+          <p>
+            The local client captures 48 kHz mono PCM, accumulates it into RNNoise-compatible frames, and runs realtime
+            denoising before encoding. A wet/dry control keeps the cleanup tunable, while a calibrated input gain is applied
+            before the stream is metered and sent onward.
+          </p>
+          <p>
+            Compressed voice packets travel through an unreliable server RPC and multicast path, then remote clients decode
+            them into a thread-safe queue consumed by a Wwise Audio Input source. Wwise handles spatial playback and distance
+            behavior, keeping voice chat inside the same acoustic world as the rest of the game. I co-developed the networking
+            portion with Junhang Ma.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/project-pages/Jianghao Li - Dreamcatcher/voice-pipeline.png"
+               alt="C plus plus code showing RNNoise frame processing, microphone input gain, local metering, voice encoding, and network transmission"
+               class="full-image full-image--code" width="1600" height="1204" loading="lazy">
+          <figcaption class="image-caption">RNNoise processing, gain calibration, metering, and packet transmission</figcaption>
+        </figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+            <h2>Microphone Calibration</h2>
+            <p>
+              The calibration view reuses the live microphone path instead of simulating a separate meter. Wwise reports the
+              input level through an RTPC, the UI converts it into a readable 0-100 range, and the player can tune denoise mix
+              and microphone gain from -90 dB to +24 dB.
+            </p>
+            <p>
+              Calibration remains active while gameplay is paused, but packet transmission is explicitly suppressed. This
+              keeps the level meter responsive without broadcasting setup audio to other players.
+            </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Dreamcatcher/string-telephone-build.jpg"
+                 alt="Dreamcatcher engineer build pause menu with live microphone level, gain, denoise mix, and calibration controls"
+                 width="1280" height="720" loading="lazy">
+          </figure>
+          <div class="media-text-content">
+            <h2>In-Engine Calibration</h2>
+            <p>
+              The engineer build exposes microphone gain, denoise mix, and calibration directly in the pause menu.
+              The meter remains live while the game is paused, making the complete capture and processing path visible
+              and testable without transmitting setup audio.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>String Telephone</h2>
+          <p>
+            The string telephone turns network voice into a physical game mechanic. When a remote player enters one cup's
+            pickup zone, the microphone component registers the opposite cup as a live sink. Decoded samples feed a dedicated
+            Wwise Audio Input component at the far end, so speech emerges from the correct position in the world.
+          </p>
+          <p>
+            A configurable delay line holds the first packet until enough audio has accumulated. If packet loss or silence
+            drains the queue, an atomic underrun flag re-arms the delay on the next packet instead of letting the intended
+            transmission time collapse. The same delayed loudness history drives the cup glow and gameplay light radius, so
+            the visible response arrives with the voice.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--full-image" data-reveal>
+        <figure class="full-image-container">
+          <img src="/assets/images/project-pages/Jianghao Li - Dreamcatcher/telephone-delay.png"
+               alt="C plus plus code showing the string telephone delay line, queued PCM playback, and underrun recovery"
+               class="full-image full-image--code" width="1600" height="1387" loading="lazy">
+          <figcaption class="image-caption">The delay line rebuilds its audio cushion after an underrun</figcaption>
+        </figure>
+      </section>
+
+      <section class="content-block content-block--text" data-reveal>
+        <div class="text-container">
+          <h2>Wwise Production Architecture</h2>
+          <p>
+            The Wwise project separates voice chat, string telephone, player Foley, objects, monsters, UI, and reverbs into
+            dedicated work units and busses. This keeps authoring responsibilities clear while allowing realtime voice to use
+            the same attenuation, routing, RTPC, and spatial-audio systems as authored game content.
+          </p>
+          <p>
+            The current production set covers ball actions, material-based footsteps, character Foley, monster vocalizations,
+            UI feedback, voice references, ambience, and room-specific acoustic treatment. The list continues to evolve with
+            the game.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block" data-reveal>
+        <div class="production-ledger">
+          <div class="production-ledger__header">
+            <h2>Audio Production Ledger</h2>
+            <strong><span>25</span> named SFX cues</strong>
+          </div>
+          <div class="production-ledger__table" role="table" aria-label="Selected entries from the Dreamcatcher audio asset list">
+            <div class="production-ledger__row production-ledger__row--header" role="row">
+              <span role="columnheader">Cue</span>
+              <span role="columnheader">Playback</span>
+              <span role="columnheader">Status</span>
+            </div>
+            <div class="production-ledger__row" role="row">
+              <span role="cell">Throw</span>
+              <span role="cell">3D · Mono · One-shot</span>
+              <span class="production-ledger__status" role="cell">WIP</span>
+            </div>
+            <div class="production-ledger__row" role="row">
+              <span role="cell">Catch</span>
+              <span role="cell">3D · Mono · 3 variations</span>
+              <span class="production-ledger__status" role="cell">WIP</span>
+            </div>
+            <div class="production-ledger__row" role="row">
+              <span role="cell">Travel</span>
+              <span role="cell">3D · Mono · Loop</span>
+              <span class="production-ledger__status" role="cell">WIP</span>
+            </div>
+            <div class="production-ledger__row" role="row">
+              <span role="cell">Land</span>
+              <span role="cell">3D · Mono · One-shot</span>
+              <span class="production-ledger__status" role="cell">WIP</span>
+            </div>
+          </div>
+          <p class="production-ledger__scope">
+            Production scope includes ball interactions, material footsteps, character Foley, monster vocals, UI,
+            ambience, and room acoustics.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block content-block--media-text content-block--reverse" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Dreamcatcher/dreamir-convolver.png"
+                 alt="C plus plus code for the DreamIR finite impulse response convolver"
+                 width="1600" height="1161" loading="lazy">
+            <figcaption class="image-caption">DreamIR convolution core</figcaption>
+          </figure>
+          <div class="media-text-content">
+            <h2>DreamIR - Work in Progress</h2>
+            <p>
+              I am developing DreamIR, a custom Wwise convolution-reverb effect. The current C++ implementation validates and
+              loads impulse-response media, allocates one FIR convolver per channel, and processes audio in place inside the
+              Wwise sound engine.
+            </p>
+            <p>
+              In parallel, I am researching a geometry-fit workflow that generates a custom impulse response for each room.
+              Both the plug-in and per-room IR generation pipeline remain in active development.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <nav class="project-navigation" data-reveal aria-label="Project navigation">
+        <a href="../work-gallery/index.html" class="nav-link nav-link--all">
+          <span class="nav-label">All Projects</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  {{> footer/footer-46e659299c}}
+
+  <script src="/js/main.js"></script>
+  <script src="/js/project-detail.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
+</body>
+</html>

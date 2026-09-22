@@ -756,6 +756,101 @@ img.full-image:hover {
 }
 
 /* =============================================
+   AUDIO PRODUCTION LEDGER
+   ============================================= */
+.production-ledger {
+  overflow: hidden;
+  border: 1px solid rgba(106, 176, 243, 0.22);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(106, 176, 243, 0.16), transparent 38%),
+    rgba(13, 19, 29, 0.82);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.22);
+}
+
+.production-ledger__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2.25rem 2.5rem 1.75rem;
+}
+
+.production-ledger__header h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+}
+
+.production-ledger__header strong {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.production-ledger__header strong span {
+  color: var(--accent);
+  font-size: 2.35rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.production-ledger__table {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.production-ledger__row {
+  display: grid;
+  grid-template-columns: 0.85fr 1.6fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 3.6rem;
+  padding: 0.8rem 2.5rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.production-ledger__row + .production-ledger__row {
+  border-top: 1px solid rgba(255, 255, 255, 0.065);
+}
+
+.production-ledger__row--header {
+  min-height: 2.8rem;
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.production-ledger__row:not(.production-ledger__row--header) span:first-child {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.production-ledger__status {
+  justify-self: end;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid rgba(106, 176, 243, 0.35);
+  border-radius: var(--radius-full);
+  background: rgba(106, 176, 243, 0.1);
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.production-ledger__scope {
+  margin: 0;
+  padding: 1.5rem 2.5rem 1.75rem;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.7;
+}
+
+/* =============================================
    RESPONSIVE DESIGN
    ============================================= */
 
@@ -879,6 +974,28 @@ img.full-image:hover {
   .btn-primary-project,
   .btn-secondary-project {
     justify-content: center;
+  }
+
+  .production-ledger__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.75rem 1.5rem 1.4rem;
+  }
+
+  .production-ledger__row {
+    grid-template-columns: 0.8fr 1.5fr auto;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.88rem;
+  }
+
+  .production-ledger__row--header {
+    font-size: 0.7rem;
+  }
+
+  .production-ledger__scope {
+    padding: 1.25rem 1.5rem 1.5rem;
   }
 }
 

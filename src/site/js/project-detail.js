@@ -88,12 +88,20 @@ class LazyImageLoader {
     this.images.forEach(img => {
       // Add loading class
       img.classList.add('lazy-loading');
-      
-      // Handle load event
-      img.addEventListener('load', () => {
+
+      const markLoaded = () => {
         img.classList.remove('lazy-loading');
         img.classList.add('lazy-loaded');
-      });
+      };
+
+      // Cached images may already be complete before the load listener is attached.
+      if (img.complete && img.naturalWidth > 0) {
+        markLoaded();
+        return;
+      }
+
+      // Handle load event
+      img.addEventListener('load', markLoaded, { once: true });
 
       // Handle error
       img.addEventListener('error', () => {
