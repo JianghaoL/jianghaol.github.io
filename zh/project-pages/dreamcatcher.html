@@ -112,6 +112,7 @@
           <p>
             在前期制作中，我合成了 10 个音效，组织持续更新的资源流程，并搭建了覆盖角色、物件、怪物、UI、
             语音聊天、混响与空间音频内容的 Wwise 结构。本页重点展示我用 C++ 设计和实现的技术系统。
+            当前制作清单已记录 25 个具名音效条目。
           </p>
         </div>
       </section>
@@ -153,6 +154,23 @@
         </div>
       </section>
 
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Dreamcatcher/string-telephone-build.jpg"
+                 alt="Dreamcatcher 工程构建中的暂停菜单，包含实时麦克风电平、增益、降噪干湿比与校准控制"
+                 width="1280" height="720" loading="lazy">
+          </figure>
+          <div class="media-text-content">
+            <h2>游戏内校准</h2>
+            <p>
+              工程构建把麦克风增益、降噪干湿比与校准直接放进暂停菜单。游戏暂停时电平表仍保持实时响应，
+              因此整条采集与处理链路可以被直接观察和测试，同时不会发送设置过程中的语音。
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section class="content-block content-block--text" data-reveal>
         <div class="text-container">
           <h2>拉线电话</h2>
@@ -186,6 +204,45 @@
           <p>
             当前制作内容覆盖球体动作、材质脚步、角色拟音、怪物声音、UI 反馈、语音参考、环境声与房间声学处理；
             资源清单会随着游戏开发持续更新。
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block" data-reveal>
+        <div class="production-ledger">
+          <div class="production-ledger__header">
+            <h2>音频制作清单</h2>
+            <strong><span>25</span> 个具名音效条目</strong>
+          </div>
+          <div class="production-ledger__table" role="table" aria-label="Dreamcatcher 音频资源清单节选">
+            <div class="production-ledger__row production-ledger__row--header" role="row">
+              <span role="columnheader">音效</span>
+              <span role="columnheader">播放规格</span>
+              <span role="columnheader">状态</span>
+            </div>
+            <div class="production-ledger__row" role="row">
+              <span role="cell">Throw</span>
+              <span role="cell">3D · 单声道 · 单次</span>
+              <span class="production-ledger__status" role="cell">WIP</span>
+            </div>
+            <div class="production-ledger__row" role="row">
+              <span role="cell">Catch</span>
+              <span role="cell">3D · 单声道 · 3 个变化</span>
+              <span class="production-ledger__status" role="cell">WIP</span>
+            </div>
+            <div class="production-ledger__row" role="row">
+              <span role="cell">Travel</span>
+              <span role="cell">3D · 单声道 · 循环</span>
+              <span class="production-ledger__status" role="cell">WIP</span>
+            </div>
+            <div class="production-ledger__row" role="row">
+              <span role="cell">Land</span>
+              <span role="cell">3D · 单声道 · 单次</span>
+              <span class="production-ledger__status" role="cell">WIP</span>
+            </div>
+          </div>
+          <p class="production-ledger__scope">
+            制作范围覆盖球体交互、材质脚步、角色拟音、怪物声音、UI、环境声与房间声学。
           </p>
         </div>
       </section>

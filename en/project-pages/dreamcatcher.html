@@ -114,7 +114,8 @@
           <p>
             During preproduction I synthesized 10 sound effects, organized the evolving asset workflow, and built
             Wwise structures for character, object, monster, UI, voice-chat, reverb, and spatial-audio content.
-            The page focuses on the technical systems I designed and implemented in C++.
+            The live production tracker now covers 25 named SFX cues. This page focuses on the technical systems I
+            designed and implemented in C++.
           </p>
         </div>
       </section>
@@ -160,6 +161,24 @@
         </div>
       </section>
 
+      <section class="content-block content-block--media-text" data-reveal>
+        <div class="media-text-container">
+          <figure class="media-text-image">
+            <img src="/assets/images/project-pages/Jianghao Li - Dreamcatcher/string-telephone-build.jpg"
+                 alt="Dreamcatcher engineer build pause menu with live microphone level, gain, denoise mix, and calibration controls"
+                 width="1280" height="720" loading="lazy">
+          </figure>
+          <div class="media-text-content">
+            <h2>In-Engine Calibration</h2>
+            <p>
+              The engineer build exposes microphone gain, denoise mix, and calibration directly in the pause menu.
+              The meter remains live while the game is paused, making the complete capture and processing path visible
+              and testable without transmitting setup audio.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section class="content-block content-block--text" data-reveal>
         <div class="text-container">
           <h2>String Telephone</h2>
@@ -198,6 +217,46 @@
             The current production set covers ball actions, material-based footsteps, character Foley, monster vocalizations,
             UI feedback, voice references, ambience, and room-specific acoustic treatment. The list continues to evolve with
             the game.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-block" data-reveal>
+        <div class="production-ledger">
+          <div class="production-ledger__header">
+            <h2>Audio Production Ledger</h2>
+            <strong><span>25</span> named SFX cues</strong>
+          </div>
+          <div class="production-ledger__table" role="table" aria-label="Selected entries from the Dreamcatcher audio asset list">
+            <div class="production-ledger__row production-ledger__row--header" role="row">
+              <span role="columnheader">Cue</span>
+              <span role="columnheader">Playback</span>
+              <span role="columnheader">Status</span>
+            </div>
+            <div class="production-ledger__row" role="row">
+              <span role="cell">Throw</span>
+              <span role="cell">3D · Mono · One-shot</span>
+              <span class="production-ledger__status" role="cell">WIP</span>
+            </div>
+            <div class="production-ledger__row" role="row">
+              <span role="cell">Catch</span>
+              <span role="cell">3D · Mono · 3 variations</span>
+              <span class="production-ledger__status" role="cell">WIP</span>
+            </div>
+            <div class="production-ledger__row" role="row">
+              <span role="cell">Travel</span>
+              <span role="cell">3D · Mono · Loop</span>
+              <span class="production-ledger__status" role="cell">WIP</span>
+            </div>
+            <div class="production-ledger__row" role="row">
+              <span role="cell">Land</span>
+              <span role="cell">3D · Mono · One-shot</span>
+              <span class="production-ledger__status" role="cell">WIP</span>
+            </div>
+          </div>
+          <p class="production-ledger__scope">
+            Production scope includes ball interactions, material footsteps, character Foley, monster vocals, UI,
+            ambience, and room acoustics.
           </p>
         </div>
       </section>
