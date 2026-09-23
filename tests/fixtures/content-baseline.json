@@ -817,6 +817,17 @@
         "The engineer build exposes microphone gain, denoise mix, and calibration directly in the pause menu.",
         "The meter remains live while the game is paused, making the complete capture and processing path visible",
         "and testable without transmitting setup audio.",
+        "In-Engine Development Captures",
+        "These work-in-progress recordings were captured directly from the current engineer build. They document active",
+        "implementation tests rather than final presentation footage.",
+        "Your browser does not support the video tag.",
+        "Player Input Adjustment",
+        "A work-in-progress in-engine recording used to evaluate and tune player input behavior inside the current",
+        "game build.",
+        "Your browser does not support the video tag.",
+        "Room Acoustics Test",
+        "A work-in-progress in-engine recording used to evaluate the room acoustics system inside the current game",
+        "build.",
         "String Telephone",
         "The string telephone turns network voice into a physical game mechanic. When a remote player enters one cup's",
         "pickup zone, the microphone component registers the opposite cup as a live sink. Decoded samples feed a dedicated",
@@ -871,11 +882,13 @@
         "/assets/images/thumbnails/dreamcatcher.png",
         "/assets/images/project-pages/Jianghao Li - Dreamcatcher/voice-pipeline.png",
         "/assets/images/project-pages/Jianghao Li - Dreamcatcher/string-telephone-build.jpg",
+        "/assets/videos/dreamcatcher/player-input-adjustment.mp4",
+        "/assets/videos/dreamcatcher/room-precise-acoustic.mp4",
         "/assets/images/project-pages/Jianghao Li - Dreamcatcher/telephone-delay.png",
         "/assets/images/project-pages/Jianghao Li - Dreamcatcher/dreamir-convolver.png",
         "../work-gallery/index.html"
       ],
-      "digest": "5aef6f1751ac1538b65e2376910188fcbd0017ff75cf31fbd6d37bac714b7902"
+      "digest": "47fba2c2cc624465ba0a454260aa155c99da4dede016c29870eda9f9d1a5aa81"
     },
     "en/project-pages/forest-fears.html": {
       "text": [
@@ -2394,6 +2407,17 @@
         "The engineer build exposes microphone gain, denoise mix, and calibration directly in the pause menu.",
         "The meter remains live while the game is paused, making the complete capture and processing path visible",
         "and testable without transmitting setup audio.",
+        "In-Engine Development Captures",
+        "These work-in-progress recordings were captured directly from the current engineer build. They document active",
+        "implementation tests rather than final presentation footage.",
+        "Your browser does not support the video tag.",
+        "Player Input Adjustment",
+        "A work-in-progress in-engine recording used to evaluate and tune player input behavior inside the current",
+        "game build.",
+        "Your browser does not support the video tag.",
+        "Room Acoustics Test",
+        "A work-in-progress in-engine recording used to evaluate the room acoustics system inside the current game",
+        "build.",
         "String Telephone",
         "The string telephone turns network voice into a physical game mechanic. When a remote player enters one cup's",
         "pickup zone, the microphone component registers the opposite cup as a live sink. Decoded samples feed a dedicated",
@@ -2448,11 +2472,13 @@
         "/assets/images/thumbnails/dreamcatcher.png",
         "/assets/images/project-pages/Jianghao Li - Dreamcatcher/voice-pipeline.png",
         "/assets/images/project-pages/Jianghao Li - Dreamcatcher/string-telephone-build.jpg",
+        "/assets/videos/dreamcatcher/player-input-adjustment.mp4",
+        "/assets/videos/dreamcatcher/room-precise-acoustic.mp4",
         "/assets/images/project-pages/Jianghao Li - Dreamcatcher/telephone-delay.png",
         "/assets/images/project-pages/Jianghao Li - Dreamcatcher/dreamir-convolver.png",
         "../work-gallery/index.html"
       ],
-      "digest": "5aef6f1751ac1538b65e2376910188fcbd0017ff75cf31fbd6d37bac714b7902"
+      "digest": "47fba2c2cc624465ba0a454260aa155c99da4dede016c29870eda9f9d1a5aa81"
     },
     "project-pages/forest-fears.html": {
       "text": [
@@ -3968,6 +3994,14 @@
         "游戏内校准",
         "工程构建把麦克风增益、降噪干湿比与校准直接放进暂停菜单。游戏暂停时电平表仍保持实时响应，",
         "因此整条采集与处理链路可以被直接观察和测试，同时不会发送设置过程中的语音。",
+        "引擎内开发录屏",
+        "以下录屏直接来自当前工程构建，展示的是仍在开发中的实现测试，而非最终展示素材。",
+        "当前浏览器不支持视频播放。",
+        "玩家输入调节",
+        "正在开发中的引擎内录屏，用于验证和调整当前游戏构建中的玩家输入行为。",
+        "当前浏览器不支持视频播放。",
+        "房间声学测试",
+        "正在开发中的引擎内录屏，用于验证当前游戏构建中的房间声学系统。",
         "拉线电话",
         "拉线电话把网络语音变成实体玩法机制。远端玩家进入一只纸杯的拾取区域后，麦克风组件会把另一端纸杯注册为实时接收端。",
         "解码后的样本进入远端专用的 Wwise Audio Input 组件，因此语音会从游戏世界中的正确位置传出。",
@@ -4014,11 +4048,13 @@
         "/assets/images/thumbnails/dreamcatcher.png",
         "/assets/images/project-pages/Jianghao Li - Dreamcatcher/voice-pipeline.png",
         "/assets/images/project-pages/Jianghao Li - Dreamcatcher/string-telephone-build.jpg",
+        "/assets/videos/dreamcatcher/player-input-adjustment.mp4",
+        "/assets/videos/dreamcatcher/room-precise-acoustic.mp4",
         "/assets/images/project-pages/Jianghao Li - Dreamcatcher/telephone-delay.png",
         "/assets/images/project-pages/Jianghao Li - Dreamcatcher/dreamir-convolver.png",
         "../work-gallery/index.html"
       ],
-      "digest": "1cd007f1199bbd17b4a34b0ab7b8d343a96f94e26ab9ef1a910c1565a90c7812"
+      "digest": "cde74a9bd9a3a0a5969f035170d4c32db3f6eddcd4e899a326163a3bf16601d7"
     },
     "zh/project-pages/forest-fears.html": {
       "text": [
