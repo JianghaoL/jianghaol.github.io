@@ -1,3 +1,6 @@
+// Shared optical material for all presentation routes.
+import('/js/liquid-glass.js');
+
 // Dynamic waveform backgrounds for multiple sections. Rendering is visibility
 // driven: an off-screen waveform should cost no animation frames or battery.
 const waveCanvases = Array.from(document.querySelectorAll('#waveCanvas, .intro-wave-canvas, .section-wave-canvas'));

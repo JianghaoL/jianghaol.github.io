@@ -1,3 +1,5 @@
+@import 'liquid-glass.css';
+
 /*
  * Apple-inspired presentation layer
  * ---------------------------------
@@ -112,14 +114,14 @@ body::before {
   border-bottom: 1px solid rgba(226, 237, 252, 0.09);
   background: rgba(8, 12, 18, 0.66);
   box-shadow: 0 14px 36px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(26px) saturate(145%);
-  -webkit-backdrop-filter: blur(26px) saturate(145%);
+  backdrop-filter: saturate(145%);
+  -webkit-backdrop-filter: saturate(145%);
   pointer-events: none;
 }
 
 .reading-progress { top: 80px !important; }
 
-/* Floating chrome: larger material than controls, therefore stronger blur. */
+/* Floating chrome: clear optical material is supplied by liquid-glass.css. */
 .site-header {
   top: 12px;
   left: 50%;
@@ -131,8 +133,8 @@ body::before {
   border-radius: 20px;
   background: rgba(8, 12, 18, 0.72);
   box-shadow: var(--shadow-sm), inset 0 1px rgba(255, 255, 255, 0.055);
-  backdrop-filter: blur(24px) saturate(145%);
-  -webkit-backdrop-filter: blur(24px) saturate(145%);
+  backdrop-filter: saturate(145%);
+  -webkit-backdrop-filter: saturate(145%);
 }
 
 .site-header nav {
@@ -308,8 +310,8 @@ section.wave-section {
   border: 1px solid var(--hairline);
   background: var(--surface);
   box-shadow: var(--shadow-sm), inset 0 1px rgba(255, 255, 255, 0.045);
-  backdrop-filter: blur(18px) saturate(125%);
-  -webkit-backdrop-filter: blur(18px) saturate(125%);
+  backdrop-filter: saturate(125%);
+  -webkit-backdrop-filter: saturate(125%);
 }
 
 .mixing-demo-grid,
@@ -427,7 +429,7 @@ section.wave-section {
 .blog-hero h1 { font-size: clamp(3rem, 8vw, 7rem); font-weight: 700; letter-spacing: -0.06em; background: none; -webkit-text-fill-color: currentColor; }
 .gallery-subtitle,
 .blog-subtitle { color: var(--text-secondary); }
-.gallery-controls { border: 1px solid var(--hairline); border-radius: 16px; background: rgba(12, 18, 27, 0.72); backdrop-filter: blur(20px); }
+.gallery-controls { border: 1px solid var(--hairline); border-radius: 16px; background: rgba(12, 18, 27, 0.72); backdrop-filter: none; }
 .sort-btn { border-color: transparent; color: var(--text-secondary); background: transparent; }
 .sort-btn::before { display: none; }
 .sort-btn:hover { color: var(--text); background: rgba(255, 255, 255, 0.055); }
@@ -478,7 +480,7 @@ section.wave-section {
 .contact-modal-overlay,
 .resume-modal-overlay,
 .certificate-modal-overlay,
-.image-lightbox-overlay { background: rgba(0, 0, 0, 0.58); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.image-lightbox-overlay { background: rgba(0, 0, 0, 0.58); backdrop-filter: none; -webkit-backdrop-filter: none; }
 .contact-card,
 .resume-modal,
 .certificate-modal,
@@ -487,8 +489,8 @@ section.wave-section {
   border-radius: var(--radius-xl);
   background: rgba(15, 21, 31, 0.9);
   box-shadow: var(--shadow-lg), inset 0 1px rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(30px) saturate(130%);
-  -webkit-backdrop-filter: blur(30px) saturate(130%);
+  backdrop-filter: saturate(130%);
+  -webkit-backdrop-filter: saturate(130%);
 }
 
 .resume-role { margin-bottom: 0.5rem; color: var(--accent); }
@@ -524,8 +526,8 @@ section.wave-section {
     border-radius: 16px;
     background: rgba(9, 13, 20, 0.94);
     box-shadow: var(--shadow-md);
-    backdrop-filter: blur(26px);
-    -webkit-backdrop-filter: blur(26px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
   .nav-links.active { transform: translateY(0); }
   .nav-links li { height: 44px; }
