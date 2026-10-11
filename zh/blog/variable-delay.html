@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="description" content="从固定延迟出发，在 C++ 中实现支持分数采样、平滑变化与多普勒效应的可变延迟线。">
+  <title>C++ 中的可变延迟 - Jianghao Li</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/blog/article.css">
+  <link rel="stylesheet" href="/css/apple-refactor.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav>
+      <button class="lang-toggle" aria-label="Toggle Language">EN/中文</button>
+      <ul class="nav-links">
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../work-gallery/index.html" data-i18n="nav.workGallery">Work Gallery</a></li>
+        <li><a href="index.html" class="active" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="article-page">
+    <header class="article-hero">
+      <div class="article-hero-content">
+        <div class="article-breadcrumb"><a href="index.html">博客</a><span aria-hidden="true">/</span><span>音频编程</span></div>
+        <h1 class="article-title">C++ 中的可变延迟</h1>
+        <p class="article-summary">从采样精确的固定延迟出发，逐步加入分数采样读取、运行时平滑变化，以及自然产生的多普勒效应。</p>
+        <div class="article-meta" aria-label="文章信息">
+          <span>Jianghao Li</span>
+          <span><time datetime="2026-10-11">2026 年 10 月 11 日</time></span>
+          <span>音频编程</span>
+          <span>阅读约 9 分钟</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="article-layout">
+      <aside class="article-toc" aria-label="文章目录">
+        <h2>文章目录</h2>
+        <ol>
+          <li><a href="#fixed-delay">固定延迟</a></li>
+          <li><a href="#variable-delay">可变延迟</a></li>
+          <li><a href="#fractional-samples">非整数采样怎么办？</a></li>
+          <li><a href="#smoothing">平滑延迟变化</a></li>
+          <li><a href="#doppler">多普勒效应</a></li>
+        </ol>
+      </aside>
+
+      <article class="article-prose">
+        <p class="article-lede">延迟线真正有意思的地方，是它的长度可以变化。这篇文章会从我为 <strong>Dreamcatchers</strong> 制作的固定延迟“拉线电话”开始，再用同一套环形缓冲区思路，逐步实现一条平滑的可变延迟线。</p>
+
+        <section class="article-section" id="fixed-delay">
+          <h2>固定延迟</h2>
+          <p>最近我在制作 <strong><em>Dreamcatchers</em></strong> 时，实现了一个带有固定时长延迟的“拉线电话”。玩家的实时语音数据进入缓冲区后，系统会先等待 <code>X</code> 时间，再把它播放出来。</p>
+          <p>这个效果自然有两种实现方式。第一种最直接：加一个计时器，等它结束后再把音频数据送入输出缓冲区。它很简单，但会严重依赖游戏主线程的计时。如果主线程因为处理繁重的渲染任务而掉帧，计时结果就可能不准确。这和 Unity 里的情况完全一样：如果你需要采样级精确的时间，就不应该依靠 <code>Update()</code> 来计时。</p>
+          <p>第二种方式是使用环形缓冲区。如果你熟悉音频编程，这几乎就是默认做法。我们准备一个容量等于最大延迟的数组，再维护延迟采样数 <code>X</code>、读指针和写指针。读指针先取出数组里的历史采样，写指针随后用新数据覆盖同一个位置。只要让读指针始终落后写指针 <code>X</code> 个采样，就能得到 <code>X</code> 个采样的延迟。</p>
+
+          <div class="code-block">
+            <span class="code-label">C++</span>
+            <pre><code class="language-cpp">class FixedDelay
+{
+public:
+    FixedDelay(...) // 传入初始化成员所需的参数
+    {
+        // 动态分配历史采样数组，并把所有元素初始化为 0.f。
+        ...
+
+        m_writePtr = 0;
+
+        // m_readPtr 本质上等于 m_writePtr - m_delaySamples。
+        // std::size_t 不能小于零，因此从环绕后的位置开始。
+        m_readPtr = m_maxDelaySamples - m_delaySamples;
+    }
+
+    // 析构函数和其他成员……
+    // 如果类拥有裸指针分配的内存，应删除复制与移动操作。
+
+    bool process(float* buffer, std::size_t size)
+    {
+        // 在这里加入保护条件，避免未定义行为。
+
+        for (std::size_t i = 0; i &lt; size; ++i)
+        {
+            const float historySample = m_history[m_readPtr];
+            m_history[m_writePtr] = buffer[i];
+            buffer[i] = historySample;
+
+            m_writePtr = (m_writePtr + 1) % m_maxDelaySamples;
+            m_readPtr = (m_readPtr + 1) % m_maxDelaySamples;
+        }
+
+        return true;
+    }
+
+private:
+    float* m_history; // 历史采样数组
+
+    std::size_t m_maxDelaySamples = 0;
+    std::size_t m_delaySamples = 0;
+
+    std::size_t m_readPtr = 0;
+    std::size_t m_writePtr = 0;
+};</code></pre>
+          </div>
+
+          <p>这样，一条漂亮、好用，而且采样精确的固定延迟线就完成了。它不依赖游戏线程，而是运行在音频回调线程中。只要音频线程没有被阻塞，这套实现就能稳定完成任务。</p>
+          <p>这个思路也很容易迁移到其他语言，有时语法反而更简单。例如在 Unity/C# 中，因为 C# 会自行管理数组长度，处理函数可以直接写成 <code>bool process(float[] buffer)</code>。当然，其他状态仍然需要自己维护。</p>
+        </section>
+
+        <section class="article-section" id="variable-delay">
+          <h2>可变延迟</h2>
+          <p>固定延迟有很多用途，其中之一就是模拟声音传播。声音在任何介质中都有自己的传播速度；在普通空气中，声速大约是 <code>343 m/s</code>。如果希望游戏的声学体验更真实，模拟声音的传播时间是一项简单却很有效的细节。</p>
+          <p>在 <em>Battlefield</em> 或 <em>Squad</em> 这类大世界游戏中，远处的声音不一定会在事件发生的瞬间播放。比如一次爆炸，玩家大约要等待 <code>距离 / 声速</code> 的时间，才能听见它。</p>
+          <p>固定延迟在有限场景中可以做到这一点。如果声源和听者都保持不动，声音的传播时间就是固定的，固定延迟已经足够。但如果它们正在移动呢？声音传播到听者位置所需的时间会不断变化，这时固定延迟就失效了，可变延迟也因此登场。</p>
+          <p>可变延迟的作用就和名字一样直白：延迟时间可以在运行时改变。实现思路也不复杂。还记得 <code>m_readPtr = m_writePtr - m_delaySamples</code> 吗？这就是最核心的概念。我们仍然让读位置落后写位置 <code>X</code> 个采样，只不过现在的 <code>X</code> 会不断变化。</p>
+        </section>
+
+        <section class="article-section" id="fractional-samples">
+          <h2>糟了！非整数采样怎么办？</h2>
+          <p>想象一次发生在 <code>400 m</code> 外的爆炸。理想情况下，它产生的声音大约需要 <code>1.166 秒</code> 才能传到玩家的位置。我们的延迟以采样而不是秒为单位，因此第一步是把这段时间换算成采样数。</p>
+
+          <div class="article-table-wrap">
+            <table class="article-table">
+              <thead><tr><th>采样率</th><th>每个采样的时长</th></tr></thead>
+              <tbody><tr><td>44,100 Hz</td><td>0.0226 ms</td></tr><tr><td>48,000 Hz</td><td>0.0208 ms</td></tr></tbody>
+            </table>
+          </div>
+
+          <p>在 <code>48,000 Hz</code> 的采样率下，每个采样大约持续 <code>0.0208 ms</code>。回到上面的例子，<code>1.166 秒</code> 大约等于 <code>55,968 个采样</code>。而根据实际距离计算出的结果，经常会落在两个整数采样之间。遗憾的是，数组并不支持 <code>m_history[55968.4]</code> 这样的分数索引。</p>
+          <p>好在我们可以对采样进行<strong>插值</strong>。每个采样之间的时间非常短，因此在这个场景下，可以把相邻采样之间的变化近似看作线性，再用线性插值得到中间值：</p>
+
+          <div class="equation" role="img" aria-label="y n 等于 x floor n 乘以 ceil n 减 n，再加 x ceil n 乘以 n 减 floor n">
+            y[n] = x[n<sub>floor</sub>] × (n<sub>ceil</sub> − n) + x[n<sub>ceil</sub>] × (n − n<sub>floor</sub>)
+          </div>
+
+          <div class="code-block">
+            <span class="code-label">C++</span>
+            <pre><code class="language-cpp">bool process(float* buffer, int size)
+{
+    // 其他保护条件与准备工作……
+    ...
+
+    for (int i = 0; i &lt; size; ++i)
+    {
+        const unsigned indexA = static_cast&lt;unsigned&gt;(
+            std::floor(m_readPositionInFloat));
+        const unsigned indexB = (indexA + 1) % m_maxDelaySamples;
+
+        const float fraction = m_readPositionInFloat
+            - std::floor(m_readPositionInFloat);
+        const float historyA = m_delayHistory[indexA];
+        const float historyB = m_delayHistory[indexB];
+
+        const float history = historyA * (1.f - fraction)
+            + historyB * fraction;
+
+        // 其他处理……
+        ...
+    }
+}</code></pre>
+          </div>
+
+          <p>以第 <code>55968.4</code> 个采样位置为例，我们先读取第 <code>55968</code> 和第 <code>55969</code> 个采样，再使用小数部分作为权重进行混合。如果两个采样值分别是 <code>-0.3f</code> 和 <code>0.4f</code>，插值结果就是 <code>-0.02f</code>。实际上，这个过程已经属于<strong>重采样</strong>，不过那又是另一个完整的话题了。</p>
+        </section>
+
+        <section class="article-section" id="smoothing">
+          <h2>平滑延迟变化</h2>
+          <p>继续用爆炸的例子。它发生在 <code>400 m</code> 外，当玩家站着不动时，声音需要大约 <code>1.166 s</code> 才能抵达。如果玩家主动朝爆炸位置移动，两者之间的距离会缩短，声音传播所需的时间也会随之减少。换句话说，我们正在不断减小延迟时间，也就是减少延迟采样数。</p>
+          <p>我们当然可以算出新的延迟，然后直接把读位置跳到那里，但更好的做法是对变化进行平滑。在音频编程中，任何突变都会造成波形不连续，最终产生咔哒声。因此，我们几乎总会让当前值平滑地靠近目标值。</p>
+          <p>实现过程很简单：每处理一个数据块，先计算目标延迟需要多少采样，再算出当前延迟在这个数据块的每个采样上应该增加或减少多少。</p>
+
+          <div class="code-block">
+            <span class="code-label">C++</span>
+            <pre><code class="language-cpp">bool process(float* buffer, int size)
+{
+    // 其他保护条件与准备工作……
+
+    m_delaySamplesInFloat = getDelayInSamples();
+    const float deltaDelay =
+        (m_delaySamplesInFloat - m_currentDelayInFloat)
+        / static_cast&lt;float&gt;(size);
+
+    for (int i = 0; i &lt; size; ++i)
+    {
+        // 分数采样读取与其他处理……
+        ...
+
+        m_writeIndex = (m_writeIndex + 1) % m_maxDelaySamples;
+        m_readPositionInFloat = static_cast&lt;float&gt;(m_writeIndex)
+            - m_currentDelayInFloat;
+
+        if (m_readPositionInFloat &lt; 0.f)
+            m_readPositionInFloat += static_cast&lt;float&gt;(m_maxDelaySamples);
+
+        // 每处理一个采样，就把延迟向目标推进一步。
+        m_currentDelayInFloat += deltaDelay;
+    }
+}</code></pre>
+          </div>
+
+          <p>目标延迟到采样数的换算很简单。使用原子变量后，其他线程可以更新所需的延迟值，而音频回调不需要为此加锁：</p>
+
+          <div class="code-block">
+            <span class="code-label">C++</span>
+            <pre><code class="language-cpp">float getDelayInSamples() const
+{
+    const auto delayInSeconds = m_delayInSeconds.load();
+    return delayInSeconds * static_cast&lt;float&gt;(m_sampleRate);
+}</code></pre>
+          </div>
+
+          <p>这样，我们就得到了一条不会因为延迟变化而产生咔哒声的可变延迟线。</p>
+        </section>
+
+        <section class="article-section" id="doppler">
+          <h2>免费得到的多普勒效应</h2>
+          <p>这套实现里，我尤其喜欢的一点是：它会自动为声音带来<strong>多普勒效应</strong>。当一个物体朝玩家移动时，延迟时间会不断减小。直观地说，读位置比写位置移动得更快，也就是我们用比平时更快的速度读过历史采样，因此音高会上升。</p>
+          <p>反过来，当物体远离玩家时，延迟时间会增加。读位置前进得更慢，音高也会下降。于是，同一套让声音传播时间保持合理的机制，也自然带来了人们熟悉的、随运动变化的音高偏移。</p>
+
+          <div class="article-callout">
+            <p>我制作了一个 JUCE 独立演示程序，可以直接听到多普勒效应如何作用于声音，也可以查看完整实现。</p>
+            <a class="article-source-link" href="https://github.com/JianghaoL/VariableDelay" target="_blank" rel="noopener noreferrer">在 GitHub 查看 VariableDelay <span aria-hidden="true">↗</span></a>
+          </div>
+
+          <nav class="article-footer-nav" aria-label="博客导航">
+            <a href="index.html">← 返回全部文章</a>
+            <a href="#fixed-delay">回到顶部 ↑</a>
+          </nav>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p data-i18n="footer.copyright">&copy; 2026 Jianghao Li. All rights reserved.</p>
+  </footer>
+  <script src="/js/main.js"></script>
+  <script src="/blog/article-code.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
+</body>
+</html>
