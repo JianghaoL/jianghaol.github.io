@@ -20,7 +20,7 @@
       <div class="article-hero-content">
         <div class="article-breadcrumb"><a href="index.html">博客</a><span aria-hidden="true">/</span><span>音频编程</span></div>
         <h1 class="article-title">C++ 中的可变延迟</h1>
-        <p class="article-summary">这样，我们就得到了一个不会产生点击声、平滑且可变的延迟。</p>
+        <p class="article-summary">这样，一条变化平滑、不会产生咔嗒声的可变延迟线就完成了。</p>
         <div class="article-meta" aria-label="文章信息">
           <span>Jianghao Li</span>
           <span><time datetime="2026-10-11">2026 年 10 月 11 日</time></span>
@@ -43,9 +43,9 @@
       <article class="article-prose">
         <section class="article-section" id="fixed-delay">
           <h2>固定延迟</h2>
-          <p>最近我在制作 <strong><em>Dreamcatchers</em></strong> 时，实现了一个带有固定长度延迟的“拉线电话”。当玩家的实时语音数据被送入缓冲区后，它会让输出延迟 <code>X</code> 时间再播放。</p>
-          <p>自然地，实现它有两种方式。第一种方法就是简单地加入一个计时器，只在计时器结束后才开始把音频数据送进输出缓冲区。这种方法很简单，但它高度依赖游戏主线程的计时；也就是说，如果主线程的 tick rate 因为某些原因下降了（例如正在处理繁重的渲染任务），计时器就可能给出错误的时间（这和 Unity 中的情况完全相同：如果你需要采样级精确的计时，就不会想用 Update() 来计时）。于是就有了第二种方式，也就是使用环形缓冲区。</p>
-          <p>如果你熟悉音频编程，这几乎就是默认的实现方式。思路很简单：保留一个大小等于所需最大延迟的数组，维护延迟采样数 <code>X</code>、一个读指针和一个写指针。读指针总是先从数组中读取历史采样，随后写指针再用新数据覆盖那个位置。怎样得到延迟呢？只要始终确保读指针落后写缓冲区 <code>X</code> 个采样，就会得到 <code>X</code> 个采样的延迟。</p>
+          <p>最近在制作 <strong><em>Dreamcatchers</em></strong> 时，我实现了一个带固定延迟的“传声筒”。玩家的实时语音数据进入缓冲区后，会先等待 <code>X</code> 时间，再从输出端播放。</p>
+          <p>实现这个效果通常有两种方法。最直接的做法是设置一个计时器，等计时结束后再开始向输出缓冲区写入音频。这个办法虽然简单，却很依赖游戏主线程的计时。一旦主线程因为繁重的渲染任务等原因降低了更新频率，计时就可能出现偏差。这与 Unity 中的情况类似：如果需要采样级精确的时序，就不应该在 Update() 中计时。另一种方法就是使用环形缓冲区。</p>
+          <p>对于熟悉音频编程的人来说，环形缓冲区几乎是处理这类问题的标准方案。我们先创建一个容量等于最大延迟的数组，并维护延迟采样数 <code>X</code>、读指针和写指针。每次处理时，读指针先取出数组中的历史采样，写指针再用新数据覆盖同一位置。只要让读指针始终落后写指针 <code>X</code> 个采样，就能得到 <code>X</code> 个采样的延迟。</p>
           <p>下面是一个 C++ 示例实现：</p>
 
           <div class="code-block">
@@ -100,26 +100,26 @@ private:
 };</code></pre>
           </div>
 
-          <p>这样，我们就得到了一个漂亮、好用而且采样精确的固定延迟效果。它不依赖游戏线程，而是依赖音频回调线程。只要音频线程没有被阻塞，它就可以很好地完成任务。这个思路也很容易迁移到其他语言，而且语法可能更简单。例如在 Unity/C# 中，你的 <code>process</code> 回调可以直接写成</p>
+          <p>这样就得到了一条采样精确、稳定工作的固定延迟线。它运行在音频回调线程上，不依赖游戏线程；只要音频线程没有被阻塞，就能可靠地工作。这套思路也很容易迁移到其他语言，而且语法往往更简单。例如在 Unity/C# 中，<code>process</code> 回调可以直接写成</p>
 
           <div class="code-block">
             <span class="code-label">C#</span>
             <pre><code class="language-csharp">bool process(float[] buffer);</code></pre>
           </div>
 
-          <p>因为 C# 会在内部管理数组的大小。不过，其他状态仍然需要手动维护。</p>
+          <p>C# 会自行管理数组长度，不过其他状态仍然需要手动维护。</p>
         </section>
 
         <section class="article-section" id="variable-delay">
           <h2>可变延迟</h2>
-          <p>固定延迟有很多用途，其中之一就是模拟声音传播。并不意外，声波在任何介质中都有自己的传播速度。在普通空气中，声速大约是 <code>343m/s</code>。在游戏中，如果你希望获得更真实的声学体验，模拟声音传播所需的时间是一件简单但很有效的事情。留意许多较大的世界游戏，比如 <code>Battlefield</code> 或 <code>Squad</code>，声音不会在事件触发时（比如爆炸）立刻播放；你要经过 <code>距离 / 声速</code> 的时间后才能听到。</p>
-          <p>固定延迟可以帮助你实现这一点——但只适用于有限的场景。如果发声声源和听者的位置都是固定的，那么声音传播所需的时间也是固定的，固定延迟就能完成任务。但是，如果它们在移动呢？在这种情况下，声音传播到听者位置所需的时间可能会不断变化。这时固定延迟就不再适用，可变延迟也就派上用场了。</p>
-          <p>可变延迟的作用很直白：它的延迟时间可以在运行时改变。实现思路也不复杂。还记得我们上面讨论过的 <code>m_readPtr = m_writePtr - m_delaySamples</code> 吗？这展示了最核心的概念。本质上，我们只是让读指针落后写指针 <code>X</code> 个采样。不过，要让它真正工作，还需要处理一些额外的问题。</p>
+          <p>固定延迟有很多用途，其中之一就是模拟声音的传播时间。声音在任何介质中都有一定的传播速度；在空气中，声速约为 <code>343m/s</code>。如果想让游戏中的声学体验更真实，加入声音传播延迟是一种简单而有效的做法。在 <code>Battlefield</code>、<code>Squad</code> 这类大地图游戏中，远处的声音不会在事件发生的瞬间响起。比如爆炸声，需要经过 <code>距离 / 声速</code> 的时间才会传到玩家耳中。</p>
+          <p>固定延迟可以模拟这种效果，但适用范围有限。如果声源和听者的位置都不变，传播时间也是固定的，一条固定延迟线就足够了。可一旦两者开始移动，声音传到听者位置所需的时间也会随距离不断变化。这时，固定延迟就不够用了，我们需要可变延迟。</p>
+          <p>顾名思义，可变延迟就是可以在运行时调整延迟时间。实现思路并不复杂。前面提到的 <code>m_readPtr = m_writePtr - m_delaySamples</code> 正是关键：让读指针始终落后写指针 <code>X</code> 个采样。不过，要让它真正工作，还需要额外处理几个问题。</p>
         </section>
 
         <section class="article-section" id="fractional-samples">
           <h3>糟了！非整数采样？</h3>
-          <p>想象发生了一次爆炸，假设它最初距离你 <code>400m</code>。理想情况下，它产生的声音需要 <code>1.166 秒</code> 才能传播到你的位置。我们应该怎样计算延迟？还记得我们的延迟以 <code>采样</code> 而不是 <code>秒</code> 为单位吗？我们需要把时间换算成采样数。</p>
+          <p>假设一次爆炸发生在离你 <code>400m</code> 远的地方，理想情况下，爆炸声需要 <code>1.166 秒</code> 才能传到你这里。由于延迟线使用的是<code>采样</code>数，而不是<code>秒</code>数，我们首先要把时间换算成采样。</p>
 
           <div class="article-table-wrap">
             <table class="article-table">
@@ -128,13 +128,13 @@ private:
             </table>
           </div>
 
-          <p>从这个常用采样率表可以看到，当采样率为 <code>48000</code> 时，每个采样需要 <code>0.0208ms</code>。回到刚才的例子，<code>1.166 秒</code> 会换算成 <code>55976.68 个采样</code>。于是我们得到了一个<strong><em>不是</em></strong>整数的采样数！遗憾的是，现在没有（以后大概也不会有）用于数组分数索引的内置函数，让我们可以直接写出 <code>m_history[55976.68]</code>。好在从数学上说，我们可以对采样进行<strong><em>插值</em></strong>！因为每个采样所占的时间非常短，我们可以把相邻采样之间的变化看作线性，再在两个采样之间进行线性插值，得到一个近似值。</p>
+          <p>从表中可以看出，在 <code>48000</code> 的采样率下，每个采样约为 <code>0.0208ms</code>。回到刚才的例子，<code>1.166 秒</code> 对应 <code>55976.68 个采样</code>——这显然<strong><em>不是</em></strong>整数。数组当然不能使用 <code>m_history[55976.68]</code> 这样的分数索引。好在我们可以对采样进行<strong><em>插值</em></strong>。由于相邻采样之间的时间间隔极短，可以把它们之间的变化近似看作线性，再通过线性插值得到中间位置的近似值。</p>
 
           <div class="equation" role="img" aria-label="y n 等于 x floor n 乘以 ceil n 减 n，再加 x ceil n 乘以 n 减 floor n">
             y[n] = x[n<sub>floor</sub>] × (n<sub>ceil</sub> − n) + x[n<sub>ceil</sub>] × (n − n<sub>floor</sub>)
           </div>
 
-          <p>稍微调整一下代码，我们会得到类似这样的实现：</p>
+          <p>稍微调整一下代码，就会得到类似下面的实现：</p>
 
           <div class="code-block">
             <span class="code-label">C++</span>
@@ -159,14 +159,14 @@ private:
 }</code></pre>
           </div>
 
-          <p>对于第 <code>55976.68</code> 个采样，我们取第 50657 和第 56058 个采样，再用小数部分在两者之间进行插值。假设 <code>history[55976] = -0.3f</code>，<code>history[55977] = 0.4f</code>，那么我们会得到 <code>history[55976.68] = 0.183f</code>。事实上，这就是<strong><em>重采样</em></strong>，不过那又是另一个完全不同的话题了。</p>
+          <p>以采样位置 <code>55976.68</code> 为例，我们读取第 50657 和第 56058 个采样，再根据小数部分在两者之间插值。假设 <code>history[55976] = -0.3f</code>、<code>history[55977] = 0.4f</code>，那么 <code>history[55976.68] = 0.183f</code>。严格来说，这已经属于<strong><em>重采样</em></strong>，不过那是另一个话题了。</p>
         </section>
 
         <section class="article-section" id="smoothing">
           <h3>平滑延迟变化</h3>
-          <p>还是刚才的爆炸例子。我们说它发生在距离你 <code>400m</code> 的位置，声音需要 <code>1.166s</code> 才能到达你这里。这是在你保持不动的情况下。如果你正在主动朝爆炸位置移动呢？因为你与声源之间的距离正在减小，声音传播到你这里所需的时间也在减少！从定性的角度来说，我们正在减小延迟时间，也就是减少延迟采样数。</p>
-          <p>我们当然可以直接计算需要延迟多少采样，然后把 <code>m_readPtr</code> 设置到那个数值，但更好的做法是加入平滑处理。在音频编程中，任何突变都会让波形产生不连续，而这会造成点击声。我们几乎总是希望平滑地 lerp 到目标变化。这里的过程很简单：每处理一个数据块，就找出我们需要多少延迟采样，再计算当前延迟在每个采样上应该增加或减少多少。</p>
-          <p>下面的代码演示了这个过程：</p>
+          <p>继续用爆炸的例子。爆炸发生在 <code>400m</code> 外，声音需要 <code>1.166s</code> 才能传到你这里——前提是你站着不动。如果你正朝爆炸位置移动，声源与你之间的距离会不断缩短，声音传播所需的时间也会随之减少。换句话说，延迟时间，也就是延迟采样数，正在逐渐减小。</p>
+          <p>我们可以直接算出新的延迟采样数，并立即把 <code>m_readPtr</code> 跳到对应位置，但更稳妥的做法是对变化进行平滑。音频波形中的任何突变都会造成不连续，进而产生咔嗒声，因此通常需要让当前值平滑地过渡到目标值。这里的做法很简单：每处理一个数据块，先算出目标延迟采样数，再计算当前延迟在块内每个采样上应该增加或减少多少。</p>
+          <p>代码如下：</p>
 
           <div class="code-block">
             <span class="code-label">C++</span>
@@ -192,7 +192,7 @@ private:
 }</code></pre>
           </div>
 
-          <p>其中 <code>getDelayInSamples()</code> 是：</p>
+          <p><code>getDelayInSamples()</code> 的实现如下：</p>
 
           <div class="code-block">
             <span class="code-label">C++</span>
@@ -203,11 +203,11 @@ private:
 }</code></pre>
           </div>
 
-          <p>这样，我们就得到了一个不会产生点击声、平滑且可变的延迟。</p>
-          <p>这套实现尤其好的一点，是它会自动为声音加入<strong><em>多普勒效应</em></strong>！当一个物体正在朝你移动时，延迟时间会不断减小。从定性的角度来说，这意味着读指针移动得比写指针更快。本质上，因为你读取的采样比平时更多，所以音高会上升。另一方面，如果这个物体正在远离你，延迟时间会减小，读指针的移动就会变慢，最终音高也会下降。</p>
+          <p>这样，一条变化平滑、不会产生咔嗒声的可变延迟线就完成了。</p>
+          <p>这套实现还有一个很有意思的结果：它会自动产生<strong><em>多普勒效应</em></strong>。当物体朝你移动时，延迟时间会不断减小，读指针相对于写指针移动得更快。也就是说，单位时间内读取的采样更多，因此音高会上升。反过来，当物体远离你时，读指针会移动得更慢，音高也会随之下降。</p>
 
           <div class="article-callout">
-            <p>我制作了一个 JUCE 独立演示程序，你可以听到多普勒效应是怎样作用于声音的。源代码在这里：<a href="https://github.com/JianghaoL/VariableDelay" target="_blank" rel="noopener noreferrer">VariableDelay</a></p>
+            <p>我还制作了一个 JUCE 独立演示程序，可以直接听到多普勒效应如何作用于声音。源代码在这里：<a href="https://github.com/JianghaoL/VariableDelay" target="_blank" rel="noopener noreferrer">VariableDelay</a></p>
           </div>
 
           <nav class="article-footer-nav" aria-label="博客导航">

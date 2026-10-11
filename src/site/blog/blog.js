@@ -38,8 +38,8 @@ const blogData = [isChineseBlog
       title: 'C++ 中的可变延迟',
       category: '音频编程',
       date: '2026-10-11',
-      excerpt: '可变延迟的作用很直白：它的延迟时间可以在运行时改变。',
-      fullExcerpt: '这套实现尤其好的一点，是它会自动为声音加入多普勒效应！',
+      excerpt: '顾名思义，可变延迟可以在运行时动态调整延迟时间。',
+      fullExcerpt: '这套实现还有一个很有意思的结果：它会自然产生多普勒效应。',
       image: '/assets/images/project-pages/Jianghao Li - Dreamcatcher/telephone-delay.png',
       tags: ['C++', 'DSP', 'JUCE'],
       detailPage: '/zh/blog/variable-delay.html'
