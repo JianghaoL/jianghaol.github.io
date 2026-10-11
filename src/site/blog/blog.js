@@ -38,8 +38,8 @@ const blogData = [isChineseBlog
       title: 'C++ 中的可变延迟',
       category: '音频编程',
       date: '2026-10-11',
-      excerpt: '从采样精确的固定延迟出发，逐步实现支持分数采样、平滑变化与多普勒效应的可变延迟线。',
-      fullExcerpt: '结合 Dreamcatchers 中的“拉线电话”实践，拆解环形缓冲区、线性插值和逐采样平滑，并说明为什么一条可变延迟线会自然产生多普勒效应。',
+      excerpt: '可变延迟的作用很直白：它的延迟时间可以在运行时改变。',
+      fullExcerpt: '这套实现尤其好的一点，是它会自动为声音加入多普勒效应！',
       image: '/assets/images/project-pages/Jianghao Li - Dreamcatcher/telephone-delay.png',
       tags: ['C++', 'DSP', 'JUCE'],
       detailPage: '/zh/blog/variable-delay.html'
@@ -49,8 +49,8 @@ const blogData = [isChineseBlog
       title: 'Variable Delay in C++',
       category: 'Audio Programming',
       date: '2026-10-11',
-      excerpt: 'From a sample-accurate fixed delay to fractional reads, smoothing, and the Doppler effect.',
-      fullExcerpt: 'A practical walkthrough of ring buffers, linear interpolation, and per-sample smoothing—starting with the string telephone in Dreamcatchers and ending with a variable delay that produces Doppler shift naturally.',
+      excerpt: "It's pretty self explanatory what a variable delay does: it has a changeable delay time that can be adjusted at runtime.",
+      fullExcerpt: "What's particularly good about this implementation is that it automatically adds Doppler Effect to your sound!",
       image: '/assets/images/project-pages/Jianghao Li - Dreamcatcher/telephone-delay.png',
       tags: ['C++', 'DSP', 'JUCE'],
       detailPage: '/en/blog/variable-delay.html'

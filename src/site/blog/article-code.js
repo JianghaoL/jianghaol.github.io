@@ -70,7 +70,7 @@
   }
 
   function init() {
-    document.querySelectorAll('code.language-cpp:not(.syntax-highlighted)').forEach(highlight);
+    document.querySelectorAll('code.language-cpp:not(.syntax-highlighted), code.language-csharp:not(.syntax-highlighted)').forEach(highlight);
   }
 
   if (document.readyState === 'loading') {

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="description" content="A practical C++ walkthrough of fixed and variable delay lines, fractional sample interpolation, smoothing, and the Doppler effect.">
+  <meta name="description" content="Variable Delay in C++ by Jianghao Li.">
   <title>Variable Delay in C++ - Jianghao Li</title>
   <link rel="stylesheet" href="/css/reset.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -20,12 +20,11 @@
       <div class="article-hero-content">
         <div class="article-breadcrumb"><a href="index.html">Blog</a><span aria-hidden="true">/</span><span>Audio Programming</span></div>
         <h1 class="article-title">Variable Delay in C++</h1>
-        <p class="article-summary">From a sample-accurate fixed delay to fractional reads, smooth runtime changes, and a Doppler effect that emerges naturally.</p>
+        <p class="article-summary">This then gives us a non-clicking smoothed changeable delay.</p>
         <div class="article-meta" aria-label="Article details">
           <span>Jianghao Li</span>
           <span><time datetime="2026-10-11">October 11, 2026</time></span>
           <span>Audio Programming</span>
-          <span>9 min read</span>
         </div>
       </div>
     </header>
@@ -36,44 +35,45 @@
         <ol>
           <li><a href="#fixed-delay">Fixed Delay</a></li>
           <li><a href="#variable-delay">Variable Delay</a></li>
-          <li><a href="#fractional-samples">Non-integer Samples</a></li>
+          <li><a href="#fractional-samples">Oh no! Non-integer samples?</a></li>
           <li><a href="#smoothing">Smoothing Delay Changes</a></li>
-          <li><a href="#doppler">The Doppler Effect</a></li>
         </ol>
       </aside>
 
       <article class="article-prose">
-        <p class="article-lede">A delay line becomes much more interesting the moment its length can change. This article starts with the fixed-delay “string telephone” I built for <strong>Dreamcatchers</strong>, then extends the same ring-buffer idea into a smooth variable delay.</p>
-
         <section class="article-section" id="fixed-delay">
           <h2>Fixed Delay</h2>
-          <p>Recently I was working on <strong><em>Dreamcatchers</em></strong>, where I implemented a “string telephone” with a fixed-length delay. When the real-time voice data from players enters the buffer, the system holds it for <code>X</code> amount of time before playing it.</p>
-          <p>Naturally, there are two ways to make this happen. The first approach is simply to add a timer and only start feeding audio data into the output buffer once the timer stops. It is easy, but it depends heavily on the game’s main-thread timing. If the main-thread tick rate drops—for example, while handling a heavy rendering task—the timer can be inaccurate. It is the same situation in Unity: if you want sample-accurate timing, you do not want to count time in <code>Update()</code>.</p>
-          <p>The second approach is a ring buffer. If you are familiar with audio programming, this is almost the default way to do it. Keep an array sized for the maximum delay, then maintain a delay sample count <code>X</code>, a read pointer, and a write pointer. The read pointer retrieves the historical sample first; the write pointer then overwrites that slot with newer data. Keep the read pointer <code>X</code> samples behind the write pointer, and you get an <code>X</code>-sample delay.</p>
+          <p>Recently I was working on <strong><em>Dreamcatchers</em></strong> where I implemented a "string telephone" that had a fixed length delay. When real-time players' voice data gets fed into the buffer, it delays the output for <code>X</code> amount of time before it plays.</p>
+          <p>Naturally, there are two ways to make this happen. The very first approach would simply be adding a timer, and only starts feeding audio data into the output buffer when the timer stops. This is an easy method, but it depends heavily on game's main thread timing, meaning if, for some reason (such as handling heavy rendering tasks) the main thread tick rate drops, the timer might give the wrong timing (this is the identical to Unity situation where, if you want a sample-accurate timing, you don't want to use Update() to count time). Then there comes the second way, that is to use a ring buffer.</p>
+          <p>Now, if you're familiar with audio programming, this is almost the default way to do it. The idea is simple: keep an array that has the size of max delay you want, maintain a delay sample count <code>X</code>, a read pointer, and a write pointer. The read pointer will always read the history sample in the array first, then the write pointer overwrites that slot with newer data. How would you get the delay? Well, always make sure the read is <code>X</code> samples behind the write buffer, and you'll get an <code>X</code> sample delay.</p>
+          <p>Here's a sample implementation in C++:</p>
 
           <div class="code-block">
             <span class="code-label">C++</span>
             <pre><code class="language-cpp">class FixedDelay
 {
 public:
-    FixedDelay(...) // Pass the parameters needed to initialize the members
+    FixedDelay(...) // You want to pass in all the parameters to initialize the private members
     {
-        // Dynamically allocate the history array and initialize it to 0.f.
+        // You do need to dynamically allocate the array and set all element to 0.f
+        // We're using a simple C-styled array here
         ...
 
-        m_writePtr = 0;
+        m_readPtr = 0;
 
-        // m_readPtr is effectively m_writePtr - m_delaySamples.
-        // std::size_t cannot go below zero, so start from the wrapped position.
+        // Notice m_readPtr essentially equals to m_writePtr - m_delaySamples
+        // I did this only because we used std::size_t which cannot go below 0
         m_readPtr = m_maxDelaySamples - m_delaySamples;
     }
 
-    // Destructor and other members...
-    // Delete copy and move operations if the class owns a raw allocation.
+    // Destructors, others...
+    //
+    // Explicitly delete copy and move constructors so we don't need to deal
+    // with deep and shallow copy issues
 
     bool process(float* buffer, std::size_t size)
     {
-        // Add guard clauses here to avoid undefined behavior.
+        // Here you want some guard clauses just so you don't get UB
 
         for (std::size_t i = 0; i &lt; size; ++i)
         {
@@ -81,15 +81,16 @@ public:
             m_history[m_writePtr] = buffer[i];
             buffer[i] = historySample;
 
+            // Wraps the pointer so it stays in the array's range
             m_writePtr = (m_writePtr + 1) % m_maxDelaySamples;
             m_readPtr = (m_readPtr + 1) % m_maxDelaySamples;
         }
 
-        return true;
+        return true
     }
 
 private:
-    float* m_history; // The history sample array
+    float* m_history; // This is the history sample array
 
     std::size_t m_maxDelaySamples = 0;
     std::size_t m_delaySamples = 0;
@@ -99,123 +100,114 @@ private:
 };</code></pre>
           </div>
 
-          <p>This gives us a beautifully working, sample-accurate fixed delay. It does not depend on the game thread; it runs on the audio callback thread. As long as the audio thread is not blocked, it gets the job done nicely.</p>
-          <p>The idea transfers to other languages easily, sometimes with simpler syntax. In Unity and C#, for example, the process callback might simply be <code>bool process(float[] buffer)</code> because C# manages an array’s size internally. You still need to maintain the other state yourself.</p>
+          <p>This then gives a beautifully working fixed-delay effect that is sample-accurate. It does not depend on the game thread but the audio callback thread. So long as the audio thread is not blocked, this gets the job done decently. The idea transfers to other languages easily, with potentially easier syntax. For example, in Unity/C#, your <code>process</code> callback might simply be</p>
+
+          <div class="code-block">
+            <span class="code-label">C#</span>
+            <pre><code class="language-csharp">bool process(float[] buffer);</code></pre>
+          </div>
+
+          <p>because C# manages arrays' sizes internally. Although, you do need to maintain other states manually.</p>
         </section>
 
         <section class="article-section" id="variable-delay">
           <h2>Variable Delay</h2>
-          <p>A fixed delay can be useful in many ways. One is to emulate the propagation of sound. Sound waves travel through every medium at a finite speed; in regular air, the speed of sound is approximately <code>343 m/s</code>. If you want a more realistic acoustic experience in a game, emulating that travel time is a simple but effective detail.</p>
-          <p>In large-world games such as <em>Battlefield</em> or <em>Squad</em>, distant sounds do not necessarily play the instant an event occurs. An explosion reaches you after roughly <code>distance / speed of sound</code> seconds.</p>
-          <p>A fixed delay can achieve this in a limited scenario. If both the sound source and listener stay still, the travel time is fixed. But what if either of them moves? The propagation time changes continuously. That is where a fixed delay breaks down and a variable delay comes into play.</p>
-          <p>A variable delay does exactly what its name suggests: its delay time can change at runtime. The implementation is not complicated either. Remember <code>m_readPtr = m_writePtr - m_delaySamples</code>? That is the core concept. We are still keeping the read position <code>X</code> samples behind the write position, but now <code>X</code> can change.</p>
+          <p>Fixed delay could be useful in many ways, one of which could be to emulate the propagation of sound. Not surprisingly, sound waves in any medium have their own speed of propagation. In regular air, the speed of sound is approximately <code>343m/s</code>. In games, if you want a more realistic acoustic experience, emulating sound travel duration is a simple but great thing to do. Notice in many larger world games such as <code>Battlefield</code> or <code>Squad</code>, sounds do not get played instantly as an event triggers (such as an explosion), they take <code>distance / speed of sound</code> amount of time for you to hear.</p>
+          <p>A fixed delay can help you achieve this - in limited scenarios. If the incident sound source and the listener's position is fixed, then the amount of time a sound takes to travel is fixed, and a fixed delay will do it. But, what if they are moving? In this case, a sound could take a changing amount of time to propagate to the listener's position. That's when a fixed delay breaks, and variable delay comes into play.</p>
+          <p>It's pretty self explanatory what a variable delay does: it has a changeable delay time that can be adjusted at runtime. The implementation idea is not complicated either. Remember what we've discussed above, that <code>m_readPtr = m_writePtr - m_delaySamples</code>? That shows the very core concept. Essentially, we're just making the read pointer <code>X</code> samples behind the write pointer. To make it work, however, there are some extra things to do.</p>
         </section>
 
         <section class="article-section" id="fractional-samples">
-          <h2>Oh no! Non-integer Samples?</h2>
-          <p>Imagine an explosion that starts <code>400 m</code> away. Ideally, its sound takes about <code>1.166 seconds</code> to reach you. Our delay works in samples rather than seconds, so we first have to convert that duration.</p>
+          <h3>Oh no! Non-integer samples?</h3>
+          <p>Imagine there is an explosion, and let's say originally it's <code>400m</code> from you. Ideally, the sound results from it will take <code>1.166 second</code> to travel to your position. How are we going to calculate the delay? Remember our delay works with <code>samples</code> but not <code>seconds</code>? We'll need to compute them into samples.</p>
 
           <div class="article-table-wrap">
             <table class="article-table">
-              <thead><tr><th>Sample rate</th><th>Milliseconds per sample</th></tr></thead>
-              <tbody><tr><td>44,100 Hz</td><td>0.0226 ms</td></tr><tr><td>48,000 Hz</td><td>0.0208 ms</td></tr></tbody>
+              <thead><tr><th>Sample Rate</th><th>ms per Sample</th></tr></thead>
+              <tbody><tr><td>44100</td><td>0.0226</td></tr><tr><td>48000</td><td>0.0208</td></tr></tbody>
             </table>
           </div>
 
-          <p>At <code>48,000 Hz</code>, every sample lasts about <code>0.0208 ms</code>. In our example, <code>1.166 seconds</code> becomes approximately <code>55,968 samples</code>. The exact distance-derived result will often land between two whole sample positions, and an array has no built-in fractional index such as <code>m_history[55968.4]</code>.</p>
-          <p>Thankfully, we can <strong>interpolate</strong>. Each sample represents such a short interval that a linear estimate between neighboring samples works well for this purpose:</p>
+          <p>Looking at the commonly used sample rate chart here, with a sample rate of <code>48000</code>, every sample will take <code>0.0208ms</code>. Back to our example, <code>1.166 second</code> therefore will translate into <code>55976.68 samples</code>. And there we have a sample count that is <strong><em>not</em></strong> in integer! Sadly enough, there is no built-in function, for now, (or more likely ever) for fractional indexing in an array, for our current purpose <code>m_history[55976.68]</code>. Thankfully, mathematically, we can <strong><em>interpolate</em></strong> samples! Because every sample takes so little time, we can see the change between each as linear, and thus we can linearly interpolate between two samples to get an approximate number.</p>
 
           <div class="equation" role="img" aria-label="y of n equals x at floor n times ceil n minus n, plus x at ceil n times n minus floor n">
             y[n] = x[n<sub>floor</sub>] × (n<sub>ceil</sub> − n) + x[n<sub>ceil</sub>] × (n − n<sub>floor</sub>)
           </div>
 
+          <p>With a little code manipulation, we end up with something like this:</p>
+
           <div class="code-block">
             <span class="code-label">C++</span>
             <pre><code class="language-cpp">bool process(float* buffer, int size)
 {
-    // Other guard clauses and setup...
+    // Other guard clauses and manipulations
     ...
-
     for (int i = 0; i &lt; size; ++i)
     {
-        const unsigned indexA = static_cast&lt;unsigned&gt;(
-            std::floor(m_readPositionInFloat));
-        const unsigned indexB = (indexA + 1) % m_maxDelaySamples;
+        const unsigned nFloor = static_cast&lt;unsigned&gt; (std::floor(m_readPtrInFloat));
+        const unsigned nCeil = static_cast&lt;unsigned&gt; (std::ceil(m_readPtrInFloat)) % m_maxDelaySamples;
 
-        const float fraction = m_readPositionInFloat
-            - std::floor(m_readPositionInFloat);
+        const float fraction = m_readPositionInFloat - std::floor(m_readPtrInFloat);
         const float historyA = m_delayHistory[indexA];
         const float historyB = m_delayHistory[indexB];
 
-        const float history = historyA * (1.f - fraction)
-            + historyB * fraction;
+        const float history = historyA * (1.f - fraction) + historyB * fraction; 
 
-        // Other behavior...
+        // Other behaviors
         ...
     }
 }</code></pre>
           </div>
 
-          <p>For sample position <code>55968.4</code>, we read samples <code>55968</code> and <code>55969</code>, then blend them using the decimal part. If the values are <code>-0.3f</code> and <code>0.4f</code>, the interpolated value is <code>-0.02f</code>. This is, in fact, <strong>resampling</strong>—but that is a whole other topic.</p>
+          <p>So, for our <code>55976.68</code>th sample, we take sample number 50657 and number 56058, and interpolate between them using the decimal part. Let's say <code>history[55976] = -0.3f</code> and <code>history[55977] = 0.4f</code>, we get <code>history[55976.68] = 0.183f</code>. This, in fact, is <strong><em>resampling</em></strong>, but that's another whole different topic.</p>
         </section>
 
         <section class="article-section" id="smoothing">
-          <h2>Smoothing Delay Changes</h2>
-          <p>Back to the explosion. It starts <code>400 m</code> away and takes about <code>1.166 s</code> to reach you while you stand still. If you move toward it, the distance shrinks, so the time it takes the sound to reach you also shrinks. In other words, we keep decreasing the delay time—or, here, the number of delayed samples.</p>
-          <p>We could calculate the new delay and jump the read position straight there, but it is better to smooth the change. In audio programming, an abrupt change creates a discontinuity in the waveform, which produces a click. We almost always want to move smoothly toward the target.</p>
-          <p>The process is simple: for each block, calculate the target delay in samples, then determine how much the current delay should increase or decrease on every sample in that block.</p>
+          <h3>Smoothing Delay Changes</h3>
+          <p>Still the explosion example. We've said that it happens <code>400m</code> away from you and it'll take <code>1.166s</code> to get to you. This is when you're standing still. What if you're actively moving towards the explosion? Well, since the distance between you and the incident sound is decreasing, the time it takes for you to hear it is decreasing as well! Qualitatively, we're decrementing the delay time, or in this case, number of delay samples.</p>
+          <p>While we could simply compute how many samples it should delay and just set our <code>m_readPtr</code> to that number, it's better to add a smoothing process. In audio programming, any abrupt changes will lead to discontinuity in it's waveform, and that causes clicking noise. We almost always want to smoothly lerp to our target change. Here, the process is simple: for every block of data we process, find out how many samples of delay we need and then find out how much our current delay should increment or decrement per sample.</p>
+          <p>Here's the code that demonstrate this:</p>
 
           <div class="code-block">
             <span class="code-label">C++</span>
             <pre><code class="language-cpp">bool process(float* buffer, int size)
 {
-    // Other guard clauses and setup...
-
+    // Other guard clauses and manipulations
+    
     m_delaySamplesInFloat = getDelayInSamples();
-    const float deltaDelay =
-        (m_delaySamplesInFloat - m_currentDelayInFloat)
-        / static_cast&lt;float&gt;(size);
+    const float deltaDelay = (m_delaySamplesInFloat - m_currentDelayInFloat) / static_cast&lt;float&gt;(size);
 
     for (int i = 0; i &lt; size; ++i)
     {
-        // Fractional-sample read and other processing...
+        // Our fractional sample implementation
         ...
 
         m_writeIndex = (m_writeIndex + 1) % m_maxDelaySamples;
-        m_readPositionInFloat = static_cast&lt;float&gt;(m_writeIndex)
-            - m_currentDelayInFloat;
+        m_readPositionInFloat = static_cast&lt;float&gt;(m_writeIndex) - m_currentDelayInFloat;
+        if (m_readPositionInFloat &lt; 0) m_readPositionInFloat += static_cast&lt;float&gt;(m_maxDelaySamples);
 
-        if (m_readPositionInFloat &lt; 0.f)
-            m_readPositionInFloat += static_cast&lt;float&gt;(m_maxDelaySamples);
-
-        // Move the delay toward its target once per sample.
-        m_currentDelayInFloat += deltaDelay;
+        // Increase delay per sample
+        m_currentDelayInFloat += deltaDelay; 
     }
 }</code></pre>
           </div>
 
-          <p>The target conversion is small, and an atomic value lets another thread update the requested delay without making the audio callback take a lock:</p>
+          <p>where <code>getDelayInSamples()</code> is:</p>
 
           <div class="code-block">
             <span class="code-label">C++</span>
             <pre><code class="language-cpp">float getDelayInSamples() const
 {
-    const auto delayInSeconds = m_delayInSeconds.load();
+    const auto delayInSeconds = m_delayInSeconds.load(); // m_delayInSeconds is atomic&lt;float&gt; for thread safety
     return delayInSeconds * static_cast&lt;float&gt;(m_sampleRate);
 }</code></pre>
           </div>
 
-          <p>This gives us a smoothly changing delay without clicks.</p>
-        </section>
-
-        <section class="article-section" id="doppler">
-          <h2>The Doppler Effect Comes for Free</h2>
-          <p>What I particularly like about this implementation is that it automatically adds the <strong>Doppler effect</strong>. When an object moves toward you, the delay keeps decreasing. Qualitatively, the read position moves faster than the write position, so the pitch rises because you are reading through the history faster than normal.</p>
-          <p>When the object moves away, the delay increases. The read position advances more slowly and the pitch drops. The same behavior that keeps propagation time physically plausible also gives the sound its familiar motion-dependent pitch shift.</p>
+          <p>This then gives us a non-clicking smoothed changeable delay.</p>
+          <p>What's particularly good about this implementation is that it automatically adds <strong><em>Doppler Effect</em></strong> to your sound! Notice when an object is heading towards you, the delay time keeps decreasing. Qualitatively, that means the read pointer is moving faster than the write pointer is. Essentially, the pitch will rise because you're reading more samples than you normally would. On the other hand, if such an object is moving away from you, the delay time will decrease, resulting in a slower moving read pointer, and eventually a dropping pitch.</p>
 
           <div class="article-callout">
-            <p>I made a JUCE standalone demo so you can hear the Doppler effect applied to a sound and inspect the implementation.</p>
-            <a class="article-source-link" href="https://github.com/JianghaoL/VariableDelay" target="_blank" rel="noopener noreferrer">View VariableDelay on GitHub <span aria-hidden="true">↗</span></a>
+            <p>I've made a JUCE standalone demo so you can hear how doppler effect is applied to the sound. You can find source code here: <a href="https://github.com/JianghaoL/VariableDelay" target="_blank" rel="noopener noreferrer">VariableDelay</a></p>
           </div>
 
           <nav class="article-footer-nav" aria-label="Blog navigation">

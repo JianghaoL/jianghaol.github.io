@@ -29,12 +29,12 @@ public:
 
     // Destructors, others...
     //
-    // Explicitly delete copy and move constructors so we dont need to deal
+    // Explicitly delete copy and move constructors so we don't need to deal
     // with deep and shallow copy issues
 
     bool process(float* buffer, std::size_t size)
     {
-        // Here you want some guard clauses just so you dont get UB
+        // Here you want some guard clauses just so you don't get UB
 
         for (std::size_t i = 0; i < size; ++i)
         {
@@ -71,20 +71,20 @@ because C# manages arrays' sizes internally. Although, you do need to maintain o
 
 Fixed delay could be useful in many ways, one of which could be to emulate the propagation of sound. Not surprisingly, sound waves in any medium have their own speed of propagation. In regular air, the speed of sound is approximately `343m/s`. In games, if you want a more realistic acoustic experience, emulating sound travel duration is a simple but great thing to do. Notice in many larger world games such as `Battlefield` or `Squad`, sounds do not get played instantly as an event triggers (such as an explosion), they take `distance / speed of sound` amount of time for you to hear.
 
-A fixed delay can help you achieve this - in limited scenerios. If the incident sound source and the listener's position is fixed, then the amount of time a sound takes to travel is fixed, and a fixed delay will do it. But, what if they are moving? In this case, a sound could take a changing amount of time to propagate to the listener's position. That's when a fixed delay breaks, and variable delay comes into play.
+A fixed delay can help you achieve this - in limited scenarios. If the incident sound source and the listener's position is fixed, then the amount of time a sound takes to travel is fixed, and a fixed delay will do it. But, what if they are moving? In this case, a sound could take a changing amount of time to propagate to the listener's position. That's when a fixed delay breaks, and variable delay comes into play.
 
 It's pretty self explanatory what a variable delay does: it has a changeable delay time that can be adjusted at runtime. The implementation idea is not complicated either. Remember what we've discussed above, that `m_readPtr = m_writePtr - m_delaySamples`? That shows the very core concept. Essentially, we're just making the read pointer `X` samples behind the write pointer. To make it work, however, there are some extra things to do.
 
 ### Oh no! Non-integer samples?
 
-Imagine there is an explosion, and let's say orginally it's `400m` from you. Ideally, the sound results from it will take `1.166 second` to travel to your position. How are we going to calculate the delay? Remember our delay works with `samples` but not `seconds`? We'll need to compute them into samples.
+Imagine there is an explosion, and let's say originally it's `400m` from you. Ideally, the sound results from it will take `1.166 second` to travel to your position. How are we going to calculate the delay? Remember our delay works with `samples` but not `seconds`? We'll need to compute them into samples.
 
 | Sample Rate | ms per Sample |
 |:------:|:------:|
 |44100|0.0226|
 |48000|0.0208|
 
-Looking at the commonly used sample rate chart here, with a sample rate of `48000`, every sample will take `0.0208ms`. Back to our example, `1.166 second` therefore will translate into `56057.69 samples`. And there we have a sample count that is ***not*** in integer! Sadly enough, there is no built-in function, for now, (or more likely ever) for fractional indexing in an array, for our current purpose `m_history[56057.69]`. Thankfully, mathematically, we can ***interpolate*** samples! Because every sample takes so little time, we can see the change between each as linear, and thus we can linearly interpolate between two samples to get an approximate number.
+Looking at the commonly used sample rate chart here, with a sample rate of `48000`, every sample will take `0.0208ms`. Back to our example, `1.166 second` therefore will translate into `55976.68 samples`. And there we have a sample count that is ***not*** in integer! Sadly enough, there is no built-in function, for now, (or more likely ever) for fractional indexing in an array, for our current purpose `m_history[55976.68]`. Thankfully, mathematically, we can ***interpolate*** samples! Because every sample takes so little time, we can see the change between each as linear, and thus we can linearly interpolate between two samples to get an approximate number.
 $$
 y[n] = x[n_{floor}]\times(n_{ceil} - n) + x[n_{ceil}]\times(n-n_{floor})
 $$
@@ -111,13 +111,13 @@ bool process(float* buffer, int size)
 }
 ```
 
-So, for our `56057.69`th sample, we take sample number 50657 and number 56058, and interpolate between them using the decimal part. Let's say `history[56057] = -0.3f` and `history[56058] = 0.4f`, we get `history[56057.69] = 0.183f`. This, in fact, is ***resampling***, but that's another whole different topic.
+So, for our `55976.68`th sample, we take sample number 50657 and number 56058, and interpolate between them using the decimal part. Let's say `history[55976] = -0.3f` and `history[55977] = 0.4f`, we get `history[55976.68] = 0.183f`. This, in fact, is ***resampling***, but that's another whole different topic.
 
 ### Smoothing Delay Changes
 
 Still the explosion example. We've said that it happens `400m` away from you and it'll take `1.166s` to get to you. This is when you're standing still. What if you're actively moving towards the explosion? Well, since the distance between you and the incident sound is decreasing, the time it takes for you to hear it is decreasing as well! Qualitatively, we're decrementing the delay time, or in this case, number of delay samples.
 
-While we could simply compute how many samples it should delay and just set our `m_readPtr` to that number, it's better to add a smoothing process. In audio programming, any abrupt changes will lead to dicountinuity in it's waveform, and that causes clicking noise. We almost always want to smoothly lerp to our target change. Here, the process is simple: for every block of data we process, find out how many samples of delay we need and then find out how much our current delay should increment or decrement per sample.
+While we could simply compute how many samples it should delay and just set our `m_readPtr` to that number, it's better to add a smoothing process. In audio programming, any abrupt changes will lead to discontinuity in it's waveform, and that causes clicking noise. We almost always want to smoothly lerp to our target change. Here, the process is simple: for every block of data we process, find out how many samples of delay we need and then find out how much our current delay should increment or decrement per sample.
 
 Here's the code that demonstrate this:
 ```c++
@@ -134,7 +134,7 @@ bool process(float* buffer, int size)
         ...
 
         m_writeIndex = (m_writeIndex + 1) % m_maxDelaySamples;
-        m_readPositionInFloat = static_cast<flaot>(m_writeIndex) - m_currentDelayInFloat;
+        m_readPositionInFloat = static_cast<float>(m_writeIndex) - m_currentDelayInFloat;
         if (m_readPositionInFloat < 0) m_readPositionInFloat += static_cast<float>(m_maxDelaySamples);
 
         // Increase delay per sample
