@@ -53,13 +53,13 @@ This article will show how Shepard tones can be adapted to address this.
 
 A typical rising pitch can be described as
 
-$f(t) = f_0 \cdot 2^{rt}$
+$$f(t) = f_0 \cdot 2^{rt}$$
 
 where $f_0$ is the initial frequency, $r$ is the rate of octave increase, and $t$ is time. This is a simple exponential function that describes a pitch that rises continuously over time. As long as $r$ is positive, the pitch rises **exponentially**. 
 
 However, per the **Nyquist-Shannon Sampling Theorem**, the highest frequency that can be represented in a digital audio system is half of the sampling rate.
 
-$f_{max} = \frac{f_s}{2}$
+$$f_{max} = \frac{f_s}{2}$$
 
 This simple pitch rise will eventually reach the Nyquist frequency and become aliased. 
 
@@ -94,4 +94,127 @@ The reason we want to use a Shepard tone is that it can be generated in real-tim
 To begin with, we define a set of `N` sine wave oscillators, each separated by an octave. 
 
 For a given oscillator `k`, its instaneuos frequency at any sample is given by:
+
+$$f_k[n] = f_{min} \cdot 2^{(x_n[n])}$$
+
+where `f_{min}` is the minimum frequency, `x_n[n]` represents the oscillator's position on a logarithmic frequency axis, and `n` is the sample index.
+
+We use logarithmic notation because each octave represents a doubling of frequency.
+
+### Spectral Envelope
+
+As is discussed earlier, we need to apply an envelope to each oscillator to fade them in and out as they approach the upper and lower frequency bounds. We can use a Hann window together with a Gaussian envelope to control both the amplitude and the spectral centralization:
+
+$$w_k[n] = \text{Hann}(x_k[n]) \cdot e^{-\frac{(x_k[n] - \mu)^2}{2\sigma^2}}$$
+
+where `Hann` is the Hann window function, `μ` is the center frequency of the envelope, and `σ` controls the width of the Gaussian envelope.
+
+### Phase Accumulation
+
+Each oscillator will maintain its own phase because we need cross-block continuity in real-time audio rendering. 
+
+$$\phi_k[n] = \text{frac}(\phi_k[n-1] + \frac{f_k[n]}{f_s})$$
+
+Then we use this phase to generate the sine wave samples:
+
+$y[n] = \sin{2\pi \phi_k[n]}$
+
+With their own phase, we can change the frequency at per-sample resolution, and the Shepard tone will be able to respond to game events in real-time.
+
+### Finally, Ouput!
+
+We will output the **weighted sum** of all oscillators to produce the final Shepard tone:
+
+$$y[n] = g[n] \cdot{\frac{\sum{w_k[n] \cdot \sin{2\pi \phi_k[n]}}}{\sqrt{\sum{w_k[n]^2}} + \epsilon}}$$
+
+For each sample, we render it using this equation.
+
+Here's a sample implementation in C++:
+
+```cpp
+// We assume we already have other member variables
+// defined in the class.
+float ShepardTone::processSample(float x_n)
+{
+    float output = 0.0f;
+    float weightSquaredSum = 0.0f;
+
+    // Every oscillator contributes to the final output
+    for (Oscillator& osc : m_oscillators)
+    {
+        // Get the frequency and the weight of the current oscillator
+        const float freq = m_fMin * std::pow(2.0f, x_n);
+        const float weight = calculateWeight(x_n);
+
+        // Get the output of the current oscillator
+        const float sample = std::sin(2.0f * PI * osc.phase);
+
+        output += weight * sample;
+        weightSquaredSum += weight * weight;
+
+        // Update the phase of the current oscillator
+        osc.phase += freq / m_sampleRate;
+        osc.phase -= std::floor(osc.phase); // Keep phase in [0, 1)
+
+        // Update the frequency position of the current oscillator
+        // riseRate is a local variable. It could be made
+        // constant or be controlled by game parameters.
+        osc.octave += riseRate / m_sampleRate;
+
+        // Wrap the octave position to stay within the range of oscillators
+        if (osc.octave > m_numOscillators)
+        {
+            osc.octave -= m_numOscillators;
+        }
+    }
+
+    // Normalize the output by the sum of weights
+    output /= std::sqrt(weightSquaredSum) + 1e-6f; // Avoid division by zero
+
+    // Apply gain to the output
+    // Gain is a local variable. It could be made constant or be controlled by game parameters.
+    return gain * output;
+}
+```
+
+The weight can be implemented as follows:
+
+```cpp
+float ShepardTone::calculateWeight(float x_n)
+{
+    // Calculate the weight based on the Hann window and Gaussian envelope
+    const float hannWeight = 0.5f * (1.0f - std::cos(2.0f * PI * x_n / m_numOscillators)); // Hann window
+
+    const float z = (x_n - m_centerFrequency) / m_sigma;
+    const float gaussianWeight = std::exp(-0.5f * z * z);
+
+    return hannWeight * gaussianWeight;
+}
+```
+
+## Game-Driven Music Intensity
+
+We're able to make the tone respond to the gameplay by taking this real-time rendering approach. Let's assume the game provides us with a normalized intensity value `I`, where 
+
+$$I \in [0, 1]$$
+
+Our focus is the relationship between the intensity value and the resulting audio behavior.
+
+### The Two Controlled Parameters
+
+Remember in our code snippet, we have two parameters that can be controlled by the game: `riseRate` and `gain`. Those could be calculated based on `I`, although, we want to smooth the changes, because abrupt changes in real-time audio usually result in clicks or pops.
+
+$$\text{riseRate} = \text{MaxRiseRate} \cdot \text{SmoothedI}$$
+$$\text{gain} = \text{SmoothedGain}$$
+
+Basically, with a higher intensity value, the Shepard tone will rise faster and be louder. We *can*, if we want, make the envelope width and center frequency also respond to the intensity value, but for simplicity, we will keep them constant in this example.
+
+### Smoothed Intensity
+
+Simply enough, a one-pole low-pass filter can be used to smooth the intensity value:
+
+$$
+\text{SmoothedI}[n] = \alpha \cdot \text{SmoothedI}[n-1] + (1 - \alpha) \cdot I[n]$$
+
+where `α` is a smoothing factor between 0 and 1. A higher `α` results in slower response to changes in intensity.
 
