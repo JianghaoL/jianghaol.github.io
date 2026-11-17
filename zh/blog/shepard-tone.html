@@ -318,7 +318,7 @@ float ShepardTone::processSample(float x_n)
 <section class="article-section" id="live-demo"><h2>实时演示</h2>
 
 <div class="shepard-demo" data-shepard-demo>
-  <canvas class="demo-waveform" width="1000" height="280" role="img" aria-label="Shepard 音波形预览"></canvas>
+  <canvas class="demo-spectrum" width="1000" height="280" role="img" aria-label="Shepard 音实时对数频谱，横轴为频率，纵轴为分贝"></canvas>
   <div class="demo-transport"><button type="button" data-demo-play aria-pressed="false"><span aria-hidden="true">▶</span> 播放</button><button type="button" data-demo-pause disabled><span aria-hidden="true">Ⅱ</span> 暂停</button></div>
   <div class="demo-intensity-label"><label for="shepard-intensity">Intensity</label><output for="shepard-intensity" data-demo-value>0.50</output></div>
   <input id="shepard-intensity" type="range" min="0" max="1" step="0.01" value="0.5">
