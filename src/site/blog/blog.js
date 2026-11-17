@@ -34,6 +34,28 @@ const blogCopy = isChineseBlog
 
 const blogData = [isChineseBlog
   ? {
+      id: 2,
+      title: '无尽的紧张感：Shepard 音与游戏中的自适应音乐',
+      category: '音频编程',
+      date: '2026-11-16',
+      excerpt: '不知道游戏究竟还有多久才会结束，该如何通过声音表现不断积累的紧张感？',
+      fullExcerpt: 'Shepard-Risset 滑音能创造出音高持续上升、仿佛永无止境的错觉，并且可以通过游戏参数来控制。',
+      image: '/assets/images/blogs/shepard-tone/Shepard_Tones_spectrum_linear_scale.png',
+      tags: ['C++', 'DSP', 'Shepard Tone'],
+      detailPage: '/zh/blog/shepard-tone.html'
+    }
+  : {
+      id: 2,
+      title: 'Endless Tension: Shepard Tones and Adaptive Music in Games',
+      category: 'Audio Programming',
+      date: '2026-11-16',
+      excerpt: 'How do you design sounds to express the growing tension without knowing exactly after how long the game is going to end?',
+      fullExcerpt: 'Shepard-Risset glissando creates the illusion of endlessly continuously rising pitch, allowed to be controlled via game parameters.',
+      image: '/assets/images/blogs/shepard-tone/Shepard_Tones_spectrum_linear_scale.png',
+      tags: ['C++', 'DSP', 'Shepard Tone'],
+      detailPage: '/en/blog/shepard-tone.html'
+    }, isChineseBlog
+  ? {
       id: 1,
       title: 'C++ 中的可变延迟',
       category: '音频编程',

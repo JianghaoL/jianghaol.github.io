@@ -95,9 +95,9 @@ To begin with, we define a set of `N` sine wave oscillators, each separated by a
 
 For a given oscillator `k`, its instaneuos frequency at any sample is given by:
 
-$$f_k[n] = f_{min} \cdot 2^{(x_n[n])}$$
+$$f_k[n] = f_{min} \cdot 2^{(x_k[n])}$$
 
-where `f_{min}` is the minimum frequency, `x_n[n]` represents the oscillator's position on a logarithmic frequency axis, and `n` is the sample index.
+where `f_{min}` is the minimum frequency, `x_k[n]` represents the oscillator's position on a logarithmic frequency axis, and `n` is the sample index.
 
 We use logarithmic notation because each octave represents a doubling of frequency.
 
@@ -107,7 +107,6 @@ As is discussed earlier, we need to apply an envelope to each oscillator to fade
 
 $$w_k[n] = \text{Hann}(x_k[n]) \cdot e^{-\frac{(x_k[n] - \mu)^2}{2\sigma^2}}$$
 
-where `Hann` is the Hann window function, `μ` is the center frequency of the envelope, and `σ` controls the width of the Gaussian envelope.
 
 ### Phase Accumulation
 
@@ -117,7 +116,7 @@ $$\phi_k[n] = \text{frac}(\phi_k[n-1] + \frac{f_k[n]}{f_s})$$
 
 Then we use this phase to generate the sine wave samples:
 
-$y[n] = \sin{2\pi \phi_k[n]}$
+$$y[n] = \sin{2\pi \phi_k[n]}$$
 
 With their own phase, we can change the frequency at per-sample resolution, and the Shepard tone will be able to respond to game events in real-time.
 
@@ -142,6 +141,8 @@ float ShepardTone::processSample(float x_n)
     // Every oscillator contributes to the final output
     for (Oscillator& osc : m_oscillators)
     {
+        const float x_n = osc.octave;
+
         // Get the frequency and the weight of the current oscillator
         const float freq = m_fMin * std::pow(2.0f, x_n);
         const float weight = calculateWeight(x_n);
@@ -162,7 +163,7 @@ float ShepardTone::processSample(float x_n)
         osc.octave += riseRate / m_sampleRate;
 
         // Wrap the octave position to stay within the range of oscillators
-        if (osc.octave > m_numOscillators)
+        if (osc.octave >= m_numOscillators)
         {
             osc.octave -= m_numOscillators;
         }
@@ -236,7 +237,6 @@ And in our rendering function, we'll just update our member variable, and use it
 ```cpp
 float ShepardTone::processSample(float x_n)
 {
-    /* ... previous code ... */
     m_smoothedIntensity = updateSmoothedIntensity(m_intensity);
     const float riseRate = m_maxRiseRate * m_smoothedIntensity;
     const float gain = m_smoothedIntensity; // Or any other mapping you prefer

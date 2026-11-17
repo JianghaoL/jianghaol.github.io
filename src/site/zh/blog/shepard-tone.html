@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="description" content="无尽的紧张感：Shepard 音与游戏中的自适应音乐 — Jianghao Li.">
+  <title>无尽的紧张感：Shepard 音与游戏中的自适应音乐 - Jianghao Li</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/blog/article.css">
+  <link rel="stylesheet" href="/blog/shepard-tone.css">
+  <link rel="stylesheet" href="/css/apple-refactor.css">
+</head>
+<body>
+  {{> header/header-c8574b1cce}}
+
+  <main class="article-page">
+    <header class="article-hero">
+      <div class="article-hero-content">
+        <div class="article-breadcrumb"><a href="index.html">博客</a><span aria-hidden="true">/</span><span>音频编程</span></div>
+        <h1 class="article-title">无尽的紧张感：Shepard 音与游戏中的自适应音乐</h1>
+        <div class="article-meta" aria-label="文章信息">
+          <span>Jianghao Li</span>
+          <span><time datetime="2026-11-16">2026 年 11 月 16 日</time></span>
+          <span>音频编程</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="article-layout">
+      <aside class="article-toc" aria-label="文章目录">
+        <h2>文章目录</h2>
+        <ol>
+<li><a href="#tension-building">在结束时间未知的情况下营造紧张感</a></li>
+<li><a href="#psychoacoustics">声音上升背后的心理声学</a></li>
+<li><a href="#shepard-risset-illusion">Shepard-Risset 听觉错觉</a></li>
+<li><a href="#sample-by-sample">逐采样渲染 Shepard 音</a></li>
+<li><a href="#game-driven-intensity">由游戏控制强度</a></li>
+<li><a href="#live-demo">实时演示</a></li>
+<li><a href="#rendering-approaches">DAW 渲染还是程序化生成？</a></li>
+</ol>
+      </aside>
+
+      <article class="article-prose">
+<section class="article-section" id="tension-building"><h2>在结束时间未知的情况下营造紧张感</h2>
+
+<p>想象一场大规模多人射击游戏。双方长时间僵持不下，都无法继续推进。战斗可能在几秒钟后结束，也可能再持续几分钟。</p>
+
+<p>这给声音设计师带来了一个有趣的挑战：不知道游戏究竟还有多久才会结束，该如何通过声音表现不断积累的紧张感？</p>
+
+<p>如果结构已经确定，这就很容易。以电影制作为例，声音设计师和作曲家拿到的是内容和时长都很明确的片段，他们清楚地知道，场景会在 <code>01:23:34:533</code> 这一刻结束。也就是说，传统的声音铺垫遵循既定结构：我们可以逐渐提高音量、加快节奏或升高音高，直到音乐到达高潮。</p>
+
+<p>但在这个交互式的例子中，游戏进程很大程度上取决于玩家。音乐很可能在游戏分出胜负之前就已经到达高潮，反过来也一样。</p>
+
+<p>好在，心理声学为这个问题提供了一种解决思路：<strong>Shepard-Risset 滑音</strong>。它能创造出音高持续上升、仿佛永无止境的错觉，并且可以通过游戏参数来控制。</p>
+
+<p>在深入更硬核的技术内容之前，我们先来聊聊，为什么音高上升会让听众感到紧张。</p>
+
+</section>
+
+<section class="article-section" id="psychoacoustics"><h2>声音上升背后的心理声学</h2>
+
+<h3>声音的运动与紧迫感</h3>
+
+<p>声音的变化能够向我们传达周围环境的信息。</p>
+
+<p>Neuhoff（1998）发现，与同等幅度的声音减弱相比，听众倾向于<em>高估</em>声音增强的程度。这也有助于解释为什么声音设计中常常通过<strong>提高响度、升高音高、改变频谱亮度</strong>来<strong>强化事态不断升级的感觉</strong>。</p>
+
+<h3>音高、唤醒程度与音乐表达</h3>
+
+<p>音高与速度、音量和音色一样，在传达情绪时都很重要。</p>
+
+<p>在游戏音乐中，音高上升常被用来让情绪逐渐升温。例如：不断升高的合成器声音可以营造能量积聚的感觉（比如激光枪）；上行的弦乐织体可以营造不稳定、紧张的氛围；音高上升与节奏加快相结合，则可以为接下来打破紧张局面的事件做铺垫。</p>
+
+<p>总体来说，音高不断上升会让人感觉有什么重要的事情即将发生。</p>
+
+<h3>期待感与音乐高潮</h3>
+
+<p>同样，音高上升也会带来期待感。持续上升的音效之后，通常会接上某个重要事件，比如爆炸、音乐中的 drop，或以某种方式收束。</p>
+
+<p>在前面提到的多人射击游戏中，游戏结束（或拿下一个据点）才是双方僵局的最终结果。播放上升音效有助于营造期待感，但当它到达高潮时，游戏未必会恰好结束。这时，我们就需要维持这种不断积累的紧张感，同时让它能够响应一系列难以预测的事件。</p>
+
+<h3>听觉适应</h3>
+
+<p>持续的声音可能导致听觉适应，也就是人对恒定刺激的敏感度逐渐降低。即使这些刺激本身在“运动”，如果变化速率或整体音色特征几乎保持不变，人们也会逐渐习惯，不再那么明显地感知到这些声音。</p>
+
+<p>声音设计师需要注意这一点：用于营造紧张感的声音，应当随着游戏情境的发展而变化。</p>
+
+<p>本文将介绍如何调整 Shepard 音来应对这个问题。</p>
+
+<blockquote class="shepard-reference"><p>参考文献：Neuhoff（1998）；Juslin &amp; Laukka（2003）；Huron（2006）。</p></blockquote>
+
+</section>
+
+<section class="article-section" id="shepard-risset-illusion"><h2>Shepard-Risset 听觉错觉</h2>
+
+<h3>为什么普通的音高上升不够？</h3>
+
+<p>一个典型的音高上升过程可以表示为：</p>
+
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="f(t) = f_0 \cdot 2^{rt}"><mrow><mi>f</mi><mo>(</mo><mi>t</mi><mo>)</mo><mo>=</mo><msub><mi>f</mi><mn>0</mn></msub><mo>·</mo><msup><mn>2</mn><mrow><mi>r</mi><mi>t</mi></mrow></msup></mrow></math></div>
+
+<p>其中，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" aria-label="f_0"><mrow><msub><mi>f</mi><mn>0</mn></msub></mrow></math> 是初始频率，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" aria-label="r"><mrow><mi>r</mi></mrow></math> 是每单位时间上升的八度数，<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" aria-label="t"><mrow><mi>t</mi></mrow></math> 是时间。这是一个简单的指数函数，描述了音高随时间持续上升的过程。只要 <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" aria-label="r"><mrow><mi>r</mi></mrow></math> 为正，音高就会<strong>呈指数上升</strong>。</p>
+
+<p>然而，根据<strong>奈奎斯特-香农采样定理</strong>，数字音频系统能够表示的最高频率是采样率的一半：</p>
+
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="f_{max} = \frac{f_s}{2}"><mrow><msub><mi>f</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mfrac><mrow><msub><mi>f</mi><mi>s</mi></msub></mrow><mrow><mn>2</mn></mrow></mfrac></mrow></math></div>
+
+<p>这样简单上升的音高最终会到达奈奎斯特频率，并产生混叠。</p>
+
+<p>更实际地说，可用的频率范围通常还会受到目标音色、整体混音以及听觉舒适度的限制。</p>
+
+<p>一旦音高到达上限，声音设计师就必须停止上升、保持当前音高，或让它重新开始，而这些做法都会破坏听觉上的连续性。</p>
+
+<p>因此，对于时长不确定的游戏来说，一种能让音高持续上升、又不会到达可听范围极限的特殊声音结构会很有用。</p>
+
+<h3>Shepard 音与循环的音高结构</h3>
+
+<p>1964 年，Roger Shepard 提出了一种特殊的声音，可以创造出音高不断上升、仿佛永无止境的错觉。Shepard 音由多个相隔八度的正弦波叠加而成，每一层都带有特定的振幅包络。</p>
+
+<p>这种组合让人难以判断绝对音高，却仍然能感知到音高的相对变化。</p>
+
+<p>当同样的原理被扩展到连续的音高运动时，就得到了 <strong>Shepard–Risset 滑音</strong>。</p>
+
+<h3>无尽的上升</h3>
+
+<p>在 Shepard-Risset 滑音中，多个振荡器同时播放，音高以相同的速率上升。它们的振幅由<strong>包络</strong>控制：当振荡器接近频率上限时逐渐淡出，再从频率下限逐渐淡入。</p>
+
+<p>由于多个振荡器同时播放，即使实际频率会循环回较低的八度，听众仍然会感觉音高在持续上升，察觉不到明显的起点或终点。</p>
+
+<figure class="shepard-spectrum"><img src="/assets/images/blogs/shepard-tone/Shepard_Tones_spectrum_linear_scale.png" alt="Shepard-Risset 滑音" loading="lazy" width="1200" height="900"></figure>
+
+</section>
+
+<section class="article-section" id="sample-by-sample"><h2>逐采样渲染 Shepard 音</h2>
+
+<p>我们使用 Shepard 音，是因为它可以实时生成，并且能够根据游戏状态动态调整参数。接下来，我们讨论如何在数字音频系统中渲染它。</p>
+
+<h3>多个振荡器</h3>
+
+<p>首先，我们定义 <code>N</code> 个正弦波振荡器，相邻的振荡器之间相隔一个八度。</p>
+
+<p>对于给定的振荡器 <code>k</code>，它在任意采样时刻的瞬时频率为：</p>
+
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="f_k[n] = f_{min} \cdot 2^{(x_k[n])}"><mrow><msub><mi>f</mi><mi>k</mi></msub><mo>[</mo><mi>n</mi><mo>]</mo><mo>=</mo><msub><mi>f</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo>·</mo><msup><mn>2</mn><mrow><mo>(</mo><msub><mi>x</mi><mi>k</mi></msub><mo>[</mo><mi>n</mi><mo>]</mo><mo>)</mo></mrow></msup></mrow></math></div>
+
+<p>其中，<code>f_{min}</code> 是最低频率，<code>x_k[n]</code> 表示振荡器在对数频率轴上的位置，<code>n</code> 是采样索引。</p>
+
+<p>我们使用对数表示，是因为每上升一个八度，频率就会翻倍。</p>
+
+<h3>频谱包络</h3>
+
+<p>前面提到，我们需要为每个振荡器加上包络，使它们在接近频率上下限时淡出或淡入。我们可以将 Hann 窗与高斯包络结合使用，同时控制振幅和频谱的集中程度：</p>
+
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="w_k[n] = \text{Hann}(x_k[n]) \cdot e^{-\frac{(x_k[n] - \mu)^2}{2\sigma^2}}"><mrow><msub><mi>w</mi><mi>k</mi></msub><mo>[</mo><mi>n</mi><mo>]</mo><mo>=</mo><mtext>Hann</mtext><mo>(</mo><msub><mi>x</mi><mi>k</mi></msub><mo>[</mo><mi>n</mi><mo>]</mo><mo>)</mo><mo>·</mo><msup><mi>e</mi><mrow><mo>-</mo><mfrac><mrow><mo>(</mo><msub><mi>x</mi><mi>k</mi></msub><mo>[</mo><mi>n</mi><mo>]</mo><mo>-</mo><mi>μ</mi><msup><mo>)</mo><mn>2</mn></msup></mrow><mrow><mn>2</mn><msup><mi>σ</mi><mn>2</mn></msup></mrow></mfrac></mrow></msup></mrow></math></div>
+
+<p>其中，<code>Hann</code> 是 Hann 窗函数，<code>μ</code> 是包络的中心频率，<code>σ</code> 控制高斯包络的宽度。</p>
+
+<h3>相位累加</h3>
+
+<p>每个振荡器都需要维护自己的相位，因为实时音频渲染需要保持跨数据块的连续性。</p>
+
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="\phi_k[n] = \text{frac}(\phi_k[n-1] + \frac{f_k[n]}{f_s})"><mrow><msub><mi>φ</mi><mi>k</mi></msub><mo>[</mo><mi>n</mi><mo>]</mo><mo>=</mo><mtext>frac</mtext><mo>(</mo><msub><mi>φ</mi><mi>k</mi></msub><mo>[</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>]</mo><mo>+</mo><mfrac><mrow><msub><mi>f</mi><mi>k</mi></msub><mo>[</mo><mi>n</mi><mo>]</mo></mrow><mrow><msub><mi>f</mi><mi>s</mi></msub></mrow></mfrac><mo>)</mo></mrow></math></div>
+
+<p>然后，我们使用这个相位生成正弦波采样：</p>
+
+<p><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline" aria-label="y[n] = \sin{2\pi \phi_k[n]}"><mrow><mi>y</mi><mo>[</mo><mi>n</mi><mo>]</mo><mo>=</mo><mo>sin</mo><mrow><mn>2</mn><mi>π</mi><msub><mi>φ</mi><mi>k</mi></msub><mo>[</mo><mi>n</mi><mo>]</mo></mrow></mrow></math></p>
+
+<p>分别维护相位后，我们就可以在每个采样上调整频率，让 Shepard 音实时响应游戏事件。</p>
+
+<h3>最后，输出！</h3>
+
+<p>我们将所有振荡器的输出进行<strong>加权求和</strong>，得到最终的 Shepard 音：</p>
+
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="y[n] = g[n] \cdot{\frac{\sum{w_k[n] \cdot \sin{2\pi \phi_k[n]}}}{\sqrt{\sum{w_k[n]^2}} + \epsilon}}"><mrow><mi>y</mi><mo>[</mo><mi>n</mi><mo>]</mo><mo>=</mo><mi>g</mi><mo>[</mo><mi>n</mi><mo>]</mo><mo>·</mo><mrow><mfrac><mrow><mo>∑</mo><mrow><msub><mi>w</mi><mi>k</mi></msub><mo>[</mo><mi>n</mi><mo>]</mo><mo>·</mo><mo>sin</mo><mrow><mn>2</mn><mi>π</mi><msub><mi>φ</mi><mi>k</mi></msub><mo>[</mo><mi>n</mi><mo>]</mo></mrow></mrow></mrow><mrow><msqrt><mrow><mo>∑</mo><mrow><msub><mi>w</mi><mi>k</mi></msub><mo>[</mo><mi>n</mi><msup><mo>]</mo><mn>2</mn></msup></mrow></mrow></msqrt><mo>+</mo><mi>ε</mi></mrow></mfrac></mrow></mrow></math></div>
+
+<p>我们使用这个公式渲染每一个采样。</p>
+
+<p>下面是一个 C++ 示例实现：</p>
+
+<div class="code-block"><span class="code-label">C++</span><pre><code class="language-cpp">// We assume we already have other member variables
+// defined in the class.
+float ShepardTone::processSample(float x_n)
+{
+    float output = 0.0f;
+    float weightSquaredSum = 0.0f;
+
+    // Every oscillator contributes to the final output
+    for (Oscillator&amp; osc : m_oscillators)
+    {
+        const float x_n = osc.octave;
+
+        // Get the frequency and the weight of the current oscillator
+        const float freq = m_fMin * std::pow(2.0f, x_n);
+        const float weight = calculateWeight(x_n);
+
+        // Get the output of the current oscillator
+        const float sample = std::sin(2.0f * PI * osc.phase);
+
+        output += weight * sample;
+        weightSquaredSum += weight * weight;
+
+        // Update the phase of the current oscillator
+        osc.phase += freq / m_sampleRate;
+        osc.phase -= std::floor(osc.phase); // Keep phase in [0, 1)
+
+        // Update the frequency position of the current oscillator
+        // riseRate is a local variable. It could be made
+        // constant or be controlled by game parameters.
+        osc.octave += riseRate / m_sampleRate;
+
+        // Wrap the octave position to stay within the range of oscillators
+        if (osc.octave &gt;= m_numOscillators)
+        {
+            osc.octave -= m_numOscillators;
+        }
+    }
+
+    // Normalize the output by the sum of weights
+    output /= std::sqrt(weightSquaredSum) + 1e-6f; // Avoid division by zero
+
+    // Apply gain to the output
+    // Gain is a local variable. It could be made constant or be controlled by game parameters.
+    return gain * output;
+}</code></pre></div>
+
+<p>权重可以通过以下方式计算：</p>
+
+<div class="code-block"><span class="code-label">C++</span><pre><code class="language-cpp">float ShepardTone::calculateWeight(float x_n)
+{
+    // Calculate the weight based on the Hann window and Gaussian envelope
+    const float hannWeight = 0.5f * (1.0f - std::cos(2.0f * PI * x_n / m_numOscillators)); // Hann window
+
+    const float z = (x_n - m_centerFrequency) / m_sigma;
+    const float gaussianWeight = std::exp(-0.5f * z * z);
+
+    return hannWeight * gaussianWeight;
+}</code></pre></div>
+
+</section>
+
+<section class="article-section" id="game-driven-intensity"><h2>由游戏控制强度</h2>
+
+<p><code>Battlefield 6</code> 的开发者提到，他们使用了一个强度参数来实现动态的声音体验。我们也可以这样做！</p>
+
+<p>通过实时渲染，我们可以让声音响应游戏过程。假设游戏为我们提供了一个归一化的强度值 <code>I</code>，其中：</p>
+
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="I \in [0, 1]"><mrow><mi>I</mi><mo>∈</mo><mo>[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>]</mo></mrow></math></div>
+
+<p>这里我们关注的是，这个强度值会让声音产生怎样的变化。</p>
+
+<h3>两个受控参数</h3>
+
+<p>还记得前面的代码中，我们有两个可以由游戏控制的参数：<code>riseRate</code> 和 <code>gain</code>。它们可以根据 <code>I</code> 计算得出，不过我们需要平滑这些变化，因为实时音频中的突变通常会产生咔嗒声或爆音。</p>
+
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="\text{riseRate} = \text{MaxRiseRate} \cdot \text{SmoothedI}"><mrow><mtext>riseRate</mtext><mo>=</mo><mtext>MaxRiseRate</mtext><mo>·</mo><mtext>SmoothedI</mtext></mrow></math></div>
+
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="\text{gain} = \text{SmoothedGain}"><mrow><mtext>gain</mtext><mo>=</mo><mtext>SmoothedGain</mtext></mrow></math></div>
+
+<p>简单来说，强度值越高，Shepard 音上升得就越快，声音也会越大。如果需要，我们<em>也可以</em>让包络宽度和中心频率随强度值变化，但为了简单起见，这个例子中先保持它们不变。</p>
+
+<h3>平滑强度值</h3>
+
+<p>一个简单的一阶低通滤波器就可以用来平滑强度值：</p>
+
+<div class="equation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="\text{SmoothedI}[n] = \alpha \cdot \text{SmoothedI}[n-1] + (1 - \alpha) \cdot I[n]"><mrow><mtext>SmoothedI</mtext><mo>[</mo><mi>n</mi><mo>]</mo><mo>=</mo><mi>α</mi><mo>·</mo><mtext>SmoothedI</mtext><mo>[</mo><mi>n</mi><mo>-</mo><mn>1</mn><mo>]</mo><mo>+</mo><mo>(</mo><mn>1</mn><mo>-</mo><mi>α</mi><mo>)</mo><mo>·</mo><mi>I</mi><mo>[</mo><mi>n</mi><mo>]</mo></mrow></math></div>
+
+<p>其中，<code>α</code> 是一个介于 0 和 1 之间的平滑系数。<code>α</code> 越大，对强度变化的响应就越慢。</p>
+
+<p>一个简单的 C++ 实现可以这样写：</p>
+
+<div class="code-block"><span class="code-label">C++</span><pre><code class="language-cpp">float ShepardTone::updateSmoothedIntensity(float I)
+{
+    const float safeI = std::clamp(I, 0.0f, 1.0f); // Ensure I is within [0, 1]
+    const float smoothedIntensity = m_alpha * m_smoothedIntensity + (1.0f - m_alpha) * safeI;
+    return smoothedIntensity;
+}</code></pre></div>
+
+<p>在渲染函数中，我们只需要更新成员变量，再用它计算对应的 <code>riseRate</code> 和 <code>gain</code>：</p>
+
+<div class="code-block"><span class="code-label">C++</span><pre><code class="language-cpp">float ShepardTone::processSample(float x_n)
+{
+    m_smoothedIntensity = updateSmoothedIntensity(m_intensity);
+    const float riseRate = m_maxRiseRate * m_smoothedIntensity;
+    const float gain = m_smoothedIntensity; // Or any other mapping you prefer
+    /* ... rest of the code ... */
+}</code></pre></div>
+
+<h3>交互式音乐设计</h3>
+
+<p>交互式音乐通常有 <code>2</code> 种设计方式：<strong>垂直分层</strong>和<strong>水平重排序</strong>。</p>
+
+<p><code>垂直分层</code>是一种让多个乐器层同时播放的技术，每一层可以有不同的音量。音乐总监会根据游戏提供的参数改变各层的音量。这种方式通常更灵活，因为声音设计师可以决定哪些音乐层响应哪些游戏状态。</p>
+
+<p><code>水平重排序</code>是一种将音乐分成多个片段的技术，游戏引擎会根据游戏状态决定接下来播放哪个片段。这种方式通常更容易实现，但音乐表达上的灵活性可能会差一些。</p>
+
+<p>在我们的 Shepard 音例子中，可以把 Shepard 音作为垂直分层系统中的一层。其他层使用预先写好并循环播放的音乐，而 Shepard 音这一层则可以通过程序实时生成。无论其他层是否发生变化，Shepard 音都能实时响应游戏状态。</p>
+
+</section>
+
+<section class="article-section" id="live-demo"><h2>实时演示</h2>
+
+<div class="shepard-demo" data-shepard-demo>
+  <canvas class="demo-waveform" width="1000" height="280" role="img" aria-label="Shepard 音波形预览"></canvas>
+  <div class="demo-transport"><button type="button" data-demo-play aria-pressed="false"><span aria-hidden="true">▶</span> 播放</button><button type="button" data-demo-pause disabled><span aria-hidden="true">Ⅱ</span> 暂停</button></div>
+  <div class="demo-intensity-label"><label for="shepard-intensity">Intensity</label><output for="shepard-intensity" data-demo-value>0.50</output></div>
+  <input id="shepard-intensity" type="range" min="0" max="1" step="0.01" value="0.5">
+  <div class="demo-range-labels" aria-hidden="true"><span>0</span><span>1</span></div>
+</div>
+
+</section>
+
+<section class="article-section" id="rendering-approaches"><h2>DAW 渲染还是程序化生成？</h2>
+
+<p>Shepard-Risset 滑音可以通过多种方式生成。</p>
+
+<ol><li><strong>DAW 预渲染</strong>：将一个声源叠加多个八度，再使用自动化控制音量和音高上升的速度。这种方法很简单，在你已经确定目标音色并设计好声音时也很有效。</li><li><strong>中间件实现</strong>：这是一种介于两者之间的方案，可以使用预渲染的声源，同时实时控制它的参数。这通常在 FMOD 或 Wwise 等中间件中完成。</li><li><strong>程序化生成</strong>：通过自定义音频渲染器实时逐采样生成声音。这种方法不需要预先设计声源，甚至可以控制非常底层的 DSP 行为。由于不依赖音频资源，这种方式最灵活，但也需要更多技术知识和实现工作。</li></ol>
+
+<p>无论选择哪种方式，Shepard 音都可以成为一种有效的心理声学工具，在具体时长未知的游戏情境中营造紧张感。本文介绍的实时渲染方法也为更深入的声音设计打下了基础，可以进一步扩展，加入更复杂的音色设计。</p>
+
+</section>
+<nav class="article-footer-nav" aria-label="博客导航"><a href="index.html">← 返回全部文章</a><a href="#tension-building">回到顶部 ↑</a></nav>
+</article>
+    </div>
+  </main>
+
+  {{> footer/footer-a76700955c}}
+  <script src="/js/main.js"></script>
+  <script src="/blog/article-code.js"></script>
+  <script src="/blog/shepard-tone.js"></script>
+  <script src="/js/translations.js"></script>
+  <script src="/js/i18n.js"></script>
+</body>
+</html>
