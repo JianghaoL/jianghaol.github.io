@@ -1,4 +1,8 @@
+# build output
+dist/
+.astro/
+node_modules/
+
+# editors / OS
 .DS_Store
-.site-build-tmp/
-.site-check-output/
 /.idea

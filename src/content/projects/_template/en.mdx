@@ -1,0 +1,48 @@
+---
+# ─── Copy this folder to src/content/projects/<your-slug>/ ───
+# The folder name becomes the URL: /en/project-pages/<your-slug>.html
+#
+# Settings shared by both languages (only needed here in en.mdx):
+category: gameAudio        # gameDevelopment | gameAudio | developmentTool | audioTool | audioProduction | soundRedesignReels | theater
+date: 2026-12-01           # used for sorting and the gallery's "By Date" view
+thumbnail: /assets/images/thumbnails/your-image.png
+# featured: 5              # optional: show on the home page "Selected Work" (1 = first)
+# gallery:                 # optional gallery-card settings
+#   star: true             #   ✦ featured star
+#   aiUsed: true           #   "AI Used" badge
+#   tech: [Unity, C#]      #   card tags if different from `tech` below
+# page: false              # optional: gallery card only, no detail page
+
+# Text for this language:
+title: Project Name
+summary: One or two sentences under the title.
+description: Text on the back of the gallery card.
+tagline: Short line for the home page (only needed if featured).
+meta: ['2026', Game Audio, 3 months]   # the three chips under the summary
+tech: [Unity, Wwise, C#]
+roles: [Sound Designer]
+team: [Solo Project]
+# labels: { team: Platforms }          # rename a column heading
+---
+
+{/* Body: write Markdown inside these blocks. Delete the ones you don't need. */}
+
+<FullImage src="/assets/images/project-pages/your-folder/hero.png" alt="Describe the image" caption="Caption" />
+
+<TextBlock>
+## Overview
+
+Plain **Markdown** works here: paragraphs, lists, links, `code`.
+</TextBlock>
+
+<MediaText src="/assets/images/project-pages/your-folder/detail.png" alt="Describe the image" caption="Caption">
+## A Section With an Image
+
+Text beside the image. Add `reverse` to put the image on the right.
+</MediaText>
+
+<Quote cite="— Steam Review">"A quote worth highlighting."</Quote>
+
+<Video title="Trailer" src="/assets/videos/your-video.mp4" />
+
+<Links links={[{ label: 'Available on Steam', href: 'https://store.steampowered.com/' }]} />

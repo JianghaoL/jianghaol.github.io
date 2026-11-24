@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResumeModal from '../../components/ResumeModal.astro';
+import { useTranslations, langPaths, type Lang } from '../../i18n/utils';
+import { getProjects } from '../../lib/content';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+
+// "Selected Work": every project with `featured: <number>` in its en.md, in that order.
+const featured = (await getProjects(lang))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.featured! - b.data.featured!);
+---
+<BaseLayout lang={lang} active="home" title="Jianghao Li — Portfolio"
+  styles={['/css/reset.css', '/css/style.css', '/css/apple-refactor.css', '/css/portfolio-refresh.css']}
+  scripts={['/js/music-player.js', '/js/resume-modal.js']}>
+<!-- Hero 区 -->
+<header id="hero">
+  <canvas id="waveCanvas" aria-hidden="true"></canvas>
+  <div class="hero-content">
+    <h1>{t('home.hero.name')}</h1>
+    <p class="role">{t('home.hero.role')}</p>
+    <p class="subtitle">{t('home.hero.subtitle')}</p>
+  </div>
+</header>
+
+<!-- Personal Introduction -->
+<section id="intro" data-reveal>
+  <div class="intro-grid">
+    <div class="intro-photo intro-photo--portrait" aria-hidden="true" ></div>
+    <div class="intro-card">
+      <h2>{t('home.intro.heading')}</h2>
+      <p class="intro-lead">{t('home.intro.lead')}</p>
+      <p id="intro-type" class="intro-type" aria-live="polite">{t('home.intro.type')}</p>
+      <ul class="skills-list">
+        <li class="skill">{t('home.skill.1')}</li>
+        <li class="skill">{t('home.skill.2')}</li>
+        <li class="skill">{t('home.skill.3')}</li>
+        <li class="skill">{t('home.skill.4')}</li>
+        <li class="skill">{t('home.skill.5')}</li>
+        <li class="skill">{t('home.skill.6')}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="wave-section" data-reveal>
+  <h2>{t('home.work.heading')}</h2>
+  <div class="featured-projects">
+    {featured.map((p) => (
+      <a class="featured-project" href={`project-pages/${p.slug}.html`}>
+        <img src={p.data.thumbnail} alt="" loading="lazy">
+        <span class="featured-project__content">
+          <span class="featured-project__text">
+            <strong>{p.data.cardTitle ?? p.data.title}</strong>
+            <span>{p.data.tagline}</span>
+          </span>
+          <span class="featured-project__arrow" aria-hidden="true">↗</span>
+        </span>
+      </a>
+    ))}
+  </div>
+</section>
+
+<!-- Mixing Demos Section -->
+<section id="mixing-demos" data-reveal>
+  <h2>{t('home.mixing.heading')}</h2>
+  <p class="section-subtitle">{t('home.mixing.subtitle')}</p>
+  <div class="mixing-demo-grid">
+
+    <!-- Duplicate this card to add another mix. data-audio = path of the audio file. -->
+
+    <div class="mix-card" data-audio="/assets/audio/mix-demos/The Hardest Part - Mixdown.mp3">
+      <div class="mix-card-header">
+        <div class="mix-card-art">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+          </svg>
+        </div>
+        <div class="mix-card-info">
+          <h3 class="mix-card-title">The Hardest Part</h3>
+          <p class="mix-card-artist">Leslie Mendelson</p>
+        </div>
+      </div>
+      <div class="mix-card-controls">
+        <button class="mix-card-play-btn" type="button" aria-label="Play"></button>
+        <div class="mix-card-progress-area">
+          <div class="mix-card-progress-track">
+            <div class="mix-card-progress-fill"></div>
+            <div class="mix-card-progress-thumb"></div>
+          </div>
+          <div class="mix-card-time">
+            <span class="mix-card-current">0:00</span>
+            <span class="mix-card-duration">4:54</span>
+          </div>
+        </div>
+      </div>
+      <span class="mix-card-note">{t('home.mixing.note')}</span>
+      <span class="mix-card-coming-soon">{t('home.mixing.comingSoon')}</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- Sound Redesign Reels Section -->
+<section id="sound-redesign-reels" class="wave-section" data-reveal>
+  <canvas class="section-wave-canvas" aria-hidden="true"></canvas>
+  <h2>{t('home.reels.heading')}</h2>
+  <p class="section-subtitle">{t('home.reels.subtitle')}</p>
+  <div class="reel-showcase-grid">
+    <!-- Duplicate this card for each new reel and update its page link and text. -->
+    <a class="reel-card" href="project-pages/ripout-redesign.html" aria-label={t('home.reels.card.aria')}>
+      <div class="reel-card-visual">
+        <img class="reel-card-thumbnail" src="/assets/images/thumbnails/ripout.jpg" alt="" loading="lazy">
+        <span class="reel-card-status">{t('home.reels.available')}</span>
+        <div class="reel-card-waveform" aria-hidden="true">
+          <span class="wave-height-25"></span><span class="wave-height-48"></span><span class="wave-height-72"></span>
+          <span class="wave-height-42"></span><span class="wave-height-88"></span><span class="wave-height-58"></span>
+          <span class="wave-height-100"></span><span class="wave-height-64"></span><span class="wave-height-82"></span>
+          <span class="wave-height-36"></span><span class="wave-height-68"></span><span class="wave-height-46"></span>
+          <span class="wave-height-28"></span>
+        </div>
+        <span class="reel-card-play" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+        </span>
+      </div>
+      <div class="reel-card-body">
+        <h3>{t('home.reels.card.title')}</h3>
+        <p>{t('home.reels.card.description')}</p>
+        <div class="reel-card-meta">
+          <span>{t('home.reels.card.category')}</span>
+          <span>{t('home.reels.card.cta')}</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Work Gallery Section -->
+<section id="work-gallery" class="wave-section" data-reveal>
+  <canvas class="section-wave-canvas" aria-hidden="true"></canvas>
+  <h2>{t('home.gallery.heading')}</h2>
+  <p>{t('home.gallery.text')}</p>
+  <a href="work-gallery/index.html" class="btn-gallery">{t('home.gallery.btn')}</a>
+</section>
+
+<section id="contact" class="wave-section" data-reveal>
+  <h2>{t('home.contact.heading')}</h2>
+  <div class="contact-links">
+    <a href="mailto:jianghaoli800@gmail.com"><span>{t('contact.email.label')}</span><strong>jianghaoli800@gmail.com</strong></a>
+    <a href="tel:+12139942364"><span>{t('contact.phone.label')}</span><strong>+1 (213) 994-2364</strong></a>
+    <a href="https://www.linkedin.com/in/lijiangh" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><strong>lijiangh ↗</strong></a>
+    <a href="https://github.com/JianghaoL" target="_blank" rel="noopener noreferrer"><span>GitHub</span><strong>JianghaoL ↗</strong></a>
+  </div>
+</section>
+
+<ResumeModal lang={lang} />
+</BaseLayout>

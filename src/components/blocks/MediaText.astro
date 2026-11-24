@@ -1,0 +1,15 @@
+---
+/* Image beside text.  <MediaText src="..." alt="..." caption="..." reverse> ## Heading ... </MediaText>
+   `reverse` puts the image on the right. */
+interface Props { src: string; alt: string; caption?: string; reverse?: boolean }
+const { src, alt, caption, reverse = false } = Astro.props;
+---
+<section class:list={['content-block', 'content-block--media-text', { 'content-block--reverse': reverse }]} data-reveal>
+  <div class="media-text-container">
+    <figure class="media-text-image">
+      <img src={src} alt={alt} loading="lazy">
+      {caption && <figcaption class="image-caption">{caption}</figcaption>}
+    </figure>
+    <div class="media-text-content"><slot /></div>
+  </div>
+</section>

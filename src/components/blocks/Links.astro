@@ -1,0 +1,19 @@
+---
+/* Buttons to external pages (Steam, itch.io, GitHub...).
+   <Links links={[{ label: 'Available on Steam', href: 'https://...' }]} /> */
+import Icon from '../Icon.astro';
+import { useTranslations, type Lang } from '../../i18n/utils';
+interface Props { heading?: string; links: { label: string; href: string }[] }
+const lang = (Astro.url.pathname.startsWith('/zh/') ? 'zh' : 'en') as Lang;
+const { heading = useTranslations(lang)('project.cta.heading'), links } = Astro.props;
+---
+<section class="content-block content-block--cta" data-reveal>
+  <div class="cta-container">
+    <h2>{heading}</h2>
+    <div class="cta-buttons">
+      {links.map((l) => (
+        <a href={l.href} class="btn btn-primary-project" target="_blank" rel="noopener noreferrer"><Icon name="external" />{l.label}</a>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,15 +1,20 @@
 {
   "name": "jianghao-portfolio",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "baseline": "node scripts/content-contract.mjs snapshot",
-    "build": "node scripts/build.mjs",
-    "check": "node scripts/check-site.mjs",
-    "dev": "node scripts/dev.mjs"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "^7.3.10",
+    "@astrojs/mdx": "^8.1.6",
+    "astro": "^7.4.13"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=22.23.4"
   }
 }

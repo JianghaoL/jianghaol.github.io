@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations, langPaths, type Lang } from '../../../i18n/utils';
+import { getProjects, hasPage } from '../../../lib/content';
+import { ui } from '../../../i18n/ui';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+
+// Every project appears here unless its en.md says `gallery: false`.
+const projects = (await getProjects(lang)).filter((p) => p.data.gallery !== false);
+
+const strings: Record<string, string> = {};
+const stringsEn: Record<string, string> = {};
+for (const [key, value] of Object.entries(ui[lang])) {
+  if (key.startsWith('category.') || key.startsWith('gallery.')) strings[key] = value;
+}
+const items = projects.map((p) => {
+  const g = p.data.gallery || {};
+  strings[`p.${p.slug}.title`] = p.data.cardTitle ?? p.data.title!;
+  strings[`p.${p.slug}.description`] = p.data.description ?? p.data.summary ?? '';
+  stringsEn[`p.${p.slug}.title`] = p.en.cardTitle ?? p.en.title!;
+  return {
+    id: p.slug,
+    titleKey: `p.${p.slug}.title`,
+    descriptionKey: `p.${p.slug}.description`,
+    category: `category.${p.data.category}`,
+    year: Number(String(p.data.date).slice(0, 4)),
+    date: p.data.date,
+    thumbnail: p.data.thumbnail,
+    techStack: g.tech ?? p.data.tech ?? [],
+    roles: g.roles ?? p.data.roles,
+    projectPage: hasPage(p) ? `../project-pages/${p.slug}.html` : null,
+    aiUsed: g.aiUsed ?? false,
+    mediaType: g.mediaType,
+    star: g.star ?? false,
+    featured: p.data.featured,
+  };
+});
+const json = JSON.stringify({ items, strings, stringsEn }).replace(/</g, '\\u003c');
+---
+<BaseLayout lang={lang} active="gallery" title={`${t('meta.titleSuffix')} - ${t('gallery.hero.title')}`}
+  styles={['/css/reset.css', '/css/style.css', '/css/pages/gallery.css', '/css/apple-refactor.css']}
+  scripts={['/js/gallery.js']}>
+<!-- Gallery Hero Section -->
+<section id="gallery-hero" class="gallery-hero">
+  <div class="gallery-hero-content">
+    <h1>{t('gallery.hero.title')}</h1>
+    <p class="gallery-subtitle">{t('gallery.hero.subtitle')}</p>
+  </div>
+</section>
+
+<!-- Gallery Content Wrapper (for sticky controls) -->
+<div class="gallery-content-wrapper">
+  <!-- Filter/Sort Controls -->
+  <div class="gallery-controls">
+  <div class="sort-buttons">
+    <button class="sort-btn active" data-sort="category" aria-pressed="true">
+      <svg class="sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+      </svg>
+      <span>{t('gallery.sort.category')}</span>
+    </button>
+    <button class="sort-btn" data-sort="date" aria-pressed="false">
+      <svg class="sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="16" y1="2" x2="16" y2="6"></line>
+        <line x1="8" y1="2" x2="8" y2="6"></line>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+      <span>{t('gallery.sort.date')}</span>
+    </button>
+    <button class="sort-btn" data-sort="alpha" aria-pressed="false">
+      <svg class="sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 6h18M3 12h12M3 18h6"></path>
+      </svg>
+      <span>{t('gallery.sort.alpha')}</span>
+    </button>
+  </div>
+</div>
+
+<!-- Gallery Grid -->
+<section class="gallery-section">
+  <div class="gallery-grid" id="gallery-grid">
+    <!-- Cards are rendered by /js/gallery.js from the JSON below -->
+  </div>
+</section>
+
+</div><!-- End gallery-content-wrapper -->
+
+<script type="application/json" id="gallery-data" set:html={json}></script>
+</BaseLayout>
