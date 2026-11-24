@@ -1,0 +1,7 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+const t = useTranslations(Astro.props.lang as Lang);
+---
+<footer class="site-footer">
+  <p>{t('footer.copyright')}</p>
+</footer>

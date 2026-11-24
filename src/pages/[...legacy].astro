@@ -1,0 +1,27 @@
+---
+/*
+ * Old URLs keep working:
+ *  - pre-i18n addresses without /en/ or /zh/ (e.g. /project-pages/mantle.html)
+ *    go to the visitor's language (see also src/pages/work-gallery and src/pages/blog);
+ *  - renamed pages listed in MOVED go to their new address.
+ */
+import LegacyRedirect from '../components/LegacyRedirect.astro';
+import { languages } from '../i18n/utils';
+import { getProjects, hasPage } from '../lib/content';
+
+export async function getStaticPaths() {
+  // Renamed pages: old path -> new path (inside /en/ and /zh/).
+  const MOVED: Record<string, string> = {
+    'project-pages/sound-redesign-reel': 'project-pages/ripout-redesign',
+  };
+  const pages = ['about'];
+  for (const p of await getProjects('en')) if (hasPage(p)) pages.push(`project-pages/${p.slug}`);
+  const paths = [...pages, ...Object.keys(MOVED)].map((legacy) => ({ params: { legacy }, props: { target: null } }));
+  for (const [from, to] of Object.entries(MOVED)) {
+    for (const lang of languages) paths.push({ params: { legacy: `${lang}/${from}` }, props: { target: `/${lang}/${to}.html` } });
+  }
+  return paths;
+}
+const { target } = Astro.props as { target: string | null };
+---
+<LegacyRedirect path={`${Astro.params.legacy}.html`} target={target} />

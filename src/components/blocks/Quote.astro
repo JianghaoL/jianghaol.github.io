@@ -1,0 +1,11 @@
+---
+/* Highlighted quote.  <Quote cite="— Steam Review">"..."</Quote> */
+interface Props { cite?: string }
+const { cite } = Astro.props;
+---
+<section class="content-block content-block--highlight" data-reveal>
+  <blockquote class="highlight-quote">
+    <p><slot /></p>
+    {cite && <cite>{cite}</cite>}
+  </blockquote>
+</section>

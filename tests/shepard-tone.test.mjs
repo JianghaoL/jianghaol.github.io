@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import vm from 'node:vm';
-import { ShepardTone } from '../src/site/blog/shepard-tone-engine.js';
+import { ShepardTone } from '../public/js/blog/shepard-tone-engine.js';
 
 function render(tone, size) {
   const buffer = new Float32Array(size);
@@ -67,7 +67,7 @@ test('AudioWorklet fills each output channel and responds to intensity', async (
     ShepardTone, sampleRate: 48000, AudioWorkletProcessor: class {},
     registerProcessor: (name, implementation) => { assert.equal(name, 'shepard-tone'); Processor = implementation; }
   });
-  const source = (await readFile(new URL('../src/site/blog/shepard-tone-worklet.js', import.meta.url), 'utf8')).replace(/^import .*?;\n/, '');
+  const source = (await readFile(new URL('../public/js/blog/shepard-tone-worklet.js', import.meta.url), 'utf8')).replace(/^import .*?;\r?\n/, '');
   vm.runInContext(source, scope);
   const processor = new Processor();
   const channels = [new Float32Array(128), new Float32Array(128)];

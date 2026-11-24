@@ -1,0 +1,11 @@
+---
+/* Full-width image.  <FullImage src="/assets/..." alt="..." caption="..." /> */
+interface Props { src: string; alt: string; caption?: string }
+const { src, alt, caption } = Astro.props;
+---
+<section class="content-block content-block--full-image" data-reveal>
+  <figure class="full-image-container">
+    <img src={src} alt={alt} class="full-image" loading="lazy">
+    {caption && <figcaption class="image-caption">{caption}</figcaption>}
+  </figure>
+</section>

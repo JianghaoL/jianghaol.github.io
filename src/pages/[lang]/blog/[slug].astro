@@ -1,0 +1,70 @@
+---
+/*
+ * Every blog post is generated from this one template.
+ * Content: src/content/blog/<slug>/<lang>.md(x)
+ */
+import { render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { blocks } from '../../../components/blocks';
+import { useTranslations, languages, type Lang } from '../../../i18n/utils';
+import { getPosts, type Localized } from '../../../lib/content';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const lang of languages) {
+    for (const post of await getPosts(lang)) paths.push({ params: { lang, slug: post.slug }, props: { post } });
+  }
+  return paths;
+}
+
+const { post } = Astro.props as { post: Localized<'blog'> };
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const d = post.data;
+
+const [y, m, day] = String(d.date).split('-').map(Number);
+const dateLabel = lang === 'zh'
+  ? `${y} 年 ${m} 月 ${day} 日`
+  : new Date(Date.UTC(y, m - 1, day)).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
+let Content: any = null;
+let toc: { slug: string; text: string }[] = [];
+if (!post.html) {
+  const rendered = await render(post.entry);
+  Content = rendered.Content;
+  toc = rendered.headings.filter((h) => h.depth === 2);
+}
+---
+<BaseLayout lang={lang} active="blog" title={`${d.title} - ${t('meta.titleSuffix')}`}
+  description={d.seoDescription ?? d.summary ?? d.excerpt}
+  styles={['/css/reset.css', '/css/style.css', '/css/blog/article.css', ...(d.styles ?? []), '/css/apple-refactor.css']}
+  scripts={['/js/blog/article-code.js', ...(d.scripts ?? [])]}>
+<main class="article-page">
+  <header class="article-hero">
+    <div class="article-hero-content">
+      <div class="article-breadcrumb"><a href="index.html">{t('nav.blog')}</a><span aria-hidden="true">/</span><span>{d.category}</span></div>
+      <h1 class="article-title">{d.title}</h1>
+      {d.summary && <p class="article-summary">{d.summary}</p>}
+      <div class="article-meta" aria-label={t('blog.article.details')}>
+        <span>{d.author ?? 'Jianghao Li'}</span>
+        <span><time datetime={d.date}>{dateLabel}</time></span>
+        <span>{d.category}</span>
+      </div>
+    </div>
+  </header>
+
+  {post.html
+    ? <Fragment set:html={post.html} />
+    : (
+      <div class="article-layout">
+        {toc.length > 0 && (
+          <aside class="article-toc" aria-label={t('blog.article.onThisPage')}>
+            <h2>{t('blog.article.onThisPage')}</h2>
+            <ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+          </aside>
+        )}
+        <article class="article-prose"><Content components={blocks} /></article>
+      </div>
+    )}
+</main>
+</BaseLayout>

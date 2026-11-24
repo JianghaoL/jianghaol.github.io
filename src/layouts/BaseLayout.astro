@@ -1,0 +1,53 @@
+---
+/*
+ * The one page shell every page uses: <head>, header, footer, scripts.
+ * Pages only provide their content plus a few props.
+ */
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { htmlLang, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description?: string;
+  /** Stylesheets in cascade order. Defaults to the site-wide set. */
+  styles?: string[];
+  /** Page scripts, loaded after /js/main.js. */
+  scripts?: string[];
+  /** Which nav item is highlighted. */
+  active?: 'home' | 'gallery' | 'blog' | 'about';
+  /** URL of this page in the other language (defaults to the same path). */
+  altUrl?: string;
+}
+
+const { lang, title, description, styles = ['/css/reset.css', '/css/style.css', '/css/apple-refactor.css'],
+  scripts = [], active, altUrl } = Astro.props;
+
+const csp = "default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests";
+const path = Astro.url.pathname.replace(/\/$/, '/index.html');
+const alternate = altUrl ?? path.replace(/^\/(en|zh)\//, `/${lang === 'en' ? 'zh' : 'en'}/`);
+---
+<!DOCTYPE html>
+<html lang={htmlLang(lang)}>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {import.meta.env.PROD && <meta http-equiv="Content-Security-Policy" content={csp}>}
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  {description && <meta name="description" content={description}>}
+  <title>{title}</title>
+  <link rel="alternate" hreflang={lang === 'en' ? 'zh-CN' : 'en'} href={alternate}>
+  {styles.map((href) => <link rel="stylesheet" href={href}>)}
+  <slot name="head" />
+</head>
+<body>
+  <Header lang={lang} active={active} altUrl={alternate} />
+  <slot />
+  <Footer lang={lang} />
+  <slot name="after-footer" />
+  <script is:inline src="/js/main.js"></script>
+  {scripts.map((src) => <script is:inline src={src}></script>)}
+  <script is:inline src="/js/lang-toggle.js"></script>
+</body>
+</html>

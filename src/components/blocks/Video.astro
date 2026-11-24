@@ -1,0 +1,15 @@
+---
+/* Video.  <Video title="Development Log" src="/assets/videos/x.mp4" />
+   or      <Video title="Trailer" youtube="VIDEO_ID" /> */
+interface Props { title?: string; src?: string; youtube?: string }
+const { title, src, youtube } = Astro.props;
+---
+<section class="content-block content-block--video" data-reveal>
+  <div class="video-container">
+    {title && <h2>{title}</h2>}
+    <div class="video-wrapper">
+      {src && <video class="project-inline-video" controls preload="metadata"><source src={src} type="video/mp4"></video>}
+      {youtube && <iframe src={`https://www.youtube.com/embed/${youtube}`} title={title ?? 'Video'} loading="lazy" allowfullscreen></iframe>}
+    </div>
+  </div>
+</section>

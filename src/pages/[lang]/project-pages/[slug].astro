@@ -1,0 +1,89 @@
+---
+/*
+ * Every project detail page is generated from this one template.
+ * Content: src/content/projects/<slug>/<lang>.md(x)
+ */
+import { render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Icon from '../../../components/Icon.astro';
+import { blocks } from '../../../components/blocks';
+import TextBlock from '../../../components/blocks/TextBlock.astro';
+import { useTranslations, languages, type Lang } from '../../../i18n/utils';
+import { getProjects, hasPage, type Localized } from '../../../lib/content';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const lang of languages) {
+    for (const project of await getProjects(lang)) {
+      if (hasPage(project)) paths.push({ params: { lang, slug: project.slug }, props: { project } });
+    }
+  }
+  return paths;
+}
+
+const { project } = Astro.props as { project: Localized<'projects'> };
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const d = project.data;
+
+const columns = [
+  { kind: 'tech', items: d.tech, label: d.labels?.tech ?? t('project.techStack'), listClass: 'tech-list' },
+  { kind: 'roles', items: d.roles, label: d.labels?.roles ?? t('project.myRole'), listClass: 'role-list' },
+  { kind: 'team', items: d.team, label: d.labels?.team ?? t('project.team'), listClass: 'team-list' },
+].filter((c) => c.items?.length);
+const icons = d.metaIcons ?? ['calendar', 'folder', 'clock'];
+
+// Body: migrated pages keep their HTML in <lang>.html; new pages use Markdown/MDX.
+const Content = project.html ? null : (await render(project.entry)).Content;
+const isMdx = project.entry.filePath?.endsWith('.mdx');
+---
+<BaseLayout lang={lang} title={`${t('meta.titleSuffix')} - ${d.title}`}
+  description={d.seoDescription ?? d.summary}
+  styles={['/css/reset.css', '/css/style.css', '/css/pages/project-detail.css', ...(d.styles ?? []), '/css/apple-refactor.css']}
+  scripts={['/js/project-detail.js', ...(d.scripts ?? [])]}>
+<main class="project-page">
+  <section class="project-hero">
+    <div class="project-hero-content">
+      {d.breadcrumb && (
+        <nav class="project-breadcrumb" aria-label="Breadcrumb">
+          <a href={d.breadcrumb.href}>{d.breadcrumb.label}</a>
+          <span aria-hidden="true">/</span><span>{d.breadcrumb.current}</span>
+        </nav>
+      )}
+      <h1 class="project-title">{d.title}</h1>
+      {d.summary && <p class="project-summary">{d.summary}</p>}
+      {d.meta?.length && (
+        <div class="project-meta">
+          {d.meta.map((m, i) => <span class="meta-item"><Icon name={icons[i] ?? 'clock'} />{m}</span>)}
+        </div>
+      )}
+      {columns.length > 0 && (
+        <div class="hero-tech-stack">
+          <div class="hero-details-container">
+            {columns.map((c) => (
+              <div class="hero-details-column">
+                <h3>{c.label}</h3>
+                <ul class={c.listClass}>
+                  {c.items!.map((item) => c.kind === 'tech' ? <li><span class="tech-tag">{item}</span></li> : <li>{item}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <div class="project-content">
+    {project.html && <Fragment set:html={project.html} />}
+    {Content && (isMdx ? <Content components={blocks} /> : <TextBlock><Content /></TextBlock>)}
+
+    <nav class="project-navigation" data-reveal>
+      <a href={d.backLink?.href ?? '../work-gallery/index.html'} class="nav-link nav-link--all">
+        <span class="nav-label">{d.backLink?.label ?? t('project.nav.all')}</span>
+        <Icon name="grid" />
+      </a>
+    </nav>
+  </div>
+</main>
+</BaseLayout>

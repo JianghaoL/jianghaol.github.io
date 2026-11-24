@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResumeModal from '../../components/ResumeModal.astro';
+import { useTranslations, langPaths, type Lang } from '../../i18n/utils';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+---
+<BaseLayout lang={lang} active="about" title={`${t('meta.titleSuffix')} - ${t('nav.about')}`}
+  styles={['/css/reset.css', '/css/style.css', '/css/apple-refactor.css', '/css/portfolio-refresh.css']}
+  scripts={['/js/resume-modal.js']}>
+<main>
+  <!-- Vision Section with Animation -->
+  <section id="vision" class="centered-section wave-section">
+    <canvas class="section-wave-canvas" aria-hidden="true"></canvas>
+    <div class="vision-content">
+      <img src="/assets/images/about/me.jpg" alt="Picture of Li Jianghao" class="vision-image">
+      <h3 class="vision-header">{t('about.vision.heading')}</h3>
+      <p class="vision-text">{t('about.vision.text')}</p>
+      
+      <!-- Resume Button -->
+      <div class="resume-button-container">
+        <button type="button" class="btn-view-resume" aria-haspopup="dialog" aria-controls="resume-modal-overlay">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <span>{t('about.viewResume')}</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Separator -->
+  <hr class="section-separator">
+
+  <!-- Introduction, Skills, and Education Section -->
+  <section id="about-details" class="about-details-section">
+    <div class="about-introduction">
+      <h3>{t('about.intro.heading')}</h3>
+      <p>{t('about.intro.p1')}</p>
+      <p>{t('about.intro.p2')}</p>
+      <p>{t('about.intro.p3')}</p>
+    </div>
+
+    <div class="about-skills">
+      <h3>{t('about.skills.heading')}</h3>
+      <ul>
+        <li>{t('about.skills.1')}</li>
+        <li>{t('about.skills.2')}</li>
+        <li>{t('about.skills.3')}</li>
+        <li>{t('about.skills.4')}</li>
+        <li>{t('about.skills.5')}</li>
+        <li>{t('about.skills.6')}</li>
+        <li>{t('about.skills.7')}</li>
+        <li>{t('about.skills.8')}</li>
+      </ul>
+    </div>
+
+    <div class="about-education">
+      <h3>{t('about.education.heading')}</h3>
+      <p>{t('about.education.school')}</p>
+      <p>{t('about.education.degree')}</p>
+      <p>{t('about.education.minor1')}</p>
+      <p>{t('about.education.minor2')}</p>
+    </div>
+  </section>
+  <section id="about-contact" class="about-contact" aria-labelledby="about-contact-title">
+    <h2 id="about-contact-title">{t('about.contact.heading')}</h2>
+    <div class="contact-links">
+      <a href="mailto:jianghaoli800@gmail.com"><span>{t('contact.email.label')}</span><strong>jianghaoli800@gmail.com</strong></a>
+      <a href="tel:+12139942364"><span>{t('contact.phone.label')}</span><strong>+1 (213) 994-2364</strong></a>
+      <a href="https://www.linkedin.com/in/lijiangh" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><strong>lijiangh ↗</strong></a>
+      <a href="https://github.com/JianghaoL" target="_blank" rel="noopener noreferrer"><span>GitHub</span><strong>JianghaoL ↗</strong></a>
+    </div>
+  </section>
+</main>
+<ResumeModal lang={lang} slot="after-footer" />
+</BaseLayout>

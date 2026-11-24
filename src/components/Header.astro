@@ -1,0 +1,31 @@
+---
+import { useTranslations, url, otherLang, type Lang } from '../i18n/utils';
+
+interface Props { lang: Lang; active?: 'home' | 'gallery' | 'blog' | 'about'; altUrl: string }
+const { lang, active, altUrl } = Astro.props;
+const t = useTranslations(lang);
+
+const items = [
+  { id: 'home', href: url(lang, 'index.html'), label: t('nav.home') },
+  { id: 'gallery', href: url(lang, 'work-gallery/index.html'), label: t('nav.workGallery') },
+  { id: 'blog', href: url(lang, 'blog/index.html'), label: t('nav.blog') },
+  { id: 'about', href: url(lang, 'about.html'), label: t('nav.about') },
+];
+---
+<header class="site-header">
+  <nav>
+    <button class="lang-toggle" aria-label="Toggle Language" data-lang={otherLang(lang)} data-href={altUrl}>{t('lang.toggle')}</button>
+    <ul class="nav-links">
+      {items.map((item) => (
+        <li>
+          {item.id === active
+            ? <a href={item.href} class="active" aria-current="page">{item.label}</a>
+            : <a href={item.href}>{item.label}</a>}
+        </li>
+      ))}
+    </ul>
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
