@@ -90,7 +90,7 @@
 }
 .demo-intensity-label output {
   font-variant-numeric: tabular-nums;
-  font-family: ui-monospace, monospace;
+  font-family: var(--font-mono);
 }
 .shepard-demo input[type="range"] {
   display: block;

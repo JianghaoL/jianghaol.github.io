@@ -16,6 +16,8 @@ export default defineConfig({
       // prefixes these need (e.g. -webkit-backdrop-filter for Safari < 18), so
       // the stylesheets in src/styles only ever use standard properties.
       cssTarget: ['chrome111', 'edge111', 'firefox114', 'safari16.4', 'ios16.4'],
+      // Never inline assets as data: URIs; the CSP only allows same-origin fonts and images.
+      assetsInlineLimit: 0,
     },
   },
   integrations: [mdx()],

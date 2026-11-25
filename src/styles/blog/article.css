@@ -197,7 +197,7 @@
   padding: 0.65rem 1rem;
   border-bottom: 1px solid var(--hairline);
   color: var(--text-tertiary);
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;

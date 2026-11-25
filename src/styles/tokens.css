@@ -32,11 +32,14 @@
   --hairline: rgba(226, 237, 252, 0.11);
   --hairline-strong: rgba(226, 237, 252, 0.2);
 
-  /* ---- Type ---- */
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --font-display:
-    -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+  /* ---- Type ----
+     Latin text uses self-hosted Inter (variable, with an optical-size axis, so
+     large headings get its display cut automatically). Chinese falls through
+     to the platform's UI font. Code uses JetBrains Mono (loaded on articles). */
+  --font-cjk: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --font-sans: "Inter Variable", var(--font-cjk);
+  --font-display: "Inter Variable", var(--font-cjk);
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Consolas, monospace;
 
   /* ---- Depth ---- */
   --shadow-sm: 0 10px 32px rgba(0, 0, 0, 0.22);

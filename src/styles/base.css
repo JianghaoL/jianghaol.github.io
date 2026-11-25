@@ -94,6 +94,13 @@ li {
   text-wrap: pretty;
 }
 
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-mono);
+}
+
 /* ---- Sections ---- */
 section {
   padding: clamp(5rem, 9vw, 9rem) max(24px, 4vw);
