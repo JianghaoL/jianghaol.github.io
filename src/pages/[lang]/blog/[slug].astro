@@ -37,7 +37,7 @@ if (!post.html) {
 ---
 <BaseLayout lang={lang} active="blog" title={`${d.title} - ${t('meta.titleSuffix')}`}
   description={d.seoDescription ?? d.summary ?? d.excerpt}
-  styles={['/css/reset.css', '/css/style.css', '/css/blog/article.css', ...(d.styles ?? []), '/css/apple-refactor.css']}
+  styles={['/css/reset.css', '/css/style.css', '/css/blog/article.css', ...(d.styles ?? []), '/css/liquid-glass.css']}
   scripts={['/js/blog/article-code.js', ...(d.scripts ?? [])]}>
 <main class="article-page">
   <header class="article-hero">

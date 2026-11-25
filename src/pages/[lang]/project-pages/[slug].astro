@@ -39,7 +39,7 @@ const isMdx = project.entry.filePath?.endsWith('.mdx');
 ---
 <BaseLayout lang={lang} title={`${t('meta.titleSuffix')} - ${d.title}`}
   description={d.seoDescription ?? d.summary}
-  styles={['/css/reset.css', '/css/style.css', '/css/pages/project-detail.css', ...(d.styles ?? []), '/css/apple-refactor.css']}
+  styles={['/css/reset.css', '/css/style.css', '/css/pages/project-detail.css', ...(d.styles ?? []), '/css/liquid-glass.css']}
   scripts={['/js/project-detail.js', ...(d.scripts ?? [])]}>
 <main class="project-page">
   <section class="project-hero">
