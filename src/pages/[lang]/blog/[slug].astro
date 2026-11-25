@@ -5,6 +5,7 @@
  */
 import { render } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/blog/article.css';
 import { blocks } from '../../../components/blocks';
 import { useTranslations, languages, type Lang } from '../../../i18n/utils';
 import { getPosts, type Localized } from '../../../lib/content';
@@ -37,7 +38,7 @@ if (!post.html) {
 ---
 <BaseLayout lang={lang} active="blog" title={`${d.title} - ${t('meta.titleSuffix')}`}
   description={d.seoDescription ?? d.summary ?? d.excerpt}
-  styles={['/css/reset.css', '/css/style.css', '/css/blog/article.css', ...(d.styles ?? []), '/css/liquid-glass.css']}
+  styles={d.styles ?? []}
   scripts={['/js/blog/article-code.js', ...(d.scripts ?? [])]}>
 <main class="article-page">
   <header class="article-hero">

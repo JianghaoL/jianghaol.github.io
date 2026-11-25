@@ -6,7 +6,9 @@
   justify-content: center;
   gap: 1.6rem;
   max-width: 1100px;
-  margin: 2rem auto 0; width: min(100%, var(--content-wide)); margin-inline: auto;
+  margin: 2rem auto 0;
+  width: min(100%, var(--content-wide));
+  margin-inline: auto;
 }
 
 .reel-card {
@@ -17,9 +19,14 @@
   overflow: hidden;
   border: 1px solid var(--hairline);
   background: var(--surface);
-  box-shadow: var(--shadow-sm), inset 0 1px rgba(255, 255, 255, 0.045);
+  box-shadow:
+    var(--shadow-sm),
+    inset 0 1px rgba(255, 255, 255, 0.045);
   backdrop-filter: saturate(125%);
-  -webkit-backdrop-filter: saturate(125%); border-radius: var(--radius-xl); transition: transform 340ms var(--ease-fluid), border-color 220ms ease;
+  border-radius: var(--radius-xl);
+  transition:
+    transform 340ms var(--ease-fluid),
+    border-color 220ms ease;
 }
 
 .reel-card:focus-visible {
@@ -31,7 +38,9 @@
 
 .reel-card:hover {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
-  outline: none; transform: translateY(-5px); border-color: rgba(112, 186, 255, 0.24);
+  outline: none;
+  transform: translateY(-5px);
+  border-color: rgba(112, 186, 255, 0.24);
 }
 
 .reel-card-visual {
@@ -51,7 +60,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.45s ease, filter 0.45s ease;
+  transition:
+    transform 0.45s ease,
+    filter 0.45s ease;
 }
 
 .reel-card:hover .reel-card-thumbnail,
@@ -90,7 +101,9 @@
   background: var(--accent);
   color: var(--bg);
   box-shadow: 0 0 24px rgba(106, 176, 243, 0.35);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .reel-card:hover .reel-card-play,
@@ -216,16 +229,67 @@
 }
 
 @media (prefers-reduced-transparency: reduce) {
-
   .reel-card {
     background: var(--surface-solid) !important;
     backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
   }
 }
 
 @media (prefers-contrast: more) {
-
-  .reel-card { border-width: 2px;
+  .reel-card {
+    border-width: 2px;
   }
+}
+
+/* ---- moved from style.css ---- */
+.wave-height-25 {
+  --wave-height: 25%;
+}
+
+.wave-height-48 {
+  --wave-height: 48%;
+}
+
+.wave-height-72 {
+  --wave-height: 72%;
+}
+
+.wave-height-42 {
+  --wave-height: 42%;
+}
+
+.wave-height-88 {
+  --wave-height: 88%;
+}
+
+.wave-height-58 {
+  --wave-height: 58%;
+}
+
+.wave-height-100 {
+  --wave-height: 100%;
+}
+
+.wave-height-64 {
+  --wave-height: 64%;
+}
+
+.wave-height-82 {
+  --wave-height: 82%;
+}
+
+.wave-height-36 {
+  --wave-height: 36%;
+}
+
+.wave-height-68 {
+  --wave-height: 68%;
+}
+
+.wave-height-46 {
+  --wave-height: 46%;
+}
+
+.wave-height-28 {
+  --wave-height: 28%;
 }

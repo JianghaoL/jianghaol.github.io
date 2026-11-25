@@ -31,9 +31,11 @@ src/
   layouts/BaseLayout.astro  所有页面共用的 <head>、导航、页脚
   components/           Header、Footer、简历弹窗，以及 MDX 里可用的内容块
   lib/content.ts        读取内容、合并中英文
+  styles/               全部样式（Astro 打包压缩），见下面"样式"
 public/                 原样发布的文件
   assets/               图片、视频、音频、PDF
-  css/  js/             样式和前端脚本
+  js/                   前端脚本
+  css/blog/             个别博客文章自带的 demo 样式
 ```
 
 `[lang]` 会生成 `/en/` 和 `/zh/` 两份页面，网址和以前完全一样，比如 `/en/project-pages/mantle.html`。
@@ -63,6 +65,25 @@ public/                 原样发布的文件
 - 每个 `## 标题` 会自动变成一节，并出现在左侧"本页目录"里。
 - ` ```cpp ` 这样的代码块会自动加上语言标签和高亮。
 - 如果需要交互 demo，在 frontmatter 里写 `scripts:` / `styles:`，文件放在 `public/js/blog/`、`public/css/blog/`。Shepard tone 那篇就是这样做的。
+
+## 样式
+
+所有样式在 `src/styles/`，由 Astro 打包成一个压缩后的 CSS 文件（带哈希，浏览器缓存不会读到旧版）。
+
+```
+src/styles/
+  tokens.css        设计变量：颜色、字体、圆角、阴影、动效。改主题只改这里
+  base.css          重置 + 元素默认样式（body、标题、section、焦点框）
+  layout.css        导航栏、section 外框、页脚
+  components/       可复用组件：按钮、标签、播放器、简历弹窗、液态玻璃材质……
+  pages/            页面专属样式
+  blog/             博客列表、文章页
+  global.css        按顺序引入以上文件；顺序就是层叠顺序
+```
+
+- 全站样式由 `BaseLayout.astro` 引入 `global.css`；作品展廊、博客、文章、项目页各自在模板里再引入自己的那份。
+- 颜色、圆角、阴影请用 `tokens.css` 里的变量，不要写死数值。强调色的半透明版本写成 `rgb(var(--accent-rgb) / 0.2)`。
+- `components/liquid-glass.css` 是玻璃材质（配合 `public/js/liquid-glass.js`），放在最后，所以能覆盖任何表面。
 
 ## 改界面文字
 

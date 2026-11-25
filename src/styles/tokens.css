@@ -1,0 +1,70 @@
+/*
+ * Design tokens — the single source of truth for colour, type, shape, depth,
+ * spacing and motion. Components reference these variables; they never
+ * redefine them. To re-theme the site, change values here only.
+ */
+
+:root {
+  color-scheme: dark;
+
+  /* ---- Colour: surfaces ---- */
+  --bg: #05070b;
+  --surface: rgba(16, 23, 34, 0.72); /* translucent cards and panels */
+  --surface-hover: rgba(24, 34, 49, 0.84);
+  --surface-solid: #101722; /* fallback when transparency is reduced */
+  --card-bg: rgba(15, 21, 31, 0.76);
+
+  /* ---- Colour: text ---- */
+  --text: #f5f7fb;
+  --text-secondary: rgba(235, 241, 250, 0.72);
+  --text-tertiary: rgba(221, 230, 242, 0.52);
+
+  /* ---- Colour: accent ----
+     One hue for every interactive and highlight colour. Translucent tints use
+     rgb(var(--accent-rgb) / <alpha>) so they follow the accent automatically. */
+  --accent-rgb: 112 186 255;
+  --accent: rgb(var(--accent-rgb));
+  --accent-strong: #9bd0ff;
+  --accent-violet: #9a8cff;
+  --focus-ring: rgb(var(--accent-rgb) / 0.72);
+
+  /* ---- Colour: lines ---- */
+  --hairline: rgba(226, 237, 252, 0.11);
+  --hairline-strong: rgba(226, 237, 252, 0.2);
+
+  /* ---- Type ---- */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-display:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+
+  /* ---- Depth ---- */
+  --shadow-sm: 0 10px 32px rgba(0, 0, 0, 0.22);
+  --shadow-md: 0 24px 70px rgba(0, 0, 0, 0.34);
+  --shadow-lg: 0 38px 110px rgba(0, 0, 0, 0.46);
+
+  /* ---- Shape ---- */
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 30px;
+  --radius-full: 9999px;
+
+  /* ---- Layout ---- */
+  --content-wide: 1240px;
+  --content-reading: 780px;
+  --surface-padding: clamp(1.5rem, 2.5vw, 2.25rem);
+
+  /* ---- Motion ---- */
+  --ease-fluid: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-press: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition: 0.42s var(--ease-fluid);
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --text-secondary: rgba(255, 255, 255, 0.92);
+    --text-tertiary: rgba(255, 255, 255, 0.78);
+    --hairline: rgba(255, 255, 255, 0.38);
+  }
+}

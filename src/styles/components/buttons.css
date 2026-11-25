@@ -16,15 +16,20 @@
   text-decoration: none;
   border: 2px solid var(--accent);
   background: transparent;
-  overflow: var(--overflow-clip);
+  overflow: hidden;
   cursor: pointer;
   border-radius: 12px;
-  transition: transform 100ms var(--ease-press), color 180ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  transition:
+    transform 100ms var(--ease-press),
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
 }
 
 /* Flowing light pseudo-element */
 .btn::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -52,7 +57,7 @@
 
 /* Subtle glow on hover */
 .btn:hover {
-  box-shadow: 
+  box-shadow:
     0 0 20px rgba(106, 176, 243, 0.15),
     0 4px 12px rgba(0, 0, 0, 0.2);
   border-color: rgba(106, 176, 243, 0.8);
@@ -68,7 +73,7 @@
 /* Focus state for accessibility - keyboard navigation */
 .btn:focus {
   outline: none;
-  box-shadow: 
+  box-shadow:
     0 0 0 3px rgba(106, 176, 243, 0.4),
     0 0 20px rgba(106, 176, 243, 0.15);
 }
@@ -76,7 +81,7 @@
 .btn:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
-  box-shadow: 
+  box-shadow:
     0 0 0 3px rgba(106, 176, 243, 0.4),
     0 0 20px rgba(106, 176, 243, 0.15);
 }
@@ -105,15 +110,20 @@
   text-decoration: none;
   border: 2px solid var(--accent);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: var(--overflow-clip);
+  overflow: hidden;
   cursor: pointer;
   border-radius: 12px;
-  transition: transform 100ms var(--ease-press), color 180ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  transition:
+    transform 100ms var(--ease-press),
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
 }
 
 /* Constant flowing light animation for gallery button - triggers on hover */
 .btn-gallery::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -151,7 +161,7 @@
 .btn-gallery:hover {
   transform: scale(1.05);
   background: linear-gradient(135deg, rgba(106, 176, 243, 0.25) 0%, rgba(74, 141, 195, 0.35) 100%);
-  box-shadow: 
+  box-shadow:
     0 0 30px rgba(106, 176, 243, 0.25),
     0 8px 20px rgba(0, 0, 0, 0.3);
   border-color: rgba(106, 176, 243, 0.9);
@@ -165,7 +175,7 @@
 /* Focus state for gallery button */
 .btn-gallery:focus {
   outline: none;
-  box-shadow: 
+  box-shadow:
     0 0 0 3px rgba(106, 176, 243, 0.4),
     0 0 30px rgba(106, 176, 243, 0.25);
 }
@@ -189,7 +199,7 @@
 .btn.email::before,
 .btn.linkedin::before,
 .btn.github::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -221,20 +231,26 @@
    ============================================= */
 @media (prefers-reduced-motion: reduce) {
   .btn::before,
-.btn.email::before,
-.btn.linkedin::before,
-.btn.github::before {
+  .btn.email::before,
+  .btn.linkedin::before,
+  .btn.github::before {
     transition: none;
   }
-  
+
   .btn-gallery::before {
     animation: none;
   }
-  
+
   .btn:hover::before,
-.btn.email:hover::before,
-.btn.linkedin:hover::before,
-.btn.github:hover::before {
+  .btn.email:hover::before,
+  .btn.linkedin:hover::before,
+  .btn.github:hover::before {
     left: -100%;
   }
+}
+
+/* ---- moved from style.css ---- */
+.card-link:active {
+  transform: scale(0.97);
+  transition-duration: 90ms;
 }

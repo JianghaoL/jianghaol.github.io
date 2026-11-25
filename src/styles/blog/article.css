@@ -116,7 +116,9 @@
   font-size: 0.88rem;
   line-height: 1.4;
   text-decoration: none;
-  transition: color 180ms ease, background-color 180ms ease;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease;
 }
 
 .article-toc a:hover,
@@ -172,7 +174,7 @@
   text-underline-offset: 0.2em;
 }
 
-.article-section :not(pre)>code {
+.article-section :not(pre) > code {
   padding: 0.15em 0.38em;
   border: 1px solid rgba(112, 186, 255, 0.16);
   border-radius: 0.35rem;
@@ -206,7 +208,11 @@
   padding: 1.2rem;
   overflow-x: auto;
   color: #d7e7f7;
-  font: 0.84rem/1.65 ui-monospace, SFMono-Regular, Consolas, monospace;
+  font:
+    0.84rem/1.65 ui-monospace,
+    SFMono-Regular,
+    Consolas,
+    monospace;
   tab-size: 4;
 }
 
@@ -215,15 +221,32 @@
 }
 
 /* Markdown-style syntax colors, applied by the local article highlighter. */
-.syntax-comment { color: #718096; font-style: italic; }
-.syntax-keyword { color: #ff7ab2; }
-.syntax-type { color: #82d2ce; }
+.syntax-comment {
+  color: #718096;
+  font-style: italic;
+}
+.syntax-keyword {
+  color: #ff7ab2;
+}
+.syntax-type {
+  color: #82d2ce;
+}
 .syntax-literal,
-.syntax-number { color: #d9c97c; }
-.syntax-string { color: #b8d47a; }
-.syntax-directive { color: #c6a0f6; }
-.syntax-function { color: #7dc4e4; }
-.syntax-operator { color: #89b4fa; }
+.syntax-number {
+  color: #d9c97c;
+}
+.syntax-string {
+  color: #b8d47a;
+}
+.syntax-directive {
+  color: #c6a0f6;
+}
+.syntax-function {
+  color: #7dc4e4;
+}
+.syntax-operator {
+  color: #89b4fa;
+}
 
 .syntax-token {
   text-shadow: 0 0 18px color-mix(in srgb, currentColor 16%, transparent);
@@ -268,7 +291,7 @@
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.025);
   color: var(--text);
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1rem, 2.5vw, 1.2rem);
   text-align: center;
   white-space: nowrap;
@@ -338,7 +361,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .article-toc a,
-.article-breadcrumb a {
+  .article-breadcrumb a {
     transition: none;
   }
 }
