@@ -9,11 +9,11 @@
 .content-block--awards {
   background: linear-gradient(
     135deg,
-    rgba(106, 176, 243, 0.03) 0%,
-    rgba(106, 176, 243, 0.06) 50%,
-    rgba(106, 176, 243, 0.03) 100%
+    rgb(var(--accent-rgb) / 0.03) 0%,
+    rgb(var(--accent-rgb) / 0.06) 50%,
+    rgb(var(--accent-rgb) / 0.03) 100%
   );
-  border: 1px solid rgba(106, 176, 243, 0.1);
+  border: 1px solid rgb(var(--accent-rgb) / 0.1);
   border-radius: var(--radius-xl);
   padding: 4rem 2rem;
   margin: 2rem 0;
@@ -52,7 +52,7 @@
 .award-card {
   position: relative;
   background: linear-gradient(145deg, rgba(30, 30, 45, 0.7) 0%, rgba(20, 22, 35, 0.8) 100%);
-  border: 1px solid rgba(106, 176, 243, 0.15);
+  border: 1px solid rgb(var(--accent-rgb) / 0.15);
   border-radius: var(--radius-lg);
   padding: 2.5rem 1.5rem 2rem;
   text-align: center;
@@ -70,7 +70,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, transparent 0%, rgba(106, 176, 243, 0.05) 50%, transparent 100%);
+  background: linear-gradient(135deg, transparent 0%, rgb(var(--accent-rgb) / 0.05) 50%, transparent 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
@@ -80,9 +80,9 @@
   transform: translateY(-8px);
   box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(106, 176, 243, 0.15),
+    0 0 30px rgb(var(--accent-rgb) / 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  border-color: rgba(106, 176, 243, 0.3);
+  border-color: rgb(var(--accent-rgb) / 0.3);
 }
 
 .award-card:hover::before {
@@ -98,12 +98,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(106, 176, 243, 0.15) 0%, rgba(106, 176, 243, 0.08) 100%);
-  border: 3px solid rgba(106, 176, 243, 0.4);
+  background: linear-gradient(135deg, rgb(var(--accent-rgb) / 0.15) 0%, rgb(var(--accent-rgb) / 0.08) 100%);
+  border: 3px solid rgb(var(--accent-rgb) / 0.4);
   border-radius: 50%;
   box-shadow:
     0 8px 24px rgba(0, 0, 0, 0.3),
-    0 0 40px rgba(106, 176, 243, 0.2),
+    0 0 40px rgb(var(--accent-rgb) / 0.2),
     inset 0 2px 0 rgba(255, 255, 255, 0.1);
   transition:
     transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
@@ -113,10 +113,10 @@
 
 .award-card:hover .award-emblem {
   transform: scale(1.05);
-  border-color: rgba(106, 176, 243, 0.6);
+  border-color: rgb(var(--accent-rgb) / 0.6);
   box-shadow:
     0 12px 32px rgba(0, 0, 0, 0.4),
-    0 0 50px rgba(106, 176, 243, 0.3),
+    0 0 50px rgb(var(--accent-rgb) / 0.3),
     inset 0 2px 0 rgba(255, 255, 255, 0.15);
 }
 
@@ -154,7 +154,7 @@
   font-weight: 500;
   color: var(--text);
   background: transparent;
-  border: 1.5px solid rgba(106, 176, 243, 0.4);
+  border: 1.5px solid rgb(var(--accent-rgb) / 0.4);
   border-radius: var(--radius-sm);
   cursor: pointer;
   overflow: hidden;
@@ -182,9 +182,9 @@
     120deg,
     transparent 0%,
     transparent 30%,
-    rgba(106, 176, 243, 0.15) 45%,
-    rgba(106, 176, 243, 0.3) 50%,
-    rgba(106, 176, 243, 0.15) 55%,
+    rgb(var(--accent-rgb) / 0.15) 45%,
+    rgb(var(--accent-rgb) / 0.3) 50%,
+    rgb(var(--accent-rgb) / 0.15) 55%,
     transparent 70%,
     transparent 100%
   );
@@ -200,7 +200,7 @@
 .btn-certificate:hover {
   border-color: var(--accent);
   box-shadow:
-    0 0 20px rgba(106, 176, 243, 0.2),
+    0 0 20px rgb(var(--accent-rgb) / 0.2),
     0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -246,12 +246,12 @@
   max-width: 90%;
   max-height: 90vh;
   background: rgba(20, 22, 35, 0.95);
-  border: 1px solid rgba(106, 176, 243, 0.2);
+  border: 1px solid rgb(var(--accent-rgb) / 0.2);
   border-radius: var(--radius-lg);
   padding: 3.5rem 2rem 2rem;
   box-shadow:
     0 25px 50px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(106, 176, 243, 0.15);
+    0 0 40px rgb(var(--accent-rgb) / 0.15);
   transform: scale(0.9) translateY(20px);
   opacity: 0;
   transition:
@@ -288,8 +288,8 @@
   right: 1rem;
   width: 40px;
   height: 40px;
-  background: rgba(106, 176, 243, 0.1);
-  border: 1px solid rgba(106, 176, 243, 0.3);
+  background: rgb(var(--accent-rgb) / 0.1);
+  border: 1px solid rgb(var(--accent-rgb) / 0.3);
   border-radius: var(--radius-sm);
   cursor: pointer;
   display: flex;
@@ -303,7 +303,7 @@
 }
 
 .certificate-modal-close:hover {
-  background: rgba(106, 176, 243, 0.2);
+  background: rgb(var(--accent-rgb) / 0.2);
   border-color: var(--accent);
   transform: rotate(90deg);
 }

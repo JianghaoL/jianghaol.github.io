@@ -47,7 +47,7 @@
 .nav-links a.active {
   position: relative;
   color: var(--text);
-  background: rgba(112, 186, 255, 0.12);
+  background: rgb(var(--accent-rgb) / 0.12);
 }
 
 .nav-links a.active::after {
@@ -173,7 +173,7 @@
   }
 
   .nav-links a:focus {
-    background: rgba(106, 176, 243, 0.1);
+    background: rgb(var(--accent-rgb) / 0.1);
     color: var(--accent);
   }
 }
@@ -355,9 +355,9 @@ header {
     120deg,
     transparent 0%,
     transparent 30%,
-    rgba(106, 176, 243, 0.15) 45%,
-    rgba(106, 176, 243, 0.3) 50%,
-    rgba(106, 176, 243, 0.15) 55%,
+    rgb(var(--accent-rgb) / 0.15) 45%,
+    rgb(var(--accent-rgb) / 0.3) 50%,
+    rgb(var(--accent-rgb) / 0.15) 55%,
     transparent 70%,
     transparent 100%
   );
@@ -373,16 +373,16 @@ header {
 
 .lang-toggle:hover {
   color: var(--text);
-  border-color: rgba(112, 186, 255, 0.36);
-  background: rgba(112, 186, 255, 0.1);
+  border-color: rgb(var(--accent-rgb) / 0.36);
+  background: rgb(var(--accent-rgb) / 0.1);
   box-shadow: none;
 }
 
 .lang-toggle:focus {
   outline: none;
   box-shadow:
-    0 0 0 3px rgba(106, 176, 243, 0.4),
-    0 0 15px rgba(106, 176, 243, 0.15);
+    0 0 0 3px rgb(var(--accent-rgb) / 0.4),
+    0 0 15px rgb(var(--accent-rgb) / 0.15);
 }
 
 .lang-toggle:focus-visible {

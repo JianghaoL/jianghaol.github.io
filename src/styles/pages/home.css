@@ -172,7 +172,7 @@
   position: absolute;
   inset: auto 12% 7% 12%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(112, 186, 255, 0.26), transparent);
+  background: linear-gradient(90deg, transparent, rgb(var(--accent-rgb) / 0.26), transparent);
   pointer-events: none;
 }
 

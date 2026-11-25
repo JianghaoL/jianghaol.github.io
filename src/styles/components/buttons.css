@@ -39,9 +39,9 @@
     120deg,
     transparent 0%,
     transparent 30%,
-    rgba(106, 176, 243, 0.15) 45%,
-    rgba(106, 176, 243, 0.3) 50%,
-    rgba(106, 176, 243, 0.15) 55%,
+    rgb(var(--accent-rgb) / 0.15) 45%,
+    rgb(var(--accent-rgb) / 0.3) 50%,
+    rgb(var(--accent-rgb) / 0.15) 55%,
     transparent 70%,
     transparent 100%
   );
@@ -58,9 +58,9 @@
 /* Subtle glow on hover */
 .btn:hover {
   box-shadow:
-    0 0 20px rgba(106, 176, 243, 0.15),
+    0 0 20px rgb(var(--accent-rgb) / 0.15),
     0 4px 12px rgba(0, 0, 0, 0.2);
-  border-color: rgba(106, 176, 243, 0.8);
+  border-color: rgb(var(--accent-rgb) / 0.8);
 }
 
 /* Active/click state */
@@ -74,16 +74,16 @@
 .btn:focus {
   outline: none;
   box-shadow:
-    0 0 0 3px rgba(106, 176, 243, 0.4),
-    0 0 20px rgba(106, 176, 243, 0.15);
+    0 0 0 3px rgb(var(--accent-rgb) / 0.4),
+    0 0 20px rgb(var(--accent-rgb) / 0.15);
 }
 
 .btn:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
   box-shadow:
-    0 0 0 3px rgba(106, 176, 243, 0.4),
-    0 0 20px rgba(106, 176, 243, 0.15);
+    0 0 0 3px rgb(var(--accent-rgb) / 0.4),
+    0 0 20px rgb(var(--accent-rgb) / 0.15);
 }
 
 /* =============================================
@@ -133,9 +133,9 @@
     120deg,
     transparent 0%,
     transparent 30%,
-    rgba(106, 176, 243, 0.2) 45%,
-    rgba(106, 176, 243, 0.4) 50%,
-    rgba(106, 176, 243, 0.2) 55%,
+    rgb(var(--accent-rgb) / 0.2) 45%,
+    rgb(var(--accent-rgb) / 0.4) 50%,
+    rgb(var(--accent-rgb) / 0.2) 55%,
     transparent 70%,
     transparent 100%
   );
@@ -160,11 +160,11 @@
 /* Gallery button hover - includes scale(1.05) and color fill */
 .btn-gallery:hover {
   transform: scale(1.05);
-  background: linear-gradient(135deg, rgba(106, 176, 243, 0.25) 0%, rgba(74, 141, 195, 0.35) 100%);
+  background: linear-gradient(135deg, rgb(var(--accent-rgb) / 0.25) 0%, rgba(74, 141, 195, 0.35) 100%);
   box-shadow:
-    0 0 30px rgba(106, 176, 243, 0.25),
+    0 0 30px rgb(var(--accent-rgb) / 0.25),
     0 8px 20px rgba(0, 0, 0, 0.3);
-  border-color: rgba(106, 176, 243, 0.9);
+  border-color: rgb(var(--accent-rgb) / 0.9);
 }
 
 .btn-gallery:active {
@@ -176,8 +176,8 @@
 .btn-gallery:focus {
   outline: none;
   box-shadow:
-    0 0 0 3px rgba(106, 176, 243, 0.4),
-    0 0 30px rgba(106, 176, 243, 0.25);
+    0 0 0 3px rgb(var(--accent-rgb) / 0.4),
+    0 0 30px rgb(var(--accent-rgb) / 0.25);
 }
 
 .btn-gallery:focus-visible {
@@ -209,9 +209,9 @@
     120deg,
     transparent 0%,
     transparent 30%,
-    rgba(106, 176, 243, 0.15) 45%,
-    rgba(106, 176, 243, 0.3) 50%,
-    rgba(106, 176, 243, 0.15) 55%,
+    rgb(var(--accent-rgb) / 0.15) 45%,
+    rgb(var(--accent-rgb) / 0.3) 50%,
+    rgb(var(--accent-rgb) / 0.15) 55%,
     transparent 70%,
     transparent 100%
   );

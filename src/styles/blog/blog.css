@@ -121,7 +121,7 @@
 
 .toc-link.active {
   color: var(--accent);
-  background: rgba(106, 176, 243, 0.15);
+  background: rgb(var(--accent-rgb) / 0.15);
   padding-left: 1rem;
 }
 
@@ -181,9 +181,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(106, 176, 243, 0.2) 0%, rgba(74, 141, 195, 0.3) 100%);
+  background: linear-gradient(135deg, rgb(var(--accent-rgb) / 0.2) 0%, rgba(74, 141, 195, 0.3) 100%);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(106, 176, 243, 0.3);
+  border: 1px solid rgb(var(--accent-rgb) / 0.3);
   overflow: hidden;
 }
 
@@ -268,7 +268,7 @@
 
 .blog-card:hover .blog-card-front,
 .blog-card:hover .blog-card-back {
-  border-color: rgba(106, 176, 243, 0.4);
+  border-color: rgb(var(--accent-rgb) / 0.4);
 }
 
 /* Front Side */
@@ -286,7 +286,7 @@
 .card-image {
   width: 100%;
   height: 200px;
-  background: linear-gradient(135deg, rgba(106, 176, 243, 0.2) 0%, rgba(74, 141, 195, 0.3) 100%);
+  background: linear-gradient(135deg, rgb(var(--accent-rgb) / 0.2) 0%, rgba(74, 141, 195, 0.3) 100%);
   background-size: cover;
   background-position: center;
   position: relative;
@@ -356,12 +356,12 @@
   font-size: 0.75rem;
   font-weight: 500;
   color: var(--accent);
-  border: 1px solid rgba(106, 176, 243, 0.3);
+  border: 1px solid rgb(var(--accent-rgb) / 0.3);
   border-radius: var(--radius-full);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   border-color: var(--hairline);
-  background: rgba(112, 186, 255, 0.08);
+  background: rgb(var(--accent-rgb) / 0.08);
 }
 
 /* Back Side */
@@ -438,7 +438,7 @@
 }
 
 .card-back-cta:hover {
-  background: rgba(106, 176, 243, 0.9);
+  background: rgb(var(--accent-rgb) / 0.9);
   transform: translateX(3px);
 }
 

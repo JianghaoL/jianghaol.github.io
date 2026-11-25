@@ -19,7 +19,7 @@
   padding: 0.4rem 0.8rem;
   font-size: 0.85rem;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(106, 176, 243, 0.3);
+  border: 1px solid rgb(var(--accent-rgb) / 0.3);
   border-color: var(--hairline);
   background: rgba(255, 255, 255, 0.05);
   color: var(--text-secondary);

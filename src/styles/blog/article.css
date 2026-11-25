@@ -66,7 +66,7 @@
   padding: 0.3rem 0.75rem;
   border: 1px solid var(--hairline);
   border-radius: var(--radius-full);
-  background: rgba(112, 186, 255, 0.07);
+  background: rgb(var(--accent-rgb) / 0.07);
   color: var(--text-secondary);
   font-size: 0.82rem;
 }
@@ -176,9 +176,9 @@
 
 .article-section :not(pre) > code {
   padding: 0.15em 0.38em;
-  border: 1px solid rgba(112, 186, 255, 0.16);
+  border: 1px solid rgb(var(--accent-rgb) / 0.16);
   border-radius: 0.35rem;
-  background: rgba(112, 186, 255, 0.08);
+  background: rgb(var(--accent-rgb) / 0.08);
   color: #b8dcff;
   font-size: 0.9em;
 }
@@ -300,9 +300,9 @@
 .article-callout {
   margin-top: 3rem;
   padding: 1.5rem;
-  border: 1px solid rgba(112, 186, 255, 0.22);
+  border: 1px solid rgb(var(--accent-rgb) / 0.22);
   border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(112, 186, 255, 0.11), rgba(112, 186, 255, 0.035));
+  background: linear-gradient(135deg, rgb(var(--accent-rgb) / 0.11), rgb(var(--accent-rgb) / 0.035));
 }
 
 .article-callout p {
