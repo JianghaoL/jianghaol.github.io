@@ -22,13 +22,7 @@
   text-align: center;
   min-height: 58svh;
   padding: clamp(7rem, 13vw, 11rem) max(24px, 5vw) clamp(4rem, 8vw, 7rem);
-  background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(76, 133, 211, 0.17),
-      transparent 34rem
-    ),
-    transparent;
+  background: radial-gradient(circle at 50% 0%, rgba(76, 133, 211, 0.17), transparent 34rem), transparent;
   border-bottom: 1px solid var(--hairline);
 }
 
@@ -619,11 +613,7 @@ img.full-image:hover {
 .cta-container {
   text-align: center;
   padding: 3rem 2rem;
-  background: linear-gradient(
-    180deg,
-    rgb(var(--accent-rgb) / 0.05) 0%,
-    transparent 100%
-  );
+  background: linear-gradient(180deg, rgb(var(--accent-rgb) / 0.05) 0%, transparent 100%);
   border-radius: var(--radius-xl);
 }
 
@@ -774,12 +764,7 @@ img.full-image:hover {
   border: 1px solid rgb(var(--accent-rgb) / 0.22);
   border-radius: 24px;
   background:
-    radial-gradient(
-      circle at top right,
-      rgb(var(--accent-rgb) / 0.16),
-      transparent 38%
-    ),
-    rgba(13, 19, 29, 0.82);
+    radial-gradient(circle at top right, rgb(var(--accent-rgb) / 0.16), transparent 38%), rgba(13, 19, 29, 0.82);
   box-shadow: 0 22px 55px rgba(0, 0, 0, 0.22);
 }
 
@@ -915,10 +900,7 @@ img.full-image:hover {
     grid-column: span 1;
   }
 
-  .hero-details-column .tech-list {
-    justify-content: center;
-  }
-
+  .hero-details-column .tech-list,
   .hero-details-column:last-child .team-list {
     justify-content: center;
   }
@@ -1044,10 +1026,7 @@ img.full-image:hover {
 
 /* High contrast mode adjustments */
 @media (prefers-contrast: high) {
-  .project-breadcrumb a {
-    color: var(--text);
-  }
-
+  .project-breadcrumb a,
   .role-list li,
   .team-list li {
     color: var(--text);

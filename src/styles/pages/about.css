@@ -152,12 +152,8 @@
   .about-details-section {
     grid-template-columns: 1fr;
   }
-  .about-introduction {
-    grid-column: 1;
-  }
-  .about-education {
-    grid-column: 1;
-  }
+  .about-introduction,
+  .about-education,
   .about-skills {
     grid-column: 1;
   }

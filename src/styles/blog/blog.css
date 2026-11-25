@@ -517,10 +517,7 @@
     font-size: 0.9rem;
   }
 
-  .blog-content-wrapper {
-    padding: 1rem;
-  }
-
+  .blog-content-wrapper,
   .blog-toc {
     padding: 1rem;
   }
@@ -610,11 +607,7 @@ html {
 
 /* ---- moved from style.css ---- */
 @media (prefers-reduced-transparency: reduce) {
-  .blog-toc {
-    background: var(--surface-solid) !important;
-    backdrop-filter: none !important;
-  }
-
+  .blog-toc,
   .blog-card-front {
     background: var(--surface-solid) !important;
     backdrop-filter: none !important;

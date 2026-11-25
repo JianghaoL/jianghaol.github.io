@@ -204,10 +204,7 @@
 }
 
 @media (prefers-reduced-transparency: reduce) {
-  .site-header {
-    background: var(--surface-solid) !important;
-    backdrop-filter: none !important;
-  }
+  .site-header,
   .nav-links {
     background: var(--surface-solid) !important;
     backdrop-filter: none !important;
