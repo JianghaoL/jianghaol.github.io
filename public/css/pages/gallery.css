@@ -859,11 +859,6 @@
   animation: cardFadeOut 0.3s ease forwards;
 }
 
-.gallery-grid.sorted .gallery-card {
-  animation: cardFadeIn 0.4s ease forwards;
-  animation-delay: calc(var(--card-index) * 0.05s);
-}
-
 @keyframes cardFadeOut {
   from {
     opacity: 1;
@@ -969,7 +964,7 @@
 /* =============================================
    Footer Styling (Gallery Page)
    ============================================= */
-.gallery-section + .site-footer {
+.gallery-section+.site-footer {
   background: var(--bg);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -979,9 +974,9 @@
    ============================================= */
 @media (max-width: 1024px) {
   .gallery-grid.view-grid,
-  .category-cards,
-  .alpha-cards,
-  .timeline-cards-grid {
+.category-cards,
+.alpha-cards,
+.timeline-cards-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
   }
@@ -1031,9 +1026,9 @@
   }
   
   .gallery-grid.view-grid,
-  .category-cards,
-  .alpha-cards,
-  .timeline-cards-grid {
+.category-cards,
+.alpha-cards,
+.timeline-cards-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
     max-width: 400px;
@@ -1081,7 +1076,7 @@
   }
   
   .gallery-grid.view-timeline::before,
-  .gallery-grid.view-timeline::after {
+.gallery-grid.view-timeline::after {
     left: 10px;
   }
   
@@ -1147,17 +1142,17 @@
   }
   
   .gallery-grid.view-timeline::before,
-  .gallery-grid.view-timeline::after {
+.gallery-grid.view-timeline::after {
     display: none;
   }
   
   .timeline-year-marker::before,
-  .timeline-year-marker::after {
+.timeline-year-marker::after {
     display: none;
   }
 
   .timeline-card-wrapper::before,
-  .timeline-card-wrapper::after {
+.timeline-card-wrapper::after {
     display: none;
   }
 
@@ -1176,17 +1171,16 @@
   }
   
   .gallery-card,
-  .timeline-year-section,
-  .timeline-card-wrapper,
-  .timeline-year-marker,
-  .category-section,
-  .alpha-section {
+.timeline-year-section,
+.timeline-card-wrapper,
+.timeline-year-marker,
+.category-section,
+.alpha-section {
     animation: none;
     opacity: 1;
   }
   
-  .gallery-grid.sorting .gallery-card,
-  .gallery-grid.sorted .gallery-card {
+  .gallery-grid.sorting .gallery-card {
     animation: none;
     opacity: 1;
   }
@@ -1253,5 +1247,5 @@
 }
 @media (prefers-contrast: more) {
   .gallery-card--featured .gallery-card-front,
-  .featured-star { border: 2px solid #fff; }
+.featured-star { border: 2px solid #fff; }
 }

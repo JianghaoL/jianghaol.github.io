@@ -1,9 +1,6 @@
 @import 'base.css';
 @import 'layout.css';
 @import 'components/buttons.css';
-@import 'components/cards.css';
-@import 'components/work-carousel.css';
-@import 'components/contact-modal.css';
 @import 'components/resume-modal.css';
 @import 'components/awards.css';
 @import 'components/music-player.css';
@@ -24,7 +21,12 @@ body {
   overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -110,37 +112,12 @@ section.wave-section {
   z-index: 1;
   pointer-events: none;
 }
-section.wave-section > *:not(.section-wave-canvas) {
+section.wave-section>*:not(.section-wave-canvas) {
   position: relative;
   z-index: 2;
 }
 #work.wave-section {
   background: var(--bg);
-}
-.work-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.6rem;
-  margin-top: 2rem;
-}
-.work-card {
-  background: var(--card-bg);
-  padding: 1.6rem;
-  border-radius: var(--radius-md);
-  overflow: var(--overflow-clip);
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-.work-card:hover {
-  transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.45);
-}
-.work-preview {
-  height: 160px;
-  border-radius: var(--radius-sm);
-  background-size: cover;
-  background-position: center;
-  margin-bottom: .8rem;
-  overflow: var(--overflow-clip);
 }
 
 /* Scroll Reveal */
@@ -191,174 +168,20 @@ section.wave-section > *:not(.section-wave-canvas) {
 .intro-type { color: var(--accent); font-weight: 500; margin-top: .6rem; text-align: left; min-height: 1.4rem; font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 .skills-list { list-style: none; padding: 0; margin: 1rem 0; display: flex; gap: .6rem; flex-wrap: wrap; }
 .skill { background: rgba(255,255,255,0.03); padding: .45rem .7rem; border-radius: var(--radius-full); font-size: .9rem; }
-.intro-ctas { margin-top: 1rem; display: flex; gap: .8rem; }
-.intro-ctas .btn { padding: .6rem 1rem; border-radius: var(--radius-sm); background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.06); text-decoration: none; overflow: var(--overflow-clip); }
 
 /* Contact Section Styles */
-.contact-icons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-}
-
-.contact-icons li {
-  display: inline-block;
-}
-
-.contact-icons a {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  background-size: cover;
-  background-position: center;
-  border-radius: var(--radius-full);
-  overflow: var(--overflow-clip);
-}
-
-.contact-icons a.email {
-  background-image: url('../assets/icons/email-icon.png');
-}
-
-.contact-icons a.linkedin {
-  background-image: url('../assets/icons/linkedin-icon.png');
-}
-
-.contact-icons a.github {
-  background-image: url('../assets/icons/github-icon.png');
-}
-
-.contact-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-  flex-wrap: wrap;
-}
-
-.contact-buttons li {
-  display: inline-block;
-}
 
 /* Unified Contact Button Style */
-.contact-buttons .contact-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.8rem 1.6rem;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--text);
-  text-decoration: none;
-  border: 2px solid var(--accent);
-  border-radius: var(--radius-sm);
-  background: transparent;
-  overflow: var(--overflow-clip);
-  cursor: pointer;
-  font-family: inherit;
-  box-sizing: border-box;
-  height: 48px;
-  transition: 
-    color 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.3s ease,
-    background 0.3s ease;
-}
-
-.contact-buttons .contact-btn .btn-icon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  fill: currentColor;
-  transition: transform 0.3s ease;
-}
 
 /* Ensure all buttons have same min-width for uniform size */
-.contact-buttons .contact-btn {
-  min-width: 140px;
-  justify-content: center;
-}
 
 /* Flowing light effect for all contact buttons */
-.contact-buttons .contact-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    transparent 30%,
-    rgba(106, 176, 243, 0.15) 45%,
-    rgba(106, 176, 243, 0.3) 50%,
-    rgba(106, 176, 243, 0.15) 55%,
-    transparent 70%,
-    transparent 100%
-  );
-  transition: left 0.6s ease;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.contact-buttons .contact-btn:hover::before {
-  left: 100%;
-}
-
-.contact-buttons .contact-btn:hover {
-  box-shadow: 
-    0 0 20px rgba(106, 176, 243, 0.15),
-    0 4px 12px rgba(0, 0, 0, 0.2);
-  border-color: rgba(106, 176, 243, 0.8);
-  background: rgba(106, 176, 243, 0.08);
-}
-
-.contact-buttons .contact-btn:hover .btn-icon {
-  transform: scale(1.1);
-}
-
-.contact-buttons .contact-btn:active {
-  transform: scale(0.98);
-}
 
 /* Focus states for contact buttons */
-.contact-buttons .contact-btn:focus {
-  outline: none;
-  box-shadow: 
-    0 0 0 3px rgba(106, 176, 243, 0.4),
-    0 0 20px rgba(106, 176, 243, 0.15);
-}
-
-.contact-buttons .contact-btn:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
 
 /* My Contact button - subtle highlight as primary action */
-.contact-buttons .contact-btn.my-contact {
-  background: linear-gradient(135deg, rgba(106, 176, 243, 0.1) 0%, rgba(74, 141, 195, 0.05) 100%);
-}
-
-.contact-buttons .contact-btn.my-contact:hover {
-  background: linear-gradient(135deg, rgba(106, 176, 243, 0.2) 0%, rgba(74, 141, 195, 0.1) 100%);
-}
 
 /* Resume button - document-themed styling */
-.contact-buttons .contact-btn.resume {
-  background: linear-gradient(135deg, rgba(156, 136, 255, 0.1) 0%, rgba(106, 90, 205, 0.05) 100%);
-}
-
-.contact-buttons .contact-btn.resume:hover {
-  background: linear-gradient(135deg, rgba(156, 136, 255, 0.2) 0%, rgba(106, 90, 205, 0.1) 100%);
-}
 
 /* Header Styles */
 header {
@@ -506,9 +329,10 @@ header {
 @media (max-width: 880px) {
   .intro-grid { grid-template-columns: 1fr; text-align: center; }
   .intro-photo { margin: 0 auto; width: 220px; height: 220px; }
-  .intro-card h2, .intro-lead, .intro-type { text-align: center; }
+  .intro-card h2,
+.intro-lead,
+.intro-type { text-align: center; }
   .skills-list { justify-content: center; }
-  .intro-ctas { justify-content: center; }
 }
 
 /* =============================================
@@ -584,26 +408,8 @@ header {
   }
 
   /* Work Grid Mobile */
-  .work-grid {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-    padding: 0 0.5rem;
-  }
 
   /* Contact Buttons Mobile */
-  .contact-buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    padding: 0 1rem;
-  }
-
-  .contact-buttons .contact-btn {
-    width: 100%;
-    max-width: 280px;
-    min-width: auto;
-    justify-content: center;
-  }
 
   /* Vision Section Mobile */
   .vision-content {
@@ -688,33 +494,20 @@ header {
   }
 
   /* Contact Buttons Small Mobile */
-  .contact-buttons .contact-btn {
-    height: 44px;
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
-  }
-
-  .contact-buttons .contact-btn .btn-icon {
-    width: 16px;
-    height: 16px;
-  }
 }
 
 /* =============================================
    Reduced Motion Support for Style.css Buttons
    ============================================= */
 @media (prefers-reduced-motion: reduce) {
-  .contact-buttons a::before,
   .lang-toggle::before {
     transition: none;
   }
   
-  .contact-buttons a:hover::before,
   .lang-toggle:hover::before {
     left: -100%;
   }
   
-  .contact-buttons a,
   .lang-toggle {
     transition: 
       box-shadow 0.3s ease,

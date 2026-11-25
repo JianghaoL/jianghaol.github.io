@@ -60,8 +60,7 @@ html body::before { content: none; }
 }
 
 /* Reading surfaces carry a little more ink; only their background is bent. */
-:is(.contact-card, .resume-modal, .certificate-modal, .image-lightbox-content,
-    .details-container, .hero-details-container, .blog-toc).liquid-glass {
+:is(.resume-modal, .certificate-modal, .hero-details-container, .blog-toc).liquid-glass {
   --glass-tint: rgba(8, 16, 27, 0.68);
 }
 .resume-modal.liquid-glass {
@@ -75,7 +74,7 @@ html .resume-html-content { background: rgba(8, 16, 27, 0.78); }
 :is(.mix-card, .reel-card, .contact-links a).liquid-glass:hover { border-color: rgba(222, 241, 255, 0.46); }
 
 /* A blurred scrim would erase the detail needed by the lens. */
-html :is(.contact-modal-overlay, .resume-modal-overlay, .certificate-modal-overlay, .image-lightbox-overlay) {
+html :is(.resume-modal-overlay, .certificate-modal-overlay) {
   z-index: 11000;
   background: rgba(0, 4, 12, 0.38);
   backdrop-filter: none;

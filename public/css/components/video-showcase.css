@@ -141,9 +141,6 @@
 }
 
 /* Video showcase page extensions */
-.video-showcase-page .project-hero {
-  min-height: auto;
-}
 
 .showcase-video-shell {
   max-width: 1000px;
@@ -162,28 +159,6 @@
   height: 100%;
   object-fit: contain;
   background: #000;
-}
-
-.showcase-video-placeholder {
-  background:
-    radial-gradient(circle at center, rgba(106, 176, 243, 0.14), transparent 35%),
-    linear-gradient(135deg, #101329, #171e3a);
-}
-
-.showcase-video-placeholder svg {
-  color: var(--accent);
-}
-
-.showcase-video-placeholder strong {
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 1rem;
-}
-
-.showcase-video-placeholder p {
-  max-width: 520px;
-  margin: 0;
-  padding: 0 1.5rem;
-  text-align: center;
 }
 
 .showcase-notes-grid {
@@ -227,12 +202,12 @@
 
 @media (prefers-reduced-motion: reduce) {
   .reel-card,
-  .reel-card-play {
+.reel-card-play {
     transition: none;
   }
 
   .reel-card:hover,
-  .reel-card:focus-visible {
+.reel-card:focus-visible {
     transform: none;
   }
 }

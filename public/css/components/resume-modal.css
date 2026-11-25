@@ -207,22 +207,6 @@
 }
 
 /* Resume Image Container (alternative to PDF) */
-.resume-image-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.resume-image-container img {
-  max-width: 100%;
-  height: auto;
-  border-radius: var(--radius-md);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  overflow: var(--overflow-clip);
-}
 
 /* HTML Resume Styles */
 .resume-html-content {
@@ -303,16 +287,14 @@
   fill: none;
 }
 
-.resume-experience-item,
-.resume-project-item {
+.resume-experience-item {
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-sm);
 }
 
-.resume-experience-item:last-child,
-.resume-project-item:last-child {
+.resume-experience-item:last-child {
   border-bottom: none;
   padding-bottom: 0;
 }
@@ -683,7 +665,12 @@
   }
   
   .btn-download-resume::before,
-  .btn-view-resume::before {
+.btn-view-resume::before {
     display: none;
   }
+}
+
+/* Lock page scroll while a modal is open (set by resume-modal.js) */
+body.modal-open {
+  overflow: hidden;
 }
