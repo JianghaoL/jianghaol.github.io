@@ -8,6 +8,8 @@ const waveContexts = [];
 const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 const dpr = Math.min(window.devicePixelRatio || 1, 2);
 let animationFrame = null;
+// The lead wave follows the site accent defined in src/styles/tokens.css.
+const accentRgb = getComputedStyle(document.documentElement).getPropertyValue('--accent-rgb').trim() || '112 186 255';
 
 function resizeCanvas(state) {
   const rect = state.canvas.parentElement.getBoundingClientRect();
@@ -29,7 +31,7 @@ function drawOnCanvas(state) {
   ctx.clearRect(0, 0, width, height);
 
   const waves = [
-    { freq: 0.0065, amp: Math.max(22, height * 0.065), phase: 0, color: 'rgba(112, 186, 255, 0.42)', lineWidth: 1.4 },
+    { freq: 0.0065, amp: Math.max(22, height * 0.065), phase: 0, color: `rgb(${accentRgb} / 0.42)`, lineWidth: 1.4 },
     { freq: 0.0105, amp: Math.max(15, height * 0.044), phase: Math.PI / 4, color: 'rgba(154, 140, 255, 0.28)', lineWidth: 1.15 },
     { freq: 0.014, amp: Math.max(26, height * 0.075), phase: Math.PI / 2, color: 'rgba(87, 151, 232, 0.24)', lineWidth: 1.05 }
   ];

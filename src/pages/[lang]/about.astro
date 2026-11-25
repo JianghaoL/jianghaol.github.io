@@ -8,7 +8,6 @@ const lang = Astro.params.lang as Lang;
 const t = useTranslations(lang);
 ---
 <BaseLayout lang={lang} active="about" title={`${t('meta.titleSuffix')} - ${t('nav.about')}`}
-  styles={['/css/reset.css', '/css/style.css', '/css/apple-refactor.css', '/css/portfolio-refresh.css']}
   scripts={['/js/resume-modal.js']}>
 <main>
   <!-- Vision Section with Animation -->

@@ -6,9 +6,8 @@ const NS = 'http://www.w3.org/2000/svg';
 const surfaces = new Map();
 const selector = [
   '.site-header', '.nav-links', '.gallery-controls', '.blog-toc',
-  '.mix-card', '.reel-card', '.featured-project__arrow', '.contact-links a', '.contact-card', '.resume-modal',
-  '.certificate-modal', '.image-lightbox-content', '.hero-details-container',
-  '.details-container', '.about-introduction', '.about-education', '.about-skills'
+  '.mix-card', '.reel-card', '.featured-project__arrow', '.contact-links a', '.resume-modal',
+  '.certificate-modal', '.hero-details-container', '.about-introduction', '.about-education', '.about-skills'
 ].join(',');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const reducedTransparency = matchMedia('(prefers-reduced-transparency: reduce)');

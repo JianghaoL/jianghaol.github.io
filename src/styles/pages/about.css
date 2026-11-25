@@ -1,0 +1,217 @@
+/* Vision Section Styles */
+
+.vision-content {
+  width: 100%; /* Center the image */
+}
+
+.vision-image {
+  max-width: 1000px; /* Chamfered rectangle */ /* Enhanced shadow effect */
+}
+
+/* Separator Styles */
+.section-separator {
+  border: none;
+  height: 1px; /* Subtle height */
+  background: rgba(255, 255, 255, 0.2); /* Lighter color for subtle effect */
+  margin: 2rem auto; /* Center the separator */
+  width: 80%; /* Restrict width to 80% of the container */
+  border-radius: var(--radius-full);
+  border-color: var(--hairline);
+}
+
+/* About Details Section Styles */
+.about-details-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns layout */ /* Row gap / Column gap */
+  padding: 2rem;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  text-align: left; /* Ensure text is left-aligned */
+  justify-content: center; /* Center the text section */ /* Limit the width of the section */
+  margin: 20px auto; /* Center the section horizontally */
+  max-width: 980px;
+  gap: clamp(1.5rem, 5vw, 4rem);
+}
+
+.about-details-section h3 {
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.about-details-section p,
+.about-details-section ul {
+  margin-bottom: 1.5rem;
+}
+
+.about-details-section ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.about-details-section li {
+  margin-bottom: 0.5rem;
+}
+
+.about-introduction,
+.about-education {
+  grid-column: 1; /* Place in the first column */
+}
+
+.about-education {
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  box-shadow:
+    var(--shadow-sm),
+    inset 0 1px rgba(255, 255, 255, 0.045);
+  backdrop-filter: saturate(125%);
+  min-width: 0;
+  padding: var(--surface-padding);
+  border-radius: var(--radius-lg);
+}
+
+.about-introduction {
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  box-shadow:
+    var(--shadow-sm),
+    inset 0 1px rgba(255, 255, 255, 0.045);
+  backdrop-filter: saturate(125%);
+  min-width: 0;
+  padding: var(--surface-padding);
+  border-radius: var(--radius-lg);
+}
+
+.about-skills {
+  grid-column: 2; /* Place in the second column */
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  box-shadow:
+    var(--shadow-sm),
+    inset 0 1px rgba(255, 255, 255, 0.045);
+  backdrop-filter: saturate(125%);
+  min-width: 0;
+  padding: var(--surface-padding);
+  border-radius: var(--radius-lg);
+}
+
+/* =============================================
+   About Page Responsive Styles
+   ============================================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .vision-image {
+    max-width: 600px;
+    max-height: 400px;
+  }
+
+  .about-details-section {
+    padding: 1.5rem;
+  }
+
+  .about-details-section h3 {
+    font-size: 1.3rem;
+  }
+
+  .resume-button-container {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .vision-image {
+    max-width: 100%;
+    max-height: 300px;
+  }
+
+  .section-separator {
+    margin: 1.5rem auto;
+    width: 90%;
+  }
+
+  .about-details-section {
+    padding: 1rem;
+  }
+
+  .about-details-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .about-details-section p,
+  .about-details-section ul {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 900px) {
+  .about-details-section {
+    grid-template-columns: 1fr;
+  }
+  .about-introduction,
+  .about-education,
+  .about-skills {
+    grid-column: 1;
+  }
+}
+
+/* ---- moved from style.css ---- */
+/* Vision Section Styles */
+.centered-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: transparent;
+  padding-block: clamp(6rem, 10vw, 10rem);
+}
+
+.vision-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the image */
+  max-width: 980px;
+}
+
+.vision-image {
+  /* Chamfered rectangle */
+  object-fit: cover;
+  margin-bottom: 1.5rem; /* Enhanced shadow effect */
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 3;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.vision-header {
+  color: var(--accent); /* Make the header pop */
+  margin-bottom: 1rem;
+  font-size: clamp(2.8rem, 7vw, 6.6rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+}
+
+.vision-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .vision-content {
+    padding: 0 1rem;
+  }
+
+  .vision-text {
+    font-size: 0.95rem;
+  }
+}

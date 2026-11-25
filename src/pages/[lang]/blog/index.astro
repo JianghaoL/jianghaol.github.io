@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/blog/blog.css';
 import { useTranslations, langPaths, type Lang } from '../../../i18n/utils';
 import { getPosts, postUrl } from '../../../lib/content';
 
@@ -27,7 +28,6 @@ const copy = {
 const json = JSON.stringify({ posts, copy }).replace(/</g, '\\u003c');
 ---
 <BaseLayout lang={lang} active="blog" title={`${t('meta.titleSuffix')} - ${t('blog.hero.title')}`}
-  styles={['/css/reset.css', '/css/style.css', '/css/blog/blog.css', '/css/apple-refactor.css']}
   scripts={['/js/blog/blog.js']}>
 <!-- Blog Hero Section -->
 <section id="blog-hero" class="blog-hero">

@@ -1,0 +1,31 @@
+/*
+ * Site-wide stylesheet, bundled and minified by Astro (imported in BaseLayout).
+ *
+ * Cascade order matters — later files win ties:
+ *   tokens      design values (colour, type, shape, depth, motion)
+ *   base        reset + element defaults
+ *   layout      header, navigation, section chrome, footer
+ *   components  reusable pieces
+ *   pages       page-specific styles used across the site's shared shells
+ *   liquid-glass  the glass material; last so it can restyle any surface
+ *
+ * Styles needed by a single page template (gallery, blog, article, project)
+ * are imported by that template instead, and load after this file.
+ */
+
+@import "./tokens.css";
+@import "./base.css";
+@import "./layout.css";
+
+@import "./components/buttons.css";
+@import "./components/resume-modal.css";
+@import "./components/awards.css";
+@import "./components/music-player.css";
+@import "./components/video-showcase.css";
+@import "./components/tags.css";
+
+@import "./pages/about.css";
+@import "./pages/home.css";
+
+@import "./components/featured-work.css";
+@import "./components/liquid-glass.css";

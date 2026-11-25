@@ -3,6 +3,10 @@
  * The one page shell every page uses: <head>, header, footer, scripts.
  * Pages only provide their content plus a few props.
  */
+// Self-hosted variable fonts (bundled, so they satisfy the site's CSP).
+import '@fontsource-variable/inter/opsz.css';
+import '@fontsource-variable/jetbrains-mono';
+import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { htmlLang, type Lang } from '../i18n/utils';
@@ -11,7 +15,7 @@ interface Props {
   lang: Lang;
   title: string;
   description?: string;
-  /** Stylesheets in cascade order. Defaults to the site-wide set. */
+  /** Extra stylesheets from /public, loaded after the bundled styles (e.g. a blog demo's CSS). */
   styles?: string[];
   /** Page scripts, loaded after /js/main.js. */
   scripts?: string[];
@@ -21,7 +25,7 @@ interface Props {
   altUrl?: string;
 }
 
-const { lang, title, description, styles = ['/css/reset.css', '/css/style.css', '/css/apple-refactor.css'],
+const { lang, title, description, styles = [],
   scripts = [], active, altUrl } = Astro.props;
 
 const csp = "default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; frame-src 'self' https://www.youtube.com; connect-src 'self'; upgrade-insecure-requests";

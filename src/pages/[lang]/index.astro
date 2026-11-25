@@ -14,7 +14,6 @@ const featured = (await getProjects(lang))
   .sort((a, b) => a.data.featured! - b.data.featured!);
 ---
 <BaseLayout lang={lang} active="home" title="Jianghao Li — Portfolio"
-  styles={['/css/reset.css', '/css/style.css', '/css/apple-refactor.css', '/css/portfolio-refresh.css']}
   scripts={['/js/music-player.js', '/js/resume-modal.js']}>
 <!-- Hero 区 -->
 <header id="hero">

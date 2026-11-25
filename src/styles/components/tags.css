@@ -1,0 +1,32 @@
+/* Shared metadata and tag chips: project hero, gallery cards and blog cards. */
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.meta-item svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--accent);
+}
+
+.tech-tag {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgb(var(--accent-rgb) / 0.3);
+  border-color: var(--hairline);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+}
+
+@media (prefers-contrast: high) {
+  .meta-item {
+    color: var(--text);
+  }
+}

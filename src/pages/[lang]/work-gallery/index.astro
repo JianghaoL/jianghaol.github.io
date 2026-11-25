@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/pages/gallery.css';
 import { useTranslations, langPaths, type Lang } from '../../../i18n/utils';
 import { getProjects, hasPage } from '../../../lib/content';
 import { ui } from '../../../i18n/ui';
@@ -41,7 +42,6 @@ const items = projects.map((p) => {
 const json = JSON.stringify({ items, strings, stringsEn }).replace(/</g, '\\u003c');
 ---
 <BaseLayout lang={lang} active="gallery" title={`${t('meta.titleSuffix')} - ${t('gallery.hero.title')}`}
-  styles={['/css/reset.css', '/css/style.css', '/css/pages/gallery.css', '/css/apple-refactor.css']}
   scripts={['/js/gallery.js']}>
 <!-- Gallery Hero Section -->
 <section id="gallery-hero" class="gallery-hero">

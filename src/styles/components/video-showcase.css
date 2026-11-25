@@ -7,6 +7,8 @@
   gap: 1.6rem;
   max-width: 1100px;
   margin: 2rem auto 0;
+  width: min(100%, var(--content-wide));
+  margin-inline: auto;
 }
 
 .reel-card {
@@ -14,19 +16,31 @@
   color: var(--text);
   text-decoration: none;
   text-align: left;
-  background: var(--card-bg);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--radius-md);
   overflow: hidden;
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  box-shadow:
+    var(--shadow-sm),
+    inset 0 1px rgba(255, 255, 255, 0.045);
+  backdrop-filter: saturate(125%);
+  border-radius: var(--radius-xl);
+  transition:
+    transform 340ms var(--ease-fluid),
+    border-color 220ms ease;
 }
 
-.reel-card:hover,
 .reel-card:focus-visible {
   transform: translateY(-6px);
-  border-color: rgba(106, 176, 243, 0.35);
+  border-color: rgb(var(--accent-rgb) / 0.35);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
   outline: none;
+}
+
+.reel-card:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+  outline: none;
+  transform: translateY(-5px);
+  border-color: rgb(var(--accent-rgb) / 0.24);
 }
 
 .reel-card-visual {
@@ -36,7 +50,7 @@
   place-items: center;
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 45%, rgba(106, 176, 243, 0.18), transparent 42%),
+    radial-gradient(circle at 50% 45%, rgb(var(--accent-rgb) / 0.18), transparent 42%),
     linear-gradient(135deg, #11152d, #1b2445 55%, #101326);
 }
 
@@ -46,7 +60,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.45s ease, filter 0.45s ease;
+  transition:
+    transform 0.45s ease,
+    filter 0.45s ease;
 }
 
 .reel-card:hover .reel-card-thumbnail,
@@ -84,14 +100,16 @@
   border-radius: 50%;
   background: var(--accent);
   color: var(--bg);
-  box-shadow: 0 0 24px rgba(106, 176, 243, 0.35);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 24px rgb(var(--accent-rgb) / 0.35);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .reel-card:hover .reel-card-play,
 .reel-card:focus-visible .reel-card-play {
   transform: scale(1.08);
-  box-shadow: 0 0 32px rgba(106, 176, 243, 0.5);
+  box-shadow: 0 0 32px rgb(var(--accent-rgb) / 0.5);
 }
 
 .reel-card-play svg {
@@ -107,7 +125,7 @@
   right: 1rem;
   z-index: 1;
   padding: 0.3rem 0.65rem;
-  border: 1px solid rgba(106, 176, 243, 0.35);
+  border: 1px solid rgb(var(--accent-rgb) / 0.35);
   border-radius: var(--radius-full);
   background: rgba(10, 12, 27, 0.76);
   color: var(--accent);
@@ -141,9 +159,6 @@
 }
 
 /* Video showcase page extensions */
-.video-showcase-page .project-hero {
-  min-height: auto;
-}
 
 .showcase-video-shell {
   max-width: 1000px;
@@ -151,7 +166,7 @@
 }
 
 .showcase-video-shell .video-wrapper {
-  border: 1px solid rgba(106, 176, 243, 0.16);
+  border: 1px solid rgb(var(--accent-rgb) / 0.16);
   box-shadow: 0 18px 48px rgba(0, 0, 0, 0.38);
 }
 
@@ -162,28 +177,6 @@
   height: 100%;
   object-fit: contain;
   background: #000;
-}
-
-.showcase-video-placeholder {
-  background:
-    radial-gradient(circle at center, rgba(106, 176, 243, 0.14), transparent 35%),
-    linear-gradient(135deg, #101329, #171e3a);
-}
-
-.showcase-video-placeholder svg {
-  color: var(--accent);
-}
-
-.showcase-video-placeholder strong {
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 1rem;
-}
-
-.showcase-video-placeholder p {
-  max-width: 520px;
-  margin: 0;
-  padding: 0 1.5rem;
-  text-align: center;
 }
 
 .showcase-notes-grid {
@@ -226,13 +219,77 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reel-card,
   .reel-card-play {
     transition: none;
   }
 
-  .reel-card:hover,
   .reel-card:focus-visible {
     transform: none;
   }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .reel-card {
+    background: var(--surface-solid) !important;
+    backdrop-filter: none !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .reel-card {
+    border-width: 2px;
+  }
+}
+
+/* ---- moved from style.css ---- */
+.wave-height-25 {
+  --wave-height: 25%;
+}
+
+.wave-height-48 {
+  --wave-height: 48%;
+}
+
+.wave-height-72 {
+  --wave-height: 72%;
+}
+
+.wave-height-42 {
+  --wave-height: 42%;
+}
+
+.wave-height-88 {
+  --wave-height: 88%;
+}
+
+.wave-height-58 {
+  --wave-height: 58%;
+}
+
+.wave-height-100 {
+  --wave-height: 100%;
+}
+
+.wave-height-64 {
+  --wave-height: 64%;
+}
+
+.wave-height-82 {
+  --wave-height: 82%;
+}
+
+.wave-height-36 {
+  --wave-height: 36%;
+}
+
+.wave-height-68 {
+  --wave-height: 68%;
+}
+
+.wave-height-46 {
+  --wave-height: 46%;
+}
+
+.wave-height-28 {
+  --wave-height: 28%;
 }

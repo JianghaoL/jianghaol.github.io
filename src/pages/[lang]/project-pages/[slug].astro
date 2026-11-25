@@ -5,6 +5,7 @@
  */
 import { render } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import '../../../styles/pages/project-detail.css';
 import Icon from '../../../components/Icon.astro';
 import { blocks } from '../../../components/blocks';
 import TextBlock from '../../../components/blocks/TextBlock.astro';
@@ -39,7 +40,7 @@ const isMdx = project.entry.filePath?.endsWith('.mdx');
 ---
 <BaseLayout lang={lang} title={`${t('meta.titleSuffix')} - ${d.title}`}
   description={d.seoDescription ?? d.summary}
-  styles={['/css/reset.css', '/css/style.css', '/css/pages/project-detail.css', ...(d.styles ?? []), '/css/apple-refactor.css']}
+  styles={d.styles ?? []}
   scripts={['/js/project-detail.js', ...(d.scripts ?? [])]}>
 <main class="project-page">
   <section class="project-hero">

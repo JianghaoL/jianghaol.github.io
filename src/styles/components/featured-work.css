@@ -25,7 +25,10 @@
   color: var(--text);
   isolation: isolate;
   text-decoration: none;
-  transition: border-color 220ms ease, transform 300ms var(--ease-fluid), box-shadow 300ms ease;
+  transition:
+    border-color 220ms ease,
+    transform 300ms var(--ease-fluid),
+    box-shadow 300ms ease;
 }
 
 .featured-project:hover,
@@ -46,7 +49,9 @@
 }
 
 .featured-project:hover img,
-.featured-project:focus-visible img { transform: scale(1.035); }
+.featured-project:focus-visible img {
+  transform: scale(1.035);
+}
 
 .featured-project::after {
   content: "";
@@ -66,7 +71,11 @@
   gap: 1.5rem;
 }
 
-.featured-project__text { display: grid; gap: 0.55rem; max-width: 42rem; }
+.featured-project__text {
+  display: grid;
+  gap: 0.55rem;
+  max-width: 42rem;
+}
 .featured-project__text strong {
   font-size: clamp(2.1rem, 5vw, 4.8rem);
   font-weight: 700;
@@ -108,38 +117,78 @@
   background: var(--surface);
   color: var(--text);
   text-decoration: none;
-  transition: border-color 200ms ease, background-color 200ms ease;
+  transition:
+    border-color 200ms ease,
+    background-color 200ms ease;
 }
 .contact-links a:hover,
-.contact-links a:focus-visible { border-color: var(--accent); background: var(--surface-hover); }
-.contact-links span { color: var(--text-secondary); font-size: 0.95rem; }
-.contact-links strong { overflow-wrap: anywhere; font-size: clamp(1rem, 1.7vw, 1.3rem); font-weight: 600; }
-.about-contact { max-width: 1030px; margin: 2rem auto 7rem; padding-inline: 2rem; }
-.about-contact h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
+.contact-links a:focus-visible {
+  border-color: var(--accent);
+  background: var(--surface-hover);
+}
+.contact-links span {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+.contact-links strong {
+  overflow-wrap: anywhere;
+  font-size: clamp(1rem, 1.7vw, 1.3rem);
+  font-weight: 600;
+}
+.about-contact {
+  max-width: 1030px;
+  margin: 2rem auto 7rem;
+  padding-inline: 2rem;
+}
+.about-contact h2 {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+}
 
 @media (max-width: 640px) {
-  .featured-project { min-height: 400px; }
-  .featured-project__content { align-items: end; }
-  .featured-project__arrow { width: 2.75rem; height: 2.75rem; }
-  .contact-links { grid-template-columns: 1fr; }
-  .about-contact { padding-inline: 1rem; margin-bottom: 4rem; }
+  .featured-project {
+    min-height: 400px;
+  }
+  .featured-project__content {
+    align-items: end;
+  }
+  .featured-project__arrow {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+  .contact-links {
+    grid-template-columns: 1fr;
+  }
+  .about-contact {
+    padding-inline: 1rem;
+    margin-bottom: 4rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .featured-project,
-  .featured-project img { transition: none; }
+  .featured-project img {
+    transition: none;
+  }
   .featured-project:hover,
   .featured-project:focus-visible,
   .featured-project:hover img,
-  .featured-project:focus-visible img { transform: none; }
+  .featured-project:focus-visible img {
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-transparency: reduce) {
-  .contact-links a { background: var(--surface-solid); }
+  .contact-links a {
+    background: var(--surface-solid);
+  }
 }
 
 @media (prefers-contrast: more) {
   .featured-project,
-  .contact-links a { border-color: currentColor; }
-  .featured-project::after { background: linear-gradient(180deg, transparent 15%, #000 100%); }
+  .contact-links a {
+    border-color: currentColor;
+  }
+  .featured-project::after {
+    background: linear-gradient(180deg, transparent 15%, #000 100%);
+  }
 }
